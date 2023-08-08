@@ -4,7 +4,8 @@ import React ,{useEffect} from 'react'
 import { BrowserRouter, Routes,Route} from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { Navbar, Sidebar, ThemeSetting } from './components';
-import { Livraisons,Messagerie, Cours, Eleves, Dashbord } from "./pages";
+import { Livraisons,Messagerie, Cours, Dashbord } from "./pages";
+import { Eleves } from "./pages"
 import { useStateContext } from './contexts/ContextProvider';
 
 const App = () => {
