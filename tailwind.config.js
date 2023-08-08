@@ -11,12 +11,20 @@ module.exports = {
       fontSize: {
         14: '14px',
       },
+      colors:{
+        couleur1:"#C23028",
+        couleur2:"#D7572B",
+        couleur3:"#F6B339",
+      },
       backgroundColor: {
         'main-bg': '#FAFBFB',
         'main-dark-bg': '#20232A',
         'secondary-dark-bg': '#33373E',
         'light-gray': '#F7F7F7',
         'half-transparent': 'rgba(0, 0, 0, 0.5)',
+        'backfirst':"#C23028",
+        'backsecond':"#D7572B",
+        'backthird':"#F6B339",
       },
       borderWidth: {
         1: '1px',
