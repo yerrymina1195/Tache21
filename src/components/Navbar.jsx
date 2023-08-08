@@ -50,14 +50,14 @@ const Navbar = () => {
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
   return (
-    <div className="flex bg-backsecond justify-between p-2 md:ml-6 md:mr-6 relative w-100">
+    <div className="flex justify-between  p-2 md:ml-6 md:mr-6 relative w-full">
 
       <NavButton title="Menu" customFunc={handleActiveMenu} color={currentColor} icon={<AiOutlineMenu />} />
       <div className="flex">
         <NavButton title="Notification" dotColor="rgb(254, 201, 15)" customFunc={() => handleClick('notification')} color={currentColor} icon={<RiNotification3Line />} />
         
           <div
-            className="flex  gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
+            className="flex align-items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
             onClick={() => handleClick('userProfil')}
           >
             <img
@@ -66,8 +66,8 @@ const Navbar = () => {
               alt="user-profile"
             />
             <p className='mb-0 '>
-              <span className="text-gray-400 text-14">Hi,</span>{' '}
-              <span className="text-gray-400 font-bold ml-1 text-14">
+              <span className="text-gray-400 mb-0  text-14">Hi,</span>{' '}
+              <span className="text-gray-400 mb-0  font-bold ml-1 text-14">
                 Makhan
               </span>
             </p>
