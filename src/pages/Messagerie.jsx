@@ -1,9 +1,13 @@
 import React from 'react'
-
+import SideBars from '../components/SideBars'
+import Chat from '../components/Chat'
 const Messagerie = () => {
   return (
-    <div className='text-red-600  bg-white m-2 md:m-10 mt-24 p-2 md:p-10 rounded-3xl'>
-       <h1 className='text-red-600  bg-slate-600 m-2 md:m-10 mt-24 p-2 md:p-10 rounded-3xl'>Messagerie</h1>
+   <div className=' text-white-600 flex bg-gray-50 h-screen items-center justify-center '>
+   <div className="ring ring-white-500 rounded-lg  w-8/12  h-4/5 flex overflow-hidden  ">
+    <SideBars />
+     <Chat />
+    </div>
     </div>
   )
 }

@@ -7,8 +7,8 @@ import { Navbar, Sidebar, ThemeSetting } from './components';
 import { Livraisons,Messagerie, Cours, Eleves, Dashbord } from "./pages";
 import { useStateContext } from './contexts/ContextProvider';
 
-const App = () => {
 
+const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
 
   useEffect(() => {
