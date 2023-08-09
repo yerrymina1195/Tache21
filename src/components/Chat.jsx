@@ -9,7 +9,7 @@ import  Input  from './Input'
 const Chat = () => {
   return (
     <div className="chat  w-9/12">
-      <div className="chatInfo  h-12 bg-sky-900 flex  justify-between w-full">
+      <div className="chatInfo  h-12 bg-orange-300 flex justify-between w-full">
         <p>Coach</p>
         <div className="chatIcons flex items-center justify-between px-4">
      
