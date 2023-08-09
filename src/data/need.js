@@ -6,7 +6,6 @@ import { GiTeacher } from 'react-icons/gi';
 
 import { AiOutlineDeliveredProcedure } from 'react-icons/ai';
 
-
 import { MdOutlineMessage} from 'react-icons/md';
 import avatar from './avatar.jpg';
 import avatar2 from './avatar2.jpg';
