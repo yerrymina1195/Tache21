@@ -4,7 +4,6 @@ import { PiStudentLight } from 'react-icons/pi';
 import { LiaBookSolid } from 'react-icons/lia';
 import { AiOutlineDeliveredProcedure } from 'react-icons/ai';
 
-
 import { MdOutlineMessage} from 'react-icons/md';
 import avatar from './avatar.jpg';
 import avatar2 from './avatar2.jpg';
