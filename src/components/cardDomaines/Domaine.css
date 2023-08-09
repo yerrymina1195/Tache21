@@ -1,0 +1,19 @@
+.btn-domaine button{
+    color: #C23028 !important;
+    font-size: 25px;
+}
+.btn-domaine button:hover{
+    scale: 1.5;
+
+}
+.text-domaine{
+    color: #C23028;
+}
+.add-domaine{
+    background-color: #C23028;
+    color: white;
+}
+.add-domaine:hover{
+    color: #C23028;
+    border: 2px solid #C23028;
+}
