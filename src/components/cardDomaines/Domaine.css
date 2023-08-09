@@ -8,6 +8,8 @@
 }
 .text-domaine{
     color: #C23028;
+    text-transform: capitalize;
+    font-weight: bold;
 }
 .add-domaine{
     background-color: #C23028;
@@ -16,4 +18,8 @@
 .add-domaine:hover{
     color: #C23028;
     border: 2px solid #C23028;
+}
+.card-domaine{
+    box-shadow: 5px 3px 15px rgba(128, 128, 128, 0.267);
+    border: none;
 }

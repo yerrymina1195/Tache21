@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const Domaine = (props) => {
     return (
         <div className='col-4'>
-            <div class="card" >
+            <div class="card card-domaine" >
                 <Link to='/'>
                     <img src={props.img} class="card-img-top" alt="image-domaine" />
                 </Link>
