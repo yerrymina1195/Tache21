@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const Domaine = (props) => {
     return (
-        <div className='col-4'>
+        <div className='col-lg-4 col-md-6 col-sm-12'>
             <div class="card card-domaine" >
                 <Link to='/'>
                     <img src={props.img} class="card-img-top" alt="image-domaine" />
@@ -16,11 +16,9 @@ const Domaine = (props) => {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. m fugit ratione consequatur nihil.
                     </p>
                     <div className='d-flex justify-center btn-domaine'>
-                        <Link to="/">
-                            <button type='button' class="btn">
-                                <BsEyeFill />
-                            </button>
-                        </Link>
+                        <button type='button' class="btn">
+                            <BsEyeFill />
+                        </button>
                         <button type='button' class="btn mx-3">
                             <BsPencilSquare />
                         </button>
