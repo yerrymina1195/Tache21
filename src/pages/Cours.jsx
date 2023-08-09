@@ -3,18 +3,19 @@ import Domaine from '../components/cardDomaines/Domaine'
 import design from '../data/domaine/design.png'
 import programmation from '../data/domaine/programmation.png'
 import marketing from '../data/domaine/marketing.png'
+import { Link } from 'react-router-dom'
 
 const Cours = () => {
   return (
-    <div className='bg-white m-5 mt-3 p-5 rounded-3xl'  >
+    <div className='bg-white m-5 p-5 rounded-3xl domaine'  >
       <div className="container ">
         <div className="row d-flex align-items-center">
           <div className="col-6">
-            <h1 className='fs-1 text-center'>Les Domaine</h1>
+            <h1 className='text-center'>Les Domaine</h1>
           </div>
           <div className="col-6">
             {/* button modal */}
-            <button type="button" className="btn add-domaine float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <button type="button" className="btn add-domaine rounded-md float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
               Ajouter un Domaine
             </button>
             {/* Modal */}
@@ -28,11 +29,11 @@ const Cours = () => {
                   <div className="modal-body">
                     <div class="form-floating mb-3">
                       <input type="text" class="form-control" id="floatingInput" placeholder="Nom du domaine" />
-                        <label for="floatingInput">Nom du domaine</label>
+                      <label for="floatingInput">Nom du domaine</label>
                     </div>
                     <div class="form-floating">
                       <input type="text" class="form-control" id="floatingPassword" placeholder="Description" />
-                        <label for="floatingPassword">Description</label>
+                      <label for="floatingPassword">Description</label>
                     </div>
                   </div>
                   <div className="modal-footer">
@@ -47,10 +48,10 @@ const Cours = () => {
 
       </div>
       <div className="container my-5">
-        <div className="row">
-          <Domaine img={programmation} title={'programmation'} />
-          <Domaine img={design} title={'design'} />
-          <Domaine img={marketing} title={'marketing'} />
+        <div className="row row-gap-5">
+            <Domaine img={programmation} title={'programmation'} />
+            <Domaine img={design} title={'design'} />
+            <Domaine img={marketing} title={'marketing'} />
         </div>
       </div>
     </div>

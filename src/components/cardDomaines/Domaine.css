@@ -1,19 +1,25 @@
 .btn-domaine button{
     color: #C23028 !important;
-    font-size: 25px;
+    font-size: 20px;
 }
 .btn-domaine button:hover{
     scale: 1.5;
 
 }
+.domaine h1{
+    font-size: 1.5em;
+    color: #C23028;
+}
 .text-domaine{
     color: #C23028;
     text-transform: capitalize;
     font-weight: bold;
+    font-size: 1.5rem;
 }
 .add-domaine{
     background-color: #C23028;
     color: white;
+    font-size: 20px !important;
 }
 .add-domaine:hover{
     color: #C23028;
@@ -22,4 +28,13 @@
 .card-domaine{
     box-shadow: 5px 3px 15px rgba(128, 128, 128, 0.267);
     border: none;
+}
+@media only screen and (min-width: 320px){
+    .domaine{
+        padding: 10px !important;
+        margin: 20px !important;
+    }
+    .add-domaine{
+        font-size: 12px !important;
+    }
 }
