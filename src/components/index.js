@@ -7,6 +7,8 @@ import Notification from "./Notification"
 import ThemeSetting from "./ThemeSetting"
 import Sidebar from "./Sidebar"
 import UserProfil from "./UserProfil"
+import BarChart from "./BarChart"
+
 
 
 
@@ -26,5 +28,6 @@ export{
     ThemeSetting,
     Sidebar,
     UserProfil,
+    BarChart
    
 }

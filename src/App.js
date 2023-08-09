@@ -10,7 +10,11 @@ import { useStateContext } from './contexts/ContextProvider';
 const App = () => {
 
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
-
+const user = {
+  status:"admin",
+  name:'makhan'
+}
+console.log(user);
   useEffect(() => {
     const currentThemeColor = localStorage.getItem('colorMode');
     const currentThemeMode = localStorage.getItem('themeMode');
@@ -50,23 +54,35 @@ const App = () => {
                 ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  '
                 : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 '
             }>
-                        <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
+                        <div className=" sticky-top bg-main-bg dark:bg-main-dark-bg navbar w-full ">
             <Navbar/>
             </div>
             <div>
             {themeSettings && (<ThemeSetting />)}
+{user.status === 'admin' ? (
+   <Routes>
+   {/* dashboard  */}
+   <Route path="/" element={(<Dashbord />)} />
+   <Route path="/dashbord" element={(<Dashbord />)} />
 
-              <Routes>
-                {/* dashboard  */}
-                <Route path="/" element={(<Dashbord />)} />
-                <Route path="/dashbord" element={(<Dashbord />)} />
+   {/* Pages */}
+   <Route path="/livraisons" element={< Livraisons/>} />
+   <Route path="/messagerie" element={(<Messagerie />)} />
+   <Route path="/cours" element={(<Cours />)} />
+   <Route path="/eleves" element={(<Eleves />)} />
+ </Routes>
+) : ( <Routes>
+  {/* dashboard  */}
+  <Route path="/" element={(<Dashbord />)} />
+  <Route path="/dashbord" element={(<Dashbord />)} />
 
-                {/* Pages */}
-                <Route path="/livraisons" element={< Livraisons/>} />
-                <Route path="/messagerie" element={(<Messagerie />)} />
-                <Route path="/cours" element={(<Cours />)} />
-                <Route path="/eleves" element={(<Eleves />)} />
-              </Routes>
+  {/* Pages */}
+  {/* <Route path="/livraisons" element={< Livraisons/>} />
+  <Route path="/messagerie" element={(<Messagerie />)} />
+  <Route path="/cours" element={(<Cours />)} />
+  <Route path="/eleves" element={(<Eleves />)} /> */}
+</Routes>) }
+             
             </div>
 
       </div>
