@@ -1,42 +1,48 @@
-import React from "react";
+import {React, useState} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
-import imgCours from "../medias/téléchargement.jpeg";
+// import imgCours from "../medias/téléchargement.jpeg";
 // import ButtonSousCour from "./ButtonSousCours";
 import { BiEditAlt, BiArchive } from "react-icons/bi";
 
 const Card = ({ title, descrip }) => {
-  return (
-    <div className="col-md-4 mb-5">
-      <div className="card border-0 shadow carteCours">
-        <a href="#">
-          <img
-            src={imgCours}
-            className="card-img-top h-auto w-100%"
-            alt="..."
-          />
-        </a>
-        <div className="card-body">
-          <a href="#" className="text-decoration-none text-black titre">
-            <h5 className="card-title">{title}</h5>
+    return (
+      <div className="col-md-4 mb-5">
+        <div className="card border-0 shadow carteCours hover:scale-[1.1]">
+          <a href="https://youtu.be/u5W2NWItytc?list=PLrSOXFDHBtfE5tpw0bjMevWxMWXotiSdO" target="_blank" rel="noopener noreferrer">
+            <iframe
+              width="100%"
+              height="200"
+              src="https://www.youtube.com/embed/u5W2NWItytc?list=PLrSOXFDHBtfE5tpw0bjMevWxMWXotiSdO"
+              title="YouTube video player"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
           </a>
-          <p className="card-text">{descrip}</p>
-          <div className="row">
-            <div className="col d-flex align-items-center titre">
-              <BiEditAlt className="text-warning" />
-              Modifier
-            </div>
-            <div className="col d-flex align-items-center titre">
-              <BiArchive className="text-warning" />
-              Archiver
+          <div className="card-body">
+            <a href="#" className="text-decoration-none text-black titre">
+              <h5 className="card-title group-hover:text-red-600">{title}</h5>
+            </a>
+            <p className="card-text">{descrip}</p>
+            <div className="row">
+              <div className="col d-flex align-items-center titre">
+                <BiEditAlt className="text-warning" />
+                Modifier
+              </div>
+              <div className="col d-flex align-items-center titre">
+                <BiArchive className="text-warning" />
+                Archiver
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
+  
 
+
+  
 const CarteSousCours = () => {
   const cardData = [
     {
