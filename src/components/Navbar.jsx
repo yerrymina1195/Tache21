@@ -5,7 +5,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Notification, UserProfil } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 import makhan from '../data/makhan.png';
-import ModalBouton from './ModalBouton';
+// import ModalBouton from './ModalBouton';
 
 const NavButton = ({ customFunc, icon, color, dotColor }) => (
   
@@ -55,7 +55,7 @@ const Navbar = () => {
 
       <NavButton title="Menu" customFunc={handleActiveMenu} color={currentColor} icon={<AiOutlineMenu />} />
 
-      <ModalBouton/>
+      {/* <ModalBouton/> */}
 
       <div className="flex">
         <NavButton title="Notification" dotColor="rgb(254, 201, 15)" customFunc={() => handleClick('notification')} color={currentColor} icon={<RiNotification3Line />} />
