@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { RiFacebookLine } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
 import "../Ma.css";
+import InputLabel from "../components/InputLabel";
+import MaButton from "../components/MaButton";
 
 const Cours = () => {
   return (
@@ -31,35 +33,14 @@ const Cours = () => {
             </div>
           </div>
           <div className="card-body mt-5">
-            <form className="mb-5 mt-5">
-              <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label mt-5">
-                  Adresse Email
-                </label>
-                <input
-                  type="email"
-                  className="form-control shadow-none"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="exemple@gmail.com"
-                />
+            <form className="mb-5 pt-5 mt-5">
+            <div className="">
+                <InputLabel label={'Adresse email'} type={'email'} placeholder={'exemple@gmail.com'} />
               </div>
               <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">
-                  Mot de Passe
-                </label>
-                <input
-                  type="password"
-                  className="form-control shadow-none"
-                  id="exampleInputPassword1"
-                  placeholder="........"
-                />
+                <InputLabel label={'Mot de passe'} type={'password'} placeholder={'........'} />
               </div>
-              <button
-                type="submit"
-                className="btn bg1 text-white fw-bold w-100">
-                Se Connecter
-              </button>
+              <MaButton type={'button'}/>
               <div className="row mt-4">
                 <div className="col-md-6"></div>
                 <div className="col-md-6 text-end">
