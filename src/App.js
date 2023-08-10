@@ -6,8 +6,9 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { Navbar, Sidebar, ThemeSetting } from './components';
-import { Livraisons, Messagerie, Cours, Eleves, Dashbord } from "./pages";
+import { Livraisons, Messagerie, Cours, Eleves, Dashbord, Programmation, Design, Marketing } from "./pages";
 import { useStateContext } from './contexts/ContextProvider';
+
 
 const App = () => {
 
@@ -66,7 +67,11 @@ const App = () => {
                 {/* Pages */}
                 <Route path="/livraisons" element={< Livraisons />}/>
                 <Route path="/messagerie" element={(<Messagerie />)} />
-                <Route path="/cours" element={(<Cours />)} />
+                <Route path="/cours" element={(<Cours />)}>
+                  <Route path='/cours/programmation' element={<Programmation/>}/>
+                  <Route path='/cours/marketing' element={<Marketing/>}/>
+                  <Route path='/cours/design' element={<Design/>}/>
+                </Route>
                 <Route path="/eleves" element={(<Eleves />)} />
               </Routes>
             </div>
