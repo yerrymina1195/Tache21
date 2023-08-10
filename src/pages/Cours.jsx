@@ -1,12 +1,8 @@
 import React from 'react'
 import Domaine from '../components/cardDomaines/Domaine'
-// import design from '../data/domaine/design.png'
-// import programmation from '../data/domaine/programmation.png'
-// import marketing from '../data/domaine/marketing.png'
 import { FaLaptopCode, FaPenNib } from 'react-icons/fa'
 import { BsMegaphoneFill } from 'react-icons/bs'
 import { Link, Outlet } from 'react-router-dom'
-
 
 const Cours = () => {
   const domains = [
@@ -25,7 +21,6 @@ const Cours = () => {
       icon: <FaPenNib />,
       // image:design
     }
-
   ]
   return (
     <div className='bg-white m-5 p-5 rounded-3xl domaine'  >
@@ -72,9 +67,9 @@ const Cours = () => {
         <div className="row row-gap-5">
           {domains.map(domain => (
             <div className='col-lg-4 col-md-6 col-sm-12'>
-              <Link to={`/cours/${domain.title}`}>
+              <Link to={`/cours/${domain.title}`} className='text-decoration-none'>
                 <Domaine
-                  className='text-decoration-none'
+                  className=''
                   icon={domain.icon}
                   title={domain.title}
                 />

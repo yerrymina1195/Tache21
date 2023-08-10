@@ -1,21 +1,19 @@
 import React from 'react'
-import './Domaine.css'
 import { BsArchiveFill, BsPencilSquare, BsEyeFill } from 'react-icons/bs'
+import './Sousdomaine.css'
 
-
-const Domaine = (props) => {
+const Sousdomaine = (props) => {
     return (
         <div>
-            <div class="card card-domaine" >
-                {/* <img src={props.img} class="card-img-top" alt={props.title} /> */}
-                <div class="card-body">
-                    <h5 class="card-title my-5 d-flex justify-content-around text-domaine ">
-                        {props.title}
-                        <span>{props.icon}</span>
-                    </h5>
-                    {/* <p class="card-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. m fugit ratione consequatur nihil.
-                    </p> */}
+            <div class="card border-0" >
+                    <img src={props.img} class="card-img-top img-fluid" alt={props.title} />
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {props.title}
+                        </h5>
+                    </div>
+
+                <div className="pb-3">
                     <div className='row  btn-domaine'>
                         <div className="col-4 d-flex align-items-center justify-content-center">
                             <button type='button' class="btn">
@@ -36,8 +34,7 @@ const Domaine = (props) => {
                 </div>
             </div>
         </div>
-
     )
 }
 
-export default Domaine
+export default Sousdomaine
