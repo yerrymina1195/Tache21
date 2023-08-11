@@ -62,15 +62,17 @@ const App = () => {
               <Routes>
                 {/* dashboard  */}
                 <Route path="/" element={(<Dashbord />)} />
-                <Route path="/dashbord" element={(<Dashbord />)}/>
+                <Route path="/dashbord" element={(<Dashbord />)} />
 
                 {/* Pages */}
-                <Route path="/livraisons" element={< Livraisons />}/>
+                <Route path="/livraisons" element={< Livraisons />} />
                 <Route path="/messagerie" element={(<Messagerie />)} />
                 <Route path="/cours" element={(<Cours />)}>
-                  <Route path='/cours/programmation' element={<Programmation/>}/>
-                  <Route path='/cours/marketing' element={<Marketing/>}/>
-                  <Route path='/cours/design' element={<Design/>}/>
+                  <Route path='/cours/programmation' element={<Programmation />}>
+                    {/* <Route path='/cours/programmation/htmlcss' element={<htmlcs />} /> */}
+                  </Route>
+                  <Route path='/cours/marketing' element={<Marketing />} />
+                  <Route path='/cours/design' element={<Design />} />
                 </Route>
                 <Route path="/eleves" element={(<Eleves />)} />
               </Routes>
