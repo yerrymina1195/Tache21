@@ -1,12 +1,11 @@
-import React from "react";
-import CarteSousCours from "../../components/CarteSousCours";
+import React from 'react';
 
-const SousCours2 = () => {
-  return (
-    <div className="container mt-5">
-      <div className="row pe-5 ps-5">
+const TitreCarte = (props) => {
+    return (
+        <div>
+             <div className="row pe-5 ps-5">
         <div className="col-md-6">
-          <h1>BOOTSTRAP 5</h1>
+          <h1>{props.titreCours}</h1>
         </div>
         <div className="col-md-6 float-end">
           <input
@@ -17,9 +16,8 @@ const SousCours2 = () => {
           />
         </div>
       </div>
-      <CarteSousCours />
-    </div>
-  );
+        </div>
+    );
 };
 
-export default SousCours2;
+export default TitreCarte;
