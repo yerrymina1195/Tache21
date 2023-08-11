@@ -1,12 +1,12 @@
 import React from "react";
-import CarteSousCours from "../components/CarteSousCours";
+import CarteSousCours from "../../components/CarteSousCours/CarteSousCours";
 
-const Cours = () => {
+const SousCours3 = () => {
   return (
     <div className="container mt-5">
       <div className="row pe-5 ps-5">
         <div className="col-md-6">
-          <h1>HTML 5</h1>
+          <h1>JAVASCRIT</h1>
         </div>
         <div className="col-md-6 float-end">
           <input
@@ -22,4 +22,4 @@ const Cours = () => {
   );
 };
 
-export default Cours;
+export default SousCours3;

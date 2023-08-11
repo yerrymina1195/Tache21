@@ -1,5 +1,5 @@
 import React from "react";
-import CarteSousCours from "../components/CarteSousCours";
+import CarteSousCours from "../../components/CarteSousCours";
 
 const SousCours2 = () => {
   return (
