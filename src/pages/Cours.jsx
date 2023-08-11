@@ -64,7 +64,7 @@ const Cours = () => {
 
       </div>
       <div className="container my-5">
-        <div className="row row-gap-5">
+        <div className="row row-gap-3">
           {domains.map(domain => (
             <div className='col-lg-4 col-md-6 col-sm-12'>
               <Link to={`/cours/${domain.title}`} className='text-decoration-none'>
