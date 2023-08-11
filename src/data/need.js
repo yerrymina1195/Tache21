@@ -106,4 +106,38 @@ export const links = [
       name: 'orange-theme',
     },
   ];
-  
+  // MAMA
+  export const cardData = [
+    {
+      title: "Titre Cours 1",
+      descrip:
+        "Lorem ipsum1 at FlowParserMixin.parseBlockOrModuleBlockBody at FlowParserMixin.parseBlockOrModuleBlockBody ",
+    },
+    {
+      title: "Titre Cours 2",
+      descrip:
+        "Lorem ipsum2 at FlowParserMixin.parseBlockOrModuleBlockBody at FlowParserMixin.parseBlockOrModuleBlockBody ",
+    },
+    {
+      title: "Titre Cours 3",
+      descrip:
+        "Lorem ipsum3 at FlowParserMixin.parseBlockOrModuleBlockBody at FlowParserMixin.parseBlockOrModuleBlockBody ",
+    },
+    {
+      title: "Titre Cours 4",
+      descrip:
+        "Lorem ipsum4 at FlowParserMixin.parseBlockOrModuleBlockBody at FlowParserMixin.parseBlockOrModuleBlockBody ",
+    },
+    {
+      title: "Titre Cours 5",
+      descrip:
+        "Lorem ipsum5 at FlowParserMixin.parseBlockOrModuleBlockBody at FlowParserMixin.parseBlockOrModuleBlockBody ",
+    },
+    {
+      title: "Titre Cours 6",
+      descrip:
+        "Lorem ipsum6 at FlowParserMixin.parseBlockOrModuleBlockBody at FlowParserMixin.parseBlockOrModuleBlockBody ",
+    },
+
+  ];
+   // MAMA
