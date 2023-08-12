@@ -6,7 +6,7 @@ import "../Ma.css";
 import InputLabel from "../components/InputLabel";
 import MaButton from "../components/MaButton";
 
-const Cours = () => {
+const Connexion = () => {
   return (
     <div className="container-fluid p-5 back" style={{ height: "700px" }}>
       <div className="container-fluid mt-5 largeur1" style={{ width: "40%" }}>
@@ -57,4 +57,4 @@ const Cours = () => {
   );
 };
 
-export default Cours;
+export default Connexion;
