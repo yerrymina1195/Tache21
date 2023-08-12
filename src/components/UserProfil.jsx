@@ -21,20 +21,20 @@ const UserProfil = () => {
           borderRadius="50%"
         />
       </div>
-      <div className="flex gap-5 items-center mt-6 border-color border-b-1 pb-6">
+      <div className="flex gap-3 items-center mt-6 border-color border-b-1 pb-4">
         <img
           className="rounded-full h-24 w-24"
           src={makhan}
           alt="user-profile"
         />
         <div>
-          <p className="font-semibold text-xl dark:text-gray-200"> Makhan Diakho </p>
-          <p className="text-gray-500 text-sm dark:text-gray-400">  Administrator   </p>
-          <p className="text-gray-500 text-sm font-semibold dark:text-gray-400"> makhandiakho95@gmail.com </p>
+          <p className="font-semibold mb-0 text-xl dark:text-gray-200"> Makhan Diakho </p>
+          <p className="text-gray-500 mb-0  text-sm dark:text-gray-400">  Administrator   </p>
+          <p className="text-gray-500 mb-0  text-sm font-semibold dark:text-gray-400"> makhandiakho95@gmail.com </p>
         </div>
       </div>
   
-      <div className="mt-5">
+      <div className="mt-3">
         <Button
           color="white"
           bgColor={currentColor}

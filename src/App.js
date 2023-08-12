@@ -7,7 +7,8 @@ import { Navbar, Sidebar, ThemeSetting } from './components';
 import { Livraisons,Messagerie, Cours, Dashbord } from "./pages";
 import { Eleves } from "./pages"
 import { useStateContext } from './contexts/ContextProvider';
-
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/js/bootstrap.min.js"
 const App = () => {
 
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
