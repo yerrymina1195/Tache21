@@ -11,7 +11,7 @@ const input = () => {
        <label htmlFor="file">
         < MdAttachFile className='cursor-pointer  h-6'/>
        </label>
-       <button className='px-2.5 border-none bg-blue-300 text-white h-10 '>Send</button>
+       <button className='px-2.5 border-none bg-orange-700  text-white h-10 '>Send</button>
        </div>
         </div>
   )

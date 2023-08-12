@@ -1,12 +1,17 @@
 import React from 'react'
 import SideBars from '../components/SideBars'
 import Chat from '../components/Chat'
+import "./messageri.css"
 const Messagerie = () => {
   return (
-   <div className=' text-white-600 flex bg-gray-50 h-screen items-center justify-center '>
-   <div className="ring ring-white-500 rounded-lg  w-8/12  h-4/5 flex overflow-hidden max-sm:w-full max-md:w-full">
-    <SideBars className="" />
-     <Chat />
+   <div class='container'>
+    <div className="row">
+<center>
+   <div class="bor col-md-12 col-xs-12 col-lg-9  border-none rounded-lg    flex overflow-hidden  col-sm-12">
+    <SideBars className="border-none" />
+     <Chat  className="border-none"/>
+    </div>
+    </center>
     </div>
     </div>
   )
