@@ -1,25 +1,22 @@
-import React from 'react'
-import Domaine from '../components/cardDomaines/Domaine'
-import { FaLaptopCode, FaPenNib } from 'react-icons/fa'
-import { BsMegaphoneFill } from 'react-icons/bs'
-import { Link, Outlet } from 'react-router-dom'
+import React from 'react';
+import Domaine from '../components/cardDomaines/Domaine';
+// import { FaLaptopCode, FaPenNib } from 'react-icons/fa'
+// import { BsMegaphoneFill } from 'react-icons/bs'
+import { Link, Outlet } from 'react-router-dom';
 
 const Cours = () => {
   const domains = [
     {
       title: "programmation",
-      icon: <FaLaptopCode />,
-      // image:programmation
+      // icon: <FaLaptopCode />,
     },
     {
       title: "marketing",
-      icon: <BsMegaphoneFill />,
-      // image:marketing
+      // icon: <BsMegaphoneFill />,
     },
     {
       title: "design",
-      icon: <FaPenNib />,
-      // image:design
+      // icon: <FaPenNib />,
     }
   ]
   return (
@@ -97,7 +94,7 @@ const Cours = () => {
               <Link to={`/cours/${domain.title}`} className='text-decoration-none'>
                 <Domaine
                   className=''
-                  icon={domain.icon}
+                  // icon={domain.icon}
                   title={domain.title}
                 />
               </Link>

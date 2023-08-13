@@ -1,37 +1,38 @@
 import React from 'react'
 import './Domaine.css'
 import { BsArchiveFill, BsPencilSquare, BsEyeFill } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
+// import {domain} from '../../pages/Cours'
+
 
 
 const Domaine = (props) => {
     return (
         <div>
             <div class="card card-domaine" >
-                {/* <img src={props.img} class="card-img-top" alt={props.title} /> */}
+                {/* <Link to={`/cours/${domain.props.title}`} className='text-decoration-none'>
+                </Link> */}
                 <div class="card-body">
-                    <h5 class="card-title my-5 d-flex justify-content-around text-domaine ">
+                    <h5 class="card-title text-center my-5 .text-domaine ">
                         {props.title}
                         <span>{props.icon}</span>
                     </h5>
-                    {/* <p class="card-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. m fugit ratione consequatur nihil.
-                    </p> */}
-                    <div className='row  btn-domaine'>
-                        <div className="col-4 d-flex align-items-center justify-content-center">
-                            <button type='button' class="btn">
-                                <BsEyeFill />
-                            </button>
-                        </div>
-                        <div className="col-4 d-flex align-items-center justify-content-center">
-                            <button type='button' class="btn mx-3">
-                                <BsPencilSquare />
-                            </button>
-                        </div>
-                        <div className="col-4 d-flex align-items-center justify-content-center">
-                            <button type='button' class="btn">
-                                <BsArchiveFill />
-                            </button>
-                        </div>
+                </div>
+                <div className='row  btn-domaine'>
+                    <div className="col-4 d-flex align-items-center justify-content-center">
+                        <button type='button' class="btn">
+                            <BsEyeFill />
+                        </button>
+                    </div>
+                    <div className="col-4 d-flex align-items-center justify-content-center">
+                        <button type='button' class="btn mx-3">
+                            <BsPencilSquare />
+                        </button>
+                    </div>
+                    <div className="col-4 d-flex align-items-center justify-content-center">
+                        <button type='button' class="btn">
+                            <BsArchiveFill />
+                        </button>
                     </div>
                 </div>
             </div>
