@@ -48,7 +48,7 @@ const Connexion = () => {
             <div className="row mt-4">
               <div className="col-md-6"></div>
               <div className="col-md-6 text-end">
-                <a href="#" className="">
+                <a href="../pageConnexion/ForgetPassword" className="">
                   Mot de passe oublié?
                 </a>
               </div>
