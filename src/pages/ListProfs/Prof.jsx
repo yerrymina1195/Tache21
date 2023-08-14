@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { initialUsers } from './userList';
-import EleveTable from "./EleveTable";
+import EleveTable from "./ProfTable";
 import AddEleveForm from "./AddEleveForm";
-import "./Eleve.css"
+import "./Prof.css"
 
-const Eleves = () => {
+const Prof = () => {
   
 
   const [users, setUsers] = useState(initialUsers);
@@ -20,11 +20,11 @@ const Eleves = () => {
       <div className="container">
         <div className="flex-row">
           <div className="flex-large">
-            <AddEleveForm addEleve={addEleve} />
+            <AddProfForm addEleve={addEleve} />
           </div>
          
           <div className="flex-large">
-            <EleveTable users={users} />
+            <PofTable users={users} />
           </div>
         </div>
       </div>
@@ -32,5 +32,5 @@ const Eleves = () => {
   );
 };
 
-export default Eleves
+export default Prof
 

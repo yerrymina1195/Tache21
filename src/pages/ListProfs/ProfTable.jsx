@@ -1,7 +1,7 @@
 import React from 'react';
 import img from "../../data/avatar.jpg"
 
-const EleveTable =(props) =>
+const ProfTable =(props) =>
   
 (
     <div>
@@ -228,5 +228,5 @@ const EleveTable =(props) =>
     </div>
   )
 
-  export default EleveTable;
+  export default ProfTable;
 

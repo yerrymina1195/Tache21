@@ -1,9 +1,15 @@
 .btn-domaine button {
-    background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
-    color: white;
+    /* background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%); */
+    color: #D7572B;
     font-size: 20px;
+    border: 2px solid #C23028;
+}
+
+.btn-domaine button:hover {
+    background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
     border: none;
 }
+
 
 .btn-domaine button:hover {
     scale: 1.15;
@@ -31,7 +37,7 @@
 .card-domaine:hover {
     scale: 1.15;
     z-index: 10;
-    color: #FAFBFB;
+    background-color: #FAFBFB;
 }
 
 .card-domaine h5 {
