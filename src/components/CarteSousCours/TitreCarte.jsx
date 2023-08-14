@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const TitreCarte = (props) => {
-    return (
-        <div>
-             <div className="row pe-5 ps-5">
+  return (
+    <div>
+      <div className="row pe-5 ps-5">
         <div className="col-md-6">
           <h1>{props.titreCours}</h1>
         </div>
@@ -16,8 +16,8 @@ const TitreCarte = (props) => {
           />
         </div>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default TitreCarte;

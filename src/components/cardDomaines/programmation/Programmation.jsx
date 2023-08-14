@@ -5,7 +5,6 @@ import angulare from "../../../data/programmation/angulare.png";
 import js from "../../../data/programmation/js.png";
 import react from "../../../data/programmation/react.png";
 import python from "../../../data/programmation/téléchargement.png";
-import { Link, Outlet } from "react-router-dom";
 import Sousdomaine from "../sousdomaine/Sousdomaine";
 
 const Programmation = () => {
@@ -51,19 +50,14 @@ const Programmation = () => {
         <div className="row row-gap-5">
           {sousdomaines.map((sousdomaine) => (
             <div className="col-lg-4 col-md-6 col-sm-12">
-              <Link
-                to={`/cours/${sousdomaine.name}/${sousdomaine.title}`}
-                className="text-decoration-none"
-              >
                 <Sousdomaine
-                  className=""
+                  links={`/cours/${sousdomaine.name}/${sousdomaine.title}`}
                   img={sousdomaine.image}
                   title={sousdomaine.title}
                 />
-              </Link>
             </div>
           ))}
-          <Outlet />
+         
         </div>
       </div>
     </div>

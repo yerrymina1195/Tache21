@@ -88,16 +88,11 @@ const App = () => {
                   path="/cours/programmation"
                   element={<Programmation />}
                 />
-                {/* <Route
-                  path="/cours/programmation/htmlcss"
-                  element={<CoursPro1 />}
-                /> */}
-                <Route
-                  path="/cours/programmation/*"
-                  element={<RouteCours />}
-                />
+                <Route path="/cours/programmation/*" element={<RouteCours />} />
                 <Route path="/cours/marketing" element={<Marketing />} />
+                <Route path="/cours/marketing/*" element={<RouteCours />} />
                 <Route path="/cours/design" element={<Design />} />
+                <Route path="/cours/design/*" element={<RouteCours />} />
 
                 <Route path="/eleves" element={<Eleves />} />
               </Routes>
