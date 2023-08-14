@@ -16,7 +16,8 @@ const Cours = () => {
     },
   ];
   return (
-    <div className="bg-white m-5 p-5 rounded-3xl domaine">
+    <div>
+      <div className="bg-white m-5 p-5 rounded-3xl domaine">
       <div className="container ">
         <div className="row d-flex align-items-center mt-5">
           <div className="col-6">
@@ -86,6 +87,7 @@ const Cours = () => {
           <Outlet />
         </div>
       </div>
+    </div>
     </div>
   );
 };
