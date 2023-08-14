@@ -51,55 +51,6 @@ const Chats = () => {
      <p className='text-sm text-gray-500 pl-0'>Hellow</p>
      </div>
       </div>
-
-
-      <div className="userChat flex px-2 pt-3.5 gap-10 text-white  cursor-pointer hover:bg-orange-400">
-    <img src="https://images.pexels.com/photos/17286100/pexels-photo-17286100/free-photo-of-homme-chemise-visage-portrait.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt=""  className="h-10 w-10 rounded-full object-cover" />
-    <div className="userChatinfo max-sm:hidden">
-     <span className='text-sm fw-bold text-black'>Mamadou niang</span>
-     <p className='text-sm text-gray-500 pl-0'>Hellow</p>
-     </div>
-      </div>
-
-      <div className="userChat flex px-2 pt-3.5 gap-10 text-white  cursor-pointer hover:bg-orange-400">
-    <img src="https://images.pexels.com/photos/17286100/pexels-photo-17286100/free-photo-of-homme-chemise-visage-portrait.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt=""  className="h-10 w-10 rounded-full object-cover" />
-    <div className="userChatinfo max-sm:hidden">
-     <span className='text-sm fw-bold text-black'>Mamadou niang</span>
-     <p className='text-sm text-gray-500 pl-0'>Hellow</p>
-     </div>
-      </div>
-
-      <div className="userChat flex px-2 pt-3.5 gap-10 text-white  cursor-pointer hover:bg-orange-400">
-    <img src="https://images.pexels.com/photos/17286100/pexels-photo-17286100/free-photo-of-homme-chemise-visage-portrait.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt=""  className="h-10 w-10 rounded-full object-cover" />
-    <div className="userChatinfo max-sm:hidden">
-     <span className='text-sm fw-bold text-black'>Mamadou niang</span>
-     <p className='text-sm text-gray-500 pl-0'>Hellow</p>
-     </div>
-      </div>
-
-      <div className="userChat flex px-2 pt-3.5 gap-10 text-white  cursor-pointer hover:bg-orange-400">
-    <img src="https://images.pexels.com/photos/17286100/pexels-photo-17286100/free-photo-of-homme-chemise-visage-portrait.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt=""  className="h-10 w-10 rounded-full object-cover" />
-    <div className="userChatinfo max-sm:hidden">
-     <span className='text-sm fw-bold text-black'>Mamadou niang</span>
-     <p className='text-sm text-gray-500 pl-0'>Hellow</p>
-     </div>
-      </div>
-
-      <div className="userChat flex px-2 pt-3.5 gap-10 text-white  cursor-pointer hover:bg-orange-400">
-    <img src="https://images.pexels.com/photos/17286100/pexels-photo-17286100/free-photo-of-homme-chemise-visage-portrait.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt=""  className="h-10 w-10 rounded-full object-cover" />
-    <div className="userChatinfo max-sm:hidden">
-     <span className='text-sm fw-bold text-black'>Mamadou niang</span>
-     <p className='text-sm text-gray-500 pl-0'>Hellow</p>
-     </div>
-      </div>
-
-       <div className="userChat flex px-2 pt-3.5 gap-10 text-white  cursor-pointer hover:bg-orange-400">
-    <img src="https://images.pexels.com/photos/17286100/pexels-photo-17286100/free-photo-of-homme-chemise-visage-portrait.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt=""  className="h-10 w-10 rounded-full object-cover" />
-    <div className="userChatinfo max-sm:hidden">
-     <span className='text-sm fw-bold text-black'>Mamadou niang</span>
-     <p className='text-sm text-gray-500 pl-0'>Hellow</p>
-     </div>
-      </div>
     </div>
   )
 }
