@@ -1,10 +1,29 @@
 import React from 'react'
 import './Livraisons.css';
 
-import img2 from "../data/Cap2.png";
-import { BiSolidMessageDetail } from 'react-icons/bi';
-import { AiFillEye } from 'react-icons/ai';
+import img from "../data/cap0.png";
+import img2 from "../data/Cap1.png";
+import img3 from "../data/Cap2.png";
+// import { BiSolidMessageDetail } from 'react-icons/bi';
+// import { AiFillEye } from 'react-icons/ai';
 import ModalBouton from '../components/ModalBouton';
+
+const Data = [
+  {
+    title: "Tâche n° 1",
+    imgSrc: img,
+  },
+  {
+    title: "Tâche n° 2",
+    imgSrc: img2,
+
+  },
+  {
+    title: "Tâche n° 3",
+    imgSrc: img3,
+  },
+
+]
 
 const Livraisons = () => {
   return (
@@ -13,105 +32,28 @@ const Livraisons = () => {
         <h1 className=' text-couleur2 p-11 text-center'>Livraisons</h1>
         <div className='fixed top-[180px] z-[3000] right-10'>
 
-        <ModalBouton/>
+          <ModalBouton />
         </div>
-        <div className="row g-3">
-          {/* Tache 1 */}
-          <div className="col-sm-12 col-md-6 col-lg-4">
-            <div className="card p-3">
-              <div className="card-title">
-                <h3 className='text-dark'>Tâche n° 1</h3>
-              </div>
-              <div className="card-body">
-                <img src={img2} alt="dsre" className="img-fluid mx-auto w-75 h-75" />
-                <div className='d-flex flex-row justify-content-between align-items-center justify-content-md-between  align-items-md-center my-3'>
-                  <button className='btn btn-warning my-1 text-white w-50 me-2 d-flex align-items-center justify-content-center'><BiSolidMessageDetail className='icons me-2' /><span>Commentaires</span></button>
-                  <button className='btn btn-danger my-1 text-white w-50 ms-2 d-flex align-items-center justify-content-center'><AiFillEye className='icons me-2' /><span>Livrables</span></button>
+        <div className='row g-3'>
+          {Data.map((item) => {
+            return (
+              <div className="col-sm-12 col-md-6 col-lg-4 mb-5">
+                <div className="card p-3">
+                  <div className="card-title">
+                    <h4 className='fs-5 fw-100 text-dark'>{item.title}</h4>
+                  </div>
+                  <div className="card-body">
+                    <img src={item.imgSrc} alt="" className='img-fluid mx-auto' />
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          {/* Tache 2 */}
-          <div className="col-sm-12 col-md-6 col-lg-4">
-            <div className="card p-3">
-              <div className="card-title">
-                <h3 className='text-dark'>Tâche n° 2</h3>
-              </div>
-              <div className="card-body">
-                <img src={img2} alt="dsre" className="img-fluid mx-auto w-75 h-75" />
-                <div className='d-flex flex-row justify-content-between align-items-center justify-content-md-between  align-items-md-center my-3'>
-                  <button className='btn btn-warning my-1 text-white w-50 me-2 d-flex align-items-center justify-content-center'><BiSolidMessageDetail className='icons me-2' /><span>Commentaires</span></button>
-                  <button className='btn btn-danger my-1 text-white w-50 ms-2 d-flex align-items-center justify-content-center'><AiFillEye className='icons me-2' /><span>Livrables</span></button>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Tache 3 */}
-          <div className="col-sm-12 col-md-6 col-lg-4">
-            <div className="card p-3">
-              <div className="card-title">
-                <h3 className='text-dark'>Tâche n° 3</h3>
-              </div>
-              <div className="card-body">
-                <img src={img2} alt="dsre" className="img-fluid mx-auto w-75 h-75" />
-                <div className='d-flex flex-row justify-content-between align-items-center justify-content-md-between  align-items-md-center my-3'>
-                  <button className='btn btn-warning my-1 text-white w-50 me-2 d-flex align-items-center justify-content-center'><BiSolidMessageDetail className='icons me-2' /><span>Commentaires</span></button>
-                  <button className='btn btn-danger my-1 text-white w-50 ms-2 d-flex align-items-center justify-content-center'><AiFillEye className='icons me-2 max-w-max' /><span>Livrables</span></button>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* TAche 4 */}
-          <div className="col-sm-12 col-md-6 col-lg-4">
-            <div className="card p-3">
-              <div className="card-title">
-                <h3 className='text-dark'>Tâche n° 3</h3>
-              </div>
-              <div className="card-body">
-                <img src={img2} alt="dsre" className="img-fluid mx-auto w-75 h-75" />
-                <div className='d-flex flex-row justify-content-between align-items-center justify-content-md-between  align-items-md-center my-3'>
-                  <button className='btn btn-warning my-1 text-white w-50 me-2 d-flex align-items-center justify-content-center'><BiSolidMessageDetail className='icons me-2' /><span>Commentaires</span></button>
-                  <button className='btn btn-danger my-1 text-white w-50 ms-2 d-flex align-items-center justify-content-center'><AiFillEye className='icons me-2 max-w-max' /><span>Livrables</span></button>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* TAche 5 */}
-          <div className="col-sm-12 col-md-6 col-lg-4">
-            <div className="card p-3">
-              <div className="card-title">
-                <h3 className='text-dark'>Tâche n° 3</h3>
-              </div>
-              <div className="card-body">
-                <img src={img2} alt="dsre" className="img-fluid mx-auto w-75 h-75" />
-                <div className='d-flex flex-row justify-content-between align-items-center justify-content-md-between  align-items-md-center my-3'>
-                  <button className='btn btn-warning my-1 text-white w-50 me-2 d-flex align-items-center justify-content-center'><BiSolidMessageDetail className='icons me-2' /><span>Commentaires</span></button>
-                  <button className='btn btn-danger my-1 text-white w-50 ms-2 d-flex align-items-center justify-content-center'><AiFillEye className='icons me-2 max-w-max' /><span>Livrables</span></button>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* TAche 6 */}
-          <div className="col-sm-12 col-md-6 col-lg-4">
-            <div className="card p-3">
-              <div className="card-title">
-                <h3 className='text-dark'>Tâche n° 3</h3>
-              </div>
-              <div className="card-body">
-                <img src={img2} alt="dsre" className="img-fluid mx-auto w-75 h-75" />
-                <div className='d-flex flex-row justify-content-between align-items-center justify-content-md-between  align-items-md-center my-3'>
-                  <button className='btn btn-warning my-1 text-white w-50 me-2 d-flex align-items-center justify-content-center'><BiSolidMessageDetail className='icons me-2' /><span>Commentaires</span></button>
-                  <button className='btn btn-danger my-1 text-white w-50 ms-2 d-flex align-items-center justify-content-center'><AiFillEye className='icons me-2 max-w-max' /><span>Livrables</span></button>
-                </div>
-              </div>
-            </div>
-          </div>
-
+            );
+          })}
         </div>
-
       </div>
     </div>
   )
 }
 
 export default Livraisons
+
