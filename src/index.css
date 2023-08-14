@@ -5,7 +5,26 @@ body{
     padding:0;
     font-family: "Open Sans", sans-serif;
 }
-
+.rest{
+    text-transform: uppercase;
+	background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	
+}
+.my-custom-container {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem; /* Note: This doesn't have a direct pure CSS equivalent for gap, but you can add margin to children like before */
+    text-decoration: none;
+    padding-left: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.625rem; /* 2.5/4 */
+    border-radius: 0.5rem;
+    color: #fff;
+    font-size: 1rem;
+    margin: 0.5rem; /* You can adjust this value as needed */
+  }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

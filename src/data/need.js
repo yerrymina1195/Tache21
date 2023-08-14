@@ -2,8 +2,9 @@
 import { LuLayoutDashboard } from 'react-icons/lu';
 import { PiStudentLight } from 'react-icons/pi';
 import { LiaBookSolid } from 'react-icons/lia';
-import { AiOutlineDeliveredProcedure } from 'react-icons/ai';
+import { GiTeacher } from 'react-icons/gi';
 
+import { AiOutlineDeliveredProcedure } from 'react-icons/ai';
 
 import { MdOutlineMessage} from 'react-icons/md';
 import avatar from './avatar.jpg';
@@ -26,19 +27,23 @@ export const links = [
       title: 'Pages',
       links: [
         {
-          name: 'livraisons',
+          name: 'layout/livraisons',
+          tour :'livraisons',
           icon: <AiOutlineDeliveredProcedure  />,
         },
         {
-          name: 'messagerie',
+          name: 'layout/messagerie',
+          tour :'messagerie',
           icon: <MdOutlineMessage />,
         },
         {
-          name: 'cours',
+          name: 'layout/cours',
+          tour :'cours',
           icon: <LiaBookSolid />,
         },
         {
-          name: 'eleves',
+          name: 'layout/eleves',
+          tour :'eleves',
           icon: <PiStudentLight />,
         },
         // {
@@ -106,4 +111,67 @@ export const links = [
       name: 'orange-theme',
     },
   ];
-  
+  export const dashData = [
+    {
+      icon: <GiTeacher />,
+      amount: '50',
+      title: 'Coach',
+      iconColor: '#03C9D7',
+      iconBg: '#E5FAFB',
+         },
+    {
+      icon: <PiStudentLight />,
+      amount: '4000',
+      title: 'eleves',
+      iconColor: 'rgb(255, 244, 229)',
+      iconBg: 'rgb(254, 201, 15)',
+      
+    },
+    {
+      icon: <LiaBookSolid />,
+      amount: '300',
+      title: 'Cours',
+      iconColor: 'rgb(228, 106, 118)',
+      iconBg: 'rgb(255, 244, 229)',
+      
+    },
+    {
+      icon: <AiOutlineDeliveredProcedure />,
+      amount: '300',
+      title: 'livraisons',
+      iconColor: 'rgb(0, 194, 146)',
+      iconBg: 'rgb(235, 250, 242)',
+         },
+  ];
+  export const UserData = [
+    {
+      id: 1,
+      year: 2016,
+      userBoy: 50,
+      userGirl: 20,
+    },
+    {
+      id: 2,
+      year: 2017,
+      userBoy: 75,
+      userGirl: 40,
+    },
+    {
+      id: 3,
+      year: 2018,
+      userBoy: 65,
+      userGirl: 88,
+    },
+    {
+      id: 4,
+      year: 2019,
+      userBoy: 80,
+      userGirl: 100,
+    },
+    {
+      id: 5,
+      year: 2020,
+      userBoy: 100,
+      userGirl: 200,
+    },
+  ];

@@ -1,80 +1,31 @@
-import './App.css';
+import "./App.css";
 
-import React ,{useEffect} from 'react'
-import { BrowserRouter, Routes,Route} from 'react-router-dom';
-import { FiSettings } from 'react-icons/fi';
-import { Navbar, Sidebar, ThemeSetting } from './components';
-import { Livraisons,Messagerie, Cours, Eleves, Dashbord } from "./pages";
-import { useStateContext } from './contexts/ContextProvider';
+import React from "react";
+import { BrowserRouter, Routes,Route } from "react-router-dom";
+import Layout from "./MainLayout/Layout";
+import { Cours, Eleves, Livraisons, Messagerie } from "./pages";
+
 
 const App = () => {
-
-  const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
-
-  useEffect(() => {
-    const currentThemeColor = localStorage.getItem('colorMode');
-    const currentThemeMode = localStorage.getItem('themeMode');
-    if (currentThemeColor && currentThemeMode) {
-      setCurrentColor(currentThemeColor);
-      setCurrentMode(currentThemeMode);
-    }
-  }, [setCurrentColor,setCurrentMode]);
+  const user = {
+    status: "admin",
+    name: "makhan",
+  };
+  console.log(user);
   return (
-    <div className={currentMode === 'Dark' ? 'dark' : ''} >
-    <BrowserRouter>
-  <div className='flex relative dark:bg-main-dark-bg'>
-     <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
-     
-              <button
-                type="button"
-                onClick={() => setThemeSettings(true)}
-                style={{ background: currentColor, borderRadius: '50%' }}
-               
-                className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
-              >
-                <FiSettings />
-              </button>
-           
-     </div>
-      {activeMenu ? (
-        <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white '>
-          <Sidebar/>
-        </div>
-      ):( 
-         <div className="w-0 dark:bg-secondary-dark-bg">
-        <Sidebar/>
-      </div>
-      )}
-      <div  className={
-              activeMenu
-                ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  '
-                : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 '
-            }>
-                        <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
-            <Navbar/>
-            </div>
-            <div>
-            {themeSettings && (<ThemeSetting />)}
-
-              <Routes>
-                {/* dashboard  */}
-                <Route path="/" element={(<Dashbord />)} />
-                <Route path="/dashbord" element={(<Dashbord />)} />
-
-                {/* Pages */}
-                <Route path="/livraisons" element={< Livraisons/>} />
-                <Route path="/messagerie" element={(<Messagerie />)} />
-                <Route path="/cours" element={(<Cours />)} />
-                <Route path="/eleves" element={(<Eleves />)} />
-              </Routes>
-            </div>
-
-      </div>
+    <div >
+      <BrowserRouter>
+        <Routes>
+        <Route path="/layout/" element={<Layout/>}>
+        <Route path="/layout/livraisons" element={<Livraisons/>}/>
+        <Route path="/layout/messagerie" element={<Messagerie/>}/>
+        <Route path="/layout/cours" element={<Cours/>}/>
+        <Route path="/layout/eleves" element={<Eleves/>}/>
+        </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
-    </BrowserRouter>
-    </div>
-  )
-}
+  );
+};
 
-export default App
-
+export default App;
