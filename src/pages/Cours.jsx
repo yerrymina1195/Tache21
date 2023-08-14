@@ -3,6 +3,7 @@ import Domaine from "../components/cardDomaines/Domaine";
 import { Link, Outlet } from "react-router-dom";
 import ButtonReutilisable from "../components/ButtonReutilisable";
 
+
 const Cours = () => {
   const domains = [
     {
@@ -88,6 +89,8 @@ const Cours = () => {
         </div>
       </div>
     </div>
+    <div className="ps-5">
+</div>
     </div>
   );
 };

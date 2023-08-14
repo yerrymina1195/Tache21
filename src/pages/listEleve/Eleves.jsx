@@ -3,6 +3,7 @@ import { initialUsers } from './userList';
 import EleveTable from "./EleveTable";
 import AddEleveForm from "./AddEleveForm";
 import "./Eleve.css"
+import "bootstrap/dist/js/bootstrap.min.js"
 
 const Eleves = () => {
   

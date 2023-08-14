@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { initialUsers } from './userList';
+import ButtonReutilisable from "../../components/ButtonReutilisable";
 
 
 
@@ -39,22 +40,20 @@ const AddEleveForm = (props) => {
     <section>
       <div className="d-flex">
         <h1>liste des eleves</h1>
-        <div className="mx-auto me-5">
-          <button
-            type="button"
-            className="text-white p-4 prev "
+        <div
+            className="mx-auto me-5"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            data-bs-target="#exampleModale"
           >
-            Ajouter un eleve
-          </button>
+            <ButtonReutilisable text={"Ajouter un eleve"}/>
+  
         </div>
       </div>
-          <input type="text" placeholder="rechercher ici..." className="float-end border mt-3"/>
+          <input className="form-control me-2 w-25 float-end" type="search" placeholder="Search" aria-label="Search"></input>
 
       <div
         className="modal fade mt-[100px] "
-        id="exampleModal"
+        id="exampleModale"
         tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -170,13 +169,9 @@ const AddEleveForm = (props) => {
                       <label for="floatingDomaine" className="ms-2">domaine</label>
                     </div>
                   </div>
-                  <button
-                      type="submit"
-                      className="p-4 prev mt-4 text-white float-end"
-                      onClick={handleSimulatedSubmit}
-                    >
-                      Ajouter
-                    </button>
+                  <div className="mt-3 float-end">
+                      < ButtonReutilisable text={"Enregistrer"}   onClick={handleSimulatedSubmit} />
+                  </div>
                 </div>
               </div>
             </div>

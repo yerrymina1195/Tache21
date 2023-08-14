@@ -6,7 +6,7 @@ const EleveTable =(props) =>
 (
     <div>
          <div className="table-responsive mt-5">
-       <table class="table ms-3">
+       <table class="table table-hover ms-3">
   <thead>
     <tr className='text-center mb-3'>
       <th scope="col">Photo</th>
@@ -19,8 +19,8 @@ const EleveTable =(props) =>
     </tr>
   </thead>
   <tbody>
-    <tr>
-        <img src={img} alt='image' className='img'/>
+    <tr className='bg-dark'>
+      <td><img src={img} alt='image' className='img'/></td>
       <td>Rama</td>
       <td>Fall</td>
       <td>776226593</td>
