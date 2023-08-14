@@ -1,0 +1,41 @@
+
+/* MAMA */
+
+.back{
+    /* height: 700px; */
+    background-image: linear-gradient(rgba(56, 55, 55, 0.658),rgb(56, 55, 55, 0.658)),url('/src/data/minimalism_pattern_abstract_lines_geometry-163130.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  
+  .bg1{
+    background-color: #c23028 !important;
+    width: 80% !important;
+  }
+  .bg11{
+    background-color: #c23028 !important;
+  }
+  
+  @media (max-width: 1070px) {
+    .largeur1{
+        width: 50% !important;
+    }
+  }
+  @media (max-width: 866px) {
+    .largeur1{
+        width: 70% !important;
+    }
+  }
+  @media (max-width: 600px) {
+    .largeur1{
+        width: 100% !important;
+    }
+  }
+  @media (max-width: 470px) {
+    .bg1{
+        width: 90% !important;
+    }
+  }
+  

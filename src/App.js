@@ -4,16 +4,19 @@ import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { Navbar, Sidebar, ThemeSetting } from './components';
+
 import { Livraisons,Messagerie, Cours, Dashbord } from "./pages";
 import { Eleves } from "./pages"
 import { useStateContext } from './contexts/ContextProvider';
 import DashboardEleve from './pages/DashboardEleve';
 
+
+
 const App = () => {
 
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
   const user = {
-    status: "eleve",
+    status: "admin",
     name: 'makhan'
   }
   console.log(user);
@@ -26,6 +29,7 @@ const App = () => {
     }
   }, [setCurrentColor, setCurrentMode]);
   return (
+    
     <div className={currentMode === 'Dark' ? 'dark' : ''} >
       <BrowserRouter>
         <div className='flex relative dark:bg-main-dark-bg'>
@@ -64,7 +68,10 @@ const App = () => {
               {user.status === 'admin' ? (
                 <Routes>
                   {/* dashboard  */}
-                  <Route path="/" element={(<Dashbord />)} />
+
+                  <Route path="/" element={(<Dashbord  />)} />
+                  
+                  <Route path="/dashboard" element={(<Dashbord />)} />
             
 
                   {/* Pages */}

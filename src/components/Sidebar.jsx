@@ -4,7 +4,6 @@ import { MdOutlineCancel } from 'react-icons/md';
 import { links } from "../data/need";
 import logo from "../data/logo.png";
 import { useStateContext } from '../contexts/ContextProvider';
-
 const Sidebar = () => {
   const { currentColor, activeMenu, setActiveMenu, screenSize } = useStateContext();
   const handleCloseSideBar = () => {
@@ -17,6 +16,8 @@ const Sidebar = () => {
 
   return (
     <div className='ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10'>
+
+      
       {activeMenu && (
         <>
           <div className='flex justify-between items-center'>
