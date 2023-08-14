@@ -10,7 +10,7 @@ const Chat = () => {
   return (
     <div className="chat  w-11/12">
       <div className="chatInfo  h-12 bg-gradient-to-r from-orange-600 to-orange-300 flex justify-between w-full">
-        <p>Coach</p>
+        <p class='px-3 font-bold pt-2 text-white '>Coach</p>
         <div className="chatIcons flex items-center justify-between px-4">
      
           <IoIosContact className='me-3 cursor-pointer text-white'  />

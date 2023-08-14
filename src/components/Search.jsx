@@ -9,7 +9,7 @@ const Search = () => {
       <div className="userChat flex px-2 pt-3.5 gap-10 text-white  cursor-pointer hover:bg-orange-800">
 <img src="https://images.pexels.com/photos/17791302/pexels-photo-17791302/free-photo-of-femme-portrait-cheveux-noirs-afro.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt=""  className="h-10 w-10 rounded-full object-cover" />
 <div className="userChatinfo max-sm:hidden">
-<span>makhan</span>
+<span class='fw-bold '>makhan</span>
 </div>
       </div>
       </div>

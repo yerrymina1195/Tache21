@@ -7,9 +7,10 @@ const Messagerie = () => {
    <div class='container'>
     <div className="row">
 <center>
-   <div class="bor col-md-12 col-xs-12 col-lg-9  border-none rounded-lg    flex overflow-hidden  col-sm-12">
-    <SideBars className="border-none" />
+   <div class="bor col-md-12 col-xs-12  border-none rounded-lg    flex overflow-hidden  col-sm-12">
+    
      <Chat  className="border-none"/>
+     <SideBars className="border-none" />
     </div>
     </center>
     </div>

@@ -3,6 +3,7 @@ import { LuLayoutDashboard } from 'react-icons/lu';
 import { PiStudentLight } from 'react-icons/pi';
 import { LiaBookSolid } from 'react-icons/lia';
 import { AiOutlineDeliveredProcedure } from 'react-icons/ai';
+import { LiaChalkboardTeacherSolid } from 'react-icons/lia';
 
 
 import { MdOutlineMessage} from 'react-icons/md';
@@ -21,6 +22,7 @@ export const links = [
         },
       ],
     },
+    
   
     {
       title: 'Pages',
@@ -38,9 +40,14 @@ export const links = [
           icon: <LiaBookSolid />,
         },
         {
+          name: 'professeurs',
+          icon: <LiaChalkboardTeacherSolid />,
+        },
+        {
           name: 'eleves',
           icon: <PiStudentLight />,
         },
+        
         // {
         //   name: 'page5',
         //   icon: <RiContactsLine />,
