@@ -17,7 +17,7 @@ import {
   Design,
   Marketing,
 } from "./pages";
-// import CoursPro1 from "./pages/programmation/CoursPro1";
+import Quiz from "./pages/SousCours/Quiz/Quiz";
 import RouteCours from "./components/RouteCours/RouteCours";
 
 const App = () => {
@@ -40,21 +40,24 @@ const App = () => {
     }
   }, [setCurrentColor, setCurrentMode]);
   return (
-    <div className={currentMode === "Dark" ? "dark" : ""}>
+    <div className={currentMode === 'Dark' ? 'dark' : ''} >
       <BrowserRouter>
-        <div className="flex relative dark:bg-main-dark-bg">
-          <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
+        <div className='flex relative dark:bg-main-dark-bg'>
+          <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
+
             <button
               type="button"
               onClick={() => setThemeSettings(true)}
-              style={{ background: currentColor, borderRadius: "50%" }}
+              style={{ background: currentColor, borderRadius: '50%' }}
+
               className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
             >
               <FiSettings />
             </button>
+
           </div>
           {activeMenu ? (
-            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
+            <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white '>
               <Sidebar />
             </div>
           ) : (
@@ -62,18 +65,16 @@ const App = () => {
               <Sidebar />
             </div>
           )}
-          <div
-            className={
-              activeMenu
-                ? "dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  "
-                : "bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 "
-            }
-          >
+          <div className={
+            activeMenu
+              ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  '
+              : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 '
+          }>
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
               <Navbar />
             </div>
             <div>
-              {themeSettings && <ThemeSetting />}
+              {themeSettings && (<ThemeSetting />)}
 
               <Routes>
                 {/* dashboard  */}
@@ -93,15 +94,17 @@ const App = () => {
                 <Route path="/cours/marketing/*" element={<RouteCours />} />
                 <Route path="/cours/design" element={<Design />} />
                 <Route path="/cours/design/*" element={<RouteCours />} />
+                <Route path="/quiz" element={<Quiz />} />
 
                 <Route path="/eleves" element={<Eleves />} />
               </Routes>
             </div>
+
           </div>
         </div>
       </BrowserRouter>
     </div>
-  );
-};
+  )
+}
 
 export default App;
