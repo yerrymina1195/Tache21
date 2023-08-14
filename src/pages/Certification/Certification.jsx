@@ -6,7 +6,9 @@ import CerticationTache from '../../components/CerticationTache/CerticationTache
 const Certification = () => {
     return (
         <div className='container'>
-            <CerticationTache />
+            <CerticationTache
+                domaine={"programmation"}
+                objectif={"Créer un site e-commerce"} />
         </div>
     )
 }

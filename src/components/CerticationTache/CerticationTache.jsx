@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-const CerticationTache = () => {
+const CerticationTache = (props) => {
 
     return (
         <div className='container md:m-10 mt-24 p-5 md:p-10'>
             <div className="text-center d-flex justify-content-center align-items-center m-3">
-                <h1 className='text-couleur2 text-center fw-bol'>Certification en Développement Web</h1>
+                <h1 className='text-couleur2 text-center fw-bol'>Certification en  {props.domaine}</h1>
             </div>
             <div className='mb-3'>
-                <h6 className='fs-3 text-center mb-5'>Objectif : créer un site e-commerce</h6>
+                <h6 className='fs-3 text-center mb-5'>Objectif : {props.objectif}</h6>
                 <p className='text-start'>Vous pouvez utiliser n'importe quel mélange de HTML, JavaScript, CSS, Bootstrap,
                     SASS, React et Redux pour mener à bien ce projet. Vous devez utiliser un framework frontend (comme React par exemple)
                     car cette section concerne l'apprentissage des frameworks frontend. Les technologies supplémentaires non répertoriées
