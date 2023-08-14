@@ -221,9 +221,9 @@ const EleveTable =(props) =>
 </table>
     </div>
     <div className='row float-end mt-3'>
-    <div className="col-4 prev text-white">prev</div>
-    <div className="col-2">1</div>
-    <div className="col-4 prev text-white">next</div>
+    <div className="col-4 prev rounded text-white">prev</div>
+    <div className="col-4 pt-3 ms">1</div>
+    <div className="col-4 prev rounded text-white">next</div>
 </div>
     </div>
   )

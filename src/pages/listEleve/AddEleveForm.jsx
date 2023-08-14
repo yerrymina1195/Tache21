@@ -42,7 +42,7 @@ const AddEleveForm = (props) => {
         <div className="mx-auto me-5">
           <button
             type="button"
-            className="text-white p-4 bg-[#C23028] "
+            className="text-white p-4 prev "
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
@@ -102,7 +102,7 @@ const AddEleveForm = (props) => {
                         placeholder="nom"
                         onChange={handleInputChange}
                       />
-                      <label for="floatingName">nom</label>
+                      <label for="floatingName" className="ms-2">nom</label>
                     </div>
                     <div className="form-floating col-6">
                       <input
@@ -114,7 +114,7 @@ const AddEleveForm = (props) => {
                         value={user.prenom.value}
                         onChange={handleInputChange}
                       />
-                      <label for="floatingPrenom">prenom</label>
+                      <label for="floatingPrenom" className="ms-2">prenom</label>
                     </div>
                   </div>
 
@@ -129,7 +129,7 @@ const AddEleveForm = (props) => {
                         placeholder="tel"
                         onChange={handleInputChange}
                       />
-                      <label for="floatingTel">tel</label>
+                      <label for="floatingTel" className="ms-2">tel</label>
                     </div>
                     <div className="form-floating col-6">
                       <input
@@ -141,7 +141,7 @@ const AddEleveForm = (props) => {
                         value={user.email.value}
                         onChange={handleInputChange}
                       />
-                      <label for="floatingEmail">email</label>
+                      <label for="floatingEmail" className="ms-2">email</label>
                     </div>
                   </div>
                   <div className="row">
@@ -155,7 +155,7 @@ const AddEleveForm = (props) => {
                         placeholder="coach"
                         onChange={handleInputChange}
                       />
-                      <label for="floatingCoach">coach</label>
+                      <label for="floatingCoach" className="ms-2">coach</label>
                     </div>
                     <div className="form-floating col-6">
                       <input
@@ -167,31 +167,18 @@ const AddEleveForm = (props) => {
                         value={user.domaine.value}
                         onChange={handleInputChange}
                       />
-                      <label for="floatingDomaine">domaine</label>
+                      <label for="floatingDomaine" className="ms-2">domaine</label>
                     </div>
-                    <button
+                  </div>
+                  <button
                       type="submit"
-                      className="p-4 bg-[#D7572B] mt-4 text-white"
+                      className="p-4 prev mt-4 text-white float-end"
                       onClick={handleSimulatedSubmit}
                     >
                       Ajouter
                     </button>
-
-                  </div>
                 </div>
               </div>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                data-bs-dismiss="modal"
-                className="text-white p-4 bg-[#C23028]"
-              >
-                Close
-              </button>
-              <button type="submit" class="bg-[#D7572B] text-white p-4">
-                enregistre
-              </button>
             </div>
           </div>
         </div>
