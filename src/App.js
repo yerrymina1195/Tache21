@@ -3,6 +3,7 @@ import "./App.css";
 import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import { useStateContext } from "./contexts/ContextProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { Navbar, Sidebar, ThemeSetting } from "./components";
@@ -16,7 +17,6 @@ import {
   Design,
   Marketing,
 } from "./pages";
-import { useStateContext } from "./contexts/ContextProvider";
 
 const App = () => {
   const {
