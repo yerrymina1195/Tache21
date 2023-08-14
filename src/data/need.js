@@ -6,6 +6,7 @@ import { GiTeacher } from 'react-icons/gi';
 import { AiOutlineDeliveredProcedure } from 'react-icons/ai';
 
 import { MdOutlineMessage } from 'react-icons/md';
+import { TbCertificate } from "react-icons/tb";
 import avatar from './avatar.jpg';
 import avatar2 from './avatar2.jpg';
 import avatar3 from './avatar3.png';
@@ -54,6 +55,16 @@ export const links = [
       //   name: 'page5',
       //   icon: <RiContactsLine />,
       // },
+    ],
+  },
+  ,
+  {
+    title: 'Certification',
+    links: [
+      {
+        name: 'Certification',
+        icon: <TbCertificate />,
+      },
     ],
   },
 

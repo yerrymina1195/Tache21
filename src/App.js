@@ -6,6 +6,8 @@ import { FiSettings } from 'react-icons/fi';
 import { Navbar, Sidebar, ThemeSetting } from './components';
 import { Livraisons, Messagerie, Cours, Eleves, Dashbord } from "./pages";
 import { useStateContext } from './contexts/ContextProvider';
+import Certification from './pages/Certification/Certification';
+// import Certification from './pages/Certification/Certification';
 
 const App = () => {
 
@@ -70,6 +72,7 @@ const App = () => {
                   <Route path="/messagerie" element={(<Messagerie />)} />
                   <Route path="/cours" element={(<Cours />)} />
                   <Route path="/eleves" element={(<Eleves />)} />
+                  <Route path="/certification" element={(<Certification />)} />
                 </Routes>
               ) : (<Routes>
                 {/* dashboard  */}

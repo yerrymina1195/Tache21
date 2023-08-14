@@ -28,8 +28,8 @@ const Data = [
 const Livraisons = () => {
   return (
     <div className="container">
-      <div className='m-2 md:m-10 mt-24 p-2 md:p-10 rounded-3xl'>
-        <h1 className=' text-couleur2 p-11 text-center'>Livraisons</h1>
+      <div className='bg-white m-2 md:m-10 mt-24 p-2 md:p-10 rounded-3xl'>
+        <h1 className=' text-couleur2 p-11 text-start'>Livraisons</h1>
         <div className='fixed top-[180px] z-[3000] right-10'>
 
           <ModalBouton />
