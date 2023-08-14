@@ -1,21 +1,36 @@
-import './App.css';
+import "./App.css";
 
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { FiSettings } from 'react-icons/fi';
-import { Navbar, Sidebar, ThemeSetting } from './components';
-import { useStateContext } from './contexts/ContextProvider';
-import { Livraisons, Messagerie, Cours, Eleves, Dashbord, Programmation, Design, Marketing } from "./pages";
+import { useStateContext } from "./contexts/ContextProvider";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { FiSettings } from "react-icons/fi";
+import { Navbar, Sidebar, ThemeSetting } from "./components";
+import {
+  Livraisons,
+  Messagerie,
+  Cours,
+  Eleves,
+  Dashbord,
+  Programmation,
+  Design,
+  Marketing,
+} from "./pages";
 
 const App = () => {
-
-  const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
+  const {
+    setCurrentColor,
+    setCurrentMode,
+    currentMode,
+    activeMenu,
+    currentColor,
+    themeSettings,
+    setThemeSettings,
+  } = useStateContext();
 
   useEffect(() => {
-    const currentThemeColor = localStorage.getItem('colorMode');
-    const currentThemeMode = localStorage.getItem('themeMode');
+    const currentThemeColor = localStorage.getItem("colorMode");
+    const currentThemeMode = localStorage.getItem("themeMode");
     if (currentThemeColor && currentThemeMode) {
       setCurrentColor(currentThemeColor);
       setCurrentMode(currentThemeMode);
@@ -60,8 +75,8 @@ const App = () => {
 
               <Routes>
                 {/* dashboard  */}
-                <Route path="/" element={(<Dashbord />)} />
-                <Route path="/dashbord" element={(<Dashbord />)} />
+                <Route path="/" element={<Dashbord />} />
+                <Route path="/dashbord" element={<Dashbord />} />
 
                 {/* Pages */}
                 <Route path="/livraisons" element={< Livraisons />} />
@@ -84,5 +99,4 @@ const App = () => {
   )
 }
 
-export default App
-
+export default App;
