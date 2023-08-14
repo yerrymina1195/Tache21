@@ -11,7 +11,7 @@ import { BiEditAlt, BiArchive } from "react-icons/bi";
 //   background-image: linear-gradient(to right, #C23028, #F6B339);
 //   color: transparent;
 //   display: inline-block;
-// }
+// } 
   
   const Card = ({ title, descrip, videoUrl }) => {
     return (
