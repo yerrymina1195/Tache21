@@ -1,7 +1,7 @@
 import React from "react";
 import Domaine from "../components/cardDomaines/Domaine";
 import { Link, Outlet } from "react-router-dom";
-import ButtonReutilisable from "./ButtonReutilisable";
+import ButtonReutilisable from "../components/ButtonReutilisable";
 
 const Cours = () => {
   const domains = [
