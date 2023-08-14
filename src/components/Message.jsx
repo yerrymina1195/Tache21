@@ -10,7 +10,7 @@ const Message = () => {
 
 <div className="messagecontent w-10/12 flex flex-col gap-10  items-end ">
   <p className='bg-orange-400  text-white px-10 rounded-tr-lg rounded-br-lg  rounded-b-lg max-w-max '>bonjour</p>
- <img src="https://images.pexels.com/photos/17791302/pexels-photo-17791302/free-photo-of-femme-portrait-cheveux-noirs-afro.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load" alt=""  className=' '  />
+ <img src="https://images.pexels.com/photos/313690/pexels-photo-313690.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""  className=' '  />
 </div>
     </div>
   )
