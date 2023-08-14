@@ -9,17 +9,7 @@ import Sidebar from "./Sidebar"
 import UserProfil from "./UserProfil"
 import BarChart from "./BarChart"
 
-
-
-
-
-
-
-
-
-
-export{
-  
+export {
     Footer,
     Navbar,
     Button,
@@ -29,5 +19,4 @@ export{
     Sidebar,
     UserProfil,
     BarChart
-   
 }
