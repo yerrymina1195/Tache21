@@ -1,5 +1,6 @@
 import React from "react";
-import CarteSousCours from "../../components/CarteSousCours/CarteSousCours";
+import CarteSousCours from "../../components/CarteSousCours/CarteSousCours1"
+import TitreCarte from "../../components/CarteSousCours/TitreCarte";
 
 const CoursPro4 = () => {
   return (

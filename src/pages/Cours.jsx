@@ -1,6 +1,5 @@
 import React from "react";
 import Domaine from "../components/cardDomaines/Domaine";
-import { Link, Outlet } from "react-router-dom";
 import ButtonReutilisable from "../components/ButtonReutilisable";
 
 const Cours = () => {
@@ -23,11 +22,10 @@ const Cours = () => {
             <h1 className="">Les Domaines</h1>
           </div>
           <div className="col-6 text-end">
+            <div data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <ButtonReutilisable text={"Ajouter un domaine"} />
+            </div>
             {/* button modal */}
-            <ButtonReutilisable
-              className=""
-              text={"Ajouter un domaine"}
-            />
             {/* Modal */}
             <div
               className="modal fade"
@@ -75,15 +73,9 @@ const Cours = () => {
         <div className="row row-gap-3">
           {domains.map((domain) => (
             <div className="col-lg-4 col-md-6 col-sm-12">
-              <Link
-                to={`/cours/${domain.title}`}
-                className="text-decoration-none"
-              >
-                <Domaine title={domain.title} />
-              </Link>
+              <Domaine title={domain.title} />
             </div>
           ))}
-          <Outlet />
         </div>
       </div>
     </div>

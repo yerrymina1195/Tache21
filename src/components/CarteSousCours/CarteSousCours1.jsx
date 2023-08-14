@@ -1,6 +1,6 @@
 import {React, useState} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { cardData } from "../../data/need";
+import { cardDataPro } from "../../data/need";
 
 import { BiEditAlt, BiArchive } from "react-icons/bi";
 
@@ -43,8 +43,8 @@ const CarteSousCours = () => {
   const chunkedData = [];
   const chunkSize = 3;
 
-  for (let i = 0; i < cardData.length; i += chunkSize) {
-    chunkedData.push(cardData.slice(i, i + chunkSize));
+  for (let i = 0; i < cardDataPro.length; i += chunkSize) {
+    chunkedData.push(cardDataPro.slice(i, i + chunkSize));
   }
 
   return (

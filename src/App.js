@@ -1,8 +1,8 @@
 import "./App.css";
 
 import React, { useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useStateContext } from "./contexts/ContextProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
@@ -17,6 +17,8 @@ import {
   Design,
   Marketing,
 } from "./pages";
+// import CoursPro1 from "./pages/programmation/CoursPro1";
+import RouteCours from "./components/RouteCours/RouteCours";
 
 const App = () => {
   const {
@@ -81,16 +83,22 @@ const App = () => {
                 {/* Pages */}
                 <Route path="/livraisons" element={<Livraisons />} />
                 <Route path="/messagerie" element={<Messagerie />} />
-                <Route path="/cours" element={<Cours />}>
-                  <Route
-                    path="/cours/programmation"
-                    element={<Programmation />}
-                  >
-                    {/* <Route path='/cours/programmation/htmlcss' element={<htmlcs />} /> */}
-                  </Route>
-                  <Route path="/cours/marketing" element={<Marketing />} />
-                  <Route path="/cours/design" element={<Design />} />
-                </Route>
+                <Route path="/cours" element={<Cours />} />
+                <Route
+                  path="/cours/programmation"
+                  element={<Programmation />}
+                />
+                {/* <Route
+                  path="/cours/programmation/htmlcss"
+                  element={<CoursPro1 />}
+                /> */}
+                <Route
+                  path="/cours/programmation/*"
+                  element={<RouteCours />}
+                />
+                <Route path="/cours/marketing" element={<Marketing />} />
+                <Route path="/cours/design" element={<Design />} />
+
                 <Route path="/eleves" element={<Eleves />} />
               </Routes>
             </div>
