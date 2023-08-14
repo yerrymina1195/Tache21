@@ -1,9 +1,18 @@
 import React from 'react'
-
+import SideBars from '../components/SideBars'
+import Chat from '../components/Chat'
+import "./messageri.css"
 const Messagerie = () => {
   return (
-    <div className='text-red-600  bg-white m-2 md:m-10 mt-24 p-2 md:p-10 rounded-3xl'>
-       <h1 className='text-red-600  bg-slate-600 m-2 md:m-10 mt-24 p-2 md:p-10 rounded-3xl'>Messagerie</h1>
+   <div class='container'>
+    <div className="row">
+<center>
+   <div class="bor col-md-12 col-xs-12 col-lg-9  border-none rounded-lg    flex overflow-hidden  col-sm-12">
+    <SideBars className="border-none" />
+     <Chat  className="border-none"/>
+    </div>
+    </center>
+    </div>
     </div>
   )
 }
