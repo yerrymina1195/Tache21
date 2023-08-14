@@ -1,54 +1,43 @@
-import { LuLayoutDashboard } from 'react-icons/lu';
-import { PiStudentLight } from 'react-icons/pi';
-import { LiaBookSolid } from 'react-icons/lia';
-import { GiTeacher } from 'react-icons/gi';
-
-import { AiOutlineDeliveredProcedure } from 'react-icons/ai';
-
-import { MdOutlineMessage } from 'react-icons/md';
+import { LuLayoutDashboard } from "react-icons/lu";
+import { PiStudentLight } from "react-icons/pi";
+import { LiaBookSolid } from "react-icons/lia";
+import { GiTeacher } from "react-icons/gi";
+import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import { TbCertificate } from "react-icons/tb";
-import avatar from './avatar.jpg';
-import avatar2 from './avatar2.jpg';
-import avatar3 from './avatar3.png';
-import avatar4 from './avatar4.jpg';
+import { MdOutlineMessage } from "react-icons/md";
+import avatar from "./avatar.jpg";
+import avatar2 from "./avatar2.jpg";
+import avatar3 from "./avatar3.png";
+import avatar4 from "./avatar4.jpg";
 
 export const links = [
   {
-    title: 'Dashboard',
+    title: "Dashboard",
     links: [
       {
-        name: 'dashbord',
-        icon: <LuLayoutDashboard />,
-      },
-    ],
-  },
-  {
-    title: 'Dashboard Elève',
-    links: [
-      {
-        name: 'dashbord Elève',
+        name: "dashbord",
         icon: <LuLayoutDashboard />,
       },
     ],
   },
 
   {
-    title: 'Pages',
+    title: "Pages",
     links: [
       {
-        name: 'livraisons',
+        name: "livraisons",
         icon: <AiOutlineDeliveredProcedure />,
       },
       {
-        name: 'messagerie',
+        name: "messagerie",
         icon: <MdOutlineMessage />,
       },
       {
-        name: 'cours',
+        name: "cours",
         icon: <LiaBookSolid />,
       },
       {
-        name: 'eleves',
+        name: "eleves",
         icon: <PiStudentLight />,
       },
       // {

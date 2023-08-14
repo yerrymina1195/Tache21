@@ -1,0 +1,63 @@
+.btn-domaine button {
+    /* background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%); */
+    color: #D7572B;
+    font-size: 20px;
+    border: 2px solid #C23028;
+}
+
+.btn-domaine button:hover {
+    background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+    border: none;
+}
+
+
+.btn-domaine button:hover {
+    scale: 1.15;
+}
+
+.add-domaine {
+    background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.add-domaine:hover {
+    color: #C23028;
+    border: 2px solid #C23028;
+    scale: 1.15;
+    background: white !important;
+}
+
+.card-domaine {
+    box-shadow: 5px 3px 15px rgba(128, 128, 128, 0.267);
+    border: none;
+}
+
+.card-domaine:hover {
+    scale: 1.15;
+    z-index: 10;
+    background-color: #FAFBFB;
+}
+
+.card-domaine h5 {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.domaine h1 {
+    font-weight: bold;
+    color: #2b2a2a;
+}
+
+@media only screen and (min-width: 320px) {
+    .domaine {
+        padding: 10px !important;
+        margin: 20px !important;
+    }
+
+    .add-domaine {
+        font-size: 12px !important;
+    }
+}

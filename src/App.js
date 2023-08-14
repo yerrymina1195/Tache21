@@ -1,11 +1,21 @@
-import './App.css';
-import 'bootstrap/dist/js/bootstrap.min.js'
-import React, { useEffect } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { FiSettings } from 'react-icons/fi';
-import { Navbar, Sidebar, ThemeSetting } from './components';
-import { Livraisons, Messagerie, Cours, Eleves, Dashbord } from "./pages";
-import { useStateContext } from './contexts/ContextProvider';
+import "./App.css";
+import React, { useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+import { useStateContext } from "./contexts/ContextProvider";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { FiSettings } from "react-icons/fi";
+import { Navbar, Sidebar, ThemeSetting } from "./components";
+import {
+  Livraisons,
+  Messagerie,
+  Cours,
+  Eleves,
+  Dashbord,
+  Programmation,
+  Design,
+  Marketing,
+} from "./pages";
 import Certification from './pages/Certification/Certification';
 // import Certification from './pages/Certification/Certification';
 
@@ -18,8 +28,8 @@ const App = () => {
   }
   console.log(user);
   useEffect(() => {
-    const currentThemeColor = localStorage.getItem('colorMode');
-    const currentThemeMode = localStorage.getItem('themeMode');
+    const currentThemeColor = localStorage.getItem("colorMode");
+    const currentThemeMode = localStorage.getItem("themeMode");
     if (currentThemeColor && currentThemeMode) {
       setCurrentColor(currentThemeColor);
       setCurrentMode(currentThemeMode);
@@ -40,10 +50,9 @@ const App = () => {
             >
               <FiSettings />
             </button>
-
           </div>
           {activeMenu ? (
-            <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white '>
+            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
               <Sidebar />
             </div>
           ) : (
@@ -51,49 +60,46 @@ const App = () => {
               <Sidebar />
             </div>
           )}
-          <div className={
-            activeMenu
-              ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  '
-              : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 '
-          }>
-            <div className=" sticky-top bg-main-bg dark:bg-main-dark-bg navbar w-full ">
+          <div
+            className={
+              activeMenu
+                ? "dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  "
+                : "bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 "
+            }
+          >
+            <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
               <Navbar />
             </div>
             <div>
-              {themeSettings && (<ThemeSetting />)}
-              {user.status === 'admin' ? (
-                <Routes>
-                  {/* dashboard  */}
-                  <Route path="/" element={(<Dashbord />)} />
-                  <Route path="/dashbord" element={(<Dashbord />)} />
+              {themeSettings && <ThemeSetting />}
 
-                  {/* Pages */}
-                  <Route path="/livraisons" element={< Livraisons />} />
-                  <Route path="/messagerie" element={(<Messagerie />)} />
-                  <Route path="/cours" element={(<Cours />)} />
-                  <Route path="/eleves" element={(<Eleves />)} />
-                  <Route path="/certification" element={(<Certification />)} />
-                </Routes>
-              ) : (<Routes>
+              <Routes>
                 {/* dashboard  */}
-                <Route path="/" element={(<Dashbord />)} />
-                <Route path="/dashbord" element={(<Dashbord />)} />
+                <Route path="/" element={<Dashbord />} />
+                <Route path="/dashbord" element={<Dashbord />} />
 
                 {/* Pages */}
-                {/* <Route path="/livraisons" element={< Livraisons/>} />
-  <Route path="/messagerie" element={(<Messagerie />)} />
-  <Route path="/cours" element={(<Cours />)} />
-  <Route path="/eleves" element={(<Eleves />)} /> */}
-              </Routes>)}
-
+                <Route path="/livraisons" element={<Livraisons />} />
+                <Route path="/messagerie" element={<Messagerie />} />
+                <Route path="/cours" element={<Cours />}>
+                  <Route
+                    path="/cours/programmation"
+                    element={<Programmation />}
+                  >
+                    {/* <Route path='/cours/programmation/htmlcss' element={<htmlcs />} /> */}
+                  </Route>
+                  <Route path="/cours/marketing" element={<Marketing />} />
+                  <Route path="/cours/design" element={<Design />} />
+                </Route>
+                <Route path="/eleves" element={<Eleves />} />
+                <Route path="/certification" element={(<Certification />)} />
+              </Routes>
             </div>
-
           </div>
         </div>
-      </BrowserRouter>
-    </div>
-  )
-}
+      </BrowserRouter >
+    </div >
+  );
+};
 
-export default App
-
+export default App;

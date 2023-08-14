@@ -38,7 +38,7 @@ const Livraisons = () => {
           {Data.map((item) => {
             return (
               <div className="col-sm-12 col-md-6 col-lg-4 mb-5">
-                <div className="card p-3">
+                <div className="card p-3 border-none">
                   <div className="card-title">
                     <h4 className='fs-5 fw-100 text-dark'>{item.title}</h4>
                   </div>
