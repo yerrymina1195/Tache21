@@ -27,19 +27,23 @@ export const links = [
       title: 'Pages',
       links: [
         {
-          name: 'livraisons',
+          name: 'layout/livraisons',
+          tour :'livraisons',
           icon: <AiOutlineDeliveredProcedure  />,
         },
         {
-          name: 'messagerie',
+          name: 'layout/messagerie',
+          tour :'messagerie',
           icon: <MdOutlineMessage />,
         },
         {
-          name: 'cours',
+          name: 'layout/cours',
+          tour :'cours',
           icon: <LiaBookSolid />,
         },
         {
-          name: 'eleves',
+          name: 'layout/eleves',
+          tour :'eleves',
           icon: <PiStudentLight />,
         },
         // {

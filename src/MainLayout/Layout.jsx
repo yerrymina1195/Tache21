@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import { Routes,Route} from 'react-router-dom';
+import { Outlet} from 'react-router-dom';
 import { Navbar, Sidebar, ThemeSetting  } from '../components'
 import { Livraisons,Messagerie, Cours, Eleves, Dashbord} from "../pages";
 import { useStateContext } from '../contexts/ContextProvider';
@@ -52,28 +52,7 @@ const Layout = () => {
                 <div>
                 {themeSettings && (<ThemeSetting />)}
    
-       <Routes>
-       {/* dashboard  */}
-       <Route path="/" element={(<Dashbord />)} />
-       <Route path="/dashbord" element={(<Dashbord />)} />
-    
-       {/* Pages */}
-       <Route path="/livraisons" element={< Livraisons/>} />
-       <Route path="/messagerie" element={(<Messagerie />)} />
-       <Route path="/cours" element={(<Cours />)} />
-       <Route path="/eleves" element={(<Eleves />)} />
-     </Routes>
-     <Routes>
-      {/* dashboard  */}
-      <Route path="/" element={(<Dashbord />)} />
-      <Route path="/dashbord" element={(<Dashbord />)} />
-    
-      {/* Pages */}
-      {/* <Route path="/livraisons" element={< Livraisons/>} />
-      <Route path="/messagerie" element={(<Messagerie />)} />
-      <Route path="/cours" element={(<Cours />)} />
-      <Route path="/eleves" element={(<Eleves />)} /> */}
-    </Routes>
+                <Outlet />
                  
                 </div>
     
