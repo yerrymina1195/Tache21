@@ -1,11 +1,10 @@
 import React,{useEffect} from 'react'
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
-import { MdKeyboardArrowDown } from 'react-icons/md';
-import { Notification, UserProfil } from '.';
-import { useStateContext } from '../contexts/ContextProvider';
 import makhan from '../data/makhan.png';
-// import ModalBouton from './ModalBouton';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import { useStateContext } from '../contexts/ContextProvider';
+import Notifications from './Notification';
 
 const NavButton = ({ customFunc, icon, color, dotColor }) => (
   
@@ -13,58 +12,79 @@ const NavButton = ({ customFunc, icon, color, dotColor }) => (
       type="button"
       onClick={() => customFunc()}
       style={{ color }}
-      className="relative text-xl rounded-full p-3 hover:bg-light-gray"
+      className="button-x btn btn-outline"
     >
       <span
-        style={{ background: dotColor }}
-        className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
+        style={{ background: '' }}
+        className="dot-badge"
       />
       {icon}
     </button>
  
 );
+const NavButtonproblem = ({ customFunc, icon, color, dotColor }) => (
+  
+    <button
+      type="button"
+     
+      style={{ color }}
+      className="button-x btn btn-outline"
+    >
+      <span
+        style={{ background: '' }}
+        className="dot-badge"
+      />
+      {icon}
+    </button>
+)
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize, screenSize } = useStateContext();
 
-  useEffect(() => {
-    const handleResize = () => {
-      console.log(window.innerWidth);
-      setScreenSize(window.innerWidth)
-    };
 
-    
-    window.addEventListener('resize', handleResize);
+    const { activeMenu, setActiveMenu, isClicked, handleClick,  setScreenSize, screenSize } = useStateContext();
 
-    handleResize();
+    useEffect(() => {
+      const handleResize = () => {
+        console.log(window.innerWidth);
+        setScreenSize(window.innerWidth)
+      };
+  
+      
+      window.addEventListener('resize', handleResize);
+  
+      handleResize();
+  
+      return () => window.removeEventListener('resize', handleResize);
+    }, [setScreenSize]);
+  
+    useEffect(() => {
+      if (screenSize <= 900) {
+        setActiveMenu(false);
+      } else {
+        setActiveMenu(true);
+      }
+    }, [screenSize, setActiveMenu]);
+  
+    const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
-    return () => window.removeEventListener('resize', handleResize);
-  }, [setScreenSize]);
 
-  useEffect(() => {
-    if (screenSize <= 900) {
-      setActiveMenu(false);
-    } else {
-      setActiveMenu(true);
-    }
-  }, [screenSize, setActiveMenu]);
 
-  const handleActiveMenu = () => setActiveMenu(!activeMenu);
-
+  
   return (
-    <div className="flex justify-between  p-2 md:ml-6 md:mr-6 relative w-full">
+    <div className='d-flex postion-relative p-2 py-4  w-100 bg-white justify-content-between px-md-2'>
+      <div className=' Bgr'>
+    <NavButton color={'blue'} customFunc={handleActiveMenu} icon={<AiOutlineMenu/>} className='ms-5 bg-danger'/>
+      </div>
+      <div className='d-flex algn-items-center'>
+        <div onClick={()=>handleClick('notification')} >
 
-      <NavButton title="Menu" customFunc={handleActiveMenu} color={currentColor} icon={<AiOutlineMenu />} />
-
-      {/* <ModalBouton/> */}
-
-      <div className="flex">
-        <NavButton title="Notification" dotColor="rgb(254, 201, 15)" customFunc={() => handleClick('notification')} color={currentColor} icon={<RiNotification3Line />} />
-          <div
-            className="flex align-items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            onClick={() => handleClick('userProfil')}
+      <NavButtonproblem title="Notification" dotColor="rgb(254, 201, 15)"  color={'blue'} icon={<RiNotification3Line />} />
+        </div>
+      <div
+            className="d-flex align-items-center p-1 "
+            onClick={() => {}}
           >
             <img
-              className="rounded-full w-8 h-8"
+              className="custom-circle"
               src={makhan}
               alt="user-profile"
             />
@@ -76,14 +96,11 @@ const Navbar = () => {
             </p>
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
-     
-
-        
-        {isClicked.notification && (<Notification />)}
-        {isClicked.userProfil && (<UserProfil />)}
       </div>
+      {isClicked.notification&&(<Notifications/>)}
+      
     </div>
-  );
-};
+  )
+}
 
 export default Navbar

@@ -1,18 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 
-body{
-    margin: 0;
-    padding:0;
-    font-family: "Open Sans", sans-serif;
-}
-.rest{
-    text-transform: uppercase;
-	background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	
+body {
+ 
+  background-image: "url('https://i.ibb.co/MkvLDfb/Rectangle-4389.png')" !important;
+
+  font-family: "Open Sans", sans-serif;
+  font-size:'14px' !important;
+  
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+

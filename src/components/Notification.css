@@ -1,0 +1,41 @@
+.not-position {
+    position: absolute;
+    right: 0.3125rem; 
+    top: 4rem; 
+    overflow-y: scroll;
+    box-shadow: 0px 6px 15px 0px #C23028, 0px 3px 6px 0px #D7572B, 0px 2px 4px 0px #F6B339;
+  }
+  ::-webkit-scrollbar {
+    width: 20px; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #C23028;
+    height: 3px; 
+    border-radius: 10px; 
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #D7572B; 
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #F6B339; 
+    border-radius: 10px; 
+  }
+  
+  @media (min-width: 768px) {
+    .not-position {
+      right: 10rem; 
+    }
+  }
+
+  .not-tittle {
+    font-weight: 600; 
+    font-size: 1.125rem; 
+    color: #4a5568; 
+  }
+  .dark .not-tittle {
+    color: #CBD5E0; 
+  }
+  .not-content:hover {
+    background-color: rgb(225, 229, 231);
+    cursor: pointer;
+  }

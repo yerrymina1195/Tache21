@@ -1,40 +1,41 @@
-import React from 'react';
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { MdOutlineCancel } from 'react-icons/md';
+import { MdOutlineCancel } from "react-icons/md";
 import { links } from "../data/need";
-import logo  from "../data/logo.png";
+import logo from "../data/logo.png";
 import { useStateContext } from '../contexts/ContextProvider';
 
 const Sidebar = () => {
-    const { currentColor, activeMenu, setActiveMenu, screenSize } = useStateContext();
+    const { activeMenu, setActiveMenu, screenSize } = useStateContext();
     const handleCloseSideBar = () => {
       if (activeMenu !== undefined && screenSize <= 900) {
         setActiveMenu(false);
       }
     };
-    const activeLink = 'flex items-center gap-1 text-decoration-none pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2';
-    const normalLink = 'flex items-center gap-1 text-decoration-none pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2';
-  
+    const activeLink='link-active';
+    const normaleLink='link-normal';
+
   return (
-    <div className='ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10'>
-      {activeMenu && (
-        <>
-        <div className='flex justify-between items-center'>
-        <Link to="/" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight text-decoration-none dark:text-white text-slate-900">
-        <img src={logo} alt="" srcset="" className='w-[70px] h-auto' /> <span className='rest'>  e-learning</span>
-            </Link>
-            <button
-             type="button"
+    <div className="fixed-top custom-sidebar bg-white  ">
+      <div className="custom-container">
+        <div className="d-flex justify-content-between align-items-center pb-4 pt-3 px-1">
+          <Link to="/" className="text-decoration-none ">
+            <img src={logo} alt="" srcset="" className="custom-size" />{" "}
+            <span className="rest"> e-learning</span>
+          </Link>
+          <button
+            style={{ color: "pink" }}
+            className="button-x btn btn-outline fs-4 d-block d-lg-none"
             onClick={() => setActiveMenu(!activeMenu)}
-            style={{ color: currentColor }}
-             className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden">
-                <MdOutlineCancel/>
-            </button>
+
+          >
+            <MdOutlineCancel />
+          </button>
         </div>
-        <div className='mt-10 '>
+        <div className=' '>
         {links.map((item) => (
-              <div key={item.title}>
-                <p className="text-gray-400  dark:text-gray-400 m-3 mt-4 uppercase">
+              <div key={item.title} className="">
+                <p className="  custom-text-link-h">
                   {item.title}
                 </p>
                 {item.links.map((link) => (
@@ -42,10 +43,8 @@ const Sidebar = () => {
                     to={`/${link.name}`}
                     key={link.name}
                     onClick={handleCloseSideBar}
-                    style={({ isActive }) => ({
-                      backgroundColor: isActive ? currentColor : '',
-                    })}
-                    className={({ isActive }) => (isActive ? activeLink : normalLink)}
+                    className={({ isActive }) => (isActive ? activeLink : normaleLink)}
+                   
                   >
                     {link.icon}<span className="capitalize ">{link.name}</span>
                   </NavLink>
@@ -54,12 +53,9 @@ const Sidebar = () => {
             ))}
              
         </div>
-        </>
-      )
-
-      }
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
