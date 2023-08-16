@@ -79,8 +79,9 @@ export const links = [
     title: "Dashboard",
     links: [
       {
-        name: "l/dashbord",
+        name: "Dashbord",
         icon: <LuLayoutDashboard />,
+        link: "l/dashbord",
       },
     ],
   },
@@ -89,20 +90,24 @@ export const links = [
     title: "Pages",
     links: [
       {
-        name: "l/livraisons",
+        name: "Livraisons",
         icon: <AiOutlineDeliveredProcedure />,
+        link: "l/livraisons",
       },
       {
-        name: "l/messagerie",
+        name: "Messagerie",
         icon: <MdOutlineMessage />,
+        link:"l/messagerie"
       },
       {
-        name: "l/cours",
+        name: "Cours",
         icon: <LiaBookSolid />,
+        link:"l/cours"
       },
       {
-        name: "l/eleves",
+        name: "Eleves",
         icon: <PiStudentLight />,
+        link:"l/eleves"
       },
       // {
       //   name: 'page5',
