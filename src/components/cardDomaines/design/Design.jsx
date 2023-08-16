@@ -1,6 +1,6 @@
 import React from "react";
-import htmlcss from "../../../data/programmation/HTML&CSS.png";
-import nodejs from "../../../data/programmation/NodeJS.png";
+import canva from "../../../data/designs/1.png";
+import figma from "../../../data/designs/2.png";
 import Sousdomaine from "../sousdomaine/Sousdomaine";
 
 const Design = () => {
@@ -8,12 +8,12 @@ const Design = () => {
     {
       name: "design",
       title: "canva",
-      image: htmlcss,
+      image: canva,
     },
     {
       name: "design",
       title: "figma",
-      image: nodejs,
+      image: figma,
     },
   ];
   return (

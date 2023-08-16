@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import nodejs from "../../../data/NodeJS.png";
-import htmlcss from "../../../data/HTML&CSS.png";
+import INITIATION from "../../../data/marketing/3.png";
+import etudeDeMarche from "../../../data/marketing/4.png";
 import Sousdomaine from "../sousdomaine/Sousdomaine";
 
 const Marketing = () => {
@@ -9,12 +8,13 @@ const Marketing = () => {
     {
       name: "marketing",
       title: "INITIATION",
-      image: nodejs,
+      image: INITIATION
+      ,
     },
     {
-      name: "marketing",
+      name: "marketi  ng",
       title: "ETUDE DE MARCHE",
-      image: htmlcss,
+      image: etudeDeMarche
     },
   ];
   return (
