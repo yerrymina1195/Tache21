@@ -5,11 +5,12 @@ import { FcGoogle } from "react-icons/fc";
 import "./Ma.css";
 import InputLabel from "../pageConnexion/InputLabel";
 import MaButton from "../pageConnexion/MaButton";
+import { Link } from "react-router-dom";
 
 const Connexion = () => {
   return (
-    <div className="container-fluid p-5 back" style={{ height: "700px" }}>
-    <div className="container-fluid mt-5 largeur1" style={{ width: "40%" }}>
+    <div className="container-fluid p-md-5 back" style={{ height: "700px" }}>
+    <div className="container-fluid mt-md-5  largeur1" style={{ width: "40%" }}>
       <div className="card relative">
         <div className="container text-white">
           <div className="bg1 text-center fw-bold rounded-3 pt-5 card-title position-absolute start-50 translate-middle p-4">
@@ -43,17 +44,19 @@ const Connexion = () => {
               <InputLabel label={'Mot de passe'} type={'password'} placeholder={'........'} />
             </div>
           <div className="row">
+            <Link to={`/l`}>
           <MaButton type={'button'} text={"Se connecter"}/>
+          </Link> 
           </div>
             <div className="row mt-4">
               <div className="col-md-6"></div>
               <div className="col-md-6 text-end">
-                <a href="../pageConnexion/ForgetPassword" className="">
+                <Link to={`/F`} className="">
                   Mot de passe oublié?
-                </a>
+                </Link>
               </div>
             </div>
-          </form>
+          </form> 
         </div>
       </div>
     </div>

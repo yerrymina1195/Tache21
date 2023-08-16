@@ -18,12 +18,14 @@ import Quiz from "./pages/SousCours/Quiz/Quiz";
 import RouteCours from "./components/RouteCours/RouteCours";
 import Layout from "./MainLayout/Layout";
 import Connexion from "./pages/pageConnexion/Connexion";
+import ForgetPassword from "./pages/pageConnexion/ForgetPassword";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Connexion />} />
+        <Route path="/F" element={<ForgetPassword />} />
         <Route path="/l" element={<Layout />}>
           {/* dashboard  */}
           <Route path="/l/" element={<Dashbord />} />

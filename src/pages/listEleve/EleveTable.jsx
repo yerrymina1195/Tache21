@@ -19,8 +19,8 @@ const EleveTable =(props) =>
     </tr>
   </thead>
   <tbody>
-    <tr className='bg-dark'>
-      <td><img src={img} alt='image' className='img'/></td>
+    <tr className=''>
+      <img src={img} alt='image' className='img'/>
       <td>Rama</td>
       <td>Fall</td>
       <td>776226593</td>

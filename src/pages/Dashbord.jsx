@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { dashData, UserData } from "../data/need";
 import { BarChart } from "../components";
+import { BsFillJournalBookmarkFill } from "react-icons/bs";
 
 const Dashbord = () => {
   const [userData] = useState({
@@ -24,7 +25,6 @@ const Dashbord = () => {
       },
     ],
   });
-  
 
   console.log(userData);
 
@@ -61,34 +61,57 @@ const Dashbord = () => {
           </div>
         </div>
       </div> */}
-      <div className="row row-cols-1 row-cols-md-3 g-4">
+      <div className="row  g-5">
+
         {dashData.map((item) => (
-          <div key={item.title} className=" col ">
-            <div className=" card  bg-white  ">
-              <div className="card-body p-5 d-flex justify-content-between align-items-center ">
-                <button
+          <div key={item.title} className=" col-sm-12 col-md-6 col-lg-3 ">
+            <div className=" card bg-white text rounded-3 border-bottom-0 border-start-0 rounded-0 shadow border-end-0 cartema">
+              <div className="card-body ">
+                <div className="container">
+                  <div className="row mt-3">
+                    <div className="col-md-4 col-lg-4 col-sm-12">
+                      <button
+                        type="button"
+                        style={{
+                          color: item.iconColor,
+                          backgroundColor: item.iconBg,
+                        }}
+                        className=" btn btn-outline p-5"
+                      >
+                        {item.icon}
+                      </button>
+                    </div>
+                    <div className="col-md-6 col-lg-6 col-sm-12 m-3">
+                    <button
                   type="button"
                   style={{
                     color: item.iconColor,
                     backgroundColor: item.iconBg,
                   }}
-                  className="button-x btn btn-outline"
+                  className=" btn btn-outline"
                 >
                   {item.icon}
-                </button>
-                <p className=" mb-0 ">
-                  <span className=" fw-bold">{item.amount}</span>
-                </p>
-                <p className=" mb-0 text-sm text-secondary ">{item.title}</p>
+                </button> 
+                    </div>
+                    <div className="row mt-3">
+                    <div className="col-md-6">
+                        <p className="fw-bold">{item.amount}</p>
+                    </div>
+                    <div className="col-md-6">
+                      <p className="text-secondary ">{item.title}</p>
+                    </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
-      <div className="card mt-5 barcard mx-auto" style={{width:"300px"}}>
-              <BarChart chartData={userData} />
-            </div>
-   </div>
+      <div className="card mt-5 barcard mx-auto">
+        <BarChart chartData={userData} />
+      </div>
+    </div>
   );
 };
 
