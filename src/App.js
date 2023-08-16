@@ -18,7 +18,6 @@ import {
   Design,
   Marketing,
 } from "./pages";
-import Professeurs from './pages/Professeurs';
 
 
 const App = () => {
@@ -94,7 +93,7 @@ const App = () => {
                   <Route path="/cours/marketing" element={<Marketing />} />
                   <Route path="/cours/design" element={<Design />} />
                 </Route>
-                <Route path="/Professeurs" element={<Professeurs />} />
+                
                 <Route path="/eleves" element={<Eleves />} />
               </Routes>
             </div>

@@ -36,10 +36,7 @@ export const links = [
           name: 'cours',
           icon: <LiaBookSolid />,
         },
-        {
-          name: 'professeurs',
-          icon: <LiaChalkboardTeacherSolid />,
-        },
+      
         {
           name: 'eleves',
           icon: <PiStudentLight />,
