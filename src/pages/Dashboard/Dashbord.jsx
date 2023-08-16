@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { dashData, UserData } from '../data/need';
-import { BarChart } from "../components";
-import img from "../data/cap0.png";
-import makhan from "../data/makhan.png";
+import './Dashboard.css';
+import { dashData, UserData } from '../../data/need';
+import { BarChart } from "../../components";
+import img from "../../data/Capture0.png";
+import makhan from "../../data/makhan.png";
 
 
 const Dashbord = () => {
@@ -41,8 +42,8 @@ const Dashbord = () => {
 
   return (
     <div className=' mt-4 ' >
-      <div className="flex flex-wrap bg-gray-100 lg:flex-nowrap justify-center ">
-        <div className="flex m-3 w-full  flex-wrap justify-center gap-5 items-center">
+      <div className="flex flex-wrap justify-center ">
+        <div className="flex m-3 w-full flex-wrap justify-center gap-5 items-center">
           {dashData.map((item) => (
             <div key={item.title} className="bg-white justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
               <button
@@ -59,20 +60,49 @@ const Dashbord = () => {
             </div>
           ))}
 
-
           <div className='py-20 flex justify-center w-full flex-1 basis-[100px]'>
             <BarChart chartData={userData} />
           </div>
         </div>
-{/* Dashboard Eleve */}
-
+        {/* Dashboard Eleve */}
+        <h1 className='text-dark text-center'>Dashboard Elève</h1>
+        {/* Carte */}
         <div className="container">
+          {/* <div className="row">
+          {dashEleve.map((item) => (
+        <div className="col-md-4 w-100">
+            <div key={item.title} className="bg-white card justify-between items-center  rounded">
+              <button
+                type="button"
+                style={{ color: item.iconColor, backgroundColor: item.iconBg }}
+                className="fs-3 opacity-0.9 rounded-circle  p-4"
+              >
+                {item.icon}
+              </button>
+              <p className=" mb-0">
+                <span className="fs-4 font-semibold">{item.amount}</span>
+              </p>
+              <p className=" mb-0 fs-6 text-secondary ">{item.title}</p>
+            </div>
+        </div>
+          ))}
+          </div> */}
+
+
+        </div>
+
+        <div className="container mt-3">
           <div className="row">
-            <h1 className='text-dark text-center'>Dashboard Elève</h1>
+            {/* Barre de Recherche */}
+            <div>
+              <form>
+                <input type="text" className='form-control shadow-none' placeholder='Recherchez une livraison' />
+              </form>
+            </div>
             <div className="col-12">
               <div className='d-flex flex-row align-items-center'>
-                <div>
-                  <img src={makhan} alt="makhan" className='img-fluid rounded-circle w-[50px] h-[50px]' />
+                <div className='image p-1'>
+                  <img src={makhan} alt="makhan" className='img-fluid rounded-circle' />
                 </div>
                 <div className='mt-3 ms-3'>
                   <h4 className='fs-5'>Makhan Diakho</h4>
@@ -86,12 +116,11 @@ const Dashbord = () => {
                 <h4 className='text-couleur2'>Tâche n° 1</h4>
               </div>
               <div className='mt-3 ms-3'>
-                <img src={img} alt="img" className='img-fluid mx-auto h-[200px]'/>
+                <img src={img} alt="img" className='img-fluid mx-auto' />
               </div>
             </div>
           </div>
         </div>
-
 
       </div>
     </div>

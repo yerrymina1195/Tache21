@@ -11,13 +11,13 @@ import {
   Messagerie,
   Cours,
   Eleves,
-  Dashbord,
   Programmation,
   Design,
   Marketing,
 } from "./pages";
+
 import Certification from './pages/Certification/Certification';
-// import Certification from './pages/Certification/Certification';
+import Dashbord from "./pages/Dashboard/Dashbord";
 
 const App = () => {
 
