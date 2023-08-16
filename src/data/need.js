@@ -1,8 +1,9 @@
 import { LuLayoutDashboard } from "react-icons/lu";
 import { PiStudentLight } from "react-icons/pi";
 import { LiaBookSolid } from "react-icons/lia";
+import { GiTeacher } from "react-icons/gi";
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
-
+import { TbCertificate } from "react-icons/tb";
 import { MdOutlineMessage } from "react-icons/md";
 import avatar from "./avatar.jpg";
 import avatar2 from "./avatar2.jpg";
@@ -43,6 +44,16 @@ export const links = [
       //   name: 'page5',
       //   icon: <RiContactsLine />,
       // },
+    ],
+  },
+  ,
+  {
+    title: "Certification",
+    links: [
+      {
+        name: "Certification",
+        icon: <TbCertificate />,
+      },
     ],
   },
 ];
@@ -96,6 +107,68 @@ export const themeColors = [
   {
     color: "#FB9678",
     name: "orange-theme",
+  },
+];
+export const dashData = [
+  {
+    icon: <GiTeacher />,
+    amount: "50",
+    title: "Coach",
+    iconColor: "#03C9D7",
+    iconBg: "#E5FAFB",
+  },
+  {
+    icon: <PiStudentLight />,
+    amount: "4000",
+    title: "eleves",
+    iconColor: "rgb(255, 244, 229)",
+    iconBg: "rgb(254, 201, 15)",
+  },
+  {
+    icon: <LiaBookSolid />,
+    amount: "300",
+    title: "Cours",
+    iconColor: "rgb(228, 106, 118)",
+    iconBg: "rgb(255, 244, 229)",
+  },
+  {
+    icon: <AiOutlineDeliveredProcedure />,
+    amount: "300",
+    title: "livraisons",
+    iconColor: "rgb(0, 194, 146)",
+    iconBg: "rgb(235, 250, 242)",
+  },
+];
+export const UserData = [
+  {
+    id: 1,
+    year: 2016,
+    userBoy: 50,
+    userGirl: 20,
+  },
+  {
+    id: 2,
+    year: 2017,
+    userBoy: 75,
+    userGirl: 40,
+  },
+  {
+    id: 3,
+    year: 2018,
+    userBoy: 65,
+    userGirl: 88,
+  },
+  {
+    id: 4,
+    year: 2019,
+    userBoy: 80,
+    userGirl: 100,
+  },
+  {
+    id: 5,
+    year: 2020,
+    userBoy: 100,
+    userGirl: 200,
   },
 ];
 // MAMA
@@ -163,7 +236,8 @@ export const cardDataMarketing = [
     descrip:
       "Lorem ipsum1 at FlowParserMixin.parseBlockOrModuleBlockBody at FlowParserMixin.parseBlockOrModuleBlockBody ",
     videoUrl:
-"https://www.youtube.com/embed/XGUs6xS1AGk?list=PLr02B9CpDYZQFmJK_xKFzTRkVfiv0XbIg"  },
+      "https://www.youtube.com/embed/XGUs6xS1AGk?list=PLr02B9CpDYZQFmJK_xKFzTRkVfiv0XbIg",
+  },
   {
     title: "Cours 2",
     descrip:
@@ -206,25 +280,29 @@ export const cardDataDesign = [
     descrip:
       "Lorem ipsum1 at FlowParserMixin.parseBlockOrModuleBlockBody at FlowParserMixin.parseBlockOrModuleBlockBody ",
     videoUrl:
-"https://www.youtube.com/embed/1fb-tGQPF2E?list=PLGRktKi2ZzndTAMArIm2WN-buYbumO1i-"  },
+      "https://www.youtube.com/embed/1fb-tGQPF2E?list=PLGRktKi2ZzndTAMArIm2WN-buYbumO1i-",
+  },
   {
     title: "Cours 2",
     descrip:
       "Lorem ipsum2 at FlowParserMixin.parseBlockOrModuleBlockBody at FlowParserMixin.parseBlockOrModuleBlockBody ",
     videoUrl:
-"https://www.youtube.com/embed/1fb-tGQPF2E?list=PLGRktKi2ZzndTAMArIm2WN-buYbumO1i-"  },
+      "https://www.youtube.com/embed/1fb-tGQPF2E?list=PLGRktKi2ZzndTAMArIm2WN-buYbumO1i-",
+  },
   {
     title: "Cours 3",
     descrip:
       "Lorem ipsum3 at FlowParserMixin.parseBlockOrModuleBlockBody at FlowParserMixin.parseBlockOrModuleBlockBody ",
     videoUrl:
-"https://www.youtube.com/embed/Gm33vP_rWi4?list=PLGRktKi2ZzndTAMArIm2WN-buYbumO1i-"  },
+      "https://www.youtube.com/embed/Gm33vP_rWi4?list=PLGRktKi2ZzndTAMArIm2WN-buYbumO1i-",
+  },
   {
     title: "Cours 4",
     descrip:
       "Lorem ipsum4 at FlowParserMixin.parseBlockOrModuleBlockBody at FlowParserMixin.parseBlockOrModuleBlockBody ",
     videoUrl:
-"https://www.youtube.com/embed/cHJXqya9rf0?list=PLGRktKi2ZzndTAMArIm2WN-buYbumO1i-"  },
+      "https://www.youtube.com/embed/cHJXqya9rf0?list=PLGRktKi2ZzndTAMArIm2WN-buYbumO1i-",
+  },
   {
     title: "Cours 5",
     descrip:
@@ -244,12 +322,14 @@ export const cardDataDesign = [
     descrip:
       "Lorem ipsum6 at FlowParserMixin.parseBlockOrModuleBlockBody at FlowParserMixin.parseBlockOrModuleBlockBody ",
     videoUrl:
-"https://www.youtube.com/embed/daSTJL0_rs0?list=PLGRktKi2ZzndTAMArIm2WN-buYbumO1i-"  },
+      "https://www.youtube.com/embed/daSTJL0_rs0?list=PLGRktKi2ZzndTAMArIm2WN-buYbumO1i-",
+  },
   {
     title: "Cours 8",
     descrip:
       "Lorem ipsum6 at FlowParserMixin.parseBlockOrModuleBlockBody at FlowParserMixin.parseBlockOrModuleBlockBody ",
     videoUrl:
-"https://www.youtube.com/embed/c604zpsyiGU?list=PLGRktKi2ZzndTAMArIm2WN-buYbumO1i-"  },
+      "https://www.youtube.com/embed/c604zpsyiGU?list=PLGRktKi2ZzndTAMArIm2WN-buYbumO1i-",
+  },
 ];
 // MAMA

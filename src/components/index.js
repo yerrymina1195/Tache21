@@ -7,17 +7,10 @@ import Notification from "./Notification"
 import ThemeSetting from "./ThemeSetting"
 import Sidebar from "./Sidebar"
 import UserProfil from "./UserProfil"
+import BarChart from "./BarChart"
+import CertificationTache from "./CerticationTache/CerticationTache"
 
-
-
-
-
-
-
-
-
-export{
-  
+export {
     Footer,
     Navbar,
     Button,
@@ -26,5 +19,6 @@ export{
     ThemeSetting,
     Sidebar,
     UserProfil,
-   
+    BarChart,
+    CertificationTache
 }

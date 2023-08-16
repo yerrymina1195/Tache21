@@ -1,5 +1,4 @@
 import "./App.css";
-
 import React, { useEffect } from "react";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -19,18 +18,17 @@ import {
 } from "./pages";
 import Quiz from "./pages/SousCours/Quiz/Quiz";
 import RouteCours from "./components/RouteCours/RouteCours";
+import Certification from './pages/Certification/Certification';
+// import Certification from './pages/Certification/Certification';
 
 const App = () => {
-  const {
-    setCurrentColor,
-    setCurrentMode,
-    currentMode,
-    activeMenu,
-    currentColor,
-    themeSettings,
-    setThemeSettings,
-  } = useStateContext();
 
+  const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
+  const user = {
+    status: "admin",
+    name: 'makhan'
+  }
+  console.log(user);
   useEffect(() => {
     const currentThemeColor = localStorage.getItem("colorMode");
     const currentThemeMode = localStorage.getItem("themeMode");
@@ -40,14 +38,16 @@ const App = () => {
     }
   }, [setCurrentColor, setCurrentMode]);
   return (
-    <div className={currentMode === "Dark" ? "dark" : ""}>
+    <div className={currentMode === 'Dark' ? 'dark' : ''} >
       <BrowserRouter>
-        <div className="flex relative dark:bg-main-dark-bg">
-          <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
+        <div className='flex relative dark:bg-main-dark-bg'>
+          <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
+
             <button
               type="button"
               onClick={() => setThemeSettings(true)}
-              style={{ background: currentColor, borderRadius: "50%" }}
+              style={{ background: currentColor, borderRadius: '50%' }}
+
               className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
             >
               <FiSettings />
@@ -95,12 +95,13 @@ const App = () => {
                 <Route path="/cours/design/*" element={<RouteCours />} />
                 <Route path="/quiz" element={<Quiz />} />
                 <Route path="/eleves" element={<Eleves />} />
+                <Route path="/certification" element={(<Certification />)} />
               </Routes>
             </div>
           </div>
         </div>
-      </BrowserRouter>
-    </div>
+      </BrowserRouter >
+    </div >
   );
 };
 
