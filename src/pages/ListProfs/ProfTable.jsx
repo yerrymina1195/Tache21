@@ -8,7 +8,7 @@ const ProfTable =() =>
          <div className="table-responsive mt-5">
        <table class="table table-hover">
   <thead>
-    <tr className='text-center mb-3'>
+    <tr className='mb-3'>
       <th scope="col">Photo</th>
       <th scope="col">Prenom</th>
       <th scope="col">Nom</th>
