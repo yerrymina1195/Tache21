@@ -49,7 +49,7 @@ const AddEleveForm = (props) => {
   
         </div>
       </div>
-          <input className="form-control me-2 w-25 float-end" type="search" placeholder="Search" aria-label="Search"></input>
+          <input className="form-control me-2 w-25 float-end" type="search" placeholder="recherche" aria-label="Search"></input>
 
       <div
         className="modal fade mt-[100px] "
