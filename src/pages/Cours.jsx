@@ -19,10 +19,10 @@ const Cours = () => {
       <div className="bg-white m-5 p-5 rounded-3xl domaine">
         <div className="container ">
           <div className="row d-flex align-items-center mt-5">
-            <div className="col-6">
+            <div className="col-md-6 col-sm-12">
               <h1 className="">Les Domaines</h1>
             </div>
-            <div className="col-6 text-end">
+            <div className="col-md-6 col-sm-12">
               <div data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <ButtonReutilisable text={"Ajouter un domaine"} />
               </div>

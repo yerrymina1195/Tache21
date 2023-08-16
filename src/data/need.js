@@ -15,8 +15,9 @@ export const links = [
     title: "Dashboard",
     links: [
       {
-        name: "dashbord",
+        name: "Dashbord",
         icon: <LuLayoutDashboard />,
+        link: "l/dashboard",
       },
     ],
   },
@@ -27,18 +28,22 @@ export const links = [
       {
         name: "livraisons",
         icon: <AiOutlineDeliveredProcedure />,
+        link: "l/livraisons",
       },
       {
         name: "messagerie",
         icon: <MdOutlineMessage />,
+        link: "l/messagerie",
       },
       {
         name: "cours",
         icon: <LiaBookSolid />,
+        link: "l/cours",
       },
       {
         name: "eleves",
         icon: <PiStudentLight />,
+        link: "l/eleves",
       },
       // {
       //   name: 'page5',

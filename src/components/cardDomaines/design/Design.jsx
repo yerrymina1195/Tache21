@@ -26,7 +26,7 @@ const Design = () => {
           {sousdomaines.map((sousdomaine) => (
             <div className="col-lg-4 col-md-6 col-sm-12">
               <Sousdomaine
-                links={`/cours/${sousdomaine.name}/${sousdomaine.title}`}
+                links={`${sousdomaine.title}`}
                 img={sousdomaine.image}
                 title={sousdomaine.title}
               />
