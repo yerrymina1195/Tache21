@@ -38,6 +38,7 @@ const App = () => {
     }
   }, [setCurrentColor, setCurrentMode]);
   return (
+    
     <div className={currentMode === 'Dark' ? 'dark' : ''} >
       <BrowserRouter>
         <div className='flex relative dark:bg-main-dark-bg'>
@@ -79,6 +80,7 @@ const App = () => {
                 {/* dashboard  */}
                 <Route path="/" element={<Dashbord />} />
                 <Route path="/dashbord" element={<Dashbord />} />
+                
 
                 {/* Pages */}
                 <Route path="/livraisons" element={<Livraisons />} />
