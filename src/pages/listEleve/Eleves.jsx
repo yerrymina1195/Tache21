@@ -17,7 +17,7 @@ const Eleves = () => {
 
 
   return (
-    <div className="  bg-white m-5 mt-3 p-5 rounded-3xl">
+    <div className="  bg-white m-md-5 mt-3 p-md-5 rounded-3xl">
       <div className="container">
         <div className="flex-row">
           <div className="flex-large">

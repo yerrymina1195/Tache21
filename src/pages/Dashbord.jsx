@@ -29,7 +29,7 @@ const Dashbord = () => {
   console.log(userData);
 
   return (
-    <>
+    <div className="px-md-4">
       {/* <div className=" mt-4 ">
         <div className="flex flex-wrap bg-gray-100 lg:flex-nowrap justify-center ">
           <div className="flex m-3 w-full  flex-wrap justify-center gap-5 items-center">
@@ -88,7 +88,7 @@ const Dashbord = () => {
       <div className="card mt-5 barcard mx-auto" style={{width:"300px"}}>
               <BarChart chartData={userData} />
             </div>
-    </>
+   </div>
   );
 };
 
