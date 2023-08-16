@@ -6,7 +6,7 @@
     box-shadow: 0px 6px 15px 0px #C23028, 0px 3px 6px 0px #D7572B, 0px 2px 4px 0px #F6B339;
   }
   ::-webkit-scrollbar {
-    width: 20px; 
+    width: 5px; 
   }
   ::-webkit-scrollbar-thumb {
     background-color: #C23028;
