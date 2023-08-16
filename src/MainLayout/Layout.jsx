@@ -1,9 +1,8 @@
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes,Route} from 'react-router-dom';
 
-import Sidebar  from "./components/Sidebar";
-import Navbar from "./components/Navbar";
+import { Outlet} from 'react-router-dom';
+import { useStateContext } from '../contexts/ContextProvider';
+import Sidebar  from "../components/Sidebar";
+import Navbar from "../components/Navbar";
 import {
   Livraisons,
   Messagerie,
@@ -13,47 +12,40 @@ import {
   Programmation,
   Design,
   Marketing,
-} from "./pages";
-import Quiz from "./pages/SousCours/Quiz/Quiz";
-import RouteCours from "./components/RouteCours/RouteCours";
-import Layout from "./MainLayout/Layout";
+} from "../pages";
+import Quiz from "../pages/SousCours/Quiz/Quiz";
+import RouteCours from "../components/RouteCours/RouteCours";
 
 
-function App() {
-  
+function Layout() {
+  const { activeMenu } = useStateContext();
 
 
   return (
-    <BrowserRouter>
-   
+    
+    <div className="container-fluid position relative bg-light min-vh-100  ">
+      <div className="row">
+        {activeMenu?(<div className="gtret">
+          
+           <Sidebar/>
+        </div>):("")}
+        
+        <div className="col px-0">
+          <div className="sticky-top">
+
+           <Navbar/>
+          </div>
+
+           <div className="container-fluid pt-4">
          
-           <Routes>
-            <Route path="/" element={<Layout/>}>
-                {/* dashboard  */}
-                <Route path="/l/" element={<Dashbord />} />
-                <Route path="/l/dashbord" element={<Dashbord />} />
+<Outlet/>
+           </div>
+        </div>
 
-                {/* Pages */}
-                <Route path="/l/livraisons" element={<Livraisons />} />
-                <Route path="/l/messagerie" element={<Messagerie />} />
-                <Route path="/l/cours" element={<Cours />} />
-                <Route
-                  path="/l/cours/programmation"
-                  element={<Programmation />}
-                />
-                <Route path="/l/cours/programmation/*" element={<RouteCours />} />
-                <Route path="/l/cours/marketing" element={<Marketing />} />
-                <Route path="/l/cours/marketing/*" element={<RouteCours />} />
-                <Route path="/l/cours/design" element={<Design />} />
-                <Route path="/l/cours/design/*" element={<RouteCours />} />
-                <Route path="/l/quiz" element={<Quiz />} />
+      </div>
 
-                <Route path="/l/eleves" element={<Eleves />} />
-                </Route>
-              </Routes>
-
-     
-    </BrowserRouter>
+    </div>
+    
     // col-2 col-md-3 min-vh-100  bg-white pe-3
   );
 }
@@ -163,4 +155,4 @@ function App() {
 //   );
 // };
 
-export default App;
+export default Layout;
