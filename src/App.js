@@ -1,8 +1,8 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes,Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Sidebar  from "./components/Sidebar";
+import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import {
   Livraisons,
@@ -17,42 +17,33 @@ import {
 import Quiz from "./pages/SousCours/Quiz/Quiz";
 import RouteCours from "./components/RouteCours/RouteCours";
 import Layout from "./MainLayout/Layout";
-
+import Connexion from "./pages/pageConnexion/Connexion";
 
 function App() {
-  
-
-
   return (
     <BrowserRouter>
-   
-         
-           <Routes>
-            <Route path="/" element={<Layout/>}>
-                {/* dashboard  */}
-                <Route path="/l/" element={<Dashbord />} />
-                <Route path="/l/dashbord" element={<Dashbord />} />
+      <Routes>
+        <Route path="/" element={<Connexion />} />
+        <Route path="/l" element={<Layout />}>
+          {/* dashboard  */}
+          <Route path="/l/" element={<Dashbord />} />
+          <Route path="/l/dashbord" element={<Dashbord />} />
 
-                {/* Pages */}
-                <Route path="/l/livraisons" element={<Livraisons />} />
-                <Route path="/l/messagerie" element={<Messagerie />} />
-                <Route path="/l/cours" element={<Cours />} />
-                <Route
-                  path="/l/cours/programmation"
-                  element={<Programmation />}
-                />
-                <Route path="/l/cours/programmation/*" element={<RouteCours />} />
-                <Route path="/l/cours/marketing" element={<Marketing />} />
-                <Route path="/l/cours/marketing/*" element={<RouteCours />} />
-                <Route path="/l/cours/design" element={<Design />} />
-                <Route path="/l/cours/design/*" element={<RouteCours />} />
-                <Route path="/l/quiz" element={<Quiz />} />
+          {/* Pages */}
+          <Route path="/l/livraisons" element={<Livraisons />} />
+          <Route path="/l/messagerie" element={<Messagerie />} />
+          <Route path="/l/cours" element={<Cours />} />
+          <Route path="/l/cours/programmation" element={<Programmation />} />
+          <Route path="/l/cours/programmation/*" element={<RouteCours />} />
+          <Route path="/l/cours/marketing" element={<Marketing />} />
+          <Route path="/l/cours/marketing/*" element={<RouteCours />} />
+          <Route path="/l/cours/design" element={<Design />} />
+          <Route path="/l/cours/design/*" element={<RouteCours />} />
+          <Route path="/l/quiz" element={<Quiz />} />
 
-                <Route path="/l/eleves" element={<Eleves />} />
-                </Route>
-              </Routes>
-
-     
+          <Route path="/l/eleves" element={<Eleves />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
     // col-2 col-md-3 min-vh-100  bg-white pe-3
   );
