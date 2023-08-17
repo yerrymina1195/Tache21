@@ -58,6 +58,7 @@ export const links = [
       {
         name: "Certification",
         icon: <TbCertificate />,
+        link:"l/certification"
       },
     ],
   },

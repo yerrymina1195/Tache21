@@ -2,9 +2,14 @@
 height: 650px
 
 }
+
 @media (max-width:394px){
     .bor{
         height: 700px
         
         }  
+        .userChat{
+            margin: 3;
+            padding: 4;
+        }
 }
