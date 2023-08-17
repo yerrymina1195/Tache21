@@ -21,6 +21,8 @@ import Certification from './pages/Certification/Certification';
 import Dashbord from "./pages/Dashboard/Dashbord";
 import Connexion from "./pages/pageConnexion/Connexion";
 import Layout from "./MainLayout/Layout";
+import Prof from "./pages/ListProfs/Prof";
+
 
 const App = () => {
 
@@ -37,7 +39,8 @@ const App = () => {
                 <Route path="/" element={<Connexion/>} />
                 <Route path="/l" element={<Layout/>} >
               
-                <Route path="/l" element={<Dashbord />} />
+                
+                <Route path="/l/dashboard" element={<Dashbord />} />
                 
 
                 {/* Pages */}
@@ -55,6 +58,7 @@ const App = () => {
                 <Route path="/l/cours/design/*" element={<RouteCours />} />
                 <Route path="/l/quiz" element={<Quiz />} />
                 <Route path="/l/eleves" element={<Eleves />} />
+                <Route path="/l/professeurs" element={< Prof/>} />
                 <Route path="/l/certification" element={(<Certification />)} />
                 </Route>
               </Routes>
