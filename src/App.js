@@ -37,7 +37,7 @@ const App = () => {
                 <Route path="/" element={<Connexion/>} />
                 <Route path="/l" element={<Layout/>} >
               
-                <Route path="/l/dashboard" element={<Dashbord />} />
+                <Route path="/l" element={<Dashbord />} />
                 
 
                 {/* Pages */}
