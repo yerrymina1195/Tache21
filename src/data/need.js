@@ -14,14 +14,14 @@ export const dashData = [
   {
     icon: <GiTeacher />,
     amount: '50',
-    title: 'Coach',
+    title: 'Coachs',
     iconColor: '#03C9D7',
     iconBg: '#E5FAFB',
        },
   {
     icon: <PiStudentLight />,
-    amount: '4000',
-    title: 'eleves',
+    amount: '900',
+    title: 'Eleves',
     iconColor: 'rgb(255, 244, 229)',
     iconBg: 'rgb(254, 201, 15)',
     
@@ -36,8 +36,8 @@ export const dashData = [
   },
   {
     icon: <AiOutlineDeliveredProcedure />,
-    amount: '300',
-    title: 'livraisons',
+    amount: '40',
+    title: 'Livraisons',
     iconColor: 'rgb(0, 194, 146)',
     iconBg: 'rgb(235, 250, 242)',
        },

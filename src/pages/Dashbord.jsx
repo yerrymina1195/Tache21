@@ -29,7 +29,7 @@ const Dashbord = () => {
   console.log(userData);
 
   return (
-    <div className="px-md-4">
+    <div className="p-5">
       {/* <div className=" mt-4 ">
         <div className="flex flex-wrap bg-gray-100 lg:flex-nowrap justify-center ">
           <div className="flex m-3 w-full  flex-wrap justify-center gap-5 items-center">
@@ -61,56 +61,60 @@ const Dashbord = () => {
           </div>
         </div>
       </div> */}
-      <div className="row  g-5">
-
-        {dashData.map((item) => (
-          <div key={item.title} className=" col-sm-12 col-md-6 col-lg-3 ">
-            <div className=" card bg-white text rounded-3 border-bottom-0 border-start-0 rounded-0 shadow border-end-0 cartema">
-              <div className="card-body ">
-                <div className="container">
-                  <div className="row mt-3">
-                    <div className="col-md-4 col-lg-4 col-sm-12">
-                      <button
-                        type="button"
-                        style={{
-                          color: item.iconColor,
-                          backgroundColor: item.iconBg,
-                        }}
-                        className=" btn btn-outline p-5"
-                      >
-                        {item.icon}
-                      </button>
-                    </div>
-                    <div className="col-md-6 col-lg-6 col-sm-12 m-3">
-                    <button
+    <div className="row g-5">
+  {dashData.map((item) => (
+    <div key={item.title} className="col-sm-12 col-md-6 col-lg-3">
+      <div className="card bg-white text rounded-3 border-bottom-0 border-start-0 rounded-0 shadow border-end-0 cartema">
+        <div className="card-body d-flex justify-content-center align-items-center">
+          <div className="container ">
+            <div className="row mt-3 ">
+              <div className="col-md-12">
+                <button
                   type="button"
                   style={{
                     color: item.iconColor,
                     backgroundColor: item.iconBg,
+                    position: "relative",
                   }}
-                  className=" btn btn-outline"
+                  className="btn btn-outline p-5 w-100"
                 >
                   {item.icon}
-                </button> 
-                    </div>
-                    <div className="row mt-3">
-                    <div className="col-md-6">
-                        <p className="fw-bold">{item.amount}</p>
-                    </div>
-                    <div className="col-md-6">
-                      <p className="text-secondary ">{item.title}</p>
-                    </div>
-                    </div>
-                  </div>
+                  <button type="button"
+                    className="position-absolute top-0 start-100 translate-middle badge border-0 p-3"
+                    style={{
+                      transform: "translate(-50%, -50%)", 
+                      color: item.iconColor,
+                      backgroundColor: item.iconBg,
+                    }}
+                  >
+                    {item.icon}
+                  </button>
+                </button>
+              </div>
+              <div className="row mt-3">
+                <div className="col-md-12">
+                  <p>
+                  <span className='fw-bold'>
+                    {item.title}
+                    </span>
+                    <span className='float-end'>{item.amount}</span>
+                   
+                  </p>
+                  
                 </div>
               </div>
             </div>
           </div>
-        ))}
+        </div>
       </div>
-      <div className="card mt-5 barcard mx-auto">
-        <BarChart chartData={userData} />
-      </div>
+    </div>
+  ))}
+</div>
+<div className="card mt-5 barcard w-100">
+  <BarChart chartData={userData} />
+</div>
+
+
     </div>
   );
 };
