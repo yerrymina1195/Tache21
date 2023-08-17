@@ -3,7 +3,7 @@ import {IoIosContact} from 'react-icons/io'
 import {AiOutlineEllipsis} from 'react-icons/ai'
 import {BsCameraVideoFill} from 'react-icons/bs'
 import  Messages from './Messages'
-import  Input  from './Input'
+import  Input  from '../Input'
 
 
 const Chat = () => {

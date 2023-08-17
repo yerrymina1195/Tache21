@@ -1,6 +1,6 @@
 import React from 'react'
-import SideBars from '../components/SideBars'
-import Chat from '../components/Chat'
+import SideBars from '../components/messageFile/SideBars'
+import Chat from '../components/messageFile/Chat'
 import "./messageri.css"
 const Messagerie = () => {
   return (
