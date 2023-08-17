@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { RiFacebookLine } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
-import "../Ma.css";
+import "./Ma.css";
 import InputLabel from "../pageConnexion/InputLabel";
 import MaButton from "../pageConnexion/MaButton";
 

@@ -1,30 +1,30 @@
 import React, { useState } from "react";
 import { initialUsers } from './userList';
-import EleveTable from "./ProfTable";
-import AddEleveForm from "./AddEleveForm";
 import "./Prof.css"
+import AddProfForm from "./AddProfForm";
+import ProfTable from "./ProfTable";
 
 const Prof = () => {
   
 
   const [users, setUsers] = useState(initialUsers);
 
-  const addEleve = (user) => {
+  const addProf = (user) => {
     user.id = users.length + 1;
     setUsers([...users, user]);
   };
 
 
   return (
-    <div className="  bg-white m-5 mt-3 p-5 rounded-3xl">
+    <div className="  bg-white mt-3 rounded-3xl">
       <div className="container">
         <div className="flex-row">
           <div className="flex-large">
-            <AddProfForm addEleve={addEleve} />
+            <AddProfForm addProf={addProf} />
           </div>
          
           <div className="flex-large">
-            <PofTable users={users} />
+            <ProfTable users={users} />
           </div>
         </div>
       </div>

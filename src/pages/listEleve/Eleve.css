@@ -7,3 +7,17 @@
     background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
     padding: 10px;
   }
+
+  .input{
+    width: 50%;
+  }
+ @media screen and (max-width: 576px) {
+  .ajoutEleve{
+    padding-bottom: 15px;
+  }
+  .search{
+    display: inline;
+    width: 55%;
+  }
+ }
+  
