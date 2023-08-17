@@ -40,10 +40,10 @@ const AddEleveForm = (props) => {
           data-bs-toggle="modal"
           data-bs-target="#exampleModale"
         >
-          <ButtonReutilisable text={"Ajouter un eleve"} />
+          <ButtonReutilisable text={"Ajouter un eleve"} className="bg-dark w-100" />
         </div>
         <input
-          className="form-control me-2 input mx-auto search"
+          className="form-control me-2 input mx-auto float-md-end search"
           type="search"
           placeholder="recherche"
           aria-label="Search"
