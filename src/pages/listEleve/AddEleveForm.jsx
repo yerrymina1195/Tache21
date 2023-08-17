@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { initialUsers } from './userList';
+import { initialUsers } from "./userList";
 import ButtonReutilisable from "../../components/ButtonReutilisable";
-
-
 
 const AddEleveForm = (props) => {
   const initialFormState = {
@@ -18,39 +16,40 @@ const AddEleveForm = (props) => {
   const [users, setUsers] = useState(initialUsers);
 
   const handleInputChange = () => {
-    
     const handleInputChange = (event) => {
       const { name, value } = event.target;
       setUser({ ...user, [name]: value });
     };
-    
   };
 
   const handleSimulatedSubmit = (event) => {
-    const data=
-    setUser({
-      ...users, [event.target.name]: event.target.value
-    })
+    const data = setUser({
+      ...users,
+      [event.target.name]: event.target.value,
+    });
 
-
-   console.log(data);
+    console.log(data);
   };
-  
+
   return (
     <section>
-      <div className="d-flex">
-        <h1>liste des eleves</h1>
+        <h1 className="listEleve text-center mb-5">Liste des eleves</h1>
+        <div className="d-block d-sm-flex">
         <div
-            className="mx-auto me-5"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModale"
-          >
-            <ButtonReutilisable text={"Ajouter un eleve"}/>
-  
+          className="ajoutEleve"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModale"
+        >
+          <ButtonReutilisable text={"Ajouter un eleve"} />
         </div>
-      </div>
-          <input className="form-control me-2 w-25 float-end" type="search" placeholder="Search" aria-label="Search"></input>
+        <input
+          className="form-control me-2 input mx-auto search"
+          type="search"
+          placeholder="recherche"
+          aria-label="Search"
+        ></input>
 
+        </div>
       <div
         className="modal fade mt-[100px] "
         id="exampleModale"
@@ -101,7 +100,9 @@ const AddEleveForm = (props) => {
                         placeholder="nom"
                         onChange={handleInputChange}
                       />
-                      <label for="floatingName" className="ms-2">nom</label>
+                      <label for="floatingName" className="ms-2">
+                        nom
+                      </label>
                     </div>
                     <div className="form-floating col-6">
                       <input
@@ -113,7 +114,9 @@ const AddEleveForm = (props) => {
                         value={user.prenom.value}
                         onChange={handleInputChange}
                       />
-                      <label for="floatingPrenom" className="ms-2">prenom</label>
+                      <label for="floatingPrenom" className="ms-2">
+                        prenom
+                      </label>
                     </div>
                   </div>
 
@@ -128,7 +131,9 @@ const AddEleveForm = (props) => {
                         placeholder="tel"
                         onChange={handleInputChange}
                       />
-                      <label for="floatingTel" className="ms-2">tel</label>
+                      <label for="floatingTel" className="ms-2">
+                        tel
+                      </label>
                     </div>
                     <div className="form-floating col-6">
                       <input
@@ -140,7 +145,9 @@ const AddEleveForm = (props) => {
                         value={user.email.value}
                         onChange={handleInputChange}
                       />
-                      <label for="floatingEmail" className="ms-2">email</label>
+                      <label for="floatingEmail" className="ms-2">
+                        email
+                      </label>
                     </div>
                   </div>
                   <div className="row">
@@ -154,7 +161,9 @@ const AddEleveForm = (props) => {
                         placeholder="coach"
                         onChange={handleInputChange}
                       />
-                      <label for="floatingCoach" className="ms-2">coach</label>
+                      <label for="floatingCoach" className="ms-2">
+                        coach
+                      </label>
                     </div>
                     <div className="form-floating col-6">
                       <input
@@ -166,11 +175,16 @@ const AddEleveForm = (props) => {
                         value={user.domaine.value}
                         onChange={handleInputChange}
                       />
-                      <label for="floatingDomaine" className="ms-2">domaine</label>
+                      <label for="floatingDomaine" className="ms-2">
+                        domaine
+                      </label>
                     </div>
                   </div>
                   <div className="mt-3 float-end">
-                      < ButtonReutilisable text={"Enregistrer"}   onClick={handleSimulatedSubmit} />
+                    <ButtonReutilisable
+                      text={"Enregistrer"}
+                      onClick={handleSimulatedSubmit}
+                    />
                   </div>
                 </div>
               </div>
