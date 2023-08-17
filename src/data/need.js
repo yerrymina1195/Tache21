@@ -17,7 +17,7 @@ export const links = [
       {
         name: "Dashbord",
         icon: <LuLayoutDashboard />,
-        link: "l/dashboard",
+        link: "l",
       },
     ],
   },
