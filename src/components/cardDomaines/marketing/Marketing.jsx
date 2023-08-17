@@ -1,63 +1,42 @@
-import React from 'react'
-import htmlcss from "../../../data/programmation/HTML&CSS.png";
-import nodejs from "../../../data/programmation/NodeJS.png";
-import angulare from "../../../data/programmation/angulare.png";
-import js from "../../../data/programmation/js.png";
-import react from "../../../data/programmation/react.png";
-import python from "../../../data/programmation/téléchargement.png";
-import { Link, Outlet } from 'react-router-dom';
-import Sousdomaine from '../sousdomaine/Sousdomaine';
+import React from "react";
+import INITIATION from "../../../data/marketing/3.png";
+import etudeDeMarche from "../../../data/marketing/4.png";
+import Sousdomaine from "../sousdomaine/Sousdomaine";
 
 const Marketing = () => {
-    const sousdomaines = [
-        {
-            title: "HTML & CSS",
-            image: htmlcss
-        },
-        {
-            title: "Node js",
-            image: nodejs
-        },
-        {
-            title: "Angulare",
-            image: angulare
-        },
-        {
-            title: "JavaScript",
-            image: js
-        },
-        {
-            title: "React js",
-            image: react
-        },
-        {
-            title: "Python",
-            image: python
-        }
-    ]
-    return (
-        <div>
-            <h1 className='fs-1 text-center my-5 text-black'>
-                contenue de la partie Marketing
-            </h1>
-            <div className="container">
-                <div className="row row-gap-5">
-                    {sousdomaines.map(sousdomaine => (
-                        <div className='col-lg-4 col-md-6 col-sm-12'>
-                            <Link to={`/cours/${sousdomaine.title}`} className='text-decoration-none'>
-                                <Sousdomaine
-                                    className=''
-                                    img={sousdomaine.image}
-                                    title={sousdomaine.title}
-                                />
-                            </Link>
-                        </div>
-                    ))}
-                    <Outlet />
-                </div>
+  const sousdomaines = [
+    {
+      name: "marketing",
+      title: "INITIATION",
+      image: INITIATION
+      ,
+    },
+    {
+      name: "marketi  ng",
+      title: "ETUDE DE MARCHE",
+      image: etudeDeMarche
+    },
+  ];
+  return (
+    <div>
+      <h1 className="fs-1 text-center my-5 text-black">
+        contenue de la partie Marketing
+      </h1>
+      <div className="container">
+        <div className="row row-gap-5">
+          {sousdomaines.map((sousdomaine) => (
+            <div className="col-lg-4 col-md-6 col-sm-12">
+              <Sousdomaine
+                links={`${sousdomaine.title}`}
+                img={sousdomaine.image}
+                title={sousdomaine.title}
+              />
             </div>
+          ))}
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default Marketing
+export default Marketing;

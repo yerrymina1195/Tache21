@@ -4,5 +4,6 @@
     border-radius: 50%;
   }
   .prev{
-    background-color: #C23028;
+    background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+    padding: 10px;
   }

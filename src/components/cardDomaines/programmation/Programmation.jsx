@@ -5,32 +5,37 @@ import angulare from "../../../data/programmation/angulare.png";
 import js from "../../../data/programmation/js.png";
 import react from "../../../data/programmation/react.png";
 import python from "../../../data/programmation/téléchargement.png";
-import { Link, Outlet } from "react-router-dom";
 import Sousdomaine from "../sousdomaine/Sousdomaine";
 
 const Programmation = () => {
   const sousdomaines = [
     {
-      title: "HTML & CSS",
+      name: "Programmation",
+      title: "HTMLCSS",
       image: htmlcss,
     },
     {
-      title: "Node js",
+      name: "Programmation",
+      title: "Nodejs",
       image: nodejs,
     },
     {
+      name: "Programmation",
       title: "Angulare",
       image: angulare,
     },
     {
+      name: "Programmation",
       title: "JavaScript",
       image: js,
     },
     {
-      title: "React js",
+      name: "Programmation",
+      title: "Reactjs",
       image: react,
     },
     {
+      name: "Programmation",
       title: "Python",
       image: python,
     },
@@ -45,16 +50,14 @@ const Programmation = () => {
         <div className="row row-gap-5">
           {sousdomaines.map((sousdomaine) => (
             <div className="col-lg-4 col-md-6 col-sm-12">
-              <Link to={`/cours/${sousdomaine.title}`} className='text-decoration-none'>
                 <Sousdomaine
-                  className=""
+                  links={`${sousdomaine.title}`}
                   img={sousdomaine.image}
                   title={sousdomaine.title}
                 />
-              </Link>
             </div>
           ))}
-          <Outlet />
+         
         </div>
       </div>
     </div>
