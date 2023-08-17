@@ -8,6 +8,7 @@ import ThemeSetting from "./ThemeSetting"
 import Sidebar from "./Sidebar"
 import UserProfil from "./UserProfil"
 import BarChart from "./BarChart"
+import CertificationTache from "./CerticationTache/CerticationTache"
 
 export {
     Footer,
@@ -18,5 +19,6 @@ export {
     ThemeSetting,
     Sidebar,
     UserProfil,
-    BarChart
+    BarChart,
+    CertificationTache
 }

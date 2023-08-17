@@ -1,42 +1,37 @@
 import React, { useState } from "react";
+import { initialUsers } from './userList';
 import EleveTable from "./EleveTable";
 import AddEleveForm from "./AddEleveForm";
+import "./Eleve.css"
+import "bootstrap/dist/js/bootstrap.min.js"
 
 const Eleves = () => {
-  const usersData = [
-    {id: 1, name: "Rama", username: "Fall"},
-    {id: 2, name: "Mama", username: "Gadiaga"}
-  ]
+  
 
- 
+  const [users, setUsers] = useState(initialUsers);
 
-const [users, setUsers] = useState(usersData)
+  const addEleve = (user) => {
+    user.id = users.length + 1;
+    setUsers([...users, user]);
+  };
 
-const addEleve = (user) => {
-  user.id = users.length + 1
-setUsers([...users, user])
-}
-
-console.log(users)
 
   return (
-    <div className="  bg-white m-2 md:m-10 mt-24 p-2 md:p-10 rounded-3xl"> 
+    <div className="  bg-white m-5 mt-3 p-5 rounded-3xl">
       <div className="container">
-      <h1 className="text-red-600 p-11 bg-slate-600">LISTES ELEVES</h1>
-
-      <div className="flex-row">
-        <div className="flex-large">
-          <h2>nouvel eleve</h2>
-          <AddEleveForm addEleve={addEleve} />
+        <div className="flex-row">
+          <div className="flex-large">
+            <AddEleveForm addEleve={addEleve} />
+          </div>
+         
+          <div className="flex-large">
+            <EleveTable users={users} />
+          </div>
         </div>
-        <div className="flex-large">
-          <h2>liste des eleves</h2>
-          < EleveTable users={users} />
-        </div>
-      </div>
       </div>
     </div>
   );
-}
+};
 
-export default Eleves;
+export default Eleves
+

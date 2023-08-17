@@ -1,73 +1,185 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
+import { initialUsers } from './userList';
+import ButtonReutilisable from "../../components/ButtonReutilisable";
+
+
 
 const AddEleveForm = (props) => {
+  const initialFormState = {
+    id: null,
+    nom: "",
+    prenom: "",
+    tel: "",
+    email: "",
+    coach: "",
+    domaine: "",
+  };
+  const [user, setUser] = useState(initialFormState);
+  const [users, setUsers] = useState(initialUsers);
 
-  const initialFormState = {id: null, name:"", username: "" }
-  const [user, setUser] = useState(initialFormState)
+  const handleInputChange = () => {
+    
+    const handleInputChange = (event) => {
+      const { name, value } = event.target;
+      setUser({ ...user, [name]: value });
+    };
+    
+  };
 
-  const handleInputChange = (event) => {
-    const {name, value} = event.target 
+  const handleSimulatedSubmit = (event) => {
+    const data=
+    setUser({
+      ...users, [event.target.name]: event.target.value
+    })
 
-    setUser({...user, [name]: value })
-  }
 
+   console.log(data);
+  };
+  
   return (
-    <div>
-        <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
-            <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg">
-                <form
-                 onSubmit={(event) =>{event.preventDefault()
-                  if(!user.name || !user.username) return 
-                props.addEleve(user)
-                setUser(initialFormState)
-                }}>
-                    <div>
-                        <label
-                            htmlFor="name"
-                            className="block text-sm font-medium text-gray-700 undefined"
-                        >
-                            Name
-                        </label>
-                        <div className="flex flex-col items-start">
-                            <input
-                                type="text"
-                                name="name"
-                                value={user.name}
-                                onChange = {handleInputChange}
-                                className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                            />
-                        </div>
-                    </div>
-                    <div className="mt-4">
-                        <label
-                            htmlFor="username"
-                            className="block text-sm font-medium text-gray-700 undefined"
-                        >
-                            username
-                        </label>
-                        <div className="flex flex-col items-start">
-                            <input
-                                type="text"
-                                name="username"
-                                value={user.username}
-                                onChange = {handleInputChange}
-                                className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                            />
-                        </div>
-                    </div>
-                    <div className="flex items-center justify-end mt-4">
-                        <button
-                            type="submit"
-                            className="inline-flex items-center px-4 py-2 ml-4 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-900 border border-transparent rounded-md active:bg-gray-900 false"
-                        >
-                            Ajout d eleves
-                        </button>
-                    </div>
-                </form>
-            </div>
+    <section>
+      <div className="d-flex">
+        <h1>liste des eleves</h1>
+        <div
+            className="mx-auto me-5"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModale"
+          >
+            <ButtonReutilisable text={"Ajouter un eleve"}/>
+  
         </div>
-    </div>
-);
-}
+      </div>
+          <input className="form-control me-2 w-25 float-end" type="search" placeholder="Search" aria-label="Search"></input>
 
-export default AddEleveForm
+      <div
+        className="modal fade mt-[100px] "
+        id="exampleModale"
+        tabIndex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog ">
+          <div className="modal-content ">
+            <div className="modal-header ">
+              <h1 className="modal-title fs-5 " id="exampleModalLabel">
+                Ajouter un eleve
+              </h1>
+              <button
+                type="button"
+                className="btn-close text-white"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body ">
+              <div className="row w-[600]">
+                <div
+                  className="form-floating mb-3"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    if (
+                      !user.nom ||
+                      !user.prenom ||
+                      !user.tel ||
+                      !user.email ||
+                      !user.coach ||
+                      !user.domaine
+                    )
+                      return;
+                    props.addEleve(user);
+                    setUser(initialFormState);
+                  }}
+                >
+                  <div className="row ">
+                    <div className="form-floating col-6">
+                      <input
+                        className="form-control   required mb-3"
+                        id="floatingName"
+                        type="text"
+                        name="nom"
+                        value={user.nom.value}
+                        placeholder="nom"
+                        onChange={handleInputChange}
+                      />
+                      <label for="floatingName" className="ms-2">nom</label>
+                    </div>
+                    <div className="form-floating col-6">
+                      <input
+                        className="form-control   required "
+                        id="floatingPrenom"
+                        placeholder="prenom"
+                        type="text"
+                        name="name"
+                        value={user.prenom.value}
+                        onChange={handleInputChange}
+                      />
+                      <label for="floatingPrenom" className="ms-2">prenom</label>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="form-floating col-6">
+                      <input
+                        className="form-control   required mb-3"
+                        id="floatingTel"
+                        type="number"
+                        name="tel"
+                        value={user.tel.value}
+                        placeholder="tel"
+                        onChange={handleInputChange}
+                      />
+                      <label for="floatingTel" className="ms-2">tel</label>
+                    </div>
+                    <div className="form-floating col-6">
+                      <input
+                        className="form-control required "
+                        id="floatingEmail"
+                        placeholder="email"
+                        type="email"
+                        name="email"
+                        value={user.email.value}
+                        onChange={handleInputChange}
+                      />
+                      <label for="floatingEmail" className="ms-2">email</label>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="form-floating col-6">
+                      <input
+                        className="form-control required "
+                        id="floatingCoach"
+                        type="text"
+                        name="text"
+                        value={user.coach.value}
+                        placeholder="coach"
+                        onChange={handleInputChange}
+                      />
+                      <label for="floatingCoach" className="ms-2">coach</label>
+                    </div>
+                    <div className="form-floating col-6">
+                      <input
+                        className="form-control   required"
+                        id="floatingDomaine"
+                        placeholder="domaine"
+                        type="text"
+                        name="text"
+                        value={user.domaine.value}
+                        onChange={handleInputChange}
+                      />
+                      <label for="floatingDomaine" className="ms-2">domaine</label>
+                    </div>
+                  </div>
+                  <div className="mt-3 float-end">
+                      < ButtonReutilisable text={"Enregistrer"}   onClick={handleSimulatedSubmit} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AddEleveForm;
