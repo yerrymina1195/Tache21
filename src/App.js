@@ -24,16 +24,17 @@ import ForgetPassword from "./pages/pageConnexion/ForgetPassword";
 import Layout from "./MainLayout/Layout";
 import Prof from "./pages/ListProfs/Prof";
 import Parametre from "./pages/parametres/Parametre";
-// import DashbordEleve from "./pages/DashboardEleve/DashboardEleve";
+import DashbordCoach from "./pages/DashboardCoach/DashboardCoach";
+import DashbordEleve from "./pages/DashboardEleve/DashboardEleve";
 // import DashboardCoach from "./pages/DashboardCoach/DashboardCoach";
 
 
 const App = () => {
-
+const user = {statut:"eleve"}
 
   return (
     
-
+    
       <BrowserRouter>
  
 
@@ -45,7 +46,7 @@ const App = () => {
                 <Route path="/l" element={<Layout/>} >
               
                 
-                <Route path="/l/dashboard" element={<Dashbord />} />
+                <Route path="/l/dashboard" element={user.statut ==='admin'?<Dashbord />:user.statut ==='coach'?<DashbordCoach/>:user.statut ==='eleve'?<DashbordEleve/>:""} />
                 
 
                 {/* Pages */}
