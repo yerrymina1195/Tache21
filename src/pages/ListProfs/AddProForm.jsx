@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { initialUsers } from './userList';
+import { initialUsers } from "./userList";
 import ButtonReutilisable from "../../components/ButtonReutilisable";
-
-
 
 const AddProfForm = (props) => {
   const initialFormState = {
@@ -17,42 +15,45 @@ const AddProfForm = (props) => {
   const [users, setUsers] = useState(initialUsers);
 
   const handleInputChange = () => {
-    
     const handleInputChange = (event) => {
       const { name, value } = event.target;
       setUser({ ...user, [name]: value });
     };
-    
   };
 
   const handleSimulatedSubmit = (event) => {
-    const data=
-    setUser({
-      ...users, [event.target.name]: event.target.value
-    })
+    const data = setUser({
+      ...users,
+      [event.target.name]: event.target.value,
+    });
 
-
-   console.log(data);
+    console.log(data);
   };
-  
-  return (
-    <section >
-      <div className="d-flex">
-        <h1>liste des Professeurs</h1>
-        <div
-            className="mx-auto me-5"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModale"
-          >
-            <ButtonReutilisable text={"Ajouter un Professeur"}/>
-  
-        </div>
-      </div>
-          <input className="form-control  w-25 float-end" type="search" placeholder="recherche" aria-label="Search"></input>
 
+  return (
+    <section>
+      <h1 className="listProf text-center mb-5">Liste des Profs</h1>
+      <div className="d-block d-sm-flex">
+        <div
+          className="ajoutProf"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModale"
+        >
+          <ButtonReutilisable
+            text={"Ajouter un Prof"}
+            className="bg-dark w-100"
+          />
+        </div>
+        <input
+          className="form-control me-2 input mx-auto float-md-end search"
+          type="search"
+          placeholder="recherche"
+          aria-label="Search"
+        ></input>
+      </div>
       <div
         className="modal fade mt-[100px] "
-        id="exampleModal"
+        id="exampleModale"
         tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -61,7 +62,7 @@ const AddProfForm = (props) => {
           <div className="modal-content ">
             <div className="modal-header ">
               <h1 className="modal-title fs-5 " id="exampleModalLabel">
-                Ajouter un Professeur
+                Ajouter un Prof
               </h1>
               <button
                 type="button"
@@ -99,7 +100,9 @@ const AddProfForm = (props) => {
                         placeholder="nom"
                         onChange={handleInputChange}
                       />
-                      <label for="floatingName" className="ms-2">nom</label>
+                      <label for="floatingName" className="ms-2">
+                        nom
+                      </label>
                     </div>
                     <div className="form-floating col-6">
                       <input
@@ -111,7 +114,9 @@ const AddProfForm = (props) => {
                         value={user.prenom.value}
                         onChange={handleInputChange}
                       />
-                      <label for="floatingPrenom" className="ms-2">prenom</label>
+                      <label for="floatingPrenom" className="ms-2">
+                        prenom
+                      </label>
                     </div>
                   </div>
 
@@ -126,7 +131,9 @@ const AddProfForm = (props) => {
                         placeholder="tel"
                         onChange={handleInputChange}
                       />
-                      <label for="floatingTel" className="ms-2">tel</label>
+                      <label for="floatingTel" className="ms-2">
+                        tel
+                      </label>
                     </div>
                     <div className="form-floating col-6">
                       <input
@@ -138,12 +145,12 @@ const AddProfForm = (props) => {
                         value={user.email.value}
                         onChange={handleInputChange}
                       />
-                      <label for="floatingEmail" className="ms-2">email</label>
+                      <label for="floatingEmail" className="ms-2">
+                        email
+                      </label>
                     </div>
                   </div>
-                  <div className="row">
-                   
-                    <div className="form-floating col-6">
+                    <div className="form-floating">
                       <input
                         className="form-control   required"
                         id="floatingDomaine"
@@ -153,26 +160,19 @@ const AddProfForm = (props) => {
                         value={user.domaine.value}
                         onChange={handleInputChange}
                       />
-                      <label for="floatingDomaine" className="ms-2">domaine</label>
+                      <label for="floatingDomaine" className="ms-2">
+                        domaine
+                      </label>
                     </div>
-                    <div className="mt-3 float-end">
-                      < ButtonReutilisable text={"Enregistrer"}   onClick={handleSimulatedSubmit} />
-                  </div>
+                  
+                  <div className="mt-3 float-end">
+                    <ButtonReutilisable
+                      text={"Enregistrer"}
+                      onClick={handleSimulatedSubmit}
+                    />
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                data-bs-dismiss="modal"
-                className="text-white p-4 bg-[#C23028]"
-              >
-                Close
-              </button>
-              <button type="submit" class="bg-[#D7572B] text-white p-4">
-                enregistre
-              </button>
             </div>
           </div>
         </div>
