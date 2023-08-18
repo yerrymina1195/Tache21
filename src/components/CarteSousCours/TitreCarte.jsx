@@ -56,12 +56,13 @@ const TitreCarte = (props) => {
                     <label for="floatingInput">Entrez le titre du cours</label>
                   </div>
                   <div class="form-floating mb-3">
-                    <input
-                      type=""
+                    <textarea
                       class="form-control"
                       id="floatingInput"
                       placeholder="Nom du domaine"
-                    />
+                      cols="30"
+                      rows="50"
+                    ></textarea>
                     <label for="floatingInput">
                       Entrez la description du cours
                     </label>
