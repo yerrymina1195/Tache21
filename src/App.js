@@ -23,6 +23,8 @@ import Connexion from "./pages/pageConnexion/Connexion";
 import Layout from "./MainLayout/Layout";
 import Prof from "./pages/ListProfs/Prof";
 import Parametre from "./pages/parametres/Parametre";
+// import DashbordEleve from "./pages/DashboardEleve/DashboardEleve";
+// import DashboardCoach from "./pages/DashboardCoach/DashboardCoach";
 
 
 const App = () => {
