@@ -4,6 +4,7 @@ import { dashData, UserData } from '../../data/need';
 import { BarChart } from "../../components";
 import img from "../../data/Capture0.png";
 import makhan from "../../data/makhan.png";
+import Prof from "../ListProfs/Prof";
 
 
 const Dashbord = () => {
@@ -33,7 +34,8 @@ const Dashbord = () => {
   console.log(userData);
 
   return (
-    <div className=' mt-4 ' >
+    <div className=' mt-4'>
+      < Prof />
       <div className="flex flex-wrap justify-center ">
         <div className="flex m-3 w-full flex-wrap justify-center gap-5 items-center">
           {dashData.map((item) => (
