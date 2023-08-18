@@ -16,7 +16,7 @@ const Cours = () => {
   ];
   return (
     <div>
-      <div className="bg-white m-5 p-5 rounded-3xl domaine">
+      <div className="bg-white p-5 rounded-3xl domaine">
         <div className="container ">
           <div className="row d-flex align-items-center mt-5">
             <div className="col-md-6 col-sm-12">

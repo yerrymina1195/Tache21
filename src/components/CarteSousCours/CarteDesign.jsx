@@ -1,16 +1,16 @@
 import { React, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { cardDataDesign } from "../../data/need";
-import { BiEditAlt, BiArchive } from "react-icons/bi";
+import { BsPencilSquare, BsArchiveFill } from "react-icons/bs";
 
 const Card = ({ title, descrip, videoUrl }) => {
   return (
-    <div className="col-md-4 mb-5">
-      <div className="card border-0 shadow carteCours ">
+    <div className="domaine">
+      <div className="card mx-md-5 border-0 shadow">
         <a href={videoUrl} target="_blank" rel="noopener noreferrer">
           <iframe
             width="100%"
-            height="200"
+            height="400"
             src={videoUrl.replace("watch?v=", "embed/")}
             title="YouTube video player"
             frameBorder="0"
@@ -23,15 +23,16 @@ const Card = ({ title, descrip, videoUrl }) => {
             <h5 className="card-title">{title}</h5>
           </a>
           <p className="card-text">{descrip}</p>
-          <div className="row">
-            <div className="col d-flex align-items-center titre hover:scale-[1.1]">
-              <BiEditAlt className="text-warning fs-3" />
-              Modifier
+          <div className="row btn-domaine">
+            <div className="col-6">
+              <button type="button" class="btn ">
+                <BsPencilSquare />
+              </button>
+              <button type="button" class="btn mx-md-3">
+                <BsArchiveFill />
+              </button>
             </div>
-            <div className="col d-flex align-items-center titre hover:scale-[1.1]">
-              <BiArchive className="text-warning fs-3" />
-              Archiver
-            </div>
+            <div className="col-6"></div>
           </div>
         </div>
       </div>
@@ -50,7 +51,7 @@ const CarteSousCours = () => {
   }
 
   return (
-    <div className="container p-5">
+    <div className="container">
       {chunkedData.map((chunk, rowIndex) => (
         <div className="row" key={rowIndex}>
           {chunk.map((data, index) => (
