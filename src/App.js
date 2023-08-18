@@ -20,6 +20,7 @@ import RouteCours from "./components/RouteCours/RouteCours";
 import Certification from './pages/Certification/Certification';
 import Dashbord from "./pages/Dashboard/Dashbord";
 import Connexion from "./pages/pageConnexion/Connexion";
+import ForgetPassword from "./pages/pageConnexion/ForgetPassword";
 import Layout from "./MainLayout/Layout";
 import Prof from "./pages/ListProfs/Prof";
 import Parametre from "./pages/parametres/Parametre";
@@ -40,6 +41,7 @@ const App = () => {
               <Routes>
                 {/* dashboard  */}
                 <Route path="/" element={<Connexion/>} />
+                <Route path="/f" element={<ForgetPassword/>} />
                 <Route path="/l" element={<Layout/>} >
               
                 
