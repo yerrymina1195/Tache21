@@ -2,6 +2,8 @@ import React from "react";
 import img from "../../data/avatar.jpg";
 import { BiEditAlt, BiArchive } from "react-icons/bi";
 import { FaDeleteLeft } from "react-icons/fa6";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 const ProfTable = () => (
   <div>
@@ -440,11 +442,14 @@ const ProfTable = () => (
         </tbody>
       </table>
     </div>
-    <div className="row float-end mt-3">
-      <div className="col-4 prev rounded text-white">prev</div>
-      <div className="col-1">1</div>
-      <div className="col-4 prev rounded text-white">next</div>
-    </div>
+    <div className="mt-3 d-flex float-right">
+      <div className="px-3">
+      <MdKeyboardDoubleArrowLeft className="preve rounded px-1" /></div>
+      <span className="">1</span>
+      <div className="ps-3">
+      <MdKeyboardDoubleArrowRight className="preve rounded px-1" />
+      </div>
+      </div>
   </div>
 );
 

@@ -2,6 +2,8 @@ import React from "react";
 import img from "../../data/avatar.jpg";
 import { BiEditAlt, BiArchive } from "react-icons/bi";
 import { FaDeleteLeft } from "react-icons/fa6";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 const EleveTable = () => (
   <div>
@@ -29,15 +31,15 @@ const EleveTable = () => (
             <td>latyr</td>
             <td>Programmation</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -49,15 +51,15 @@ const EleveTable = () => (
             <td>kalika</td>
             <td>Programmation</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -69,15 +71,15 @@ const EleveTable = () => (
             <td>loum</td>
             <td>design</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -89,15 +91,15 @@ const EleveTable = () => (
             <td>mama</td>
             <td>marketing</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -109,15 +111,15 @@ const EleveTable = () => (
             <td>niang</td>
             <td>desin</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -129,15 +131,15 @@ const EleveTable = () => (
             <td>mahan</td>
             <td>Programmation</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -149,15 +151,15 @@ const EleveTable = () => (
             <td>kalika</td>
             <td>design</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -169,15 +171,15 @@ const EleveTable = () => (
             <td>rama</td>
             <td>marketing</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -189,15 +191,15 @@ const EleveTable = () => (
             <td>niang</td>
             <td>design</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -209,15 +211,15 @@ const EleveTable = () => (
             <td>mahan</td>
             <td>Programmation</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -229,15 +231,15 @@ const EleveTable = () => (
             <td>rama</td>
             <td>marketing</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -249,15 +251,15 @@ const EleveTable = () => (
             <td>mame</td>
             <td>Programmation</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -269,15 +271,15 @@ const EleveTable = () => (
             <td>rama</td>
             <td>design</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -289,15 +291,15 @@ const EleveTable = () => (
             <td>baba</td>
             <td>marketing</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -309,15 +311,15 @@ const EleveTable = () => (
             <td>loum</td>
             <td>design</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -329,15 +331,15 @@ const EleveTable = () => (
             <td>latyr</td>
             <td>Programmation</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -349,15 +351,15 @@ const EleveTable = () => (
             <td>mahan</td>
             <td>marketing</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -369,15 +371,15 @@ const EleveTable = () => (
             <td>nini</td>
             <td>design</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -389,15 +391,15 @@ const EleveTable = () => (
             <td>Rama</td>
             <td>Programmation</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -409,15 +411,15 @@ const EleveTable = () => (
             <td>rama</td>
             <td>marketing</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -429,15 +431,15 @@ const EleveTable = () => (
             <td>latyr</td>
             <td>design</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
           <tr>
@@ -449,25 +451,28 @@ const EleveTable = () => (
             <td>mame</td>
             <td>Programmation</td>
             <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
+              <td>
+                <BiEditAlt className="me-4 icons1" />
+              </td>
+              <td>
+                <BiArchive className="me-4 icons2" />
+              </td>
+              <td>
+                <FaDeleteLeft className="icons3" />
+              </td>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div className="row float-end mt-3">
-      <div className="col-4 prev rounded text-white">prev</div>
-      <div className="col-1">1</div>
-      <div className="col-4 prev rounded text-white">next</div>
-    </div>
+    <div className="mt-3 d-flex float-right">
+      <div className="px-3">
+      <MdKeyboardDoubleArrowLeft className="preve rounded px-1" /></div>
+      <span className="">1</span>
+      <div className="ps-3">
+      <MdKeyboardDoubleArrowRight className="preve rounded px-1" />
+      </div>
+      </div>
   </div>
 );
 
