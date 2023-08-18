@@ -170,6 +170,13 @@ export const dashDataCoach = [
     iconColor: "rgb(255, 244, 229)",
     iconBg: "rgb(254, 201, 15)",
   },
+  {
+    icon: <LiaBookSolid />,
+    amount: "300",
+    title: "Cours",
+    iconColor: "rgb(228, 106, 118)",
+    iconBg: "rgb(255, 244, 229)",
+  },
 ];
 export const dashDataEleves = [
  
@@ -186,6 +193,13 @@ export const dashDataEleves = [
     title: "livraisons",
     iconColor: "rgb(0, 194, 146)",
     iconBg: "rgb(235, 250, 242)",
+  },
+  {
+    icon: <GiTeacher />,
+    amount: "50",
+    title: "Taches",
+    iconColor: "#03C9D7",
+    iconBg: "#E5FAFB",
   },
 ];
 export const UserData = [
