@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const CerticationTache = (props) => {
 
     return (
-        <div className='container md:m-10 mt-24 p-5 md:p-10'>
+        <div className='container md:m-10 mt-24 dark:text-gray-400 p-5 md:p-10'>
             <div className="text-center d-flex justify-content-center align-items-center m-3">
                 <h1 className='text-couleur2 text-center fw-bol'>Certification en  {props.domaine}</h1>
             </div>
