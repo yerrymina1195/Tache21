@@ -22,6 +22,7 @@ import Dashbord from "./pages/Dashboard/Dashbord";
 import Connexion from "./pages/pageConnexion/Connexion";
 import Layout from "./MainLayout/Layout";
 import Prof from "./pages/ListProfs/Prof";
+import Parametre from "./pages/parametres/Parametre";
 
 
 const App = () => {
@@ -59,6 +60,7 @@ const App = () => {
                 <Route path="/l/quiz" element={<Quiz />} />
                 <Route path="/l/eleves" element={<Eleves />} />
                 <Route path="/l/professeurs" element={< Prof/>} />
+                <Route path="/l/parametres" element={< Parametre/>} />
                 <Route path="/l/certification" element={(<Certification />)} />
                 </Route>
               </Routes>

@@ -50,6 +50,11 @@ export const links = [
         icon: <PiStudentLight />,
         link: "l/professeurs",
       },
+      {
+        name: "Parametres",
+        icon: <PiStudentLight />,
+        link: "l/parametres",
+      },
       // {
       //   name: 'page5',
       //   icon: <RiContactsLine />,
@@ -135,6 +140,39 @@ export const dashData = [
     iconColor: "rgb(255, 244, 229)",
     iconBg: "rgb(254, 201, 15)",
   },
+  {
+    icon: <LiaBookSolid />,
+    amount: "300",
+    title: "Cours",
+    iconColor: "rgb(228, 106, 118)",
+    iconBg: "rgb(255, 244, 229)",
+  },
+  {
+    icon: <AiOutlineDeliveredProcedure />,
+    amount: "300",
+    title: "livraisons",
+    iconColor: "rgb(0, 194, 146)",
+    iconBg: "rgb(235, 250, 242)",
+  },
+];
+export const dashDataCoach = [
+  {
+    icon: <GiTeacher />,
+    amount: "50",
+    title: "Coach",
+    iconColor: "#03C9D7",
+    iconBg: "#E5FAFB",
+  },
+  {
+    icon: <PiStudentLight />,
+    amount: "4000",
+    title: "eleves",
+    iconColor: "rgb(255, 244, 229)",
+    iconBg: "rgb(254, 201, 15)",
+  },
+];
+export const dashDataEleves = [
+ 
   {
     icon: <LiaBookSolid />,
     amount: "300",

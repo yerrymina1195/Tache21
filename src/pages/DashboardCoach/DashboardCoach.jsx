@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import './Dashboard.css';
-import { dashData, UserData } from '../../data/need';
+// import './Dashboard.css';
+import { dashDataCoach, UserData } from '../../data/need';
 import { BarChart } from "../../components";
 import img from "../../data/Capture0.png";
 import makhan from "../../data/makhan.png";
-import FormInscrip from './FormInscrip';
 
 
-
-const Dashbord = () => {
+const DashbordCoach = () => {
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.year),
     datasets: [
@@ -19,8 +17,6 @@ const Dashbord = () => {
           "rgba(75,192,192,1)",
           "#ecf0f1",
           "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
         ],
       },
       {
@@ -38,7 +34,7 @@ const Dashbord = () => {
     <div className=' mt-4 ' >
       <div className="flex flex-wrap justify-center ">
         <div className="flex m-3 w-full flex-wrap justify-center gap-5 items-center">
-          {dashData.map((item) => (
+          {dashDataCoach.map((item) => (
             <div
               key={item.title}
               className="bg-white justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl "
@@ -57,14 +53,14 @@ const Dashbord = () => {
             </div>
           ))}
 
-          
+         
         </div>
-        <div className="container">
-          <FormInscrip/>
-        </div>
-        </div>
+        <div className='py-20 flex justify-center w-full flex-1 basis-[100px]'>
+            <BarChart chartData={userData} />
+          </div>
+      </div>
     </div>
   );
 };
 
-export default Dashbord;
+export default DashbordCoach;
