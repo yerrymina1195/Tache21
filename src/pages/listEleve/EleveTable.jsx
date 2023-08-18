@@ -11,7 +11,7 @@ const EleveTable = () => (
             <th scope="col">Prenom</th>
             <th scope="col">Nom</th>
             <th scope="col">Tel</th>
-            <th scope="col text-center">Email</th>
+            <th scope="col">Email</th>
             <th scope="col">Coach</th>
             <th scope="col">Domaine</th>
           </tr>
@@ -24,7 +24,7 @@ const EleveTable = () => (
             <td>776226593</td>
             <td>ramafall@gmail.com</td>
             <td>latyr</td>
-            <td>Proggramation</td>
+            <td>Programmation</td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -33,7 +33,7 @@ const EleveTable = () => (
             <td>77878655</td>
             <td>mama@gmail.com</td>
             <td>kalika</td>
-            <td>Proggramation</td>
+            <td>Programmation</td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -69,7 +69,7 @@ const EleveTable = () => (
             <td>786543208</td>
             <td>fall@gmail.com</td>
             <td>mahan</td>
-            <td>Proggramation</td>
+            <td>Programmation</td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -105,7 +105,7 @@ const EleveTable = () => (
             <td>776543234</td>
             <td>loum@gmail.com</td>
             <td>mahan</td>
-            <td>Proggramation</td>
+            <td>Programmation</td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -123,7 +123,7 @@ const EleveTable = () => (
             <td>765432123</td>
             <td>absa@gmail.com</td>
             <td>mame</td>
-            <td>Proggramation</td>
+            <td>Programmation</td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -159,7 +159,7 @@ const EleveTable = () => (
             <td>765439807</td>
             <td>awa@gmail.com</td>
             <td>latyr</td>
-            <td>Proggramation</td>
+            <td>Programmation</td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -186,7 +186,7 @@ const EleveTable = () => (
             <td>776540903</td>
             <td>laye@gmail.com</td>
             <td>Rama</td>
-            <td>Proggramation</td>
+            <td>Programmation</td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -213,14 +213,14 @@ const EleveTable = () => (
             <td>765430987</td>
             <td>yacine@gmail.com</td>
             <td>mame</td>
-            <td>Proggramation</td>
+            <td>Programmation</td>
           </tr>
         </tbody>
       </table>
     </div>
     <div className="row float-end mt-3">
       <div className="col-4 prev rounded text-white">prev</div>
-      <div className="col-4 pt-3 ms">1</div>
+      <div className="col-1">1</div>
       <div className="col-4 prev rounded text-white">next</div>
     </div>
   </div>
