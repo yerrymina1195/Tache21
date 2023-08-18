@@ -35,8 +35,7 @@ const Cours = () => {
                 data-bs-keyboard="false"
                 tabindex="-1"
                 aria-labelledby="staticBackdropLabel"
-                aria-hidden="true"
-              >
+                aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered">
                   <div className="modal-content">
                     <div className="modal-header">
