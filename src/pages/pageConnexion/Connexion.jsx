@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import "./Ma.css";
 import InputLabel from "../pageConnexion/InputLabel";
 import MaButton from "../pageConnexion/MaButton";
+import { Link } from "react-router-dom";
 
 const Connexion = () => {
   return (
@@ -43,14 +44,16 @@ const Connexion = () => {
               <InputLabel label={'Mot de passe'} type={'password'} placeholder={'........'} />
             </div>
           <div className="row">
+            <Link to={`/l/dashboard`}>
           <MaButton type={'button'} text={"Se connecter"}/>
+          </Link>
           </div>
             <div className="row mt-4">
               <div className="col-md-6"></div>
               <div className="col-md-6 text-end">
-                <a href="../pageConnexion/ForgetPassword" className="">
+                <Link to={`/f`} className="">
                   Mot de passe oublié?
-                </a>
+                </Link>
               </div>
             </div>
           </form>
