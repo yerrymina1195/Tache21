@@ -4,7 +4,7 @@ import LabelInput from './LabelInput';
 import ButtonReutilisable from '../../components/ButtonReutilisable';
 
 const Parametre = () => {
-    
+
     return (
         <div>
             <div class="container-xl px-4 mt-4">
@@ -13,9 +13,8 @@ const Parametre = () => {
                         <div class="card">
                             <div class="card-header mb-3 text-white">Modifier vos informations personnelles</div>
                             <div class="row gx-3">
-
                                 <div className="col-md-6 p-4">
-                                    <div class="small font-italic text-muted mb-4">Pas plus de 5 MB sous format JPG / PNG </div>
+                                    <div class="small font-italic text-muted mb-4">Choisir une image pas plus de 5 MB sous format JPG / PNG </div>
                                     <LabelInput id="photoProfil"  type="file" />
                                 </div>
                                 <div className="col-md-6 d-flex justify-content-md-end align-items-lg-end justify-content-sm-start align-items-sm-start">
