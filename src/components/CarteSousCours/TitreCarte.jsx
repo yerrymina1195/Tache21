@@ -27,7 +27,7 @@ const TitreCarte = (props) => {
               <div className="modal-content">
                 <div className="modal-header">
                   <h1 className="modal-title fs-5" id="staticBackdropLabel">
-                    Ajout de domaine
+                    Ajouter de un cours
                   </h1>
                   <button
                     type="button"
@@ -39,12 +39,12 @@ const TitreCarte = (props) => {
                 <div className="modal-body">
                   <div class="form-floating mb-3">
                     <input
-                      type="text"
+                      type="url"
                       class="form-control"
                       id="floatingInput"
                       placeholder="Nom du domaine"
                     />
-                    <label for="floatingInput">Nom du domaine</label>
+                    <label for="floatingInput">Entrez l'url du cours</label>
                   </div>
                   <div class="form-floating mb-3">
                     <input
@@ -53,25 +53,18 @@ const TitreCarte = (props) => {
                       id="floatingInput"
                       placeholder="Nom du domaine"
                     />
-                    <label for="floatingInput">Nom du domaine</label>
+                    <label for="floatingInput">Entrez le titre du cours</label>
                   </div>
                   <div class="form-floating mb-3">
                     <input
-                      type="text"
+                      type=""
                       class="form-control"
                       id="floatingInput"
                       placeholder="Nom du domaine"
                     />
-                    <label for="floatingInput">Nom du domaine</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="floatingInput"
-                      placeholder="Nom du domaine"
-                    />
-                    <label for="floatingInput">Nom du domaine</label>
+                    <label for="floatingInput">
+                      Entrez la description du cours
+                    </label>
                   </div>
                 </div>
                 <div className="modal-footer">
