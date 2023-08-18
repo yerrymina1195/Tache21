@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { initialUsers } from './userList';
-import EleveTable from "./ProfTable";
-import AddEleveForm from "./AddEleveForm";
+import ProfTable from "./ProfTable";
+import AddProfForm from "./AddProForm";
 import "./Prof.css"
+import "bootstrap/dist/js/bootstrap.min.js"
 
 const Prof = () => {
   
@@ -16,7 +17,7 @@ const Prof = () => {
 
 
   return (
-    <div className="  bg-white m-5 mt-3 p-5 rounded-3xl">
+    <div className="  bg-white mt-3 eleve rounded-3xl">
       <div className="container">
         <div className="flex-row">
           <div className="flex-large">
@@ -24,7 +25,7 @@ const Prof = () => {
           </div>
          
           <div className="flex-large">
-            <PofTable users={users} />
+            <ProfTable users={users} />
           </div>
         </div>
       </div>
@@ -33,4 +34,3 @@ const Prof = () => {
 };
 
 export default Prof
-

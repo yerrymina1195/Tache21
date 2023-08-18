@@ -10,6 +10,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase/Firebase"
 import { AuthContext } from "../../contexts/AuthContext"
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Connexion = () => {
   const [error, setError] = useState(false);
@@ -75,14 +76,16 @@ const Connexion = () => {
                 <InputLabel label={'Mot de passe'} type={'password'} placeholder={'........'} onChange={(e) => setPassword(e.target.value)} />
               </div>
               <div className="row">
+              <Link to={'/l/dashboard'}>
                 <MaButton type={'button'} text={"Se connecter"} />
+                </Link>
               </div>
               <div className="row mt-4">
                 <div className="col-md-6"></div>
                 <div className="col-md-6 text-end">
-                  <a href="../pageConnexion/ForgetPassword" className="text-decoration-none">
+                  <Link to={'/f'} className="text-decoration-none">
                     Mot de passe oublié?
-                  </a>
+                  </Link>
                 </div>
               </div>
             </form>

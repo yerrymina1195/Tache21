@@ -5,5 +5,19 @@
   }
   .prev{
     background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
-    padding: 10px;
+  text-align: middle !important;
   }
+
+  .input{
+    width: 30%;
+  }
+ @media screen and (max-width: 576px) {
+  .ajoutEleve{
+    justify-content: right;
+    display: flex;
+  }
+  .input{
+    margin-top: 15px;
+  }
+ }
+  
