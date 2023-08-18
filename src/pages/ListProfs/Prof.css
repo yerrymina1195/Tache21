@@ -1,8 +1,45 @@
-/* partie eleve */
+/* partie Prof */
 .img{
     width: 55px;
     border-radius: 50%;
   }
   .prev{
-    background-color: #C23028;
+    background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+  text-align: middle !important;
+  }/* partie Prof */
+.img{
+  width: 55px;
+  border-radius: 50%;
+}
+.prev{
+  background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+text-align: middle !important;
+}
+
+.input{
+  width: 30%;
+}
+@media screen and (max-width: 576px) {
+.ajoutProf{
+  justify-content: right;
+  display: flex;
+}
+.input{
+  margin-top: 15px;
+}
+}
+
+
+  .input{
+    width: 30%;
   }
+ @media screen and (max-width: 576px) {
+  .ajoutProf{
+    justify-content: right;
+    display: flex;
+  }
+  .input{
+    margin-top: 15px;
+  }
+ }
+  

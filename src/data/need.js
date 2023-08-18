@@ -45,6 +45,11 @@ export const links = [
         icon: <PiStudentLight />,
         link: "l/eleves",
       },
+      {
+        name: "Professeurs",
+        icon: <PiStudentLight />,
+        link: "l/professeurs",
+      },
       // {
       //   name: 'page5',
       //   icon: <RiContactsLine />,
