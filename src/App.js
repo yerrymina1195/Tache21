@@ -19,6 +19,7 @@ import RouteCours from "./components/RouteCours/RouteCours";
 import Layout from "./MainLayout/Layout";
 import Connexion from "./pages/pageConnexion/Connexion";
 import ForgetPassword from "./pages/pageConnexion/ForgetPassword";
+import Parametre from "./pages/parametres/Parametre";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/l/quiz" element={<Quiz />} />
 
           <Route path="/l/eleves" element={<Eleves />} />
+          <Route path="/l/parametres" element={<Parametre />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -136,6 +136,6 @@ td{
 /* MAMA DASHBOARD */
 .cartema{
   border-top: 4px solid blue !important;
-  border-image: linear-gradient(100deg, hsl(37, 97%, 70%),hsl(329, 70%, 58%)) !important; 
+  border-image: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%) !important; 
   border-image-slice: 1 !important;
 }

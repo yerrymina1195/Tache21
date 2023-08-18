@@ -109,6 +109,11 @@ export const links = [
         icon: <PiStudentLight />,
         link:"l/eleves"
       },
+      {
+        name: "Parametres",
+        icon: <PiStudentLight />,
+        link:"l/parametres"
+      },
       // {
       //   name: 'page5',
       //   icon: <RiContactsLine />,

@@ -1,6 +1,7 @@
 import React from "react";
 import Domaine from "../components/cardDomaines/Domaine";
 import ButtonReutilisable from "../components/ButtonReutilisable";
+import Parametre from "./parametres/Parametre";
 
 
 const Cours = () => {
@@ -84,6 +85,7 @@ const Cours = () => {
     <div className="ps-5">
 </div>
     </div>
+
   );
 };
 
