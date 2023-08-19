@@ -1,5 +1,7 @@
 import React from "react";
 import img from "../../data/avatar.jpg";
+import { BiEditAlt, BiArchive } from "react-icons/bi";
+import { FaDeleteLeft } from "react-icons/fa6";
 
 const EleveTable = () => (
   <div>
@@ -14,6 +16,7 @@ const EleveTable = () => (
             <th scope="col">Email</th>
             <th scope="col">Coach</th>
             <th scope="col">Domaine</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -25,6 +28,17 @@ const EleveTable = () => (
             <td>ramafall@gmail.com</td>
             <td>latyr</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -34,6 +48,17 @@ const EleveTable = () => (
             <td>mama@gmail.com</td>
             <td>kalika</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -43,6 +68,17 @@ const EleveTable = () => (
             <td>latyr@gmail.com</td>
             <td>loum</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -52,6 +88,17 @@ const EleveTable = () => (
             <td>niang@gmail.com</td>
             <td>mama</td>
             <td>marketing</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -61,6 +108,17 @@ const EleveTable = () => (
             <td>diaho@gmail.com</td>
             <td>niang</td>
             <td>desin</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -70,6 +128,17 @@ const EleveTable = () => (
             <td>fall@gmail.com</td>
             <td>mahan</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -79,6 +148,17 @@ const EleveTable = () => (
             <td>baba@gmail.com</td>
             <td>kalika</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -88,6 +168,17 @@ const EleveTable = () => (
             <td>astou@gmail.com</td>
             <td>rama</td>
             <td>marketing</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -97,6 +188,17 @@ const EleveTable = () => (
             <td>abou@gmail.com</td>
             <td>niang</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -106,6 +208,17 @@ const EleveTable = () => (
             <td>loum@gmail.com</td>
             <td>mahan</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -115,6 +228,17 @@ const EleveTable = () => (
             <td>faby@gmail.com</td>
             <td>rama</td>
             <td>marketing</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -124,6 +248,17 @@ const EleveTable = () => (
             <td>absa@gmail.com</td>
             <td>mame</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -133,6 +268,17 @@ const EleveTable = () => (
             <td>abib@gmail.com</td>
             <td>rama</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -142,6 +288,17 @@ const EleveTable = () => (
             <td>fama@gmail.com</td>
             <td>baba</td>
             <td>marketing</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -151,6 +308,17 @@ const EleveTable = () => (
             <td>samba@gmail.com</td>
             <td>loum</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -160,6 +328,17 @@ const EleveTable = () => (
             <td>awa@gmail.com</td>
             <td>latyr</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -169,6 +348,17 @@ const EleveTable = () => (
             <td>nini@gmail.com</td>
             <td>mahan</td>
             <td>marketing</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -178,6 +368,17 @@ const EleveTable = () => (
             <td>mass@gmail.com</td>
             <td>nini</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -187,6 +388,17 @@ const EleveTable = () => (
             <td>laye@gmail.com</td>
             <td>Rama</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -196,6 +408,17 @@ const EleveTable = () => (
             <td>dia@gmail.com</td>
             <td>rama</td>
             <td>marketing</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -205,6 +428,17 @@ const EleveTable = () => (
             <td>badara@gmail.com</td>
             <td>latyr</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -214,6 +448,17 @@ const EleveTable = () => (
             <td>yacine@gmail.com</td>
             <td>mame</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
         </tbody>
       </table>

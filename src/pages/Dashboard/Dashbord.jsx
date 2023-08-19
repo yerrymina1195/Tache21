@@ -35,7 +35,7 @@ const Dashbord = () => {
   console.log(userData);
 
   return (
-    <div className=' mt-4 ' >
+    <div className=' mt-4'>
       <div className="flex flex-wrap justify-center ">
         <div className="flex m-3 w-full flex-wrap justify-center gap-5 items-center">
           {dashData.map((item) => (
