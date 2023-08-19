@@ -18,10 +18,8 @@ const Marketing = () => {
     },
   ];
   return (
-    <div>
-      <h1 className="fs-1 text-center my-5 text-black">
-        contenue de la partie Marketing
-      </h1>
+    <div className="bg-white m-5 p-5 rounded-3xl domaine">
+
       <div className="container">
         <div className="row row-gap-5">
           {sousdomaines.map((sousdomaine) => (

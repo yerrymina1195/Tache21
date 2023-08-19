@@ -15,6 +15,7 @@ const Sousdomaine = (props) => {
           />
           <div class="card-body">
             <h5 class="card-title fw-medium">{props.title}</h5>
+            <p>Veilliez faire le quizz qui se trouve a la fin de ce cours</p>
           </div>
         </Link>
         <div className="pb-3">
