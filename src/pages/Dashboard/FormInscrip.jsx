@@ -11,9 +11,9 @@ const FormInscrip = () => {
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="card">
-                            <div class="card-header mb-3 text-white">Ajouter un coach ou un eleve</div>
+                            <div class="card-header  dark:bg-secondary-dark-bg text-white dark:text-gray-200">Ajouter un coach ou un eleve</div>
 
-                            <div class="card-body">
+                            <div class="card-body bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
                                 <form>
                                     <div class="row gx-3 mb-3">
                                         <div class="col-md-6">

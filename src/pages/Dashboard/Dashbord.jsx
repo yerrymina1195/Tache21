@@ -41,7 +41,7 @@ const Dashbord = () => {
           {dashData.map((item) => (
             <div
               key={item.title}
-              className="bg-white justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl "
+              className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl "
             >
               <button
                 type="button"
