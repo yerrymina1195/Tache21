@@ -4,7 +4,7 @@ import TitreCarte from "../../components/CarteSousCours/TitreCarte";
 
 const CoursMarketing1 = () => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 py-3 dark:bg-secondary-dark-bg dark:text-gray-200 ">
       <TitreCarte titreCours={"INITIATION"} />
       <CarteMarketing />
     </div>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const CoursPro1 = () => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 py-3 bg-[#ffff]  dark:bg-secondary-dark-bg   dark:text-gray-200">
       <TitreCarte titreCours={"HTML5 / CSS3"} />
       <CartePro />
       <div className="text-center w-50 mx-auto mb-5">

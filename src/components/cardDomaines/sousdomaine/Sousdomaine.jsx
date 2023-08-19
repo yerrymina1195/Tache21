@@ -5,15 +5,15 @@ import "./Sousdomaine.css";
 
 const Sousdomaine = (props) => {
   return (
-    <div>
-      <div class="card border-0">
+    <div className="">
+      <div class="card bg-[#ffff]  dark:bg-main-dark-bg dark:drop-shadow-[0_8px_0px_rgba(255,255,255,0.25)]  text-[#ffff] dark:text-gray-200 border-0">
         <Link to={props.links} className="text-decoration-none text-black" >
           <img
             src={props.img}
             class="card-img-top img-fluid"
             alt={props.title}
           />
-          <div class="card-body">
+          <div class="card-body text-[#000] border-t-2 dark:text-gray-200">
             <h5 class="card-title fw-medium">{props.title}</h5>
             <p>Veilliez faire le quizz qui se trouve a la fin de ce cours</p>
           </div>

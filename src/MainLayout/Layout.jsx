@@ -61,7 +61,7 @@ const Layout= () => {
                 : "bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 "
             }
           >
-            <div className="fixed md:static sticky-top shadow-sm bg-main-bg dark:bg-main-dark-bg navbar w-full ">
+            <div className="fixed md:static sticky-top shadow-sm bg-main-bg dark:drop-shadow-[0_15px_15px_rgba(255,255,255,0.25)] dark:bg-main-dark-bg navbar w-full ">
               <Navbar />
             </div>
             <div className="pt-3 pb-5">

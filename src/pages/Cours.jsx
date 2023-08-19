@@ -16,7 +16,7 @@ const Cours = () => {
   ];
   return (
     <div>
-      <div className="bg-white p-5 rounded-3xl domaine">
+      <div className="bg-[#ffff] dark:bg-secondary-dark-bg text-[#000] dark:text-gray-200 p-5 rounded-3xl domaine">
         <div className="container ">
           <div className="row d-flex align-items-center mt-5">
             <div className="col-md-6 col-sm-12">
@@ -69,10 +69,10 @@ const Cours = () => {
             </div>
           </div>
         </div>
-        <div className="container my-5">
+        <div className="container my-5 bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
           <div className="row row-gap-3">
             {domains.map((domain) => (
-              <div className="col-lg-4 col-md-6 col-sm-12">
+              <div className="col-lg-4 col-md-6 col-sm-12 ">
                 <Domaine title={domain.title} />
               </div>
             ))}

@@ -6,7 +6,7 @@ import { FaDeleteLeft } from "react-icons/fa6";
 const EleveTable = () => (
   <div>
     <div className="table-responsive mt-5">
-      <table class="table table-hover ms-3">
+      <table class="table table-hover bg-white ms-3">
         <thead>
           <tr className="mb-3">
             <th scope="col">Photo</th>
