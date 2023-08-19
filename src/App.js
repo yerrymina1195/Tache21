@@ -30,7 +30,7 @@ import DashbordEleve from "./pages/DashboardEleve/DashboardEleve";
 
 
 const App = () => {
-const user = {statut:"eleve"}
+const user = {statut:"admin"}
 
   return (
     
