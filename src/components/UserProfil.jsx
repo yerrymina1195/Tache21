@@ -6,17 +6,17 @@ import { useStateContext } from '../contexts/ContextProvider';
 import makhan from '../data/makhan.png';
 import { auth } from "../Firebase/Firebase"
 import { signOut } from "firebase/auth";
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const UserProfil = () => {
   const { currentColor } = useStateContext();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
         // Déconnexion réussie
-        // navigate("/login")
+        navigate("/")
         console.log('Signed out successfully');
       })
       .catch((error) => {
