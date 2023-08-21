@@ -1,4 +1,8 @@
 /* partie eleve */
+tr{
+  vertical-align: middle;
+}
+
 .img{
     width: 55px;
     border-radius: 50%;
@@ -11,6 +15,19 @@
   .input{
     width: 30%;
   }
+
+  .icons1{
+  color: #F6B339 ;
+  }
+  .icons2{
+    color: #D7572B;
+  }
+  .icons3{
+    color:  #C23028;
+  }
+
+
+
  @media screen and (max-width: 576px) {
   .ajoutEleve{
     justify-content: right;
@@ -20,4 +37,6 @@
     margin-top: 15px;
   }
  }
+
+
   

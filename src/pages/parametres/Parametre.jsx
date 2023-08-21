@@ -15,15 +15,15 @@ const Parametre = () => {
     };
     return (
         <div>
-            <div class="container-xl px-4 mt-4">
+            <div class="container-xl px-4 mt-4 ">
                 <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card">
+                    <div class="col-xl-12 ">
+                        <div class="card bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
                             <div class="card-header mb-3 text-white">Modifier vos informations personnelles</div>
                             <div class="row gx-3">
                                 <div className="col-md-6 p-4">
                                 <div className="col-md-6 p-4">
-      <div className="small font-italic text-muted mb-4">
+      <div className="small font-italic dark:text-gray-200 mb-4">
         Choisir une image pas plus de 5 MB sous format JPG / PNG
       </div>
       <input
