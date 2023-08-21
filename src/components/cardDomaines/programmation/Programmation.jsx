@@ -42,14 +42,11 @@ const Programmation = () => {
   ];
 
   return (
-    <div>
-      <h1 className="fs-1 text-center my-5 text-black">
-        contenue de la partie programmation
-      </h1>
+    <div className="bg-[#ffff]  dark:bg-secondary-dark-bg   text-[#ffff] dark:text-gray-200 m-5 p-5 rounded-3xl domaine">
       <div className="container">
         <div className="row row-gap-5">
           {sousdomaines.map((sousdomaine) => (
-            <div className="col-lg-4 col-md-6 col-sm-12">
+            <div className="col-lg-4 col-md-6 col-sm-12 b">
                 <Sousdomaine
                   links={`${sousdomaine.title}`}
                   img={sousdomaine.image}
