@@ -12,7 +12,7 @@ import {
 } from "firebase/firestore";
 import { auth, db } from "../../Firebase/Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const FormInscrip = () => {
     // const navigate = useNavigate()
@@ -25,7 +25,7 @@ const FormInscrip = () => {
         address: "",
         statut: "",
         domaine: ""
-      });
+    });
     const [data, setData] = useState({
         prenom: "",
         nom: "",
@@ -39,11 +39,11 @@ const FormInscrip = () => {
     console.log(errors);
     // Gérer les erreuers 
     const validateEmail = (email) => {
-   
+
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
-      };
-    
+    };
+
     const { prenom, nom, email, telephone, mdp, address, statut, domaine } = data
 
     const handelchange = (e) => {
@@ -55,52 +55,52 @@ const FormInscrip = () => {
 
         let newErrors = {
             prenom: "",
-        nom: "",
-        email: "",
-        telephone: "",
-        mdp: "",
-        address: "",
-        statut: "",
-        domaine: ""
-          };
-      
-          if (data.email === '') {
-            newErrors.email = 'Email is required';
-          } else if (!validateEmail(data.email)) {
-            newErrors.email = 'Invalid email format';
-          }
-      
-          if (data.mdp === '') {
-            newErrors.mdp = 'Password is required';
-          
-          }
-      
-          if (data.telephone === '') {
-            newErrors.telephone = 'Téléphone number is required';
-          }
-      
-          if (data.nom === '') {
-            newErrors.nom = 'Nom is required';
-          }
-          if (data.prenom === '') {
-            newErrors.prenom = 'Prénom is required';
-          }
-          if (data.address === '') {
-            newErrors.address = 'Address is required';
-          }
-          if (data.statut === '') {
-            newErrors.statut = 'Statut is required';
-          }
-          if (data.domaine === '') {
-            newErrors.domaine = 'Domaine is required';
-          }
-      
-          setErrors(newErrors);
-       
-      
-        
-          if (Object.values(newErrors).every((error) => error === '')) {
-            
+            nom: "",
+            email: "",
+            telephone: "",
+            mdp: "",
+            address: "",
+            statut: "",
+            domaine: ""
+        };
+
+        if (data.email === '') {
+            newErrors.email = 'Email obligatoire';
+        } else if (!validateEmail(data.email)) {
+            newErrors.email = "Format d'email invalide";
+        }
+
+        if (data.mdp === '') {
+            newErrors.mdp = 'Mot de pass obligatoire';
+
+        }
+
+        if (data.telephone === '') {
+            newErrors.telephone = 'Téléphone obligatoire';
+        }
+
+        if (data.nom === '') {
+            newErrors.nom = 'Nom obligatoire';
+        }
+        if (data.prenom === '') {
+            newErrors.prenom = 'Prénom obligatoire';
+        }
+        if (data.address === '') {
+            newErrors.address = 'Address obligatoire';
+        }
+        if (data.statut === '') {
+            newErrors.statut = 'Statut obligatoire';
+        }
+        if (data.domaine === '') {
+            newErrors.domaine = 'Domaine obligatoire';
+        }
+
+        setErrors(newErrors);
+
+
+
+        if (Object.values(newErrors).every((error) => error === '')) {
+
             console.log('Form data submitted:', data);
             try {
                 const res = await createUserWithEmailAndPassword(
@@ -117,7 +117,7 @@ const FormInscrip = () => {
                     address: data.address,
                     statut: data.statut,
                     domaine: data.domaine,
-                    id:res.user.uid,
+                    id: res.user.uid,
                     timeStamp: serverTimestamp(),
                 });
                 // navigate(-1)
@@ -149,8 +149,8 @@ const FormInscrip = () => {
                 statut: "",
                 domaine: "",
             })
-          }
-       
+        }
+
     }
     console.log(data);
 
@@ -171,8 +171,8 @@ const FormInscrip = () => {
                                                 onChange={handelchange}
                                                 value={prenom}
 
-                                                />
-                                                <p className="text-danger">{errors.prenom}</p>
+                                            />
+                                            <p className="text-danger">{errors.prenom}</p>
                                         </div>
                                         <div class="col-md-6">
                                             <LabelInput id="inputFirstName" label="Nom" placeholder="Gadiaga" type="text"
@@ -180,8 +180,8 @@ const FormInscrip = () => {
                                                 onChange={handelchange}
                                                 value={nom}
 
-                                                />
-                                                <p className="text-danger">{errors.nom}</p>
+                                            />
+                                            <p className="text-danger">{errors.nom}</p>
                                         </div>
                                     </div>
 
@@ -192,8 +192,8 @@ const FormInscrip = () => {
                                                 onChange={handelchange}
                                                 value={email}
 
-                                                />
-                                                <p className="text-danger">{errors.email}</p>
+                                            />
+                                            <p className="text-danger">{errors.email}</p>
                                         </div>
                                         <div class="col-md-6">
                                             <LabelInput id="inputPhone" label="Numero telephone" placeholder="77 670 00 66" type="tel"
@@ -201,8 +201,8 @@ const FormInscrip = () => {
                                                 onChange={handelchange}
                                                 value={telephone}
 
-                                                 />
-                                                 <p className="text-danger">{errors.telephone}</p>
+                                            />
+                                            <p className="text-danger">{errors.telephone}</p>
                                         </div>
                                     </div>
 
@@ -213,8 +213,8 @@ const FormInscrip = () => {
                                                 onChange={handelchange}
                                                 value={mdp}
 
-                                                />
-                                                <p className="text-danger">{errors.mdp}</p>
+                                            />
+                                            <p className="text-danger">{errors.mdp}</p>
                                         </div>
                                         <div class="col-md-6">
                                             <LabelInput id="inputDomicile" label="Adresse de domicile" placeholder="Colobane Parc Amazout" type="text"
@@ -222,8 +222,8 @@ const FormInscrip = () => {
                                                 onChange={handelchange}
                                                 value={address}
 
-                                                 />
-                                                 <p className="text-danger">{errors.address}</p>
+                                            />
+                                            <p className="text-danger">{errors.address}</p>
                                         </div>
                                     </div>
                                     <div class="row gx-3 mb-3">
@@ -233,7 +233,7 @@ const FormInscrip = () => {
                                                 name="statut"
                                                 onChange={handelchange}
                                                 value={statut}
-                                                >
+                                            >
                                                 <option selected >Choisir un rôle</option>
                                                 <option value="Admin">Admin</option>
                                                 <option value="Coach">Coach</option>
@@ -247,7 +247,7 @@ const FormInscrip = () => {
                                                 name="domaine"
                                                 onChange={handelchange}
                                                 value={domaine}
-                                                >
+                                            >
                                                 <option selected >Choisir un domaine</option>
                                                 <option value="Programmation">Programmation</option>
                                                 <option value="Design">Design</option>
