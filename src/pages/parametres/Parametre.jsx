@@ -31,11 +31,12 @@ const Parametre = () => {
         type="file"
         onChange={handleImageChange}
       />
-      {imageURL && <img id="image" src={imageURL} alt="Selected" />}
+    
     </div>
                                 </div>
                                 <div className="col-md-6 d-flex justify-content-md-end align-items-lg-end justify-content-sm-start align-items-sm-start">
-                                    <img class="img-account-profile rounded-circle" src="https://img.freepik.com/vecteurs-premium/profil-personnage-dessin-anime-avatar-homme-affaires_18591-50581.jpg?w=2000" alt="Profil" />
+                                    {/* <img class="" src="https://img.freepik.com/vecteurs-premium/profil-personnage-dessin-anime-avatar-homme-affaires_18591-50581.jpg?w=2000" alt="Profil" /> */}
+                                    {imageURL && <img id="image"  className="img-account-profile rounded-circle me-4" src={imageURL} alt="Selected" />}
                                 </div>
                             </div>
                             <div class="card-body">

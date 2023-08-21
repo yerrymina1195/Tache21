@@ -464,7 +464,7 @@ const EleveTable = () => (
       </table>
     </div>
     <div className="row float-end mt-3">
-      <div className="col-4 prev rounded text-white">prev</div>
+      <div className="col-4 prev bg-danger rounded text-white">prev</div>
       <div className="col-1">1</div>
       <div className="col-4 prev rounded text-white">next</div>
     </div>
