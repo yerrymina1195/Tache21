@@ -7,6 +7,7 @@ import InputLabel from "../pageConnexion/InputLabel";
 import MaButton from "../pageConnexion/MaButton";
 
 const ForgetPassword = () => {
+  
   return (
     <div className="container-fluid p-5 back" style={{ height: "700px" }}>
     <div className="container-fluid mt-5 largeur1" style={{ width: "40%" }}>
@@ -17,11 +18,11 @@ const ForgetPassword = () => {
           </div>
         </div>
         <div className="card-body mt-5">
-          <form className="mb-5 mt-5">
-          <div className="">
+          <form className=" mb-5 mt-5">
+             <div className="">
               <InputLabel label={'Entrez votre adresse email pour recevoir un lien permettant de réinitialiser le mot de passe.'} type={'email'} placeholder={'exemple@gmail.com'} />
-            </div>
-            <div className="row mt-4">
+             </div>
+             <div className="row mt-4">
           <MaButton type={'button'} text={"ENVOYER"}/>
           </div>
           </form>

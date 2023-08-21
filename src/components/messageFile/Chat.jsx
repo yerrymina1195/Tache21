@@ -1,7 +1,6 @@
 import React from 'react'
 import {IoIosContact} from 'react-icons/io'
 import {AiOutlineEllipsis} from 'react-icons/ai'
-import {BsCameraVideoFill} from 'react-icons/bs'
 import  Messages from './Messages'
 import  Input  from '../Input'
 
@@ -14,7 +13,7 @@ const Chat = () => {
         <div className="chatIcons flex items-center justify-between px-4">
      
           <IoIosContact className='me-3 cursor-pointer text-white'  />
-          <BsCameraVideoFill className='me-3 cursor-pointer text-white'/>
+        
           <AiOutlineEllipsis className='me-3 cursor-pointer text-white'/>
           
         </div>

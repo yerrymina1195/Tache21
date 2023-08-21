@@ -35,7 +35,8 @@ const Connexion = () => {
           </div>
         </div>
         <div className="card-body mt-5">
-          <form className="mb-5 pt-5 mt-5">
+
+        <form className="mb-5 pt-5 mt-5">
           <div className="">
               <InputLabel label={'Adresse email'} type={'email'} placeholder={'exemple@gmail.com'} />
             </div>
@@ -53,7 +54,8 @@ const Connexion = () => {
                 </a>
               </div>
             </div>
-          </form>
+          </form> 
+          
         </div>
       </div>
     </div>
