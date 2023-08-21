@@ -6,8 +6,6 @@ import img from "../../data/Capture0.png";
 import makhan from "../../data/makhan.png";
 import FormInscrip from './FormInscrip';
 
-
-
 const Dashbord = () => {
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.year),

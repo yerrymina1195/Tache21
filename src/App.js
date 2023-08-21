@@ -2,9 +2,7 @@ import "./App.css";
 import React from "react";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import {
   Livraisons,
   Messagerie,
@@ -16,7 +14,6 @@ import {
 } from "./pages";
 import Quiz from "./pages/SousCours/Quiz/Quiz";
 import RouteCours from "./components/RouteCours/RouteCours";
-
 import Certification from './pages/Certification/Certification';
 import Dashbord from "./pages/Dashboard/Dashbord";
 import Connexion from "./pages/pageConnexion/Connexion";
