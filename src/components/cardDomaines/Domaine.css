@@ -12,7 +12,7 @@
 
 
 .btn-domaine button:hover {
-    scale: 1.15;
+    scale: 1.12;
 }
 
 .add-domaine {
@@ -35,9 +35,8 @@
 }
 
 .card-domaine:hover {
-    scale: 1.15;
+    scale: 1.12;
     z-index: 10;
-    background-color: #FAFBFB;
 }
 
 .card-domaine h5 {
