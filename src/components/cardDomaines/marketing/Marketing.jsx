@@ -18,7 +18,7 @@ const Marketing = () => {
     },
   ];
   return (
-    <div className="bg-white m-5 p-5 rounded-3xl domaine">
+    <div className="dark:bg-secondary-dark-bg dark:text-gray-200  m-5 p-5 rounded-3xl domaine ">
 
       <div className="container">
         <div className="row row-gap-5">

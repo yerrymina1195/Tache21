@@ -16,7 +16,6 @@ const Data = [
   {
     title: "Tâche n° 2",
     imgSrc: img2,
-
   },
   {
     title: "Tâche n° 3",

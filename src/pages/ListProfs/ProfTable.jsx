@@ -1,11 +1,13 @@
 import React from "react";
 import img from "../../data/avatar.jpg";
+import { BiEditAlt, BiArchive } from "react-icons/bi";
+import { FaDeleteLeft } from "react-icons/fa6";
 
 const ProfTable = () => (
   <div>
-    <div className="table-responsive mt-5">
-      <table class="table table-hover ms-3">
-        <thead>
+    <div className="table-responsive  mt-5">
+      <table class="table table-hover bg-white   ms-3">
+        <thead className=" ">
           <tr className="mb-3">
             <th scope="col">Photo</th>
             <th scope="col">Prenom</th>
@@ -13,6 +15,7 @@ const ProfTable = () => (
             <th scope="col">Tel</th>
             <th scope="col">Email</th>
             <th scope="col">Domaine</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +26,17 @@ const ProfTable = () => (
             <td>776226593</td>
             <td>ramafall@gmail.com</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -31,6 +45,17 @@ const ProfTable = () => (
             <td>77878655</td>
             <td>mama@gmail.com</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -39,6 +64,17 @@ const ProfTable = () => (
             <td>765439800</td>
             <td>latyr@gmail.com</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -47,6 +83,17 @@ const ProfTable = () => (
             <td>707653421</td>
             <td>niang@gmail.com</td>
             <td>marketing</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -55,6 +102,17 @@ const ProfTable = () => (
             <td>777777777</td>
             <td>diaho@gmail.com</td>
             <td>desin</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -63,6 +121,17 @@ const ProfTable = () => (
             <td>786543208</td>
             <td>fall@gmail.com</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -71,6 +140,17 @@ const ProfTable = () => (
             <td>765432123</td>
             <td>baba@gmail.com</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -79,6 +159,17 @@ const ProfTable = () => (
             <td>789654321</td>
             <td>astou@gmail.com</td>
             <td>marketing</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -87,6 +178,17 @@ const ProfTable = () => (
             <td>708976543</td>
             <td>abou@gmail.com</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -95,6 +197,17 @@ const ProfTable = () => (
             <td>776543234</td>
             <td>loum@gmail.com</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -103,6 +216,17 @@ const ProfTable = () => (
             <td>789087656</td>
             <td>faby@gmail.com</td>
             <td>marketing</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -111,6 +235,17 @@ const ProfTable = () => (
             <td>765432123</td>
             <td>absa@gmail.com</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -119,6 +254,17 @@ const ProfTable = () => (
             <td>765435678</td>
             <td>abib@gmail.com</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -127,6 +273,17 @@ const ProfTable = () => (
             <td>765432340</td>
             <td>fama@gmail.com</td>
             <td>marketing</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -135,6 +292,17 @@ const ProfTable = () => (
             <td>786540908</td>
             <td>samba@gmail.com</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -143,6 +311,17 @@ const ProfTable = () => (
             <td>765439807</td>
             <td>awa@gmail.com</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -151,6 +330,17 @@ const ProfTable = () => (
             <td>767676776</td>
             <td>nini@gmail.com</td>
             <td>marketing</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -159,6 +349,17 @@ const ProfTable = () => (
             <td>709876543</td>
             <td>mass@gmail.com</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -167,6 +368,17 @@ const ProfTable = () => (
             <td>776540903</td>
             <td>laye@gmail.com</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -175,6 +387,17 @@ const ProfTable = () => (
             <td>775432312</td>
             <td>dia@gmail.com</td>
             <td>marketing</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -183,6 +406,17 @@ const ProfTable = () => (
             <td>786545673</td>
             <td>badara@gmail.com</td>
             <td>design</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
           <tr>
             <img src={img} alt="image" className="img" />
@@ -191,6 +425,17 @@ const ProfTable = () => (
             <td>765430987</td>
             <td>yacine@gmail.com</td>
             <td>Programmation</td>
+            <td>
+            <td >
+              <BiEditAlt className="me-4 icons1" />
+            </td>
+            <td >
+              <BiArchive className="me-4 icons2" />
+            </td>
+            <td>
+              <FaDeleteLeft className="icons3" />
+            </td>
+            </td>
           </tr>
         </tbody>
       </table>

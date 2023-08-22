@@ -27,7 +27,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      console.log(window.innerWidth);
+      // console.log(window.innerWidth);
       setScreenSize(window.innerWidth)
     };
 
@@ -50,7 +50,7 @@ const Navbar = () => {
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
   return (
-    <div className="flex justify-between  p-2 md:ml-6 md:mr-6 relative w-full">
+    <div className="flex justify-between  p-2 md:ml-6 md:mr-6 relative  w-full">
 
       <NavButton title="Menu" customFunc={handleActiveMenu} color={currentColor} icon={<AiOutlineMenu />} />
 

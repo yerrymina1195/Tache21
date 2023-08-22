@@ -1,16 +1,32 @@
 import React from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
-
 import { Button } from '.';
 // import { userProfileData } from '../data/need';
 import { useStateContext } from '../contexts/ContextProvider';
 import makhan from '../data/makhan.png';
+import { auth } from "../Firebase/Firebase"
+import { signOut } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 
 const UserProfil = () => {
   const { currentColor } = useStateContext();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Déconnexion réussie
+        navigate("/")
+        console.log('Signed out successfully');
+      })
+      .catch((error) => {
+        // Gestion des erreurs
+        console.error('Error', error);
+      });
+  };
 
   return (
-    <div className="nav-item absolute right-1 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96">
+    <div className="nav-item absolute right-1 top-16 bg-[#ffff] dark:bg-[#42464D] p-8 rounded-lg w-96">
       <div className="flex justify-between items-center">
         <p className="font-semibold text-lg dark:text-gray-200">User Profile</p>
         <Button
@@ -41,6 +57,7 @@ const UserProfil = () => {
           text="Logout"
           borderRadius="10px"
           width="full"
+          onClick={handleLogout}
         />
       </div>
     </div>

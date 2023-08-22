@@ -15,11 +15,11 @@ import { Navbar, Sidebar, ThemeSetting } from "../components";
 const Layout= () => {
 
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
-  const user = {
-    status: "admin",
-    name: 'makhan'
-  }
-  console.log(user);
+  // const user = {
+  //   status: "admin",
+  //   name: 'makhan'
+  // }
+  // console.log(user);
   useEffect(() => {
     const currentThemeColor = localStorage.getItem("colorMode");
     const currentThemeMode = localStorage.getItem("themeMode");
@@ -46,7 +46,7 @@ const Layout= () => {
             </button>
           </div>
           {activeMenu ? (
-            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
+            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg ">
               <Sidebar />
             </div>
           ) : (
@@ -61,10 +61,10 @@ const Layout= () => {
                 : "bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 "
             }
           >
-            <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
+            <div className="fixed md:static sticky-top shadow-sm bg-main-bg dark:drop-shadow-[0_15px_15px_rgba(255,255,255,0.25)] dark:bg-main-dark-bg navbar w-full ">
               <Navbar />
             </div>
-            <div>
+            <div className="pt-3 pb-5">
               {themeSettings && <ThemeSetting />}
               <Outlet />
              

@@ -5,7 +5,7 @@ import { BsPencilSquare, BsArchiveFill } from "react-icons/bs";
 
 const Card = ({ title, descrip, videoUrl }) => {
   return (
-    <div className="domaine">
+    <div className="domaine dark:bg-secondary-dark-bg dark:text-gray-200 ">
       <div className="card mx-md-5 border-0 shadow ">
         <a href={videoUrl} target="_blank" rel="noopener noreferrer">
           <iframe
@@ -18,9 +18,9 @@ const Card = ({ title, descrip, videoUrl }) => {
             className="rounded-top"
           ></iframe>
         </a>
-        <div className="card-body">
+        <div className="card-body dark:bg-main-dark-bg dark:text-gray-200 dark:drop-shadow-[0_8px_0px_rgba(255,255,255,0.25)]">
           <a href="#" className="text-decoration-none text-black titre">
-            <h5 className="card-title rest2">{title}</h5>
+            <h5 className="card-title rest2 dark:text-[#ffff]">{title}</h5>
           </a>
           <p className="card-text">{descrip}</p>
           <div className="row btn-domaine">

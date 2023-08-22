@@ -17,7 +17,7 @@ const Design = () => {
     },
   ];
   return (
-    <div className="bg-white m-5 p-5 rounded-3xl domaine">
+    <div className="bg-[#ffff]  dark:bg-main-dark-bg   text-[#ffff] dark:text-gray-200m-5 p-5 rounded-3xl domaine">
 
       <div className="container">
         <div className="row row-gap-5">
