@@ -3,6 +3,7 @@ import React from "react";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useStateContext } from "./contexts/ContextProvider";
 import {
   Livraisons,
   Messagerie,
@@ -23,11 +24,16 @@ import Prof from "./pages/ListProfs/Prof";
 import Parametre from "./pages/parametres/Parametre";
 import DashbordCoach from "./pages/DashboardCoach/DashboardCoach";
 import DashbordEleve from "./pages/DashboardEleve/DashboardEleve";
+import PrivateRouteLayout from "./components/RouteCours/Prroute";
+import  PriveRoute  from "./components/priveroute/PriveRoute";
 // import DashboardCoach from "./pages/DashboardCoach/DashboardCoach";
 
 
 const App = () => {
-const user = {statut:"admin"}
+  const{user}=useStateContext()
+const userType = user;
+
+
 
   return (
     
@@ -40,10 +46,9 @@ const user = {statut:"admin"}
                 {/* dashboard  */}
                 <Route path="/" element={<Connexion/>} />
                 <Route path="/f" element={<ForgetPassword/>} />
-                <Route path="/l" element={<Layout/>} >
-              
-                
-                <Route path="/l/dashboard" element={user.statut ==='admin'?<Dashbord />:user.statut ==='coach'?<DashbordCoach/>:user.statut ==='eleve'?<DashbordEleve/>:""} />
+                {/* <Route path="/l" element={<Layout/>} > */}
+                <Route path="/l" element={<PrivateRouteLayout authorizedRoles={['admin', 'professeur', 'Elève']}><Layout /></PrivateRouteLayout>}>                
+                <Route path="/l/dashboard" element={userType?.statut ==='admin'?<Dashbord />:userType?.statut ==='coach'?<DashbordCoach/>:userType?.statut ==='Elève'?<DashbordEleve/>:""} />
                 
 
                 {/* Pages */}
@@ -54,6 +59,7 @@ const user = {statut:"admin"}
                   path="/l/cours/programmation"
                   element={<Programmation />}
                 />
+     <Route path="/l/professeurs" element={<PriveRoute authorizedRoles={['admin', 'professeur', 'Elève']}requiredDomain="Marketing Digital" > <Prof /> </PriveRoute>}/>
                 <Route path="/l/cours/programmation/*" element={<RouteCours />} />
                 <Route path="/l/cours/marketing" element={<Marketing />} />
                 <Route path="/l/cours/marketing/*" element={<RouteCours />} />
@@ -61,7 +67,7 @@ const user = {statut:"admin"}
                 <Route path="/l/cours/design/*" element={<RouteCours />} />
                 <Route path="/l/quiz" element={<Quiz />} />
                 <Route path="/l/eleves" element={<Eleves />} />
-                <Route path="/l/professeurs" element={< Prof/>} />
+                {/* <Route path="/l/professeurs" element={< Prof/>} /> */}
                 <Route path="/l/parametres" element={< Parametre/>} />
                 <Route path="/l/certification" element={(<Certification />)} />
                 </Route>

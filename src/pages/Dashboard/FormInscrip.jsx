@@ -108,7 +108,7 @@ const FormInscrip = () => {
                     data.email,
                     data.mdp
                 );
-                await addDoc(collection(db, "users"), {
+                await setDoc(doc(db, "users", res.user.uid), {
                     prenom: data.prenom,
                     nom: data.nom,
                     email: data.email,
@@ -152,7 +152,7 @@ const FormInscrip = () => {
           }
        
     }
-    console.log(data);
+    // console.log(data);
 
     return (
         <div>

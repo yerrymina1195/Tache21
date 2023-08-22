@@ -15,11 +15,11 @@ import { Navbar, Sidebar, ThemeSetting } from "../components";
 const Layout= () => {
 
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
-  const user = {
-    status: "admin",
-    name: 'makhan'
-  }
-  console.log(user);
+  // const user = {
+  //   status: "admin",
+  //   name: 'makhan'
+  // }
+  // console.log(user);
   useEffect(() => {
     const currentThemeColor = localStorage.getItem("colorMode");
     const currentThemeMode = localStorage.getItem("themeMode");
