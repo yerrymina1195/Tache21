@@ -69,7 +69,7 @@ const Connexion = () => {
               <div className="row mt-4">
                 <div className="col-md-6"></div>
                 <div className="col-md-6 text-end">
-                  <Link to={'/f'} className="text-decoration-none fw-bold text-couleur1">
+                  <Link to={'/f'} className="text-decoration-none  text-couleur1">
                     Mot de passe oublié?
                   </Link>
                 </div>
