@@ -1,451 +1,362 @@
-import React from "react";
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import img from "../../data/avatar.jpg";
 import { BiEditAlt, BiArchive } from "react-icons/bi";
-import { FaDeleteLeft } from "react-icons/fa6";
+import { AiFillDelete } from "react-icons/ai";
 
-const ProfTable = () => (
-  <div>
-    <div className="table-responsive  mt-5">
-      <table class="table table-hover bg-white   ms-3">
-        <thead className=" ">
-          <tr className="mb-3">
-            <th scope="col">Photo</th>
-            <th scope="col">Prenom</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Tel</th>
-            <th scope="col">Email</th>
-            <th scope="col">Domaine</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="">
-            <img src={img} alt="image" className="img" />
-            <td>Rama</td>
-            <td>Fall</td>
-            <td>776226593</td>
-            <td>ramafall@gmail.com</td>
-            <td>Programmation</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>Mama</td>
-            <td>Fall</td>
-            <td>77878655</td>
-            <td>mama@gmail.com</td>
-            <td>Programmation</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>latyr</td>
-            <td>sene</td>
-            <td>765439800</td>
-            <td>latyr@gmail.com</td>
-            <td>design</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>mouhamed</td>
-            <td>niang</td>
-            <td>707653421</td>
-            <td>niang@gmail.com</td>
-            <td>marketing</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>mahan</td>
-            <td>diaho</td>
-            <td>777777777</td>
-            <td>diaho@gmail.com</td>
-            <td>desin</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>fatou</td>
-            <td>Fall</td>
-            <td>786543208</td>
-            <td>fall@gmail.com</td>
-            <td>Programmation</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>baba</td>
-            <td>thiam</td>
-            <td>765432123</td>
-            <td>baba@gmail.com</td>
-            <td>design</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>astou</td>
-            <td>sall</td>
-            <td>789654321</td>
-            <td>astou@gmail.com</td>
-            <td>marketing</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>abou</td>
-            <td>ly</td>
-            <td>708976543</td>
-            <td>abou@gmail.com</td>
-            <td>design</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>mouhamed</td>
-            <td>loum</td>
-            <td>776543234</td>
-            <td>loum@gmail.com</td>
-            <td>Programmation</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>faby</td>
-            <td>diagne</td>
-            <td>789087656</td>
-            <td>faby@gmail.com</td>
-            <td>marketing</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>absa</td>
-            <td>diop</td>
-            <td>765432123</td>
-            <td>absa@gmail.com</td>
-            <td>Programmation</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>abib</td>
-            <td>lo</td>
-            <td>765435678</td>
-            <td>abib@gmail.com</td>
-            <td>design</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>fama</td>
-            <td>sy</td>
-            <td>765432340</td>
-            <td>fama@gmail.com</td>
-            <td>marketing</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>samba</td>
-            <td>Fall</td>
-            <td>786540908</td>
-            <td>samba@gmail.com</td>
-            <td>design</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>awa</td>
-            <td>lo</td>
-            <td>765439807</td>
-            <td>awa@gmail.com</td>
-            <td>Programmation</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>nini</td>
-            <td>sene</td>
-            <td>767676776</td>
-            <td>nini@gmail.com</td>
-            <td>marketing</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>mass</td>
-            <td>ly</td>
-            <td>709876543</td>
-            <td>mass@gmail.com</td>
-            <td>design</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>fatou</td>
-            <td>laye</td>
-            <td>776540903</td>
-            <td>laye@gmail.com</td>
-            <td>Programmation</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>penda</td>
-            <td>dia</td>
-            <td>775432312</td>
-            <td>dia@gmail.com</td>
-            <td>marketing</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>badara</td>
-            <td>Fall</td>
-            <td>786545673</td>
-            <td>badara@gmail.com</td>
-            <td>design</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-          <tr>
-            <img src={img} alt="image" className="img" />
-            <td>yacine</td>
-            <td>diop</td>
-            <td>765430987</td>
-            <td>yacine@gmail.com</td>
-            <td>Programmation</td>
-            <td>
-            <td >
-              <BiEditAlt className="me-4 icons1" />
-            </td>
-            <td >
-              <BiArchive className="me-4 icons2" />
-            </td>
-            <td>
-              <FaDeleteLeft className="icons3" />
-            </td>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+const tabData = [
+  {
+    profil: <img src={img} alt="image" className="img" />,
+    nom: 'Gadiaga',
+    prenom: 'Mama',
+    telephone: '776700066',
+    email: 'mama237@gmail.com',
+    domaine: 'Programmation',
+  },
+  {
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Diakho',
+  prenom: 'Makhan',
+  telephone: '776828326',
+  email: 'diakho@gmail.com',
+  domaine: 'Programmation',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Faye',
+  prenom: 'Diakho',
+  telephone: '770846728',
+  email: 'faye62@gmail.com',
+  domaine: 'Marketing',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Ndiaye',
+  prenom: 'Absa',
+  telephone: '706828326',
+  email: 'ndiaye@gmail.com',
+  domaine: 'Design',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Fallou',
+  prenom: 'Beye',
+  telephone: '753283803',
+  email: 'fallou92@gmail.com',
+  domaine: 'Design',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Mbaye',
+  prenom: 'Fanta',
+  telephone: '763652602',
+  email: 'fantambaye.com',
+  domaine: 'Programmation',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Gadiaga',
+  prenom: 'Mama',
+  telephone: '776700066',
+  email: 'mama237@gmail.com',
+  domaine: 'Programmation',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Diakho',
+  prenom: 'Makhan',
+  telephone: '776828326',
+  email: 'diakho@gmail.com',
+  domaine: 'Programmation',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Faye',
+  prenom: 'Diakho',
+  telephone: '770846728',
+  email: 'faye62@gmail.com',
+  domaine: 'Marketing',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Ndiaye',
+  prenom: 'Absa',
+  telephone: '706828326',
+  email: 'ndiaye@gmail.com',
+  domaine: 'Design',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Fallou',
+  prenom: 'Beye',
+  telephone: '753283803',
+  email: 'fallou92@gmail.com',
+  domaine: 'Design',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Mbaye',
+  prenom: 'Fanta',
+  telephone: '763652602',
+  email: 'fantambaye.com',
+  domaine: 'Programmation',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Gadiaga',
+  prenom: 'Mama',
+  telephone: '776700066',
+  email: 'mama237@gmail.com',
+  domaine: 'Programmation',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Diakho',
+  prenom: 'Makhan',
+  telephone: '776828326',
+  email: 'diakho@gmail.com',
+  domaine: 'Programmation',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Faye',
+  prenom: 'Diakho',
+  telephone: '770846728',
+  email: 'faye62@gmail.com',
+  domaine: 'Marketing',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Ndiaye',
+  prenom: 'Absa',
+  telephone: '706828326',
+  email: 'ndiaye@gmail.com',
+  domaine: 'Design',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Fallou',
+  prenom: 'Beye',
+  telephone: '753283803',
+  email: 'fallou92@gmail.com',
+  domaine: 'Design',
+},
+{
+  profil: <img src={img} alt="image" className="img" />,
+  nom: 'Mbaye',
+  prenom: 'Fanta',
+  telephone: '763652602',
+  email: 'fantambaye.com',
+  domaine: 'Programmation',
+},
+
+];
+
+const tabColumns = {
+  profil: 'Profil',
+  nom: 'Nom',
+  prenom: 'Prenom',
+  telephone: 'Telephone',
+  email: 'Email',
+  domaine: 'Domaine',
+  actions: 'Actions',
+};
+
+const ProfTable = ({ data = tabData, columns = tabColumns }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [searchValue, setSearchValue] = useState("");
+
+  const totalPages = data ? Math.ceil(data.length / rowsPerPage) : 0;
+  const startIndex = (currentPage - 1) * rowsPerPage;  
+  const filteredData = data.filter(
+    (item) =>
+      item.nom.toLowerCase().includes(searchValue.toLowerCase()) ||
+      item.prenom.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
+  const visibleData = filteredData.slice(
+    startIndex,
+    startIndex + rowsPerPage
+  );
+  
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleRowsPerPageChange = (value) => {
+    setRowsPerPage(value);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = event => {
+    setSearchValue(event.target.value);
+    setCurrentPage(1); 
+  };
+  
+
+  return (
+    <div className="container mt-4">
+   <div className="row d-flex justify-content-center align-items-center">
+        <div className="col-md-6">
+          <h3 className="listEleve">Liste des coachs</h3>
+        </div>
+        <div className="col-md-6 text-lg-end text-md-end text-sm-start">
+          <input
+            type="search"
+            className="form-control shadow-none"
+            placeholder="Rechercher..."
+            value={searchValue}
+            onChange={handleSearchChange}
+          />
+        </div>
+      </div>
+      <div className="table-responsive overflow-hidden mt-5">
+        <table class="table table-light table-hover">
+          <thead className="">
+            <tr>
+              {Object.values(columns).map((columnTitle, index) => (
+                <th key={index}>{columnTitle}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            
+            {visibleData.map((item, index) => (
+              <tr key={index}>
+                {Object.keys(columns).map((columnKey, columnIndex) => (
+                  <td key={columnIndex}>
+                    {columnKey === "actions" ? (
+                      <div>
+                        <div className="row">
+                          <div className="col">
+                            <button className="btn me-3 btn-sm prev">
+                              <BiEditAlt className="text-white" />
+                            </button>
+                            <button className=" me-3 btn btn-sm prev">
+                              <BiArchive className=" text-white" /> </button>
+                            <button className="btn  me-3 btn-sm prev">
+                              <AiFillDelete className="text-white" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      item[columnKey]
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="mt-3 row">
+       <div className="col-md-6"> <nav aria-label="Page navigation">
+          <ul className="pagination">
+            <li
+              className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+            >
+              <a
+                className="page-link shadow-none text-decoration-none text-black"
+                href="#"
+                onClick={() => handlePageChange(currentPage - 1)}
+              >
+                Pre
+              </a>
+            </li>
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <li
+                key={index}
+                className={`page-item text-decoration-none ${index + 1 === currentPage ? "active" : ""
+                  }`}
+              >
+                <a
+                  className="page-link color1 text-decoration-none shadow-none text-black"
+                  href="#"
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </a>
+              </li>
+            ))}
+            <li
+              className={`page-item ${currentPage === totalPages ? "disabled" : ""
+                }`}
+            >
+              <a
+                className="page-link shadow-none text-decoration-none text-black"
+                href="#"
+                onClick={() => handlePageChange(currentPage + 1)}
+              >
+                Suiv
+              </a>
+            </li>
+          </ul>
+        </nav>
+       </div>
+
+
+
+
+        <div className="col-md-5 ms-md-5 ms-sm-0 ms-lg-5 text-lg-end text-md-end text-sm-start">
+        <div className="dropdown">
+          <button
+            className="btn text-black dropdown-toggle"
+            type="button"
+            id="dropdown-rows-per-page"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Ligne(s)/Page: {rowsPerPage}
+          </button>
+          <ul className="dropdown-menu" aria-labelledby="dropdown-rows-per-page">
+            <li>
+              <a
+                className="dropdown-item"
+                href="#"
+                onClick={() => handleRowsPerPageChange(1)}
+              >
+                1
+              </a>
+            </li>
+            <li>
+              <a
+                className="dropdown-item"
+                href="#"
+                onClick={() => handleRowsPerPageChange(5)}
+              >
+                5
+              </a>
+            </li>
+            <li>
+              <a
+                className="dropdown-item"
+                href="#"
+                onClick={() => handleRowsPerPageChange(10)}
+              >
+                10
+              </a>
+            </li>
+            <li>
+              <a
+                className="dropdown-item"
+                href="#"
+                onClick={() => handleRowsPerPageChange(15)}
+              >
+                15
+              </a>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </div>
     </div>
-    <div className="row float-end mt-3">
-      <div className="col-4 prev rounded text-white">prev</div>
-      <div className="col-1">1</div>
-      <div className="col-4 prev rounded text-white">next</div>
-    </div>
-  </div>
-);
+  );
+};
 
 export default ProfTable;
+

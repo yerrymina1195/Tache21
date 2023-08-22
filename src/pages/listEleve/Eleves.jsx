@@ -14,16 +14,14 @@ const Eleves = () => {
   };
 
   return (
-    <div className="   bg-[#ffff]  dark:bg-main-dark-bg    dark:text-gray-200 mt-3 eleve rounded-3xl">
-      <div className="container">
-        <div className="flex-row">
-          <div className="flex-large">
-            <AddEleveForm addEleve={addEleve} />
-          </div>
+    <div className=" dark:bg-main-dark-bg container  dark:text-gray-200 mt-3 eleve ">
+      <div className="flex-row">
+        <div className="flex-large">
+          <AddEleveForm addEleve={addEleve} />
+        </div>
 
-          <div className="flex-large">
-            <EleveTable users={users} />
-          </div>
+        <div className="flex-large">
+          <EleveTable users={users} />
         </div>
       </div>
     </div>

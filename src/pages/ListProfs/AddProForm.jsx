@@ -32,7 +32,7 @@ const AddProfForm = (props) => {
 
   return (
     <section>
-      <h1 className="listProf text-center mb-5">Liste des Profs</h1>
+      {/* <h1 className="listProf text-center mb-5">Liste des Profs</h1>
       <div className="d-block d-sm-flex">
         <div
           className="ajoutProf"
@@ -176,7 +176,7 @@ const AddProfForm = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

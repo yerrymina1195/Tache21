@@ -18,25 +18,26 @@ const Parametre = () => {
             <div class="container-xl px-4 mt-4 ">
                 <div class="row">
                     <div class="col-xl-12 ">
-                        <div class="card bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
-                            <div class="card-header mb-3 text-white">Modifier vos informations personnelles</div>
+                        <div class="card bg-light shadow-none border-0 dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
+                            <div class="card-header mb-3 text-white text-center">Modifier vos informations personnelles</div>
                             <div class="row gx-3">
                                 <div className="col-md-6 p-4">
                                 <div className="col-md-6 p-4">
       <div className="small font-italic dark:text-gray-200 mb-4">
-        Choisir une image pas plus de 5 MB sous format JPG / PNG
+        Choisir une image 
       </div>
       <input
         id="photoProfil"
         type="file"
         onChange={handleImageChange}
       />
-    
+
     </div>
                                 </div>
                                 <div className="col-md-6 d-flex justify-content-md-end align-items-lg-end justify-content-sm-start align-items-sm-start">
-                                    {/* <img class="" src="https://img.freepik.com/vecteurs-premium/profil-personnage-dessin-anime-avatar-homme-affaires_18591-50581.jpg?w=2000" alt="Profil" /> */}
-                                    {imageURL && <img id="image"  className="img-account-profile rounded-circle me-4" src={imageURL} alt="Selected" />}
+                                {/* {imageURL && <img id="image"  className="img-account-profile rounded-circle me-4" src={imageURL} alt="Selected" />} */}
+
+                                    <img className="img-account-profile rounded-circle me-4" src="https://img.freepik.com/vecteurs-premium/profil-personnage-dessin-anime-avatar-homme-affaires_18591-50581.jpg?w=2000" alt="Profil" />
                                 </div>
                             </div>
                             <div class="card-body">

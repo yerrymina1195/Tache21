@@ -35,11 +35,11 @@ const Dashbord = () => {
   return (
     <div className=' mt-4'>
       <div className="flex flex-wrap justify-center ">
-        <div className="flex m-3 w-full flex-wrap justify-center gap-5 items-center">
+        <div className="flex  m-3 w-full flex-wrap justify-center gap-5 items-center">
           {dashData.map((item) => (
             <div
               key={item.title}
-              className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl "
+              className="bg-[#ffff] shadow justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl "
             >
               <button
                 type="button"
@@ -57,7 +57,7 @@ const Dashbord = () => {
 
           
         </div>
-        <div className="container">
+        <div className="container p-0 mt-5">
           <FormInscrip/>
         </div>
         </div>
