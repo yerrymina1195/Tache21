@@ -12,6 +12,7 @@ import { AuthContext } from "../../contexts/AuthContext"
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+
 const Connexion = () => {
   const [error, setError] = useState(false);
   const [email, setEmail] = useState("");
@@ -38,35 +39,20 @@ const Connexion = () => {
   };
 
   return (
-    <div className="container-fluid p-5 back" style={{ height: "700px" }}>
-      <div className="container-fluid mt-5 largeur1" style={{ width: "40%" }}>
-        <div className="card relative">
+    <div>
+      <div class="mabg"></div>
+      <div class="mabg mabg2"></div>
+      <div class="mabg mabg3"></div>
+      <div class="macontent">
+        <div className="card relative bgma">
           <div className="container text-white">
             <div className="bg1 text-center fw-bold rounded-3 pt-5 card-title position-absolute start-50 translate-middle p-4">
-              <h3 className="mb-4">CONNEXON</h3>
-              {/* <div className="row d-flex justify-evenly">
-                <div className="col-md-6 ">
-                  <a
-                    href="#"
-                    className="text-white text-decoration-none flex items-center ">
-                    
-                    Facebook
-                  </a>
-                </div>
-                <div className="col-md-6">
-                  <a
-                    href="#"
-                    className="text-white text-decoration-none flex items-center">
-                   
-                    Google
-                  </a>
-                </div>
-              </div> */}
+              <h3 className="mb-4">CONNEXION</h3>
             </div>
           </div>
           {/*  */}
-          <div className="card-body mt-5">
-            <form className="mb-5 pt-5 mt-5" onSubmit={handleLogin}>
+          <div className="card-body mt-4">
+            <form className="mb-5 pt-5 mt-5 " onSubmit={handleLogin}>
               <div className="">
                 {/*  */}
                 <InputLabel label={'Adresse email'} type={'email'} placeholder={'exemple@gmail.com'} onChange={(e) => setEmail(e.target.value)} />
@@ -76,14 +62,14 @@ const Connexion = () => {
                 <InputLabel label={'Mot de passe'} type={'password'} placeholder={'........'} onChange={(e) => setPassword(e.target.value)} />
               </div>
               <div className="row">
-              <Link to={'/l/dashboard'}>
-                <MaButton type={'button'} text={"Se connecter"} />
+                <Link to={'/l/dashboard'}>
+                  <MaButton type={'button'} text={"SE CONNECTER"} />
                 </Link>
               </div>
               <div className="row mt-4">
                 <div className="col-md-6"></div>
                 <div className="col-md-6 text-end">
-                  <Link to={'/f'} className="text-decoration-none">
+                  <Link to={'/f'} className="text-decoration-none fw-bold text-couleur1">
                     Mot de passe oublié?
                   </Link>
                 </div>

@@ -1,56 +1,71 @@
 
 /* MAMA */
-
-.back{
-    /* height: 700px; */
-    background-image: linear-gradient(rgba(56, 55, 55, 0.658),rgb(56, 55, 55, 0.658)),url('../../data/minimalism_pattern_abstract_lines_geometry-163130.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-  }
-  
   .bg1{
-    background-color: #c23028 !important;
+    background-color: #c23028c9 !important;
     width: 80% !important;
   }
   .bg11{
-    background-color: #c23028 !important;
+    background-color: #c23028c9  !important;
+  }
+  
+  .mabg {
+    animation:slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #c23028d3 50%, #F6B339  50%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+  }
+  
+  .mabg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:4s;
+  }
+  
+  .mabg3 {
+    animation-duration:5s;
+  }
+  
+  .macontent {
+    width: 50%;
+  
+    border-radius:.25em;
+    box-sizing:border-box;
+    left:50%;
+    padding:10vmin;
+    position:fixed;
+    top:50%;
+    transform:translate(-50%, -50%);
+  }
+  
+  .mah1 {
+    font-family:monospace;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform:translateX(-25%);
+    }
+    100% {
+      transform:translateX(25%);
+    }
   }
   
   @media (max-width: 1070px) {
-    .largeur1{
+    .macontent{
         width: 50% !important;
     }
   }
   @media (max-width: 866px) {
-    .largeur1{
+    .macontent{
         width: 70% !important;
     }
   }
   @media (max-width: 600px) {
-    .largeur1{
+    .macontent{
         width: 100% !important;
     }
   }
-  @media (max-width: 470px) {
-    .bg1{
-        width: 90% !important;
-    }
-  }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
