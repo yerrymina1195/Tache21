@@ -214,7 +214,7 @@ const EleveTable = ({ data = tabData, columns = tabColumns }) => {
           />
         </div>
       </div>
-      <div className="table-responsive overflow-hidden mt-5">
+      <div className="table-responsive  mt-5">
         <table class="table table-light table-hover">
           <thead>
             <tr>
