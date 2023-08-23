@@ -1,18 +1,9 @@
-import React, { useState } from "react";
-import { initialUsers } from "./userList";
 import EleveTable from "./EleveTable";
-import AddEleveForm from "./AddEleveForm";
 import "./Eleve.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import AddEleveForm from "./AddEleveForm";
 
-const Eleves = () => {
-  const [users, setUsers] = useState(initialUsers);
-
-  const addEleve = (user) => {
-    user.id = users.length + 1;
-    setUsers([...users, user]);
-  };
-
+const Eleves = (addEleve, users) => {
   return (
     <div className=" dark:bg-main-dark-bg container  dark:text-gray-200 mt-3 eleve ">
       <div className="flex-row">
