@@ -65,7 +65,10 @@ const Cours = () => {
 const deleteDomaine = async (id) => {
   const deleteDomain = doc(db, "domains", id);
   await deleteDoc(deleteDomain)
+  alert("domaine supprimer");
+
 }
+
   useEffect(() => {
     const q = query(collection(db, "domains"));
     onSnapshot(q, (querySnapshot) => {
