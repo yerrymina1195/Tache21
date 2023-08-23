@@ -1,7 +1,5 @@
-import React , { useState } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { RiFacebookLine } from "react-icons/ri";
-import { BiSolidChevronLeftSquare } from "react-icons/bi";
 import "./Ma.css";
 import InputLabel from "../pageConnexion/InputLabel";
 import MaButton from "../pageConnexion/MaButton";
@@ -29,13 +27,7 @@ const ForgetPassword = () => {
   };
 
   return (
-
-
-
-
-
-
-<div>
+    <div>
       <div class="mabg"></div>
       <div class="mabg mabg2"></div>
       <div class="mabg mabg3"></div>
@@ -62,7 +54,7 @@ const ForgetPassword = () => {
                 <div className="col-md-6"></div>
                 <div className="col-md-6 text-end" >
                   <a href="#" className="text-decoration-none text-couleur1">
-                   Vous vous en souvenez? </a>               
+                    Vous vous en souvenez? </a>
                 </div>
               </div>
             </form>
@@ -71,14 +63,11 @@ const ForgetPassword = () => {
       </div>
     </div>
 
-
-
-
-
-
-
-
   );
 };
 
 export default ForgetPassword;
+
+
+
+
