@@ -1,0 +1,5 @@
+/* toastProgressStyles.css */
+.my-toast-progress-bar {
+  background-image: linear-gradient(to right, #5eff00ab, #aef8ab);
+  border-radius: 0;
+}
