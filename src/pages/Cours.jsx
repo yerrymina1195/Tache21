@@ -61,13 +61,12 @@ const Cours = () => {
       console.error("Erreur lors de la creation :", error);
     }
   };
-// delete doc
-const deleteDomaine = async (id) => {
-  const deleteDomain = doc(db, "domains", id);
-  await deleteDoc(deleteDomain)
-  alert("domaine supprimer");
-
-}
+  // delete doc
+  const deleteDomaine = async (id) => {
+    const deleteDomain = doc(db, "domains", id);
+    await deleteDoc(deleteDomain);
+    alert("domaine supprimer");
+  };
 
   useEffect(() => {
     const q = query(collection(db, "domains"));
@@ -92,7 +91,7 @@ const deleteDomaine = async (id) => {
             <div className="col-md-6 col-sm-12">
               <h1 className="">Les Domaines</h1>
             </div>
-            <div className="col-md-6 col-sm-12">
+            <div className="col-md-6 col-sm-12 text-center">
               {/* button modal */}
               <div data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <ButtonReutilisable
@@ -182,9 +181,8 @@ const deleteDomaine = async (id) => {
                   onClick={() => {
                     handleClick("modifState");
                     editDomaine(domain.id, domain.title);
-
                   }}
-                  click={ () => deleteDomaine(domain.id) }
+                  click={() => deleteDomaine(domain.id)}
                 />
               </div>
             ))}
