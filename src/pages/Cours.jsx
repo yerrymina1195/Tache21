@@ -5,18 +5,19 @@ import { db } from "../Firebase/Firebase";
 import {
   addDoc,
   collection,
-  // updateDoc,
-  // doc,
+  updateDoc,
+  doc,
   getDocs,
   query,
   onSnapshot,
+  deleteDoc,
 } from "firebase/firestore";
 import { useStateContext } from "../contexts/ContextProvider";
 const Cours = () => {
   const [newDomaine, setNewDomaine] = useState("");
   const [error, setError] = useState("");
+  const [id, setId] = useState("");
   const [domains, setDomains] = useState([]);
-
   const domaineCollectionRef = collection(db, "domains");
   const { isClicked, handleClick, setIsClicked, initialState } =
     useStateContext();
@@ -35,13 +36,36 @@ const Cours = () => {
       addDoc(domaineCollectionRef, { title: newDomaine });
       setNewDomaine("");
       setError("");
-      alert("domaine " + `${newDomaine}` + " ajouter");
+      alert("domaine " + newDomaine + " ajouter");
     } catch (error) {
       console.error("Erreur lors de la creation :", error);
     }
   };
   // Modifier domaine
-
+  const editDomaine = async (id, title) => {
+    setNewDomaine(title);
+    setId(id);
+  };
+  const updateDomaine = async () => {
+    if (newDomaine === "") {
+      setError("Veuillez vérifier le champs et remplir de bon valeur");
+      return;
+    }
+    try {
+      const updateDomain = doc(db, "domains", id);
+      updateDoc(updateDomain, { title: newDomaine });
+      setNewDomaine("");
+      setError("");
+      alert("domaine " + newDomaine + " mise à jour");
+    } catch (error) {
+      console.error("Erreur lors de la creation :", error);
+    }
+  };
+// delete doc
+const deleteDomaine = async (id) => {
+  const deleteDomain = doc(db, "domains", id);
+  await deleteDoc(deleteDomain)
+}
   useEffect(() => {
     const q = query(collection(db, "domains"));
     onSnapshot(q, (querySnapshot) => {
@@ -49,11 +73,11 @@ const Cours = () => {
       querySnapshot.forEach((doc) => {
         domains.push(doc.data().title);
       });
-      const getUsers = async () => {
+      const getDomaines = async () => {
         const data = await getDocs(domaineCollectionRef);
         setDomains(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       };
-      getUsers();
+      getDomaines();
     });
   }, [domaineCollectionRef]);
 
@@ -100,15 +124,27 @@ const Cours = () => {
                     </div>
                     <div className="modal-body">
                       <div class="form-floating mb-3">
-                        <input
-                          type="text"
-                          class="form-control inputDomaine"
-                          id="floatingInput"
-                          placeholder="Nom du domaine"
-                          value={newDomaine}
-                          onChange={handleInputChange}
-                        />
-                        <label for="floatingInput">Nom du domaine</label>
+                        {isClicked.ajouState && (
+                          <input
+                            type="text"
+                            class="form-control"
+                            id=""
+                            placeholder="Nom du domaine"
+                            value={newDomaine}
+                            onChange={handleInputChange}
+                          />
+                        )}
+                        {isClicked.modifState && (
+                          <input
+                            type="text"
+                            class="form-control"
+                            id=""
+                            placeholder="Modifier le domaine"
+                            value={newDomaine}
+                            onChange={(e) => setNewDomaine(e.target.value)}
+                          />
+                        )}
+                        {/* <label for="floatingInput">Nom du domaine</label> */}
                       </div>
                       {error && <p style={{ color: "red" }}>{error}</p>}
                     </div>
@@ -123,7 +159,7 @@ const Cours = () => {
                       {isClicked.modifState && (
                         <ButtonReutilisable
                           text={"Modifier"}
-                          // onClick={}
+                          onClick={updateDomaine}
                           id="modifier"
                         />
                       )}
@@ -140,7 +176,12 @@ const Cours = () => {
               <div className="col-lg-4 col-md-6 col-sm-12 ">
                 <Domaine
                   title={domain.title}
-                  onClick={() => handleClick("modifState")}
+                  onClick={() => {
+                    handleClick("modifState");
+                    editDomaine(domain.id, domain.title);
+
+                  }}
+                  click={ () => deleteDomaine(domain.id) }
                 />
               </div>
             ))}
