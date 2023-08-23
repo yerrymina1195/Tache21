@@ -235,9 +235,9 @@ const FormInscrip = () => {
                                                 value={statut}
                                             >
                                                 <option selected >Choisir un rôle</option>
-                                                <option value="Admin">Admin</option>
-                                                <option value="Coach">Coach</option>
-                                                <option value="Elève">Elève</option>
+                                                <option value="admin">admin</option>
+                                                <option value="coach">coach</option>
+                                                <option value="eleve">eleve</option>
                                             </select>
                                             <p className="text-danger">{errors.statut}</p>
                                         </div>

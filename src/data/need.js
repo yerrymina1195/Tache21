@@ -189,14 +189,14 @@ export const dashDataEleves = [
   },
   {
     icon: <AiOutlineDeliveredProcedure />,
-    amount: "300",
+    // amount: "300",
     title: "livraisons",
     iconColor: "rgb(0, 194, 146)",
     iconBg: "rgb(235, 250, 242)",
   },
   {
     icon: <GiTeacher />,
-    amount: "50",
+    // amount: "50",
     title: "Taches",
     iconColor: "#03C9D7",
     iconBg: "#E5FAFB",

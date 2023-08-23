@@ -43,6 +43,7 @@ const ForgetPassword = () => {
               <div className="">
                 <InputLabel label={'Entrez votre adresse email pour recevoir un lien permettant de réinitialiser le mot de passe.'}
                  type={'email'}
+                 value={email}
                  placeholder={'exemple@gmail.com'}
                 onChange={(e) => setEmail(e.target.value)}
                 required />
@@ -50,7 +51,7 @@ const ForgetPassword = () => {
               <div className="row mt-4">
                 <MaButton type={'button'}
                   text={"ENVOYER"}
-                  value={email}
+                 
                   onClick={handleResetPassword}/>
               </div>
             </form>

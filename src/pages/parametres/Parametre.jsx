@@ -72,7 +72,7 @@ const Parametre = () => {
     const handleSaveProfile = async () => {
         try {
             // Mettre à jour le nom d'utilisateur dans Firestore
-            await updateDoc(doc(db, 'users', "hbLSG5qpvTaFDjFsdzanfyK2TBI3"), {
+            await updateDoc(doc(db, 'users', "liXIlw5O2jMGg7ujAspHXWhhSPw2"), {
                 prenom: data.prenom,
                 nom: data.nom,
                 email: data.email,
