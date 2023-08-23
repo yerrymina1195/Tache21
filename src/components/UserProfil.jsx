@@ -1,6 +1,7 @@
 import React from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 import { Button } from '.';
+import  ButtonDeconnexion  from "./ButtonDeconnexon";
 // import { userProfileData } from '../data/need';
 import { useStateContext } from '../contexts/ContextProvider';
 import makhan from '../data/makhan.png';
@@ -9,11 +10,11 @@ import { signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 
 const UserProfil = () => {
-  const { currentColor } = useStateContext();
+  const { currentColor ,handleLogout} = useStateContext();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    signOut(auth)
+  const deconnexion = () => {
+    handleLogout()
       .then(() => {
         // Déconnexion réussie
         navigate("/")
@@ -51,13 +52,13 @@ const UserProfil = () => {
       </div>
   
       <div className="mt-3">
-        <Button
+        <ButtonDeconnexion
           color="white"
           bgColor={currentColor}
           text="Logout"
           borderRadius="10px"
           width="full"
-          onClick={handleLogout}
+          onClick={deconnexion}
         />
       </div>
     </div>

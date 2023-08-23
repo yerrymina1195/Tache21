@@ -11,6 +11,7 @@ const InputLabel = (props) => {
                   className="form-control shadow-none"
                   placeholder={props.placeholder}
                   onChange={props.onChange}
+                  value={props.value}
                 />
         </div>
     );

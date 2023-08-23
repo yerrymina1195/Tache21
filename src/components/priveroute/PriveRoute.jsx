@@ -7,6 +7,9 @@ const PriveRoute = ({children, authorizedRoles = [], requiredDomain}) => {
     if (!user) {
         return <Navigate to="/" />;
       }
+    if (user.statut === 'admin') {
+      return <>{children}</>
+    }
     
       if (authorizedRoles.length > 0 && !authorizedRoles.includes(user.statut)) {
         return <Navigate to="/unauthorized" />;

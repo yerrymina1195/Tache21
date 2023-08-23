@@ -19,6 +19,9 @@ export const ContextProvider = ({ children }) => {
   const [table, setTable] = useState()
 
   const updateUser = (userData) => {
+    if (typeof(userData) === 'undefined') {
+      return alert(`n'existe pas ce user`)
+    }
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
   };
@@ -50,7 +53,7 @@ export const ContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, setThemeSettings,user,updateUser}}>
+    <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, handleLogout, setThemeSettings,user,updateUser}}>
       {children}
     </StateContext.Provider>
   );

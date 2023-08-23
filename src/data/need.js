@@ -13,10 +13,12 @@ import avatar4 from "./avatar4.jpg";
 export const links = [
   {
     title: "Dashboard",
+    statut: ["admin","Coach","Elève"],
     links: [
       {
         name: "Dashbord",
         icon: <LuLayoutDashboard />,
+        statut: ["admin","Coach","Elève"], 
         link: "l/dashboard",
       },
     ],
@@ -24,50 +26,55 @@ export const links = [
 
   {
     title: "Pages",
+    statut: ["admin","Coach","Elève"],
     links: [
       {
         name: "livraisons",
         icon: <AiOutlineDeliveredProcedure />,
+        statut: ["Coach","Elève"],
         link: "l/livraisons",
       },
       {
         name: "messagerie",
         icon: <MdOutlineMessage />,
+        statut: ["admin","Coach","Elève"],
         link: "l/messagerie",
       },
       {
         name: "cours",
         icon: <LiaBookSolid />,
+        statut: ["admin","Coach","Elève"],
         link: "l/cours",
       },
       {
         name: "eleves",
         icon: <PiStudentLight />,
+        statut: ["admin","Coach"],
         link: "l/eleves",
       },
       {
         name: "Professeurs",
         icon: <PiStudentLight />,
+        statut: ["admin"],
         link: "l/professeurs",
       },
       {
         name: "Parametres",
         icon: <PiStudentLight />,
+        statut: ["admin","Coach","Elève"],
         link: "l/parametres",
-      },
-      // {
-      //   name: 'page5',
-      //   icon: <RiContactsLine />,
-      // },
+      }
     ],
   },
-  ,
+  
   {
     title: "Certification",
+    statut: ["Coach","Elève"],
     links: [
       {
         name: "Certification",
         icon: <TbCertificate />,
+        statut: ["Coach","Elève"],
         link:"l/certification"
       },
     ],

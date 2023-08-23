@@ -17,8 +17,7 @@ import {
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { async } from "q";
-import { getDoc } from "@firebase/firestore";
+
 
 const Connexion = () => {
   const {updateUser}=useStateContext()
@@ -28,41 +27,28 @@ const Connexion = () => {
 
   const navitage = useNavigate()
 
-  // console.log(email);
+  
 
   const handleLogin = async(e) => {
-    // console.log();
+   
     e.preventDefault();
-    alert('ffzfzz')
+   
     console.log(email)
-    // signInWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential) => {
-    //     // Signed in 
-    //     const user = userCredential.user;
-    //     updateUser(user)
-        
 
-    //     // navitage("/l")
-    //     // ...
-    //     alert('ffzfzz')
-    //   })
-    //   .catch((error) => {
-    //     setError(error.message);
-    //   });
     try {
       const res= await signInWithEmailAndPassword(auth, email, password);
       const userID=  res?.user?.uid
-      
-     onSnapshot(doc(db,'users',userID), (doc) => {
-      const user= doc.data()
+      onSnapshot(doc(db,'users',userID), (doc) => {
+        const user= doc.data()
+        alert(`Bienvenue ${user.prenom}`)
        
       updateUser(user)
       navitage('l/dashboard')
       });
      
-    //  await getDoc(doc(db,'users',user))
+   
     } catch (error) {
-      
+      alert(error)
     }
   };
 
