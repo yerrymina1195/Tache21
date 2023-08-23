@@ -18,20 +18,27 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { getDoc } from "firebase/firestore";
+import "bootstrap/dist/js/bootstrap.min.js";
+import ModifierEleve from './ModifierEleve';
 
 
 
 
 function EleveTable() {
-  const [users, setUsers] = useState([]);
+
+
   const [prenom, setPrenom] = useState("");
   const [nom, setNom] = useState("");
+  const [telephone, setTelephone] = useState("");
   const [email, setEmail] = useState("");
   const [domaine, setDomaine] = useState("");
-  const [status, setStatus] = useState("");
+  const [address, setAdress] = useState("");
+  const [mdp, setMdp] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
+  const [users, setUsers] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [selectedUserDetails, setSelectedUserDetails] = useState(null);
 
 
   useEffect(() => {
@@ -40,13 +47,17 @@ function EleveTable() {
 
 
 
-  // recuperation
+  // recuperation des identifiants de 
   const fetchData = async () => {
     const querySnapshot = await getDocs(collection(db, "users"));
-    const data = querySnapshot.docs.map((doc) => doc.data(), doc.id);
+    const data = querySnapshot.docs
+    .map((doc) => doc.data(), doc.id)
+    .filter((users) =>users.statut === "eleve");
     setUsers(data);
   };
   console.log(users);
+
+
   // supprime
 
   const handleDelete = async (id) => {
@@ -106,21 +117,51 @@ function EleveTable() {
   // };
 
 
-  async function getUserDetails(id) {
-    const userRef = doc(db, "users", id);
-    const docSnap = await getDoc(userRef);
-    if (docSnap.exists()) {
-      console.log("Document donnees:", docSnap.data(), docSnap.id);
-      setShowModal(true);
-      return docSnap.data();
-    } else {
-      console.log("No such document!");
-    }
-  }
-
   const handleCloseModal = () => {
     setShowModal(false);
+};
+  
+  async function getUserDetails(id) {
+      const userRef = doc(db, "users", id);
+      const docSnap = await getDoc(userRef);
+      if (docSnap.exists()) {
+          console.log("Document donnees:", docSnap.data(), docSnap.id);
+          setSelectedUserDetails(docSnap.data());
+          setShowModal(true);
+          console.log("ppppp" + docSnap.data());
+      } else {
+          console.log("No such document!");
+      }
+  }
+
+
+
+ 
+
+  const [selectedDetails, setSelectedDetails] = useState({
+    prenom: "",
+    nom: "",
+    telephone: "",
+    email: "",
+    domaine: "",
+    address: "",
+    mdp: "",
+  });
+
+  const handleEdit = () => {
+    const updatedUserDetails = {
+      prenom: prenom,
+      nom: nom,
+      telephone: telephone,
+      email: email,
+      domaine: domaine,
+      address: address,
+    };
+    setSelectedDetails(updatedUserDetails);
   };
+  
+  
+
 
 
   return (
@@ -171,11 +212,11 @@ function EleveTable() {
 
                       <BiEditAlt
                         onClick={() => getUserDetails(datas.id)}
-                        className="me-4 icons1"
+                        className="me-4 icons1"  data-bs-toggle="modal" data-bs-target="#exampleModal"
                       />
                     </td>
                     <td>
-                      <BiArchive className="me-4 icons2" />
+                      <BiArchive onClick={() => handleEdit(datas.id)}  className="me-4 icons2" data-bs-toggle="modal" data-bs-target="#exampleModale"/>
                     </td>
                     <td>
                       <FaDeleteLeft
@@ -199,46 +240,101 @@ function EleveTable() {
             <MdKeyboardDoubleArrowRight className="preve rounded px-1" />
           </div>
         </div>
-        <div
-            className="modal fade mt-[100px] "
-            id="exampleModale"
-            tabIndex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-            show={showModal}
-            onHide={handleCloseModal}
-          >
-            <div className="modal-dialog ">
-              <div className="modal-content ">
-                <div className="modal-header ">
-                  <h1 className="modal-title fs-5 " id="exampleModalLabel">
-                    Voir les details de l eleve
-                  </h1>
-                  <button
-                    type="button"
-                    className="btn-close text-white"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  >ooooooooo</button>
-                </div>
-                <div className="modal-body ">
-                <tbody>
-              {users.map((datas, index) => (
-                <tr key={index}>
-                  <td>{<img src={img} className="img" alt="User Avatar" />}</td>
-                  <td>{datas.prenom}</td>
-                  <td>{datas.nom}</td>
-                  <td>{datas.telephone}</td>
-                  <td>{datas.email}</td>
-                  <td>{datas.statut}</td>
-                  <td>{datas.domaine}</td>
-                </tr>
-              ))}
-            </tbody>
-                </div>
-              </div>
-            </div>
-          </div>
+       
+
+   
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">les details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+  {selectedUserDetails && (
+    <div>
+      <p className='d-flex'>
+        <strong>Photo:</strong>
+        <img src={img} alt="User Photo" className="img mx-auto" />
+      </p>
+      <hr />
+      <p className='d-flex'>
+        <strong>Prenom:</strong>
+        <div className='mx-auto'>
+        {selectedUserDetails.prenom}
+        </div>
+      </p>
+      <hr />
+      <p className='d-flex'>
+        <strong>Nom:</strong>
+        <span className='mx-auto'>
+        {selectedUserDetails.nom}
+        </span>
+      </p>
+      <hr />
+      <p className='d-flex'>
+        <strong>Telephone:</strong>
+        <span className="mx-auto">
+        {selectedUserDetails.telephone}
+        </span>
+      </p>
+      <hr />
+      <p className='d-flex'>
+        <strong>Email:</strong>
+        <span className="mx-auto">
+        {selectedUserDetails.email}
+        </span>
+      </p>
+      <hr />
+      <p className='d-flex'>
+        <strong>Coach:</strong>
+        <span className="mx-auto">
+        {selectedUserDetails.statut }
+        </span>
+      </p>
+      <hr />
+      <p className='d-flex'>
+        <strong>Domaine:</strong>
+        <span className="mx-auto">
+        {selectedUserDetails.domaine}
+        </span>
+      </p>
+    </div>
+  )}
+</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModale" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-transparent">
+      <div class="modal-body">
+      < ModifierEleve />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
       </div>
     </div>
   );
