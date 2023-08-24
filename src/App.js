@@ -27,7 +27,8 @@ import DashbordEleve from "./pages/DashboardEleve/DashboardEleve";
 import PrivateRouteLayout from "./components/RouteCours/Prroute";
 import  PriveRoute  from "./components/priveroute/PriveRoute";
 // import DashboardCoach from "./pages/DashboardCoach/DashboardCoach";
-
+import  NonAutorise  from "./pages/NonAutorise";
+import  NotFound  from "./pages/NotFound";
 
 const App = () => {
   const{user}=useStateContext()
@@ -42,6 +43,8 @@ const userType = user;
                 {/* dashboard  */}
                 <Route path="/" element={<Connexion/>} />
                 <Route path="/f" element={<ForgetPassword/>} />
+                <Route path="/unauthorized" element={<NonAutorise/>} />
+
                 {/* <Route path="/l" element={<Layout/>} > */}
                 <Route path="/l" element={<PrivateRouteLayout authorizedRoles={['admin', 'coach', 'eleve']}><Layout /></PrivateRouteLayout>}>                
                 <Route path="/l/dashboard" element={userType?.statut ==='admin'?<Dashbord />:userType?.statut ==='coach'?<DashbordCoach/>:userType?.statut ==='Elève'?<DashbordEleve/>:""} />
@@ -68,6 +71,7 @@ const userType = user;
                 <Route path="/l/parametres" element={< Parametre/>} />
                 <Route path="/l/certification" element={(<Certification />)} />
                 </Route>
+                <Route path="*" element={<NotFound/>} />
               </Routes>
           
       
