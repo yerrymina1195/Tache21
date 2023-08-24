@@ -69,3 +69,25 @@
         width: 100% !important;
     }
   }
+
+
+  /* NOT FOUND */
+  .notFound{
+    font-size: 200px;
+  }
+
+  @media (max-width: 880px) {
+    .notFound {
+      font-size: 150px;
+    }
+  }
+  @media (max-width: 680px) {
+    .notFound {
+      font-size: 100px;
+    }
+  }
+  @media (max-width: 420px) {
+    .notFound {
+      font-size: 50px;
+    }
+  }
