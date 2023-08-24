@@ -19,7 +19,7 @@ const Card = ({ title, descrip, videoUrl }) => {
           ></iframe>
         </a>
         <div className="card-body ">
-          <a href="#" className="text-decoration-none text-black titre">
+          <a href="/" className="text-decoration-none text-black titre">
             <h5 className="card-title dark:text-[#ffff]">{title}</h5>
           </a>
           <p className="card-text">{descrip}</p>
@@ -41,6 +41,7 @@ const Card = ({ title, descrip, videoUrl }) => {
 };
 
 const CarteSousCours = () => {
+  // eslint-disable-next-line
   const [videoData, setVideoData] = useState(cardDataPro);
 
   const chunkedData = [];

@@ -1,6 +1,6 @@
 import React from 'react'
 // import '../Dashboard/Dashbord.css';
-import { dashDataEleves, UserData } from '../../data/need';
+import { dashDataEleves} from '../../data/need';
 
 import img from "../../data/Capture0.png";
 import makhan from "../../data/makhan.png";
