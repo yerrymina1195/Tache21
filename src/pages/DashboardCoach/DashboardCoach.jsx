@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 // import './Dashboard.css';
 import { dashDataCoach, UserData } from '../../data/need';
 import { BarChart } from "../../components";
-import img from "../../data/Capture0.png";
-import makhan from "../../data/makhan.png";
+
 
 
 const DashbordCoach = () => {
+  // eslint-disable-next-line
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.year),
     datasets: [
@@ -26,7 +26,7 @@ const DashbordCoach = () => {
       },
     ],
   });
-  const [userData2, setUserData2] = useState(false);
+
 
   console.log(userData);
 

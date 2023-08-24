@@ -1,34 +1,10 @@
-import React, { useState } from "react";
-import { initialUsers } from "./userList";
-import ButtonReutilisable from "../../components/ButtonReutilisable";
+import React from "react";
 
-const AddProfForm = (props) => {
-  const initialFormState = {
-    id: null,
-    nom: "",
-    prenom: "",
-    tel: "",
-    email: "",
-    domaine: "",
-  };
-  const [user, setUser] = useState(initialFormState);
-  const [users, setUsers] = useState(initialUsers);
 
-  const handleInputChange = () => {
-    const handleInputChange = (event) => {
-      const { name, value } = event.target;
-      setUser({ ...user, [name]: value });
-    };
-  };
 
-  const handleSimulatedSubmit = (event) => {
-    const data = setUser({
-      ...users,
-      [event.target.name]: event.target.value,
-    });
-
-    console.log(data);
-  };
+const AddProfForm = () => {
+  
+  
 
   return (
     <section>

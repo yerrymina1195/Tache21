@@ -8,7 +8,7 @@ import { AiFillDelete } from "react-icons/ai";
 
 const tabData = [
   {
-    profil: <img src={img} alt="image" className="img" />,
+    profil: <img src={img} alt="Mama" className="img" />,
     nom: 'Gadiaga',
     prenom: 'Mama',
     telephone: '776700066',
@@ -16,7 +16,7 @@ const tabData = [
     domaine: 'Programmation',
   },
   {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="Makhan" className="img" />,
   nom: 'Diakho',
   prenom: 'Makhan',
   telephone: '776828326',
@@ -24,7 +24,7 @@ const tabData = [
   domaine: 'Programmation',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="Faye" className="img" />,
   nom: 'Faye',
   prenom: 'Diakho',
   telephone: '770846728',
@@ -32,7 +32,7 @@ const tabData = [
   domaine: 'Marketing',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="Absa" className="img" />,
   nom: 'Ndiaye',
   prenom: 'Absa',
   telephone: '706828326',
@@ -40,7 +40,7 @@ const tabData = [
   domaine: 'Design',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="Beye" className="img" />,
   nom: 'Fallou',
   prenom: 'Beye',
   telephone: '753283803',
@@ -48,7 +48,7 @@ const tabData = [
   domaine: 'Design',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="Fanta" className="img" />,
   nom: 'Mbaye',
   prenom: 'Fanta',
   telephone: '763652602',
@@ -56,7 +56,7 @@ const tabData = [
   domaine: 'Programmation',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="Gadiaga" className="img" />,
   nom: 'Gadiaga',
   prenom: 'Mama',
   telephone: '776700066',
@@ -64,7 +64,7 @@ const tabData = [
   domaine: 'Programmation',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="imag2" className="img" />,
   nom: 'Diakho',
   prenom: 'Makhan',
   telephone: '776828326',
@@ -72,7 +72,7 @@ const tabData = [
   domaine: 'Programmation',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="image3" className="img" />,
   nom: 'Faye',
   prenom: 'Diakho',
   telephone: '770846728',
@@ -80,7 +80,7 @@ const tabData = [
   domaine: 'Marketing',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="image4" className="img" />,
   nom: 'Ndiaye',
   prenom: 'Absa',
   telephone: '706828326',
@@ -88,7 +88,7 @@ const tabData = [
   domaine: 'Design',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="image5" className="img" />,
   nom: 'Fallou',
   prenom: 'Beye',
   telephone: '753283803',
@@ -96,7 +96,7 @@ const tabData = [
   domaine: 'Design',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="image6" className="img" />,
   nom: 'Mbaye',
   prenom: 'Fanta',
   telephone: '763652602',
@@ -104,7 +104,7 @@ const tabData = [
   domaine: 'Programmation',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="image7" className="img" />,
   nom: 'Gadiaga',
   prenom: 'Mama',
   telephone: '776700066',
@@ -112,7 +112,7 @@ const tabData = [
   domaine: 'Programmation',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="image8" className="img" />,
   nom: 'Diakho',
   prenom: 'Makhan',
   telephone: '776828326',
@@ -120,7 +120,7 @@ const tabData = [
   domaine: 'Programmation',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="image9" className="img" />,
   nom: 'Faye',
   prenom: 'Diakho',
   telephone: '770846728',
@@ -128,7 +128,7 @@ const tabData = [
   domaine: 'Marketing',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="image11" className="img" />,
   nom: 'Ndiaye',
   prenom: 'Absa',
   telephone: '706828326',
@@ -136,7 +136,7 @@ const tabData = [
   domaine: 'Design',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="image12" className="img" />,
   nom: 'Fallou',
   prenom: 'Beye',
   telephone: '753283803',
@@ -144,7 +144,7 @@ const tabData = [
   domaine: 'Design',
 },
 {
-  profil: <img src={img} alt="image" className="img" />,
+  profil: <img src={img} alt="image13" className="img" />,
   nom: 'Mbaye',
   prenom: 'Fanta',
   telephone: '763652602',
@@ -263,7 +263,7 @@ const EleveTable = ({ data = tabData, columns = tabColumns }) => {
             >
               <a
                 className="page-link shadow-none text-decoration-none text-black"
-                href="#"
+                href="/"
                 onClick={() => handlePageChange(currentPage - 1)}
               >
                 Pre
@@ -277,7 +277,7 @@ const EleveTable = ({ data = tabData, columns = tabColumns }) => {
               >
                 <a
                   className="page-link color1 text-decoration-none shadow-none text-black"
-                  href="#"
+                  href="/"
                   onClick={() => handlePageChange(index + 1)}
                 >
                   {index + 1}
@@ -290,7 +290,7 @@ const EleveTable = ({ data = tabData, columns = tabColumns }) => {
             >
               <a
                 className="page-link shadow-none text-decoration-none text-black"
-                href="#"
+                href="/"
                 onClick={() => handlePageChange(currentPage + 1)}
               >
                 Suiv
@@ -318,7 +318,7 @@ const EleveTable = ({ data = tabData, columns = tabColumns }) => {
             <li>
               <a
                 className="dropdown-item"
-                href="#"
+                href="/"
                 onClick={() => handleRowsPerPageChange(1)}
               >
                 1
@@ -327,7 +327,7 @@ const EleveTable = ({ data = tabData, columns = tabColumns }) => {
             <li>
               <a
                 className="dropdown-item"
-                href="#"
+                href="/"
                 onClick={() => handleRowsPerPageChange(5)}
               >
                 5
@@ -336,7 +336,7 @@ const EleveTable = ({ data = tabData, columns = tabColumns }) => {
             <li>
               <a
                 className="dropdown-item"
-                href="#"
+                href="/"
                 onClick={() => handleRowsPerPageChange(10)}
               >
                 10
@@ -345,7 +345,7 @@ const EleveTable = ({ data = tabData, columns = tabColumns }) => {
             <li>
               <a
                 className="dropdown-item"
-                href="#"
+                href="/"
                 onClick={() => handleRowsPerPageChange(15)}
               >
                 15

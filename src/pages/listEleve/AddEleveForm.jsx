@@ -1,35 +1,9 @@
-import React, { useState } from "react";
-import { initialUsers } from "./userList";
-import ButtonReutilisable from "../../components/ButtonReutilisable";
+import React from "react";
 
-const AddEleveForm = (props) => {
-  const initialFormState = {
-    id: null,
-    nom: "",
-    prenom: "",
-    tel: "",
-    email: "",
-    coach: "",
-    domaine: "",
-  };
-  const [user, setUser] = useState(initialFormState);
-  const [users, setUsers] = useState(initialUsers);
 
-  const handleInputChange = () => {
-    const handleInputChange = (event) => {
-      const { name, value } = event.target;
-      setUser({ ...user, [name]: value });
-    };
-  };
+const AddEleveForm = () => {
+  
 
-  const handleSimulatedSubmit = (event) => {
-    const data = setUser({
-      ...users,
-      [event.target.name]: event.target.value,
-    });
-
-    console.log(data);
-  };
 
   return (
     <div className="container mt-5">
