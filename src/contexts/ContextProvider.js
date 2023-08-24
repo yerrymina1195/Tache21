@@ -16,7 +16,7 @@ export const ContextProvider = ({ children }) => {
   const [themeSettings, setThemeSettings] = useState(false);
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
-  const [table, setTable] = useState()
+ 
 
   const updateUser = (userData) => {
     if (typeof(userData) === 'undefined') {

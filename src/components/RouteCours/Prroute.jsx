@@ -1,6 +1,6 @@
 // PrivateRouteLayout.js
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useStateContext } from "../../contexts/ContextProvider";
 
 function PrivateRouteLayout({children, authorizedRoles = []}) {
