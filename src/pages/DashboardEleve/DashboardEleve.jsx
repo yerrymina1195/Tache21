@@ -2,7 +2,6 @@ import React from 'react'
 // import '../Dashboard/Dashbord.css';
 import { dashDataEleves} from '../../data/need';
 
-import React from 'react'
 import './DashboardCoach.css';
 
 import img from "../../data/Capture0.png";
