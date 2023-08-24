@@ -1,9 +1,20 @@
-import React, { useState } from 'react'
-// import './Dashboard.css';
-import { dashDataCoach, UserData } from '../../data/need';
+import React, { useState, useEffect } from 'react'
+import './DashboardCoach.css';
+import { UserData } from '../../data/need';
 import { BarChart } from "../../components";
 import img from "../../data/Capture0.png";
 import makhan from "../../data/makhan.png";
+import { PiStudentLight } from "react-icons/pi"
+import { AiOutlineDeliveredProcedure } from "react-icons/ai";
+import { LiaBookSolid } from "react-icons/lia";
+import {
+  collection,
+  query,
+  where,
+  onSnapshot,
+  getFirestore,
+  getDocs
+} from "firebase/firestore";
 
 
 const DashbordCoach = () => {
@@ -26,38 +37,121 @@ const DashbordCoach = () => {
       },
     ],
   });
-  const [userData2, setUserData2] = useState(false);
-
   console.log(userData);
+  const [nombreEleves, setNombreEleves] = useState(0);
+  const [numberOfCourses, setNumberOfCourses] = useState(0);
+  const [livraison, setLivraison] = useState(0);
+
+  useEffect(() => {
+    const db = getFirestore();
+
+    // Référence à la collection "users"
+    const usersCollection = collection(db, 'users');
+    // Filtrer les élèves en fonction du statut "eleve"
+    const elevesQuery = query(usersCollection, where('statut', '==', 'eleve'));
+
+    const unsubscribeEleves = onSnapshot(elevesQuery, (snapshot) => {
+      const elevesData = snapshot.docs.map(doc => doc.data());
+      setNombreEleves(elevesData.length);
+    });
+
+    // Récupérer la référence de la collection "cours"
+    const coursesRef = collection(db, 'cours');
+    // Récupérer les documents de la collection et compter le nombre
+    getDocs(coursesRef).then(querySnapshot => {
+      const count = querySnapshot.size;
+      setNumberOfCourses(count);
+    });
+
+    // Récupérer la référence de la collection "cours"
+    const livraisonRef = collection(db, 'livraisons');
+    // Récupérer les documents de la collection et compter le nombre
+    getDocs(livraisonRef).then(querySnapshot => {
+      const count = querySnapshot.size;
+      setLivraison(count);
+    });
+
+
+    return () => {
+      unsubscribeEleves();
+    };
+  }, []);
+  console.log(nombreEleves);
+  console.log(numberOfCourses);
+  console.log(livraison);
+
 
   return (
     <div className=' mt-4 ' >
       <div className="flex flex-wrap justify-center ">
         <div className="flex m-3 w-full flex-wrap justify-center gap-5 items-center">
-          {dashDataCoach.map((item) => (
-            <div
-              key={item.title}
-              className="bg-white justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl "
+          {/* CARTE 3 */}
+          <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+            <button
+              type="button"
+              style={{ color: "rgb(255, 244, 229)", backgroundColor: "rgb(254, 201, 15)" }}
+              className="text-2xl opacity-0.9 rounded-full  p-4 hover:drop-shadow-xl"
             >
-              <button
-                type="button"
-                style={{ color: item.iconColor, backgroundColor: item.iconBg }}
-                className="text-2xl opacity-0.9 rounded-full  p-4 hover:drop-shadow-xl"
-              >
-                {item.icon}
-              </button>
-              <p className=" mb-0 ">
-                <span className="text-lg font-semibold">{item.amount}</span>
-              </p>
-              <p className=" mb-0 text-sm text-gray-400  ">{item.title}</p>
-            </div>
-          ))}
-
-         
+              <PiStudentLight />
+            </button>
+            <p className=" mb-0 ">
+              <span className="text-lg font-semibold">{nombreEleves}</span>
+            </p>
+            <p className=" mb-0 text-sm text-gray-400">Elèves</p>
+          </div>
+          {/* Carte 4 */}
+          <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+            <button
+              type="button"
+              style={{ color: "rgb(228, 106, 118)", backgroundColor: "rgb(255, 244, 229)" }}
+              className="text-2xl opacity-0.9 rounded-full  p-4 hover:drop-shadow-xl"
+            >
+              <LiaBookSolid />
+            </button>
+            <p className=" mb-0 ">
+              <span className="text-lg font-semibold">{numberOfCourses}</span>
+            </p>
+            <p className=" mb-0 text-sm text-gray-400  ">Cours</p>
+          </div>
+          {/* Carte 5 */}
+          <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+            <button
+              type="button"
+              style={{ color: "rgb(0, 194, 146)", backgroundColor: "rgb(235, 250, 242)" }}
+              className="text-2xl opacity-0.9 rounded-full  p-4 hover:drop-shadow-xl"
+            >
+              <AiOutlineDeliveredProcedure />
+            </button>
+            <p className=" mb-0 ">
+              <span className="text-lg font-semibold">{livraison}</span>
+            </p>
+            <p className=" mb-0 text-sm text-gray-400  ">Livraisons</p>
+          </div>
         </div>
         <div className='py-20 flex justify-center w-full flex-1 basis-[100px]'>
-            <BarChart chartData={userData} />
+          <BarChart chartData={userData} />
+        </div>
+        {/* Livraison des eleves */}
+        <div className="col-12">
+          <div className='d-flex flex-row align-items-center'>
+            <div className='image'>
+              <img src={makhan} alt="makhan" className='img-fluid rounded-circle w-25 h-25' />
+            </div>
+            <div className='mt-3 ms-3'>
+              <h4 className='fs-5'>Makhan Diakho</h4>
+            </div>
+            <div className='mt-4 ms-5'>
+              <p className='text-secondary fs-6 mt-1'>12 août 2023, 12h30</p>
+            </div>
           </div>
+
+          <div className='mt-3 ms-3'>
+            <h4 className='text-couleur2'>Tâche n° 1</h4>
+          </div>
+          <div className='mt-3 ms-3 img'>
+            <img src={img} alt="img" className='img-fluid mx-auto' />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -142,7 +142,7 @@ export const dashData = [
   },
   {
     icon: <LiaBookSolid />,
-    amount: "300",
+    amount: "4",
     title: "Cours",
     iconColor: "rgb(228, 106, 118)",
     iconBg: "rgb(255, 244, 229)",
@@ -182,24 +182,25 @@ export const dashDataEleves = [
  
   {
     icon: <LiaBookSolid />,
-    amount: "300",
+    amount: "4",
     title: "Cours",
     iconColor: "rgb(228, 106, 118)",
     iconBg: "rgb(255, 244, 229)",
   },
-  {
-    icon: <AiOutlineDeliveredProcedure />,
-    // amount: "300",
-    title: "livraisons",
-    iconColor: "rgb(0, 194, 146)",
-    iconBg: "rgb(235, 250, 242)",
-  },
+  
   {
     icon: <GiTeacher />,
-    // amount: "50",
+    amount: "0",
     title: "Taches",
     iconColor: "#03C9D7",
     iconBg: "#E5FAFB",
+  },
+  {
+    icon: <AiOutlineDeliveredProcedure />,
+    amount: "0",
+    title: "Taches validées",
+    iconColor: "rgb(0, 194, 146)",
+    iconBg: "rgb(235, 250, 242)",
   },
 ];
 export const UserData = [

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-// import '../Dashboard/Dashbord.css';
+import './DashboardCoach.css';
 import { dashDataEleves, UserData } from '../../data/need';
-import { BarChart } from "../../components";
 import img from "../../data/Capture0.png";
 import makhan from "../../data/makhan.png";
 

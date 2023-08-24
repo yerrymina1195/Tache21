@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Dashboard.css';
-import { dashData, UserData } from '../../data/need';
-import { BarChart } from "../../components";
-import img from "../../data/Capture0.png";
-import makhan from "../../data/makhan.png";
+import { UserData } from '../../data/need';
 import FormInscrip from './FormInscrip';
 import { GiTeacher } from "react-icons/gi";
 import { PiStudentLight } from "react-icons/pi"
@@ -48,6 +45,7 @@ const Dashbord = () => {
   const [nombreEleves, setNombreEleves] = useState(0);
   const [nombreCoachs, setNombreCoachs] = useState(0);
   const [numberOfCourses, setNumberOfCourses] = useState(0);
+  const [livraison, setLivraison] = useState(0);
 
   useEffect(() => {
     const db = getFirestore();
@@ -75,12 +73,21 @@ const Dashbord = () => {
       const elevesData = snapshot.docs.map(doc => doc.data());
       setNombreEleves(elevesData.length);
     });
+
     // Récupérer la référence de la collection "cours"
     const coursesRef = collection(db, 'cours');
     // Récupérer les documents de la collection et compter le nombre
     getDocs(coursesRef).then(querySnapshot => {
       const count = querySnapshot.size;
       setNumberOfCourses(count);
+    });
+
+    // Récupérer la référence de la collection "cours"
+    const livraisonRef = collection(db, 'livraisons');
+    // Récupérer les documents de la collection et compter le nombre
+    getDocs(livraisonRef).then(querySnapshot => {
+      const count = querySnapshot.size;
+      setLivraison(count);
     });
 
 
@@ -94,13 +101,14 @@ const Dashbord = () => {
   console.log(nombreCoachs);
   console.log(nombreEleves);
   console.log(numberOfCourses);
+  console.log(livraison);
 
   return (
     <div className=' mt-4'>
       <div className="flex flex-wrap justify-center ">
         <div className="flex m-3 w-full flex-wrap justify-center gap-5 items-center">
           {/* Carte 1 */}
-        <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+          <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
             <button
               type="button"
               style={{ color: "#03C9D7", backgroundColor: "#E5FAFB" }}
@@ -165,7 +173,7 @@ const Dashbord = () => {
               <AiOutlineDeliveredProcedure />
             </button>
             <p className=" mb-0 ">
-              <span className="text-lg font-semibold">550</span>
+              <span className="text-lg font-semibold">{livraison}</span>
             </p>
             <p className=" mb-0 text-sm text-gray-400  ">Livraisons</p>
           </div>

@@ -27,7 +27,7 @@ import DashbordEleve from "./pages/DashboardEleve/DashboardEleve";
 
 
 const App = () => {
-  const user = { statut: "admin" }
+  const user = { statut: "eleve" }
 
   return (
 
