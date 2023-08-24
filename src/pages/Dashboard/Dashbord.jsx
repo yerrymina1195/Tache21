@@ -1,36 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Dashboard.css';
-import { dashData, UserData } from '../../data/need';
-import { BarChart } from "../../components";
-import img from "../../data/Capture0.png";
-import makhan from "../../data/makhan.png";
+import { dashData } from '../../data/need';
+
+
 import FormInscrip from './FormInscrip';
 
 const Dashbord = () => {
-  const [userData, setUserData] = useState({
-    labels: UserData.map((data) => data.year),
-    datasets: [
-      {
-        label: "Users Gained",
-        data: UserData.map((data) => data.userBoy),
-        backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
-        ],
-      },
-      {
-        label: "Users lost",
-        data: UserData.map((data) => data.userGirl),
-        backgroundColor: ["red"],
-      },
-    ],
-  });
-  const [userData2, setUserData2] = useState(false);
-
-  console.log(userData);
+ 
 
   return (
     <div className=' mt-4'>

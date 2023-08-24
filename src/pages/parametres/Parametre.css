@@ -56,3 +56,7 @@
 .card-header{
     background: linear-gradient(to right, #c23028c2 0%, #D7572B 50%, #F6B339 100%) !important;
 }
+.image .img-fluid{
+    width: 100px;
+    height: 100px;
+}
