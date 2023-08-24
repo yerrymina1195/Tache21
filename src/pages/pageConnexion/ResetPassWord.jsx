@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../../Firebase/Firebase";
+import {
+  confirmPasswordReset,
+  verifyPasswordResetCode,
+ 
+} from "firebase/auth";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Ma.css";
 import InputLabel from "../pageConnexion/InputLabel";
 import MaButton from "../pageConnexion/MaButton";
 
 const ResetPassWord = () => {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   const [newMdp, setNewMdp] = useState("")
   const [confirMdp, setConfirMdp] = useState("")
   const onSubmit = (e) => {
@@ -15,45 +21,48 @@ const ResetPassWord = () => {
       alert('saisir quelque chose svp')
     }
     if (newMdp === confirMdp) {
-      // resetPassword(newMdp);
       alert('nice meme mdp')
+      resetPassword(newMdp);
+
     } else {
       // toast.error("Mots de passe ne correspond pas");
       alert("Mots de passe ne correspond pas")
     }
   };
-  //  const resetPassword = async (newPassword) => {
-  //   const params = new URLSearchParams(window.location.search);
-  //   const oobCode = params.get("oobCode");
+   const resetPassword = async (newPassword) => {
+    const params = new URLSearchParams(window.location.search);
+    const oobCode = params.get("oobCode");
   
-  //   try {
-  //     const email = await verifyPasswordResetCode(auth, oobCode);
-  //     const accountEmail = email;
+    try {
+      const email = await verifyPasswordResetCode(auth, oobCode);
+      const accountEmail = email;
+      console.log('accountEmail' + accountEmail);
   
-  //     await confirmPasswordReset(auth, oobCode, newPassword);
+      await confirmPasswordReset(auth, oobCode, newPassword);
       
-  //     // Réinitialisation réussie
-  //     toast.success("Mot de passe réinitialisé avec succès !");
-  //     navigate("/");
-  //   } catch (error) {
-  //     const message = error.code;
+      // Réinitialisation réussie
+      // toast.success("Mot de passe réinitialisé avec succès !");
+      alert("Mot de passe réinitialisé avec succès !")
+      navigate("/");
+    } catch (error) {
+      const message = error.code;
   
-  //     if (message === "auth/weak-password") {
-  //       alert("Mot de passe faible, utilisez au moins 6 caractères !");
-  //     } else if (message === "auth/user-disabled") {
-  //       alert("Utilisateur désactivé par l'admin");
-  //       navigate("/");
-  //     } else if (message === "auth/user-not-found") {
-  //     alert("Aucun utilisateur associé à cette adresse e-mail !");
-  //     } else if (message === "auth/invalid-action-code") {
-  //       alert("Renvoyez un e-mail, car le mail précédent n'est plus valide !");
-  //       navigate("/");
-  //     } else if (message === "auth/expired-action-code") {
-  //       alert("Temps de validité expiré, réessayez à nouveau !");
-  //       navigate("/");
-  //     }
-  //   }
-  // };
+      if (message === "auth/weak-password") {
+        alert("Mot de passe faible, utilisez au moins 6 caractères !");
+      } else if (message === "auth/user-disabled") {
+        alert("Utilisateur désactivé par l'admin");
+        navigate("/");
+      } else if (message === "auth/user-not-found") {
+      alert("Aucun utilisateur associé à cette adresse e-mail !");
+      } else if (message === "auth/invalid-action-code") {
+        alert("Renvoyez un e-mail, car le mail précédent n'est plus valide !");
+        navigate("/");
+      } else if (message === "auth/expired-action-code") {
+        alert("Temps de validité expiré, réessayez à nouveau !");
+        navigate("/");
+      }
+    }
+  };
   
   return (
     <div>
@@ -69,7 +78,7 @@ const ResetPassWord = () => {
           </div>
           {/*  */}
           <div className="card-body mt-5">
-            <form className="mb-5 mt-5" onSubmit={""}>
+            <form className="mb-5 mt-5" onSubmit={onSubmit}>
               <div className="">
                 <InputLabel label={'Nouveau mot de passe'} type={'password'} placeholder={'********'} onChange={(e) => setNewMdp(e.target.value)} />
               </div>
@@ -77,10 +86,10 @@ const ResetPassWord = () => {
                 <InputLabel label={'Confirmer'} type={'password'} placeholder={'********'} onChange={(e) => setConfirMdp(e.target.value)} />
               </div>
               <div className="row mt-4">
-                <MaButton type={'button'}
+                <MaButton type={'submit'}
                   text={"REINITIALISER"}
-                  value={""}
-                  onClick={onSubmit}
+                 
+                  
            />
               </div>
             </form>
