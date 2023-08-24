@@ -8,7 +8,8 @@ import {
     collection,
     doc,
     serverTimestamp,
-    getDoc
+    getDoc,
+    updateDoc
 } from "firebase/firestore";
 import { auth, db } from "../../Firebase/Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -164,16 +165,22 @@ const FormInscrip = () => {
         mdp: "",
       });
     
-      const handleEdit = () => {
-        const updatedUserDetails = {
-          prenom: prenom,
-          nom: nom,
-          telephone: telephone,
-          email: email,
-          domaine: domaine,
-          address: address,
-        };
-        setSelectedDetails(updatedUserDetails);
+      const handleEdit = async () => {
+        const updatedUserDetails = doc(db, "users", selectedDetails.id);
+        try{
+            await updateDoc(updatedUserDetails, {
+                prenom: selectedDetails.prenom,
+                nom: selectedDetails.nom,
+                telephone: selectedDetails.telephone,
+                email: selectedDetails.email,
+                domaine: selectedDetails.domaine,
+                address: selectedDetails.address,
+                mdp: selectedDetails.mdp,
+            });
+            alert("updated")
+        } catch(err){
+            console.error(err);
+        }
       };
     
 
@@ -290,7 +297,7 @@ const FormInscrip = () => {
                                         <ButtonReutilisable text='' onClick={onSubmit} />
                                     </div> */}
                                        <div className='text-center'>
-                                        <ButtonReutilisable text='Modifier'  onClick={() => handleEdit()} />
+                                        <ButtonReutilisable text='Modifier'  onClick={handleEdit} />
                                     </div> 
                                 </form>
                             </div>
