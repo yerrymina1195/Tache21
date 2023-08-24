@@ -1,80 +1,85 @@
-import './App.css';
-
-import React ,{useEffect} from 'react'
-import { BrowserRouter, Routes,Route} from 'react-router-dom';
-import { FiSettings } from 'react-icons/fi';
-import { Navbar, Sidebar, ThemeSetting } from './components';
-import { Livraisons,Messagerie, Cours, Eleves, Dashbord } from "./pages";
-import { useStateContext } from './contexts/ContextProvider';
+import "./App.css";
+import React from "react";
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useStateContext } from "./contexts/ContextProvider";
+import {
+  Livraisons,
+  Messagerie,
+  Cours,
+  Eleves,
+  Programmation,
+  Design,
+  Marketing,
+} from "./pages";
+import Quiz from "./pages/SousCours/Quiz/Quiz";
+import RouteCours from "./components/RouteCours/RouteCours";
+import Certification from './pages/Certification/Certification';
+import Dashbord from "./pages/Dashboard/Dashbord";
+import Connexion from "./pages/pageConnexion/Connexion";
+import ForgetPassword from "./pages/pageConnexion/ForgetPassword";
+import Layout from "./MainLayout/Layout";
+import Prof from "./pages/ListProfs/Prof";
+import Parametre from "./pages/parametres/Parametre";
+import DashbordCoach from "./pages/DashboardCoach/DashboardCoach";
+import DashbordEleve from "./pages/DashboardEleve/DashboardEleve";
+import PrivateRouteLayout from "./components/RouteCours/Prroute";
+import  PriveRoute  from "./components/priveroute/PriveRoute";
+// import DashboardCoach from "./pages/DashboardCoach/DashboardCoach";
+import  NonAutorise  from "./pages/NonAutorise";
+import  NotFound  from "./pages/NotFound";
+import ResetPassWord from "./pages/pageConnexion/ResetPassWord";
 
 const App = () => {
+  const{user}=useStateContext()
+const userType = user;
 
-  const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
 
-  useEffect(() => {
-    const currentThemeColor = localStorage.getItem('colorMode');
-    const currentThemeMode = localStorage.getItem('themeMode');
-    if (currentThemeColor && currentThemeMode) {
-      setCurrentColor(currentThemeColor);
-      setCurrentMode(currentThemeMode);
-    }
-  }, [setCurrentColor,setCurrentMode]);
+
   return (
-    <div className={currentMode === 'Dark' ? 'dark' : ''} >
-    <BrowserRouter>
-  <div className='flex relative dark:bg-main-dark-bg'>
-     <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
-     
-              <button
-                type="button"
-                onClick={() => setThemeSettings(true)}
-                style={{ background: currentColor, borderRadius: '50%' }}
-               
-                className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
-              >
-                <FiSettings />
-              </button>
-           
-     </div>
-      {activeMenu ? (
-        <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white '>
-          <Sidebar/>
-        </div>
-      ):( 
-         <div className="w-0 dark:bg-secondary-dark-bg">
-        <Sidebar/>
-      </div>
-      )}
-      <div  className={
-              activeMenu
-                ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  '
-                : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 '
-            }>
-                        <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
-            <Navbar/>
-            </div>
-            <div>
-            {themeSettings && (<ThemeSetting />)}
 
+<BrowserRouter>
               <Routes>
                 {/* dashboard  */}
-                <Route path="/" element={(<Dashbord />)} />
-                <Route path="/dashbord" element={(<Dashbord />)} />
+                <Route path="/" element={<Connexion/>} />
+                <Route path="/f" element={<ForgetPassword/>} />
+                <Route path="/ResetPassWord" element={<ResetPassWord/>} />
+                <Route path="/unauthorized" element={<NonAutorise/>} />
+
+                {/* <Route path="/l" element={<Layout/>} > */}
+                <Route path="/l" element={<PrivateRouteLayout authorizedRoles={['admin', 'coach', 'eleve']}><Layout /></PrivateRouteLayout>}>                
+                <Route path="/l/dashboard" element={userType?.statut ==='admin'?<Dashbord />:userType?.statut ==='coach'?<DashbordCoach/>:userType?.statut ==='eleve'?<DashbordEleve/>:""} />
+                
 
                 {/* Pages */}
-                <Route path="/livraisons" element={< Livraisons/>} />
-                <Route path="/messagerie" element={(<Messagerie />)} />
-                <Route path="/cours" element={(<Cours />)} />
-                <Route path="/eleves" element={(<Eleves />)} />
+                <Route path="/l/livraisons" element={<Livraisons />} />
+                <Route path="/l/messagerie" element={<Messagerie />} />
+                <Route path="/l/cours" element={<Cours />} />
+                <Route
+                  path="/l/cours/programmation"
+
+                  element={<PriveRoute authorizedRoles={['admin', 'Coach', 'eleve']} requiredDomain={"Programmation"}> <Programmation /> </PriveRoute>}
+                />
+     <Route path="/l/professeurs" element={<PriveRoute authorizedRoles={['admin', 'Coach']}> <Prof /> </PriveRoute>}/>
+                <Route path="/l/cours/programmation/*"  element={<PriveRoute authorizedRoles={['admin', 'coach', 'eleve']} requiredDomain={"Programmation"}> <RouteCours /> </PriveRoute>} />
+                <Route path="/l/cours/marketing" element={<PriveRoute authorizedRoles={['admin', 'coach', 'eleve']} requiredDomain={"Marketing Digital"}> <Marketing /> </PriveRoute>} />
+                <Route path="/l/cours/marketing/*" element={<PriveRoute authorizedRoles={['admin', 'coach', 'eleve']} requiredDomain={"Marketing Digital"}> <RouteCours /> </PriveRoute>} />
+                <Route path="/l/cours/design" element={<PriveRoute authorizedRoles={['admin', 'coach', 'eleve']} requiredDomain={"Design"}> <Design /> </PriveRoute>} />
+                <Route path="/l/cours/design/*"  element={<PriveRoute authorizedRoles={['admin', 'coach', 'eleve']} requiredDomain={"Design"}><RouteCours /> </PriveRoute>} />
+                <Route path="/l/quiz" element={<Quiz />} />
+                <Route path="/l/eleves" element={<PriveRoute authorizedRoles={['admin', 'coach']}> <Eleves /> </PriveRoute>}/>
+                {/* <Route path="/l/professeurs" element={< Prof/>} /> */}
+                <Route path="/l/parametres" element={< Parametre/>} />
+                <Route path="/l/certification" element={(<Certification />)} />
+                </Route>
+                <Route path="*" element={<NotFound/>} />
               </Routes>
-            </div>
+          
+      
+      </BrowserRouter >
+    
+  );
+};
 
-      </div>
-    </div>
-    </BrowserRouter>
-    </div>
-  )
-}
-
-export default App
-
+export default App;

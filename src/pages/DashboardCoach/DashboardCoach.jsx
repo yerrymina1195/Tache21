@@ -1,0 +1,66 @@
+import React, { useState } from 'react'
+// import './Dashboard.css';
+import { dashDataCoach, UserData } from '../../data/need';
+import { BarChart } from "../../components";
+
+
+
+const DashbordCoach = () => {
+  // eslint-disable-next-line
+  const [userData, setUserData] = useState({
+    labels: UserData.map((data) => data.year),
+    datasets: [
+      {
+        label: "Users Gained",
+        data: UserData.map((data) => data.userBoy),
+        backgroundColor: [
+          "rgba(75,192,192,1)",
+          "#ecf0f1",
+          "#50AF95",
+        ],
+      },
+      {
+        label: "Users lost",
+        data: UserData.map((data) => data.userGirl),
+        backgroundColor: ["red"],
+      },
+    ],
+  });
+
+
+  console.log(userData);
+
+  return (
+    <div className=' mt-4 ' >
+      <div className="flex flex-wrap justify-center ">
+        <div className="flex m-3 w-full flex-wrap justify-center gap-5 items-center">
+          {dashDataCoach.map((item) => (
+            <div
+              key={item.title}
+              className="bg-white justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl "
+            >
+              <button
+                type="button"
+                style={{ color: item.iconColor, backgroundColor: item.iconBg }}
+                className="text-2xl opacity-0.9 rounded-full  p-4 hover:drop-shadow-xl"
+              >
+                {item.icon}
+              </button>
+              <p className=" mb-0 ">
+                <span className="text-lg font-semibold">{item.amount}</span>
+              </p>
+              <p className=" mb-0 text-sm text-gray-400  ">{item.title}</p>
+            </div>
+          ))}
+
+         
+        </div>
+        <div className='py-20 flex justify-center w-full flex-1 basis-[100px]'>
+            <BarChart chartData={userData} />
+          </div>
+      </div>
+    </div>
+  );
+};
+
+export default DashbordCoach;
