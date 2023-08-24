@@ -47,7 +47,7 @@ const userType = user;
 
                 {/* <Route path="/l" element={<Layout/>} > */}
                 <Route path="/l" element={<PrivateRouteLayout authorizedRoles={['admin', 'coach', 'eleve']}><Layout /></PrivateRouteLayout>}>                
-                <Route path="/l/dashboard" element={userType?.statut ==='admin'?<Dashbord />:userType?.statut ==='coach'?<DashbordCoach/>:userType?.statut ==='Elève'?<DashbordEleve/>:""} />
+                <Route path="/l/dashboard" element={userType?.statut ==='admin'?<Dashbord />:userType?.statut ==='coach'?<DashbordCoach/>:userType?.statut ==='eleve'?<DashbordEleve/>:""} />
                 
 
                 {/* Pages */}
@@ -57,7 +57,7 @@ const userType = user;
                 <Route
                   path="/l/cours/programmation"
 
-                  element={<PriveRoute authorizedRoles={['admin', 'Coach', 'Elève']} requiredDomain={"Programmation"}> <Programmation /> </PriveRoute>}
+                  element={<PriveRoute authorizedRoles={['admin', 'Coach', 'eleve']} requiredDomain={"Programmation"}> <Programmation /> </PriveRoute>}
                 />
      <Route path="/l/professeurs" element={<PriveRoute authorizedRoles={['admin', 'Coach']}> <Prof /> </PriveRoute>}/>
                 <Route path="/l/cours/programmation/*"  element={<PriveRoute authorizedRoles={['admin', 'coach', 'eleve']} requiredDomain={"Programmation"}> <RouteCours /> </PriveRoute>} />
