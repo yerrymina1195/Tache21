@@ -29,6 +29,7 @@ import  PriveRoute  from "./components/priveroute/PriveRoute";
 // import DashboardCoach from "./pages/DashboardCoach/DashboardCoach";
 import  NonAutorise  from "./pages/NonAutorise";
 import  NotFound  from "./pages/NotFound";
+import ResetPassWord from "./pages/pageConnexion/ResetPassWord";
 
 const App = () => {
   const{user}=useStateContext()
@@ -43,6 +44,7 @@ const userType = user;
                 {/* dashboard  */}
                 <Route path="/" element={<Connexion/>} />
                 <Route path="/f" element={<ForgetPassword/>} />
+                <Route path="/ResetPassWord" element={<ResetPassWord/>} />
                 <Route path="/unauthorized" element={<NonAutorise/>} />
 
                 {/* <Route path="/l" element={<Layout/>} > */}

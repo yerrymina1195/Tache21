@@ -38,7 +38,8 @@ const UserProfil = () => {
       <div className="flex gap-3 items-center mt-6 border-color border-b-1 pb-4">
         <img
           className="rounded-full h-24 w-24"
-          src={user?.url}
+          src={user?.url ? user.url
+            : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}
           alt="user-profile"
         />
         <div>

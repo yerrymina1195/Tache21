@@ -80,7 +80,8 @@ const Navbar = () => {
         >
           <img
             className="rounded-full w-8 h-8"
-            src={user.url}
+            src={user?.url ? user.url
+              : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}
             alt="user-profile"
           />
           <p className='mb-0 '>

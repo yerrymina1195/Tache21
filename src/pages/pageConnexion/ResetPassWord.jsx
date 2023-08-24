@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Ma.css";
 import InputLabel from "../pageConnexion/InputLabel";
@@ -20,7 +20,7 @@ const ResetPassWord = () => {
           </div>
           {/*  */}
           <div className="card-body mt-5">
-            <form className="mb-5 mt-5" onSubmit={handleResetPassword}>
+            <form className="mb-5 mt-5" onSubmit={""}>
               <div className="">
                 <InputLabel label={'Nouveau mot de passe'} type={'password'} placeholder={'********'} />
               </div>
@@ -30,8 +30,8 @@ const ResetPassWord = () => {
               <div className="row mt-4">
                 <MaButton type={'button'}
                   text={"REINITIALISER"}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)} />
+                  value={""}
+           />
               </div>
             </form>
           </div>
