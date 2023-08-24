@@ -39,10 +39,10 @@ const ForgetPassword = () => {
 
   return (
     <div>
-      <div class="mabg"></div>
-      <div class="mabg mabg2"></div>
-      <div class="mabg mabg3"></div>
-      <div class="macontent">
+      <div className="mabg"></div>
+      <div className="mabg mabg2"></div>
+      <div className="mabg mabg3"></div>
+      <div className="macontent">
         <div className="card relative bgma">
           <div className="container text-white">
             <div className="bg1 text-center fw-bold rounded-3 pt-5 card-title position-absolute start-50 translate-middle p-4">
