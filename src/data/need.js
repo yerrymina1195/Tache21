@@ -13,12 +13,12 @@ import avatar4 from "./avatar4.jpg";
 export const links = [
   {
     title: "Dashboard",
-    statut: ["admin","Coach","Elève"],
+    statut: ["admin","coach","eleve"],
     links: [
       {
         name: "Dashbord",
         icon: <LuLayoutDashboard />,
-        statut: ["admin","Coach","Elève"], 
+        statut: ["admin","coach","eleve"], 
         link: "l/dashboard",
       },
     ],
@@ -26,30 +26,30 @@ export const links = [
 
   {
     title: "Pages",
-    statut: ["admin","Coach","Elève"],
+    statut: ["admin","coach","eleve"],
     links: [
       {
         name: "livraisons",
         icon: <AiOutlineDeliveredProcedure />,
-        statut: ["Coach","Elève"],
+        statut: ["coach","eleve"],
         link: "l/livraisons",
       },
       {
         name: "messagerie",
         icon: <MdOutlineMessage />,
-        statut: ["admin","Coach","Elève"],
+        statut: ["admin","coach","eleve"],
         link: "l/messagerie",
       },
       {
         name: "cours",
         icon: <LiaBookSolid />,
-        statut: ["admin","Coach","Elève"],
+        statut: ["admin","coach","eleve"],
         link: "l/cours",
       },
       {
         name: "eleves",
         icon: <PiStudentLight />,
-        statut: ["admin","Coach"],
+        statut: ["admin","coach"],
         link: "l/eleves",
       },
       {
@@ -61,7 +61,7 @@ export const links = [
       {
         name: "Parametres",
         icon: <PiStudentLight />,
-        statut: ["admin","Coach","Elève"],
+        statut: ["admin","coach","eleve"],
         link: "l/parametres",
       }
     ],
@@ -69,12 +69,12 @@ export const links = [
   
   {
     title: "Certification",
-    statut: ["Coach","Elève"],
+    statut: ["coach","eleve"],
     links: [
       {
         name: "Certification",
         icon: <TbCertificate />,
-        statut: ["Coach","Elève"],
+        statut: ["coach","eleve"],
         link:"l/certification"
       },
     ],

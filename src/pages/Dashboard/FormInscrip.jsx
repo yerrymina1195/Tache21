@@ -4,15 +4,14 @@ import '../Dashboard/FormInscrip.css';
 import LabelInput from '../parametres/LabelInput';
 import ButtonReutilisable from '../../components/ButtonReutilisable';
 import {
-    addDoc,
-    collection,
+    
     doc,
     serverTimestamp,
     setDoc,
 } from "firebase/firestore";
 import { auth, db } from "../../Firebase/Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const FormInscrip = () => {
     // const navigate = useNavigate()
@@ -24,8 +23,9 @@ const FormInscrip = () => {
         mdp: "",
         address: "",
         statut: "",
-        domaine: ""
-      });
+        domaine: "",
+        nbrCoach:""
+    });
     const [data, setData] = useState({
         prenom: "",
         nom: "",
@@ -34,17 +34,18 @@ const FormInscrip = () => {
         mdp: "",
         address: "",
         statut: "",
-        domaine: ""
+        domaine: "",
+        nbrCoach:""
     })
     console.log(errors);
     // Gérer les erreuers 
     const validateEmail = (email) => {
-   
+
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
-      };
-    
-    const { prenom, nom, email, telephone, mdp, address, statut, domaine } = data
+    };
+
+    const { prenom, nom, email, telephone, mdp, address, statut, domaine,nbrCoach } = data
 
     const handelchange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
@@ -55,52 +56,59 @@ const FormInscrip = () => {
 
         let newErrors = {
             prenom: "",
-        nom: "",
-        email: "",
-        telephone: "",
-        mdp: "",
-        address: "",
-        statut: "",
-        domaine: ""
-          };
-      
-          if (data.email === '') {
-            newErrors.email = 'Email is required';
-          } else if (!validateEmail(data.email)) {
-            newErrors.email = 'Invalid email format';
-          }
-      
-          if (data.mdp === '') {
-            newErrors.mdp = 'Password is required';
-          
-          }
-      
-          if (data.telephone === '') {
-            newErrors.telephone = 'Téléphone number is required';
-          }
-      
-          if (data.nom === '') {
-            newErrors.nom = 'Nom is required';
-          }
-          if (data.prenom === '') {
-            newErrors.prenom = 'Prénom is required';
-          }
-          if (data.address === '') {
-            newErrors.address = 'Address is required';
-          }
-          if (data.statut === '') {
-            newErrors.statut = 'Statut is required';
-          }
-          if (data.domaine === '') {
-            newErrors.domaine = 'Domaine is required';
-          }
-      
-          setErrors(newErrors);
-       
-      
-        
-          if (Object.values(newErrors).every((error) => error === '')) {
-            
+            nom: "",
+            email: "",
+            telephone: "",
+            mdp: "",
+            address: "",
+            statut: "",
+            domaine: "",
+            nbrCoach:""
+        };
+
+        if (data.email === '') {
+            newErrors.email = 'Email obligatoire';
+        } else if (!validateEmail(data.email)) {
+            newErrors.email = "Format d'email invalide";
+        }
+
+        if (data.mdp === '') {
+            newErrors.mdp = 'Mot de pass obligatoire';
+
+        }
+
+        if (data.telephone === '') {
+            newErrors.telephone = 'Téléphone obligatoire';
+        }
+
+        if (data.nom === '') {
+            newErrors.nom = 'Nom obligatoire';
+        }
+        if (data.prenom === '') {
+            newErrors.prenom = 'Prénom obligatoire';
+        }
+        if (data.address === '') {
+            newErrors.address = 'Address obligatoire';
+        }
+        if (data.statut === '') {
+            newErrors.statut = 'Statut obligatoire';
+        }
+        if (data.statut === "admin") {
+            setData({...data, domaine:null , nbrCoach:null})
+        }
+        if (data.domaine === '') {
+            newErrors.domaine = 'Domaine obligatoire';
+        }
+        if (data.nbrCoach === '') {
+            newErrors.nbrCoach = 'coach obligatoire';
+        }
+
+        setErrors(newErrors);
+
+
+
+        if (Object.values(newErrors).every((error) => error === '')) {
+
             console.log('Form data submitted:', data);
             try {
                 const res = await createUserWithEmailAndPassword(
@@ -116,9 +124,10 @@ const FormInscrip = () => {
                     mdp: data.mdp,
                     address: data.address,
                     statut: data.statut,
-                    domaine: data.domaine,
-                    id:res.user.uid,
+                    domaine: data?.statut ==="admin"? null:data?.statut ==="coach"?null:data.domaine,
+                    id: res.user.uid,
                     timeStamp: serverTimestamp(),
+                    coachSelf:data?.statut ==="admin"? null:data?.statut ==="coach"?null:data.nbrCoach
                 });
                 // navigate(-1)
                 alert("insertion avec succées")
@@ -132,6 +141,7 @@ const FormInscrip = () => {
                     address: "",
                     statut: "",
                     domaine: "",
+                    nbrCoach:""
                 })
             } catch (err) {
                 console.log(err);
@@ -139,122 +149,136 @@ const FormInscrip = () => {
             }
 
 
-            setData({
-                prenom: "",
-                nom: "",
-                email: "",
-                telephone: "",
-                mdp: "",
-                address: "",
-                statut: "",
-                domaine: "",
-            })
-          }
-       
+            // setData({
+            //     prenom: "",
+            //     nom: "",
+            //     email: "",
+            //     telephone: "",
+            //     mdp: "",
+            //     address: "",
+            //     statut: "",
+            //     domaine: "",
+            // })
+        }
+
     }
-    // console.log(data);
+    console.log(data);
 
     return (
         <div>
-            <div class="container-xl px-4 mt-4">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-header  dark:bg-secondary-dark-bg text-white dark:text-gray-200">Ajouter un coach ou un eleve</div>
+            <div className="container-xl px-4 mt-4">
+                <div className="row">
+                    <div className="col-xl-12">
+                        <div className="card">
+                            <div className="card-header  dark:bg-secondary-dark-bg text-white dark:text-gray-200">Ajouter un coach ou un eleve</div>
 
-                            <div class="card-body bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
+                            <div className="card-body bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
                                 <form>
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-6">
+                                    <div className="row gx-3 mb-3">
+                                        <div className="col-md-6">
                                             <LabelInput id="inputLatestName" label="Prenom" placeholder="Mama" type="text"
                                                 name="prenom"
                                                 onChange={handelchange}
                                                 value={prenom}
 
-                                                />
-                                                <p className="text-danger">{errors.prenom}</p>
+                                            />
+                                            <p className="text-danger">{errors.prenom}</p>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div className="col-md-6">
                                             <LabelInput id="inputFirstName" label="Nom" placeholder="Gadiaga" type="text"
                                                 name="nom"
                                                 onChange={handelchange}
                                                 value={nom}
 
-                                                />
-                                                <p className="text-danger">{errors.nom}</p>
+                                            />
+                                            <p className="text-danger">{errors.nom}</p>
                                         </div>
                                     </div>
 
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-6">
+                                    <div className="row gx-3 mb-3">
+                                        <div className="col-md-6">
                                             <LabelInput id="inputEmailAddress" label="Adresse email" placeholder="example@gmail.com" type="email"
                                                 name="email"
                                                 onChange={handelchange}
                                                 value={email}
 
-                                                />
-                                                <p className="text-danger">{errors.email}</p>
+                                            />
+                                            <p className="text-danger">{errors.email}</p>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div className="col-md-6">
                                             <LabelInput id="inputPhone" label="Numero telephone" placeholder="77 670 00 66" type="tel"
                                                 name="telephone"
                                                 onChange={handelchange}
                                                 value={telephone}
 
-                                                 />
-                                                 <p className="text-danger">{errors.telephone}</p>
+                                            />
+                                            <p className="text-danger">{errors.telephone}</p>
                                         </div>
                                     </div>
 
-                                    <div class="row gx-3 mb-3">
+                                    <div className="row gx-3 mb-3">
                                         <div className="col-md-6">
                                             <LabelInput id="mdp" label="Mot de pass" placeholder="mot de pass" type="password"
                                                 name="mdp"
                                                 onChange={handelchange}
                                                 value={mdp}
-
-                                                />
-                                                <p className="text-danger">{errors.mdp}</p>
+                                            />
+                                            <p className="text-danger">{errors.mdp}</p>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div className="col-md-6">
                                             <LabelInput id="inputDomicile" label="Adresse de domicile" placeholder="Colobane Parc Amazout" type="text"
                                                 name="address"
                                                 onChange={handelchange}
                                                 value={address}
 
-                                                 />
-                                                 <p className="text-danger">{errors.address}</p>
+                                            />
+                                            <p className="text-danger">{errors.address}</p>
                                         </div>
                                     </div>
-                                    <div class="row gx-3 mb-3">
+                                    <div className="row gx-3 mb-3">
                                         <div className="col-md-6">
                                             <label htmlFor="select">Rôle</label>
                                             <select className="form-select shadow-none" aria-label="Default select example"
                                                 name="statut"
                                                 onChange={handelchange}
                                                 value={statut}
-                                                >
-                                                <option selected >Choisir un rôle</option>
-                                                <option value="Admin">Admin</option>
-                                                <option value="Coach">Coach</option>
-                                                <option value="Elève">Elève</option>
+                                            >
+                                                <option value="" >Choisir un rôle</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="coach">Coach</option>
+                                                <option value="eleve">Elève</option>
                                             </select>
                                             <p className="text-danger">{errors.statut}</p>
                                         </div>
-                                        <div className="col-md-6">
+                                    { statut !== 'admin' &&   (<div className="col-md-6">
                                             <label htmlFor="select">Domaine à suivre</label>
                                             <select className="form-select shadow-none" aria-label="Default select example"
                                                 name="domaine"
                                                 onChange={handelchange}
                                                 value={domaine}
-                                                >
-                                                <option selected >Choisir un domaine</option>
+                                            >
+                                                <option value="" >Choisir un domaine</option>
                                                 <option value="Programmation">Programmation</option>
                                                 <option value="Design">Design</option>
                                                 <option value="Marketing Digital">Marketing Digital</option>
                                             </select>
                                             <p className="text-danger">{errors.domaine}</p>
-                                        </div>
+                                        </div>)}
+                                    { statut ==='eleve' &&  (<div className="col-md-6">
+                                            <label htmlFor="select">assigner coach</label>
+                                            <select className="form-select shadow-none" aria-label="Default select example"
+                                                name="nbrCoach"
+                                                onChange={handelchange}
+                                                value={nbrCoach}
+                                            >
+                                                <option value="" >Choisir un coach</option>
+                                                <option value="Mohamed">Mohamed</option>
+                                                <option value="Mahmoud">Mahmoud</option>
+                                                <option value="Christ">Christ</option>
+                                            </select>
+                                            <p className="text-danger">{errors.nbrCoach}</p>
+                                        </div>)}
+   
 
                                     </div>
                                     <div className='text-center'>

@@ -12,7 +12,7 @@ import { useStateContext } from "../../contexts/ContextProvider";
 import {
  
   doc,
-  onSnapshot,
+  getDoc
  
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 
 const Connexion = () => {
   const {updateUser}=useStateContext()
+  //eslint-disable-next-line
   const [error, setError] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,14 +39,16 @@ const Connexion = () => {
     try {
       const res= await signInWithEmailAndPassword(auth, email, password);
       const userID=  res?.user?.uid
-      onSnapshot(doc(db,'users',userID), (doc) => {
-        const user= doc.data()
-        alert(`Bienvenue ${user.prenom}`)
-       
-      updateUser(user)
+      const userDoc = await getDoc(doc(db, 'users', userID));
+      const userData = userDoc.data();
+      alert(`Bienvenue ${userData.prenom}`)
+      updateUser(userData)
       navitage('l/dashboard')
-      });
-     
+      
+      // onSnapshot(doc(db,'users',userID), (doc) => {
+      //   const user= doc.data()
+        
+      // });
    
     } catch (error) {
       alert(error)

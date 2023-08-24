@@ -36,19 +36,15 @@ const userType = user;
 
 
   return (
-    
-    
-      <BrowserRouter>
- 
 
-
+<BrowserRouter>
               <Routes>
                 {/* dashboard  */}
                 <Route path="/" element={<Connexion/>} />
                 <Route path="/f" element={<ForgetPassword/>} />
                 {/* <Route path="/l" element={<Layout/>} > */}
-                <Route path="/l" element={<PrivateRouteLayout authorizedRoles={['admin', 'Coach', 'Elève']}><Layout /></PrivateRouteLayout>}>                
-                <Route path="/l/dashboard" element={userType?.statut ==='admin'?<Dashbord />:userType?.statut ==='Coach'?<DashbordCoach/>:userType?.statut ==='Elève'?<DashbordEleve/>:""} />
+                <Route path="/l" element={<PrivateRouteLayout authorizedRoles={['admin', 'coach', 'eleve']}><Layout /></PrivateRouteLayout>}>                
+                <Route path="/l/dashboard" element={userType?.statut ==='admin'?<Dashbord />:userType?.statut ==='coach'?<DashbordCoach/>:userType?.statut ==='Elève'?<DashbordEleve/>:""} />
                 
 
                 {/* Pages */}
@@ -61,13 +57,13 @@ const userType = user;
                   element={<PriveRoute authorizedRoles={['admin', 'Coach', 'Elève']} requiredDomain={"Programmation"}> <Programmation /> </PriveRoute>}
                 />
      <Route path="/l/professeurs" element={<PriveRoute authorizedRoles={['admin', 'Coach']}> <Prof /> </PriveRoute>}/>
-                <Route path="/l/cours/programmation/*"  element={<PriveRoute authorizedRoles={['admin', 'Coach', 'Elève']} requiredDomain={"Programmation"}> <RouteCours /> </PriveRoute>} />
-                <Route path="/l/cours/marketing" element={<PriveRoute authorizedRoles={['admin', 'Coach', 'Elève']} requiredDomain={"Marketing Digital"}> <Marketing /> </PriveRoute>} />
-                <Route path="/l/cours/marketing/*" element={<PriveRoute authorizedRoles={['admin', 'Coach', 'Elève']} requiredDomain={"Marketing Digital"}> <RouteCours /> </PriveRoute>} />
-                <Route path="/l/cours/design" element={<PriveRoute authorizedRoles={['admin', 'Coach', 'Elève']} requiredDomain={"Design"}> <Design /> </PriveRoute>} />
-                <Route path="/l/cours/design/*"  element={<PriveRoute authorizedRoles={['admin', 'Coach', 'Elève']} requiredDomain={"Design"}><RouteCours /> </PriveRoute>} />
+                <Route path="/l/cours/programmation/*"  element={<PriveRoute authorizedRoles={['admin', 'coach', 'eleve']} requiredDomain={"Programmation"}> <RouteCours /> </PriveRoute>} />
+                <Route path="/l/cours/marketing" element={<PriveRoute authorizedRoles={['admin', 'coach', 'eleve']} requiredDomain={"Marketing Digital"}> <Marketing /> </PriveRoute>} />
+                <Route path="/l/cours/marketing/*" element={<PriveRoute authorizedRoles={['admin', 'coach', 'eleve']} requiredDomain={"Marketing Digital"}> <RouteCours /> </PriveRoute>} />
+                <Route path="/l/cours/design" element={<PriveRoute authorizedRoles={['admin', 'coach', 'eleve']} requiredDomain={"Design"}> <Design /> </PriveRoute>} />
+                <Route path="/l/cours/design/*"  element={<PriveRoute authorizedRoles={['admin', 'coach', 'eleve']} requiredDomain={"Design"}><RouteCours /> </PriveRoute>} />
                 <Route path="/l/quiz" element={<Quiz />} />
-                <Route path="/l/eleves" element={<PriveRoute authorizedRoles={['admin', 'Coach']}> <Eleves /> </PriveRoute>}/>
+                <Route path="/l/eleves" element={<PriveRoute authorizedRoles={['admin', 'coach']}> <Eleves /> </PriveRoute>}/>
                 {/* <Route path="/l/professeurs" element={< Prof/>} /> */}
                 <Route path="/l/parametres" element={< Parametre/>} />
                 <Route path="/l/certification" element={(<Certification />)} />
