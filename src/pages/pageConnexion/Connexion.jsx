@@ -94,7 +94,7 @@ const Connexion = () => {
               </div>
               {/*  */}
               <div className="mb-3">
-                <InputLabel label={'Mot de passe'} type={'password'} placeholder={'........'} onChange={(e) => setPassword(e.target.value)} />
+                <InputLabel label={'Mot de passe'} type={'password'} placeholder={'********'} onChange={(e) => setPassword(e.target.value)} />
               </div>
               <div className="row">
               <Link >
