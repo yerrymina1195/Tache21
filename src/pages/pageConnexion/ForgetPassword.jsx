@@ -68,7 +68,7 @@ const ForgetPassword = () => {
               <div className="row mt-4">
                 <div className="col-md-6"></div>
                 <div className="col-md-6 text-end" >
-                  <a href="#" className="text-decoration-none text-couleur1">
+                  <a href="/" className="text-decoration-none text-couleur1">
                     Vous vous en souvenez? </a>
                 </div>
               </div>
