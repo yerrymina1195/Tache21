@@ -243,10 +243,10 @@ const FormInscrip = () => {
                                                 onChange={handelchange}
                                                 value={statut}
                                             >
-                                                <option value="" >Choisir un rôle</option>
-                                                <option value="admin">Admin</option>
-                                                <option value="coach">Coach</option>
-                                                <option value="eleve">Elève</option>
+                                                <option selected >Choisir un rôle</option>
+                                                <option value="admin">admin</option>
+                                                <option value="coach">coach</option>
+                                                <option value="eleve">eleve</option>
                                             </select>
                                             <p className="text-danger">{errors.statut}</p>
                                         </div>
