@@ -8,6 +8,8 @@ import {
     updateDoc,
     onSnapshot
 } from "firebase/firestore";
+import {  updateEmail, } from "firebase/auth";
+import { auth } from "../../Firebase/Firebase";
 import {useStateContext  } from "../../contexts/ContextProvider";
 import { db, storage } from "../../Firebase/Firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -52,11 +54,11 @@ const Parametre = () => {
               nom: user.nom,
               email: user.email,
               telephone: user.telephone,
-              mdp: user.mdp,
+             
           });
       }
   }, [user]);
-    const { prenom, nom, email, telephone, mdp, url } = data
+    const { prenom, nom, email, telephone,  url } = data
     const handelchange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
     }
@@ -104,26 +106,21 @@ const Parametre = () => {
 
     const handleSaveProfile = async () => {
         try {
-       
+          await updateEmail(auth.currentUser, data.email)
             await updateDoc(doc(db, 'users', user?.id), {
                 prenom: data.prenom,
                 nom: data.nom,
                 email: data.email,
                 telephone: data.telephone,
-                mdp: data.mdp,
+               
 
             });
+            alert('modification faite')
         } catch (error) {
            
             console.error('Erreur lors de la mise à jour du profil :', error);
         }
-        setData({
-            prenom: "",
-            nom: "",
-            email: "",
-            telephone: "",
-            mdp: "",
-        })
+      
     };
 
     return (
@@ -226,19 +223,7 @@ const Parametre = () => {
                                         </div>
                                     </div>
 
-                                    <div className="row gx-3 mb-3">
-                                        <div className="col-md-12">
-                                            <LabelInput id="mdp"
-                                                label="Mot de pass"
-                                                placeholder="......"
-                                                type="password"
-                                                name="mdp"
-                                                value={mdp}
-                                                onChange={handelchange}
-                                                className="form-control"
-                                            />
-                                        </div>
-                                    </div>
+                                  
                                     <div className='text-center'>
                                         <ButtonReutilisable text='Enregistrer les modifications' onClick={handleSaveProfile} />
                                     </div>

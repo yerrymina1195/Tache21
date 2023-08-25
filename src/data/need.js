@@ -1,5 +1,8 @@
 import { LuLayoutDashboard } from "react-icons/lu";
 import { PiStudentLight } from "react-icons/pi";
+import { PiChalkboardTeacherThin } from "react-icons/pi";
+import { PiUserCircleGearLight } from "react-icons/pi";
+import { AiOutlineLock } from "react-icons/ai";
 import { LiaBookSolid } from "react-icons/lia";
 import { GiTeacher } from "react-icons/gi";
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
@@ -54,15 +57,21 @@ export const links = [
       },
       {
         name: "Professeurs",
-        icon: <PiStudentLight />,
+        icon: <PiChalkboardTeacherThin />,
         statut: ["admin"],
         link: "l/professeurs",
       },
       {
         name: "Parametres",
-        icon: <PiStudentLight />,
+        icon: <PiUserCircleGearLight />,
         statut: ["admin","coach","eleve"],
         link: "l/parametres",
+      },
+      {
+        name: "securite",
+        icon: <AiOutlineLock />,
+        statut: ["admin","coach","eleve"],
+        link: "l/securite",
       }
     ],
   },

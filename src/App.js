@@ -30,6 +30,7 @@ import  PriveRoute  from "./components/priveroute/PriveRoute";
 import  NonAutorise  from "./pages/NonAutorise";
 import  NotFound  from "./pages/NotFound";
 import ResetPassWord from "./pages/pageConnexion/ResetPassWord";
+import Securite from "./pages/parametres/Securite";
 
 const App = () => {
   const{user}=useStateContext()
@@ -71,6 +72,7 @@ const userType = user;
                 <Route path="/l/eleves" element={<PriveRoute authorizedRoles={['admin', 'coach']}> <Eleves /> </PriveRoute>}/>
                 {/* <Route path="/l/professeurs" element={< Prof/>} /> */}
                 <Route path="/l/parametres" element={< Parametre/>} />
+                <Route path="/l/securite" element={< Securite/>} />
                 <Route path="/l/certification" element={(<Certification />)} />
                 </Route>
                 <Route path="*" element={<NotFound/>} />

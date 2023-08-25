@@ -50,6 +50,7 @@ const Connexion = () => {
       // });
    
     } catch (error) {
+      
       alert(error)
     }
   };
