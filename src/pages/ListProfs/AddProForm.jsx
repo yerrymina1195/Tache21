@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 
 
@@ -158,3 +159,5 @@ const AddProfForm = () => {
 };
 
 export default AddProfForm;
+=======
+>>>>>>> d4bc06eae28cb826530e835f8d2faf3add82cf81
