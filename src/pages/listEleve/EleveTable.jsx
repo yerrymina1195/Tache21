@@ -67,6 +67,20 @@ function EleveTable() {
     }
   }
 
+  const handleEdit = async () => {
+    try {
+      if (!selectedDetails) {
+        console.log("Selected Details is null");
+        return;
+      }
+
+      const userRef = doc(db, "users", selectedDetails.id);
+      await updateDoc(userRef, selectedDetails);
+
+    } catch (err) {
+      console.error("Error:", err);
+    }
+  };
 
   const totalPages = users ? Math.ceil(users.length / rowsPerPage) : 0;
   const startIndex = (currentPage - 1) * rowsPerPage;
@@ -91,20 +105,7 @@ function EleveTable() {
     setCurrentPage(1);
   };
 
-  const handleEdit = async () => {
-    try {
-      if (!selectedDetails) {
-        console.log("Selected Details is null");
-        return;
-      }
-
-      const userRef = doc(db, "users", selectedDetails.id);
-      await updateDoc(userRef, selectedDetails);
-
-    } catch (err) {
-      console.error("Error:", err);
-    }
-  };
+  
 
 
 
@@ -198,16 +199,16 @@ const onSubmit = async (e) => {
 const [editModalOpen, setEditModalOpen] = useState(false);
 const [selectedEditUserId, setSelectedEditUserId] = useState(null);
 
-// ...
+
 
 const openEditModal = (id) => {
-  setSelectedEditUserId(id); // Mettre à jour l'ID de l'utilisateur sélectionné
-  setEditModalOpen(true); // Ouvrir le modal en mettant l'état à true
+  setSelectedEditUserId(id); 
+  setEditModalOpen(true); 
 };
 
 const closeEditModal = () => {
-  setSelectedEditUserId(null); // Réinitialiser l'ID de l'utilisateur sélectionné
-  setEditModalOpen(false); // Fermer le modal en mettant l'état à false
+  setSelectedEditUserId(null); 
+  setEditModalOpen(false); 
 };
 
 
@@ -266,7 +267,7 @@ const closeEditModal = () => {
                         </button>
                         <button
                   className="btn me-3 btn-sm prev"
-                  onClick={() => openEditModal(datas.id)} data-bs-toggle="modal" data-bs-target="#exampleModale" // Appel de openEditModal avec l'ID de l'utilisateuer
+                  onClick={() => getUserDetails(datas.id)} data-bs-toggle="modal" data-bs-target="#exampleModale" // Appel de openEditModal avec l'ID de l'utilisateuer
                 >
                   <BiEditAlt className=" text-white" />
                 </button>

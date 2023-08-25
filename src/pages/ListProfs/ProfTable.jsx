@@ -265,7 +265,7 @@ const closeEditModal = () => {
                         </button>
                         <button
                   className="btn me-3 btn-sm prev"
-                  onClick={() => openEditModal(datas.id)} data-bs-toggle="modal" data-bs-target="#exampleModale" // Appel de openEditModal avec l'ID de l'utilisateuer
+                  onClick={() => getUserDetails(datas.id)} data-bs-toggle="modal" data-bs-target="#exampleModale" // Appel de openEditModal avec l'ID de l'utilisateuer
                 >
                   <BiEditAlt className=" text-white" />
                 </button>
