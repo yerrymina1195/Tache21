@@ -7,29 +7,10 @@ tr{
     width: 55px;
     border-radius: 50%;
   }
-  .preve{
-    background-color: transparent !important;
-    color: black;
-    border: 1px solid #C23028;
-    font-size: 33px;
-  }
-  .preve:hover{
-    background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
-    color: white;
-  }
+ 
 
   .input{
     width: 30%;
-  }
-
-  .icons1{
-  color: #F6B339 ;
-  }
-  .icons2{
-    color: #D7572B;
-  }
-  .icons3{
-    color:  #C23028;
   }
 
 
