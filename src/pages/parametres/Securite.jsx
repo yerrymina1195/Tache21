@@ -71,7 +71,7 @@ const Securite = () => {
                           onChange={(e) => setConfirMdp(e.target.value)}
                         />
                       </div>
-                      <div className="text-center">
+                      <div className="text-center mt-5">
                         <ButtonReutilisable type={"submit"} text={"Enregistrer les modifications"} />
                       </div>
                     </div>
@@ -85,14 +85,14 @@ const Securite = () => {
 
         <div className="mt-5 container">
           <div className="row d-flex justify-content-center align-items-center">
-              <h4>Supprimer le compte ?</h4>
+            <h4>Désactiver</h4>
             <div className="col-md-6">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit dolorem neque ad.
+                Êtes-vous sûr de vouloir désactiver votre compte ?
               </p>
             </div>
             <div className="col-md-6 text-end">
-              <ButtonReutilisable type={""} text={"Supprimer"} />
+              <ButtonReutilisable type={""} text={"Désactiver"} />
             </div>
           </div>
         </div>
