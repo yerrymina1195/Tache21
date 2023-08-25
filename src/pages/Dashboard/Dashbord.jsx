@@ -88,7 +88,7 @@ const Dashbord = () => {
       <div className="flex flex-wrap justify-center ">
         <div className="flex m-3 w-full flex-wrap justify-center gap-5 items-center">
           {/* Carte 1 */}
-          <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+          <div className="bg-[#ffff] shadow justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
             <button
               type="button"
               style={{ color: "#03C9D7", backgroundColor: "#E5FAFB" }}
@@ -102,7 +102,7 @@ const Dashbord = () => {
             <p className=" mb-0 text-sm text-gray-400 ">Utilisateurs</p>
           </div>
           {/* CARTE 2 */}
-          <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+          <div className="bg-[#ffff] shadow justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
             <button
               type="button"
               style={{ color: "#03C9D7", backgroundColor: "#E5FAFB" }}
@@ -116,7 +116,7 @@ const Dashbord = () => {
             <p className=" mb-0 text-sm text-gray-400 ">Coachs</p>
           </div>
           {/* CARTE 3 */}
-          <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+          <div className="bg-[#ffff] shadow justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
             <button
               type="button"
               style={{ color: "rgb(255, 244, 229)", backgroundColor: "rgb(254, 201, 15)" }}
@@ -130,7 +130,7 @@ const Dashbord = () => {
             <p className=" mb-0 text-sm text-gray-400">Elèves</p>
           </div>
           {/* Carte 4 */}
-          <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+          <div className="bg-[#ffff] shadow justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
             <button
               type="button"
               style={{ color: "rgb(228, 106, 118)", backgroundColor: "rgb(255, 244, 229)" }}
@@ -144,7 +144,7 @@ const Dashbord = () => {
             <p className=" mb-0 text-sm text-gray-400  ">Cours</p>
           </div>
           {/* Carte 5 */}
-          <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+          <div className="bg-[#ffff] shadow justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
             <button
               type="button"
               style={{ color: "rgb(0, 194, 146)", backgroundColor: "rgb(235, 250, 242)" }}

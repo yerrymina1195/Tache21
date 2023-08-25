@@ -199,7 +199,7 @@ const FormInscrip = () => {
 
                                     <div className="row gx-3 mb-3">
                                         <div className="col-md-6">
-                                            <LabelInput id="inputEmailAddress" label="Adresse email" placeholder="example@gmail.com" type="email"
+                                            <LabelInput id="inputEmailAddress" label="Adresse email" placeholder="example@gmail.com" 
                                                 name="email"
                                                 onChange={handelchange}
                                                 value={email}
@@ -208,7 +208,7 @@ const FormInscrip = () => {
                                             <p className="text-danger">{errors.email}</p>
                                         </div>
                                         <div className="col-md-6">
-                                            <LabelInput id="inputPhone" label="Numero telephone" placeholder="77 670 00 66" type="tel"
+                                            <LabelInput id="inputPhone" label="Numéro téléphone" placeholder="77 670 00 66" type="tel"
                                                 name="telephone"
                                                 onChange={handelchange}
                                                 value={telephone}
@@ -220,12 +220,12 @@ const FormInscrip = () => {
 
                                     <div className="row gx-3 mb-3">
                                         <div className="col-md-6">
-                                            <LabelInput id="mdp" label="Mot de pass" placeholder="mot de pass" 
+                                            <LabelInput id="mdp" label="Mot de passe" placeholder="********"
                                                 name="mdp"
                                                 onChange={handelchange}
                                                 value={mdp}
                                                 type={newPasswordShow ? "text" : "password"}
-                                                icon={newPasswordShow ? <AiFillEye className="h-6 w-6" onClick={()=> setNewPasswordShow(!newPasswordShow)} />: <FaEyeSlash className="h-6 w-6" onClick={()=> setNewPasswordShow(!newPasswordShow)} />}
+                                                icon={newPasswordShow ? <AiFillEye className=" text-couleur1 h-6 w-6 " onClick={()=> setNewPasswordShow(!newPasswordShow)} />: <FaEyeSlash className="h-6 w-6 text-secondary  text-couleur1" onClick={()=> setNewPasswordShow(!newPasswordShow)} />}
                                             />
                                             <p className="text-danger">{errors.mdp}</p>
                                         </div>
@@ -234,7 +234,6 @@ const FormInscrip = () => {
                                                 name="address"
                                                 onChange={handelchange}
                                                 value={address}
-
                                             />
                                             <p className="text-danger">{errors.address}</p>
                                         </div>
@@ -248,9 +247,9 @@ const FormInscrip = () => {
                                                 value={statut}
                                             >
                                                 <option value="" >Choisir un rôle</option>
-                                                <option value="admin">admin</option>
-                                                <option value="coach">coach</option>
-                                                <option value="eleve">eleve</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="coach">Coach</option>
+                                                <option value="eleve">Eleve</option>
                                             </select>
                                             <p className="text-danger">{errors.statut}</p>
                                         </div>
@@ -269,9 +268,9 @@ const FormInscrip = () => {
                                             <p className="text-danger">{errors.domaine}</p>
                                         </div>)}
                                     { statut ==='eleve' &&  (<div className="col-md-6">
-                                            <label htmlFor="select">assigner coach</label>
+                                            <label htmlFor="select">Assigner coach</label>
                                             <select className="form-select shadow-none" aria-label="Default select example"
-                                                name="nbrCoach"
+                                                name="nbrCoah"
                                                 onChange={handelchange}
                                                 value={nbrCoach}
                                             >

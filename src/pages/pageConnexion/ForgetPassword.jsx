@@ -52,7 +52,7 @@ const ForgetPassword = () => {
           {/*  */}
           <div className="card-body mt-5">
             <form className="mb-5 mt-5" onSubmit={handleResetPassword}>
-              <div className="">
+              <div className="text-center">
                 <InputLabel label={'Entrez votre adresse email pour recevoir un lien permettant de réinitialiser le mot de passe.'}
                  type={'email'}
                  value={email}

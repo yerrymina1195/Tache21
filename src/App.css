@@ -53,5 +53,14 @@ input {
   border: none;
 }
 
-/* boutton quiz */
 
+/* MODIFICATION GENERALE */
+input:focus, select:focus {
+  border-color: #C23028 !important; 
+  color: #C23028 !important;
+}
+input:valid {
+  border-color: #C23028 !important; 
+  color: #C23028 !important; 
+  font-size: 13px !important;
+}

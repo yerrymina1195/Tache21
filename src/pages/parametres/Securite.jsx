@@ -5,10 +5,12 @@ import InputLabel from "../pageConnexion/InputLabel";
 import MaButton from "../pageConnexion/MaButton";
 import { AiFillEye } from "react-icons/ai";
 import { FaEyeSlash } from "react-icons/fa";
+import { MdSecurity } from "react-icons/md";
+import ButtonReutilisable from "../../components/ButtonReutilisable";
 
 const Securite = () => {
-    const [newPasswordShow, setNewPasswordShow] = useState(false);
-    const [confiPasswordShow, setConfiNewPasswordShow] = useState(false);
+  const [newPasswordShow, setNewPasswordShow] = useState(false);
+  const [confiPasswordShow, setConfiNewPasswordShow] = useState(false);
   const [newMdp, setNewMdp] = useState("");
   const [confirMdp, setConfirMdp] = useState("");
 
@@ -29,7 +31,7 @@ const Securite = () => {
     try {
       await updatePassword(auth?.currentUser, newPassword);
     } catch (error) {
-    
+
       //   toast.warning("Mot de passe faible, utilisez au minimum 6 caractères !");
       alert("Mot de passe faible, utilisez au minimum 6 caractères !");
       console.error("Error updating password: ", error);
@@ -37,46 +39,64 @@ const Securite = () => {
   };
   return (
     <div>
-     <div className="container-fluid bg-white">
+      <div className="container-fluid bg-white">
         <div className="row">
-            <div className="col-md-8 mx-auto">
-            <div className="card  relative ">
-        <div className="container text-white">
-          <div className="bg1 text-center fw-bold rounded-3 pt-5 card-title mx-auto p-4">
-            <h3 className="mb-4">MODIFICATION MOT DE PASSE</h3>
+          <div className="col-md-12 mx-auto"><div className="card bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
+            <div className="card-header mb-3 text-white" >
+              <p>
+                Modifier votre mot de passe
+              </p></div>
+
+            {/*  */}
+            <div className="card-body">
+              <form className="mb-5" onSubmit={onSubmit}>
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <div className="">
+                        <InputLabel
+                          label={"Nouveau mot de passe"}
+                          type={newPasswordShow ? "text" : "password"}
+                          icon={newPasswordShow ? <AiFillEye className="h-6 w-6 text-warning" onClick={() => setNewPasswordShow(!newPasswordShow)} /> : <FaEyeSlash className="h-6 w-6 text-secondary" onClick={() => setNewPasswordShow(!newPasswordShow)} />}
+                          placeholder={"********"}
+                          onChange={(e) => setNewMdp(e.target.value)}
+                        />
+                      </div>
+                      <div className="">
+                        <InputLabel
+                          label={"Confirmer"}
+                          type={confiPasswordShow ? "text" : "password"}
+                          icon={confiPasswordShow ? <AiFillEye className="h-6 w-6 text-warning" onClick={() => setConfiNewPasswordShow(!confiPasswordShow)} /> : <FaEyeSlash className="h-6 w-6 text-secondary" onClick={() => setConfiNewPasswordShow(!confiPasswordShow)} />}
+                          placeholder={"********"}
+                          onChange={(e) => setConfirMdp(e.target.value)}
+                        />
+                      </div>
+                      <div className="text-center">
+                        <ButtonReutilisable type={"submit"} text={"Enregistrer les modifications"} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
           </div>
         </div>
-        {/*  */}
-        <div className="card-body mt-5">
-          <form className="mb-5 mt-5" onSubmit={onSubmit}>
-            <div className="">
-              <InputLabel
-                label={"Nouveau mot de passe"}
-                type={newPasswordShow ? "text" : "password"}
-                icon={newPasswordShow ? <AiFillEye className="h-6 w-6" onClick={()=> setNewPasswordShow(!newPasswordShow)} />: <FaEyeSlash className="h-6 w-6" onClick={()=> setNewPasswordShow(!newPasswordShow)} />}
-                placeholder={"********"}
-                onChange={(e) => setNewMdp(e.target.value)}
-              />
+
+        <div className="mt-5 container">
+          <div className="row d-flex justify-content-center align-items-center">
+              <h4>Supprimer le compte ?</h4>
+            <div className="col-md-6">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit dolorem neque ad.
+              </p>
             </div>
-            <div className="">
-              <InputLabel
-                label={"Confirmer"}
-                type={confiPasswordShow  ? "text" : "password"}
-                icon={confiPasswordShow ? <AiFillEye className="h-6 w-6" onClick={()=> setConfiNewPasswordShow(!confiPasswordShow)} />: <FaEyeSlash className="h-6 w-6" onClick={()=> setConfiNewPasswordShow(!confiPasswordShow)} />}
-                placeholder={"********"}
-                onChange={(e) => setConfirMdp(e.target.value)}
-              />
+            <div className="col-md-6 text-end">
+              <ButtonReutilisable type={""} text={"Supprimer"} />
             </div>
-            <div className="row mt-4">
-              <MaButton type={"submit"} text={"Enregistrer"} />
-            </div>
-          </form>
+          </div>
         </div>
       </div>
-            </div>
-        </div>
-
-     </div>
     </div>
   );
 };
