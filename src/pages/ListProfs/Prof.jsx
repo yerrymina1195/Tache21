@@ -8,7 +8,7 @@ const Prof = () => {
   
 
   const [users, setUsers] = useState(initialUsers);
-
+// eslint-disable-next-line
   const addEleve = (user) => {
     user.id = users.length + 1;
     setUsers([...users, user]);
