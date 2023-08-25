@@ -11,7 +11,6 @@ import {
   onSnapshot,
   deleteDoc,
 } from "firebase/firestore";
-// import InputLabel from "../InputLabel";
 
 const TesteOne = () => {
   // crud
@@ -25,7 +24,7 @@ const TesteOne = () => {
   const createCours = async () => {
     addDoc(coursCollectionRef, {
       title: newTitle,
-      dure: newDure,
+      dure: Number(newDure),
       descrip: newDescrip,
       videoUrl: newVideoUrl,
     });
@@ -121,7 +120,7 @@ const TesteOne = () => {
                       </div>
                       <div class="form-floating mb-3">
                         <input
-                          type="time"
+                          type="number"
                           class="form-control"
                           id="floatingInput"
                           placeholder="Durée du cours"

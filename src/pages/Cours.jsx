@@ -93,12 +93,14 @@ const Cours = () => {
             </div>
             <div className="col-md-6 col-sm-12 text-center">
               {/* button modal */}
+              {/* 
               <div data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <ButtonReutilisable
                   text={"Ajouter un domaine"}
                   onClick={() => handleClick("ajouState")}
                 />
               </div>
+                 */}
               {/* button modal */}
               {/* Modal */}
               <div
