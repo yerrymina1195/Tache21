@@ -20,19 +20,35 @@ const TesteOne = () => {
   const [newVideoUrl, setNewVideoUrl] = useState("");
   const [cours, setCours] = useState([]);
   const coursCollectionRef = collection(db, "cours");
+  const [error, setError] = useState("");
 
   const createCours = async () => {
-    addDoc(coursCollectionRef, {
-      title: newTitle,
-      dure: Number(newDure),
-      descrip: newDescrip,
-      videoUrl: newVideoUrl,
-    });
+    if (
+      newTitle === "" ||
+      newDure === "" ||
+      newDescrip === "" ||
+      newVideoUrl === ""
+    ) {
+      setError("Veuillez vérifier le champs et remplir de bon valeur");
+      return;
+    }
+    try {
+      addDoc(coursCollectionRef, {
+        title: newTitle,
+        dure: Number(newDure),
+        descrip: newDescrip,
+        videoUrl: newVideoUrl,
+      });
+
+      alert("Cours " + newTitle + " ajouter");
+    } catch (error) {
+      console.error("Erreur lors de la creation :", error);
+    }
     setNewTitle("");
     setNewDure("");
     setNewDescrip("");
     setNewVideoUrl("");
-    alert("Cours " + newTitle + " ajouter");
+    setError("");
   };
 
   const deleteCours = async (id) => {
@@ -108,6 +124,7 @@ const TesteOne = () => {
                         />
                         <label for="floatingInput">Url de la video</label>
                       </div>
+                      {error && <p style={{ color: "red" }}>{error}</p>}
                       <div class="form-floating mb-3">
                         <input
                           type="text"
@@ -118,6 +135,7 @@ const TesteOne = () => {
                         />
                         <label for="floatingInput">Titre du cours</label>
                       </div>
+                      {error && <p style={{ color: "red" }}>{error}</p>}
                       <div class="form-floating mb-3">
                         <input
                           type="number"
@@ -128,6 +146,7 @@ const TesteOne = () => {
                         />
                         <label for="floatingInput">Durée du cours</label>
                       </div>
+                      {error && <p style={{ color: "red" }}>{error}</p>}
                       <div class="form-floating mb-3">
                         <textarea
                           class="form-control"
@@ -139,6 +158,7 @@ const TesteOne = () => {
                         ></textarea>
                         <label for="floatingInput">description du cours</label>
                       </div>
+                      {error && <p style={{ color: "red" }}>{error}</p>}
                     </div>
                     <div className="modal-footer">
                       <ButtonReutilisable
