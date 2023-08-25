@@ -243,7 +243,7 @@ const FormInscrip = () => {
                                                 onChange={handelchange}
                                                 value={statut}
                                             >
-                                                <option selected >Choisir un rôle</option>
+                                                <option value="" >Choisir un rôle</option>
                                                 <option value="admin">admin</option>
                                                 <option value="coach">coach</option>
                                                 <option value="eleve">eleve</option>
