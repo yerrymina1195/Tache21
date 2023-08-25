@@ -36,8 +36,8 @@ const FormInscrip = () => {
         mdp: "",
         address: "",
         statut: "",
-        domaine: "",
-        nbrCoach:""
+        domaine: null,
+        nbrCoach:null
     })
     console.log(errors);
     // Gérer les erreuers 
@@ -98,12 +98,19 @@ const FormInscrip = () => {
         if (data.statut === "admin") {
             setData({...data, domaine:null , nbrCoach:null})
         }
-        if (data.domaine === '') {
+        if (!data.statut === "admin" && data.domaine === null) {
             newErrors.domaine = 'Domaine obligatoire';
         }
-        if (data.nbrCoach === '') {
+        if (data.statut === "eleve" && data.domaine === null && data.domaine=== null ) {
             newErrors.nbrCoach = 'coach obligatoire';
         }
+        if (data.domaine === "") {
+            newErrors.domaine = 'Domaine obligatoire';
+        }
+        if (data.nbrCoach === "") {
+            newErrors.nbrCoach = 'Domaine obligatoire';
+        }
+        
 
         setErrors(newErrors);
 
