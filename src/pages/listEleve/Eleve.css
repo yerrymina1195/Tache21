@@ -3,27 +3,13 @@ tr {
   vertical-align: middle;
 }
 
-.img {
-  width: 55px;
-  border-radius: 50%;
-}
+.img{
+    width: 55px;
+    border-radius: 50%;
+    color: rgba(244, 0, 0, 0.613);
+  }
+ 
 
-
-.input {
-  width: 30%;
-}
-
-.icons1 {
-  color: #F6B339;
-}
-
-.icons2 {
-  color: #D7572B;
-}
-
-.icons3 {
-  color: #C23028;
-}
 
 
 
@@ -58,17 +44,17 @@ tr {
 
 
 .pagination .active a {
-  background-color: #D7572B;
-  border-color: #D7572B;
+  background-color: #D7572B !important;
+  border-color: #D7572B !important;
   color: white !important;
 }
 .pagination .prev a,
 .pagination .next a {
-  background-color: transparent;
-  border-color: #D7572B;
+  background-color: transparent !important;
+  border-color: #D7572B !important;
 }
 .dropdown-toggle{
-  border-color: #D7572B;
+  border-color: #D7572B !important;
 }
 .dropdown-toggle:hover{
   background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
