@@ -71,5 +71,14 @@ input {
   border: none;
 }
 
-/* boutton quiz */
 
+/* MAMA-MODIFICATION GENERALE */
+/* input:focus, select:focus {
+  border-color: #2b2a2a !important; 
+  color: #6e6d6d !important;
+} */
+input:valid {
+  /* border-color: #2b2a2a !important; 
+  color: #6e6d6d !important; */
+  font-size: 13px !important;
+}
