@@ -6,6 +6,8 @@ const StateContext = createContext();
 const initialState = {
   userProfil: false,
   notification: false,
+  modifState:false,
+  ajoutState:false,
 };
 
 export const ContextProvider = ({ children }) => {

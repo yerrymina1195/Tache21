@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import './Dashboard.css';
 
 
-
 import FormInscrip from './FormInscrip';
 import { GiTeacher } from "react-icons/gi";
 import { PiStudentLight } from "react-icons/pi"

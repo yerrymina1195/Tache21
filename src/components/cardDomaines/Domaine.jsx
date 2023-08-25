@@ -2,7 +2,6 @@ import React from "react";
 import "./Domaine.css";
 import { BsArchiveFill, BsPencilSquare, BsEyeFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-
 const Domaine = (props) => {
   return (
     <div>
@@ -21,12 +20,18 @@ const Domaine = (props) => {
             </Link>
           </div>
           <div className="col-4 d-flex align-items-center justify-content-center">
-            <button type="button" className="btn">
+            <button
+              type="button"
+              class="btn"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              onClick={props.onClick}
+            >
               <BsPencilSquare />
             </button>
           </div>
           <div className="col-4 d-flex align-items-center justify-content-start">
-            <button type="button" className="btn">
+            <button type="button" class="btn" onClick={props.click}>
               <BsArchiveFill />
             </button>
           </div>
