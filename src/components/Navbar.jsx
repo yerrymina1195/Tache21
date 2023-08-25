@@ -43,7 +43,7 @@ const Navbar = () => {
 //  },[user.id])
   useEffect(() => {
     const handleResize = () => {
-      console.log(window.innerWidth);
+      // console.log(window.innerWidth);
       setScreenSize(window.innerWidth)
     };
 

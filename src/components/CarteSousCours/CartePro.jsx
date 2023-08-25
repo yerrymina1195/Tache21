@@ -2,6 +2,12 @@ import { React, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { cardDataPro } from "../../data/need";
 import { BsPencilSquare, BsArchiveFill } from "react-icons/bs";
+import TitreCarte from "./TitreCarte";
+import { db } from "../../Firebase/Firebase";
+import {
+  addDoc,
+  collection,
+} from "firebase/firestore";
 
 const Card = ({ title, descrip, videoUrl }) => {
   return (
@@ -11,9 +17,8 @@ const Card = ({ title, descrip, videoUrl }) => {
           <iframe
             width="100%"
             height="400"
-            src={videoUrl.replace("watch?v=","embed/")}
+            src={videoUrl.replace("watch?v=", "embed/")}
             title="YouTube video player"
-            frameBorder="0"
             allowFullScreen
             className="rounded-top"
           ></iframe>
@@ -41,8 +46,7 @@ const Card = ({ title, descrip, videoUrl }) => {
 };
 
 const CarteSousCours = () => {
-  // eslint-disable-next-line
-  const [videoData, setVideoData] = useState(cardDataPro);
+  const [videoData] = useState(cardDataPro);
 
   const chunkedData = [];
   const chunkSize = 3;
@@ -50,9 +54,35 @@ const CarteSousCours = () => {
   for (let i = 0; i < videoData.length; i += chunkSize) {
     chunkedData.push(videoData.slice(i, i + chunkSize));
   }
+  // crud
+  const [newTitle, setNewTitle] = useState("");
+  const [newDescrip, setNewDescrip] = useState("");
+  const [newVideoUrl, setNewVideoUrl] = useState("");
+  // const [cours, setCours] = useState([]);
+  const coursCollectionRef = collection(db, "cours");
+
+  const createCours = async () => {
+    addDoc(coursCollectionRef, {
+      title: newTitle,
+      descrip: newDescrip,
+      videoUrl: newVideoUrl,
+    });
+    setNewTitle("");
+    setNewDescrip("");
+    setNewVideoUrl("");
+    alert("Cours " + newTitle + " ajouter");
+  };
 
   return (
     <div className="container">
+      <TitreCarte
+        titreCours={"HTML5 / CSS3"}
+        onClick={createCours}
+        valueTitle={newTitle}
+        valueDescrip={newDescrip}
+        valueUrl={newVideoUrl}
+      />
+
       {chunkedData.map((chunk, rowIndex) => (
         <div className="row" key={rowIndex}>
           {chunk.map((data, index) => (
@@ -60,7 +90,6 @@ const CarteSousCours = () => {
               key={index}
               title={data.title}
               descrip={data.descrip}
-              image={data.image}
               videoUrl={data.videoUrl}
             />
           ))}

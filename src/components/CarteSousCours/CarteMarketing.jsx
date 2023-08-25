@@ -42,7 +42,7 @@ const Card = ({ title, descrip, videoUrl }) => {
 
 const CarteSousCours = () => {
   // eslint-disable-next-line
-  const [videoData, setVideoData] = useState(cardDataMarketing);
+  const [videoData] = useState(cardDataMarketing);
 
   const chunkedData = [];
   const chunkSize = 3;
