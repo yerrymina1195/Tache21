@@ -260,13 +260,13 @@ const ProfTable = ({ data = tabData, columns = tabColumns }) => {
             <li
               className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
             >
-              <a
+              <button
                 className="page-link shadow-none text-decoration-none text-black"
-                href="/"
+                
                 onClick={() => handlePageChange(currentPage - 1)}
               >
                 Pre
-              </a>
+              </button>
             </li>
             {Array.from({ length: totalPages }).map((_, index) => (
               <li
@@ -274,26 +274,26 @@ const ProfTable = ({ data = tabData, columns = tabColumns }) => {
                 className={`page-item text-decoration-none ${index + 1 === currentPage ? "active" : ""
                   }`}
               >
-                <a
+                <button
                   className="page-link color1 text-decoration-none shadow-none text-black"
-                  href="/"
+                  
                   onClick={() => handlePageChange(index + 1)}
                 >
                   {index + 1}
-                </a>
+                </button>
               </li>
             ))}
             <li
               className={`page-item ${currentPage === totalPages ? "disabled" : ""
                 }`}
             >
-              <a
+              <button
                 className="page-link shadow-none text-decoration-none text-black"
-                href="/"
+                
                 onClick={() => handlePageChange(currentPage + 1)}
               >
                 Suiv
-              </a>
+              </button>
             </li>
           </ul>
         </nav>
@@ -315,40 +315,40 @@ const ProfTable = ({ data = tabData, columns = tabColumns }) => {
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdown-rows-per-page">
             <li>
-              <a
+              <button
                 className="dropdown-item"
-                href="/"
+                
                 onClick={() => handleRowsPerPageChange(1)}
               >
                 1
-              </a>
+              </button>
             </li>
             <li>
-              <a
+              <button
                 className="dropdown-item"
-                href="/"
+                
                 onClick={() => handleRowsPerPageChange(5)}
               >
                 5
-              </a>
+              </button>
             </li>
             <li>
-              <a
+              <button
                 className="dropdown-item"
-                href="/"
+                
                 onClick={() => handleRowsPerPageChange(10)}
               >
                 10
-              </a>
+              </button>
             </li>
             <li>
-              <a
+              <button
                 className="dropdown-item"
-                href="/"
+                
                 onClick={() => handleRowsPerPageChange(15)}
               >
                 15
-              </a>
+              </button>
             </li>
           </ul>
         </div>
