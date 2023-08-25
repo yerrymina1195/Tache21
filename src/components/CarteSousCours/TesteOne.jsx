@@ -39,16 +39,16 @@ const TesteOne = () => {
         descrip: newDescrip,
         videoUrl: newVideoUrl,
       });
-
+      setNewTitle("");
+      setNewDure("");
+      setNewDescrip("");
+      setNewVideoUrl("");
+      setError("");
       alert("Cours " + newTitle + " ajouter");
     } catch (error) {
       console.error("Erreur lors de la creation :", error);
     }
-    setNewTitle("");
-    setNewDure("");
-    setNewDescrip("");
-    setNewVideoUrl("");
-    setError("");
+
   };
 
   const deleteCours = async (id) => {
