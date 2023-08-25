@@ -17,6 +17,7 @@ const TesteOne = () => {
   // crud
   const [newTitle, setNewTitle] = useState("");
   const [newDescrip, setNewDescrip] = useState("");
+  const [newDure, setNewDure] = useState("");
   const [newVideoUrl, setNewVideoUrl] = useState("");
   const [cours, setCours] = useState([]);
   const coursCollectionRef = collection(db, "cours");
@@ -24,10 +25,12 @@ const TesteOne = () => {
   const createCours = async () => {
     addDoc(coursCollectionRef, {
       title: newTitle,
+      dure: newDure,
       descrip: newDescrip,
       videoUrl: newVideoUrl,
     });
     setNewTitle("");
+    setNewDure("");
     setNewDescrip("");
     setNewVideoUrl("");
     alert("Cours " + newTitle + " ajouter");
@@ -121,10 +124,10 @@ const TesteOne = () => {
                           type="time"
                           class="form-control"
                           id="floatingInput"
-                          placeholder="Titre du cours"
-                          onChange={(e) => setNewTitle(e.target.value)}
+                          placeholder="Durée du cours"
+                          onChange={(e) => setNewDure(e.target.value)}
                         />
-                        <label for="floatingInput">Titre du cours</label>
+                        <label for="floatingInput">Durée du cours</label>
                       </div>
                       <div class="form-floating mb-3">
                         <textarea
@@ -157,6 +160,7 @@ const TesteOne = () => {
               <div className="col-12">
                 <Teste
                   title={cour.title}
+                  dure={cour.dure}
                   descrip={cour.descrip}
                   videoUrl={cour.videoUrl}
                   click={() => deleteCours(cour.id)}

@@ -1,17 +1,16 @@
 import React from "react";
-import ButtonReutilisable from "../../components/ButtonReutilisable";
-import { Link } from "react-router-dom";
 import TesteOne from "../../components/CarteSousCours/TesteOne";
+import Sectionquizz from "../../components/section-quizz/Sectionquizz";
 
 const CoursPro1 = () => {
   return (
-    <div className="container mt-5 py-3 bg-[#ffff]  dark:bg-secondary-dark-bg   dark:text-gray-200">
-      <TesteOne/>
-      <div className="text-center w-50 mx-auto mb-5">
-        <Link to={`/l/quiz`}>
-            <ButtonReutilisable className='' text={"faire un quizz"} />
-        </Link>
+    <div className="container mt-5 pt-3 bg-[#ffff] dark:bg-secondary-dark-bg dark:text-gray-200">
+      <div className="row">
+        <div className="col-12">
+          <TesteOne />
+        </div>
       </div>
+      <Sectionquizz />
     </div>
   );
 };

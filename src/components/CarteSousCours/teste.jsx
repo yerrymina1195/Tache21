@@ -21,7 +21,7 @@ const Teste = (props) => {
               href={props.videoUrl}
               className="text-decoration-none text-black titre"
             >
-              <h5 className="card-title dark:text-[#ffff]">{props.title}</h5>
+              <h5 className="card-title capitalize dark:text-[#ffff]">{props.title}</h5>
             </a>
           </div>
           <div className="col-6 text-end">
