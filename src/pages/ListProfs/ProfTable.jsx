@@ -9,15 +9,9 @@ import {
   getDocs,
   deleteDoc,
   doc,
-  query,
-  where,
-  addDoc,
   updateDoc
 } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
-import { Link, useParams } from 'react-router-dom';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
-import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { getDoc } from "firebase/firestore";
 import LabelInput from '../parametres/LabelInput';
@@ -29,13 +23,7 @@ function ProfTable() {
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [prenom, setPrenom] = useState("");
-  const [nom, setNom] = useState("");
-  const [telephone, setTelephone] = useState("");
-  const [email, setEmail] = useState("");
-  const [domaine, setDomaine] = useState("");
-  const [address, setAdress] = useState("");
-  const [mdp, setMdp] = useState("");
+  
   const [selectedDetails, setSelectedDetails] = useState(null);
 
   useEffect(() => {
@@ -107,107 +95,12 @@ function ProfTable() {
 
 
 
-  const [errors, setErrors] = useState({
-    prenom: "",
-    nom: "",
-    email: "",
-    telephone: "",
-    mdp: "",
-    address: "",
-    statut: "",
-    domaine: ""
-  });
-const [data, setData] = useState({
-    prenom: "",
-    nom: "",
-    email: "",
-    telephone: "",
-    mdp: "",
-    address: "",
-    statut: "",
-    domaine: ""
-})
-console.log(errors);
-const validateEmail = (email) => {
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-
-const handelchange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value })
-}
-
-const onSubmit = async (e) => {
-    e.preventDefault();
-
-    let newErrors = {
-        prenom: "",
-    nom: "",
-    email: "",
-    telephone: "",
-    mdp: "",
-    address: "",
-    statut: "",
-    domaine: ""
-      };
-  
-      if (data.email === '') {
-        newErrors.email = 'Email is required';
-      } else if (!validateEmail(data.email)) {
-        newErrors.email = 'Invalid email format';
-      }
-  
-      if (data.mdp === '') {
-        newErrors.mdp = 'Password is required';
-      
-      }
-  
-      if (data.telephone === '') {
-        newErrors.telephone = 'Téléphone number is required';
-      }
-  
-      if (data.nom === '') {
-        newErrors.nom = 'Nom is required';
-      }
-      if (data.prenom === '') {
-        newErrors.prenom = 'Prénom is required';
-      }
-      if (data.address === '') {
-        newErrors.address = 'Address is required';
-      }
-      if (data.statut === '') {
-        newErrors.statut = 'Statut is required';
-      }
-      if (data.domaine === '') {
-        newErrors.domaine = 'Domaine is required';
-      }
-  
-      setErrors(newErrors);
-   
-  
-    
-     
-   
-}
 
 
 
-const [editModalOpen, setEditModalOpen] = useState(false);
-const [selectedEditUserId, setSelectedEditUserId] = useState(null);
 
-// ...
 
-const openEditModal = (id) => {
-  setSelectedEditUserId(id); 
-  setEditModalOpen(true); 
-};
 
-const closeEditModal = () => {
-  setSelectedEditUserId(null); 
-  setEditModalOpen(false); 
-};
 
 
 
@@ -231,7 +124,7 @@ const closeEditModal = () => {
           </div>
         </div>
         <div className="table-responsive overflow-hidden rounded-3 mt-5">
-          <table class="table table-light table-hover">
+          <table className="table table-light table-hover">
             <thead>
               <tr className="mb-3">
                 <th scope="col">Profil</th>
@@ -348,19 +241,19 @@ const closeEditModal = () => {
 
 
         {/* MODAL DETAILS */}
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">les details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">les details</h5>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 {selectedDetails && (
                   <div>
                     <p className='d-flex'>
                       <strong>Photo:</strong>
-                      <img src={img} alt="User Photo" className="img mx-auto" />
+                      <img src={img} alt="Userphoto" className="img mx-auto" />
                     </p>
                     <hr />
                     <p className='d-flex'>
@@ -420,23 +313,23 @@ const closeEditModal = () => {
 
 
         {/* MODAL modifier */}
-        <div class="modal fade" id="exampleModale" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">les details</h5>
+        <div className="modal fade" id="exampleModale" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">les details</h5>
               </div>
               <div>
-                <div class="container-xl px-4 mt-4">
-                  <div class="row">
-                    <div class="col-xl-12">
-                      <div class="card">
-                        <div class="card-header  dark:bg-secondary-dark-bg text-white dark:text-gray-200">Modifier un Prof</div>
+                <div className="container-xl px-4 mt-4">
+                  <div className="row">
+                    <div className="col-xl-12">
+                      <div className="card">
+                        <div className="card-header  dark:bg-secondary-dark-bg text-white dark:text-gray-200">Modifier un Prof</div>
 
-                        <div class="card-body bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
+                        <div className="card-body bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
                           <form>
-                            <div class="row gx-3 mb-3">
-                              <div class="col-md-6">
+                            <div className="row gx-3 mb-3">
+                              <div className="col-md-6">
                                 <LabelInput id="inputLatestName" label="Prenom" type="text"
                                   name="prenom"
                                   value={selectedDetails?.prenom || ""}
@@ -444,40 +337,40 @@ const closeEditModal = () => {
 
 
                                 />
-                                <p className="text-danger">{errors.prenom}</p>
+                                
                               </div>
-                              <div class="col-md-6">
+                              <div className="col-md-6">
                                 <LabelInput id="inputFirstName" label="Nom" placeholder="Gadiaga" type="text"
                                   name="nom"
                                   value={selectedDetails?.nom || ""}
                                   onChange={(e) => setSelectedDetails({ ...selectedDetails, nom: e.target.value })}
                                 />
-                                <p className="text-danger">{errors.nom}</p>
+                               
                               </div>
                             </div>
 
-                            <div class="row gx-3 mb-3">
-                              <div class="col-md-6">
+                            <div className="row gx-3 mb-3">
+                              <div className="col-md-6">
                                 <LabelInput id="inputEmailAddress" label="Adresse email" placeholder="example@gmail.com" type="email"
                                   name="email"
                                   onChange={(e) => setSelectedDetails({ ...selectedDetails, email: e.target.value })}
                                   value={selectedDetails?.email || ""}
 
                                 />
-                                <p className="text-danger">{errors.email}</p>
+                                
                               </div>
-                              <div class="col-md-6">
+                              <div className="col-md-6">
                                 <LabelInput id="inputPhone" label="Numero telephone" placeholder="77 670 00 66" type="tel"
                                   name="telephone"
                                   onChange={(e) => setSelectedDetails({ ...selectedDetails, telephone: e.target.value })}
                                   value={selectedDetails?.telephone || ""}
 
                                 />
-                                <p className="text-danger">{errors.telephone}</p>
+                               
                               </div>
                             </div>
 
-                            <div class="row gx-3 mb-3">
+                            <div className="row gx-3 mb-3">
                               <div className="col-md-6">
                                 <LabelInput id="mdp" label="Mot de pass" placeholder="mot de pass" type="password"
                                   name="mdp"
@@ -485,16 +378,16 @@ const closeEditModal = () => {
                                   value={selectedDetails?.mdp || ""}
 
                                 />
-                                <p className="text-danger">{errors.mdp}</p>
+                        
                               </div>
-                              <div class="col-md-6">
+                              <div className="col-md-6">
                                 <LabelInput id="inputDomicile" label="Adresse de domicile" placeholder="Colobane Parc Amazout" type="text"
                                   name="address"
                                   onChange={(e) => setSelectedDetails({ ...selectedDetails, address: e.target.value })}
                                   value={selectedDetails?.address || ""}
 
                                 />
-                                <p className="text-danger">{errors.address}</p>
+                             
                               </div>
                             </div>
                             {/* <div class="row gx-3 mb-3">

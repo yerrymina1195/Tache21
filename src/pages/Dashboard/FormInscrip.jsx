@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { useState } from "react";
 import '../Dashboard/FormInscrip.css';
 import LabelInput from '../parametres/LabelInput';
@@ -7,7 +7,7 @@ import {
     doc,
     serverTimestamp,
     setDoc,
-    getDocs
+   
 } from "firebase/firestore";
 import { auth, db } from "../../Firebase/Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
