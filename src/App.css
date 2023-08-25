@@ -54,13 +54,13 @@ input {
 }
 
 
-/* MODIFICATION GENERALE */
-input:focus, select:focus {
-  border-color: #C23028 !important; 
-  color: #C23028 !important;
-}
+/* MAMA-MODIFICATION GENERALE */
+/* input:focus, select:focus {
+  border-color: #2b2a2a !important; 
+  color: #6e6d6d !important;
+} */
 input:valid {
-  border-color: #C23028 !important; 
-  color: #C23028 !important; 
+  /* border-color: #2b2a2a !important; 
+  color: #6e6d6d !important; */
   font-size: 13px !important;
 }
