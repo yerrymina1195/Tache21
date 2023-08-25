@@ -7,6 +7,7 @@ import img3 from "../data/CAPTURE2.png";
 // import { BiSolidMessageDetail } from 'react-icons/bi';
 // import { AiFillEye } from 'react-icons/ai';
 import ModalBouton from '../components/ModalBouton';
+import ModalQuiz from './ListProfs/modaQuiz/ModalQuiz';
 
 const Data = [
   {
@@ -51,6 +52,8 @@ const Livraisons = () => {
         </div>
       </div>
     </div>
+
+   
   )
 }
 
