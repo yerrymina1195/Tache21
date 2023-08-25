@@ -10,7 +10,16 @@
     z-index: 10000000;
   }
 }
-
+input::placeholder {
+  
+  font-style: normal !important;
+  font-size: 12px !important;
+}
+input {
+  color: blue !important;
+  font-style: normal !important;
+  font-size: 20px !important;
+}
 .e-dlg-center-center, .e-quick-popup-wrapper.e-device{
   z-index: 1000000 !important;
 }

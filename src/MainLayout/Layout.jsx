@@ -46,7 +46,7 @@ const Layout= () => {
             </button>
           </div>
           {activeMenu ? (
-            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg ">
+            <div className="w-72 fixed sidebar bg-[#ffff] dark:bg-secondary-dark-bg ">
               <Sidebar />
             </div>
           ) : (

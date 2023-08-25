@@ -4,17 +4,19 @@ import '../Dashboard/FormInscrip.css';
 import LabelInput from '../parametres/LabelInput';
 import ButtonReutilisable from '../../components/ButtonReutilisable';
 import {
-    
     doc,
     serverTimestamp,
     setDoc,
 } from "firebase/firestore";
 import { auth, db } from "../../Firebase/Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { AiFillEye } from "react-icons/ai";
+import { FaEyeSlash } from "react-icons/fa";
 // import { useNavigate } from "react-router-dom";
 
 const FormInscrip = () => {
     // const navigate = useNavigate()
+    const [newPasswordShow, setNewPasswordShow] = useState(false);
     const [errors, setErrors] = useState({
         prenom: "",
         nom: "",
@@ -218,10 +220,12 @@ const FormInscrip = () => {
 
                                     <div className="row gx-3 mb-3">
                                         <div className="col-md-6">
-                                            <LabelInput id="mdp" label="Mot de pass" placeholder="mot de pass" type="password"
+                                            <LabelInput id="mdp" label="Mot de pass" placeholder="mot de pass" 
                                                 name="mdp"
                                                 onChange={handelchange}
                                                 value={mdp}
+                                                type={newPasswordShow ? "text" : "password"}
+                                                icon={newPasswordShow ? <AiFillEye className="h-6 w-6" onClick={()=> setNewPasswordShow(!newPasswordShow)} />: <FaEyeSlash className="h-6 w-6" onClick={()=> setNewPasswordShow(!newPasswordShow)} />}
                                             />
                                             <p className="text-danger">{errors.mdp}</p>
                                         </div>
