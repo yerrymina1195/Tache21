@@ -185,7 +185,7 @@ const FormInscrip = () => {
     
 
 
-
+console.log(selectedDetails);
 
    
    
