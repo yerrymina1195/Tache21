@@ -1,38 +1,14 @@
-import React, { useState } from "react";
-import { initialUsers } from "./userList";
-import ButtonReutilisable from "../../components/ButtonReutilisable";
+import React from "react";
 
-const AddProfForm = (props) => {
-  const initialFormState = {
-    id: null,
-    nom: "",
-    prenom: "",
-    tel: "",
-    email: "",
-    domaine: "",
-  };
-  const [user, setUser] = useState(initialFormState);
-  const [users, setUsers] = useState(initialUsers);
 
-  const handleInputChange = () => {
-    const handleInputChange = (event) => {
-      const { name, value } = event.target;
-      setUser({ ...user, [name]: value });
-    };
-  };
 
-  const handleSimulatedSubmit = (event) => {
-    const data = setUser({
-      ...users,
-      [event.target.name]: event.target.value,
-    });
-
-    console.log(data);
-  };
+const AddProfForm = () => {
+  
+  
 
   return (
     <section>
-      <h1 className="listProf text-center mb-5">Liste des Profs</h1>
+      {/* <h1 className="listProf text-center mb-5">Liste des Profs</h1>
       <div className="d-block d-sm-flex">
         <div
           className="ajoutProf"
@@ -176,7 +152,7 @@ const AddProfForm = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

@@ -16,7 +16,7 @@ const Cours = () => {
   ];
   return (
     <div>
-      <div className="bg-[#ffff] dark:bg-secondary-dark-bg text-[#000] dark:text-gray-200 p-5 rounded-3xl domaine">
+      <div className="dark:bg-secondary-dark-bg text-[#000] dark:text-gray-200 p-5 domaine">
         <div className="container ">
           <div className="row d-flex align-items-center mt-5">
             <div className="col-md-6 col-sm-12">
@@ -33,7 +33,7 @@ const Cours = () => {
                 id="staticBackdrop"
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
-                tabindex="-1"
+                tabIndex="-1"
                 aria-labelledby="staticBackdropLabel"
                 aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered">
@@ -50,14 +50,14 @@ const Cours = () => {
                       ></button>
                     </div>
                     <div className="modal-body">
-                      <div class="form-floating mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           id="floatingInput"
                           placeholder="Nom du domaine"
                         />
-                        <label for="floatingInput">Nom du domaine</label>
+                        <label htmlFor="floatingInput">Nom du domaine</label>
                       </div>
                     </div>
                     <div className="modal-footer">
@@ -71,8 +71,8 @@ const Cours = () => {
         </div>
         <div className="container my-5 bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
           <div className="row row-gap-3">
-            {domains.map((domain) => (
-              <div className="col-lg-4 col-md-6 col-sm-12 ">
+            {domains.map((domain,index) => (
+              <div className="col-lg-4 col-md-6 col-sm-12 " key={index} >
                 <Domaine title={domain.title} />
               </div>
             ))}

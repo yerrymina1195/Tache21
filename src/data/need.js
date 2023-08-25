@@ -1,5 +1,8 @@
 import { LuLayoutDashboard } from "react-icons/lu";
 import { PiStudentLight } from "react-icons/pi";
+import { PiChalkboardTeacherThin } from "react-icons/pi";
+import { PiUserCircleGearLight } from "react-icons/pi";
+import { AiOutlineLock } from "react-icons/ai";
 import { LiaBookSolid } from "react-icons/lia";
 import { GiTeacher } from "react-icons/gi";
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
@@ -13,10 +16,12 @@ import avatar4 from "./avatar4.jpg";
 export const links = [
   {
     title: "Dashboard",
+    statut: ["admin","coach","eleve"],
     links: [
       {
         name: "Dashbord",
         icon: <LuLayoutDashboard />,
+        statut: ["admin","coach","eleve"], 
         link: "l/dashboard",
       },
     ],
@@ -24,50 +29,61 @@ export const links = [
 
   {
     title: "Pages",
+    statut: ["admin","coach","eleve"],
     links: [
       {
         name: "livraisons",
         icon: <AiOutlineDeliveredProcedure />,
+        statut: ["coach","eleve"],
         link: "l/livraisons",
       },
       {
         name: "messagerie",
         icon: <MdOutlineMessage />,
+        statut: ["admin","coach","eleve"],
         link: "l/messagerie",
       },
       {
         name: "cours",
         icon: <LiaBookSolid />,
+        statut: ["admin","coach","eleve"],
         link: "l/cours",
       },
       {
         name: "eleves",
         icon: <PiStudentLight />,
+        statut: ["admin","coach"],
         link: "l/eleves",
       },
       {
         name: "Professeurs",
-        icon: <PiStudentLight />,
+        icon: <PiChalkboardTeacherThin />,
+        statut: ["admin"],
         link: "l/professeurs",
       },
       {
         name: "Parametres",
-        icon: <PiStudentLight />,
+        icon: <PiUserCircleGearLight />,
+        statut: ["admin","coach","eleve"],
         link: "l/parametres",
       },
-      // {
-      //   name: 'page5',
-      //   icon: <RiContactsLine />,
-      // },
+      {
+        name: "securite",
+        icon: <AiOutlineLock />,
+        statut: ["admin","coach","eleve"],
+        link: "l/securite",
+      }
     ],
   },
-  ,
+  
   {
     title: "Certification",
+    statut: ["coach","eleve"],
     links: [
       {
         name: "Certification",
         icon: <TbCertificate />,
+        statut: ["coach","eleve"],
         link:"l/certification"
       },
     ],
@@ -142,7 +158,7 @@ export const dashData = [
   },
   {
     icon: <LiaBookSolid />,
-    amount: "300",
+    amount: "4",
     title: "Cours",
     iconColor: "rgb(228, 106, 118)",
     iconBg: "rgb(255, 244, 229)",
@@ -182,24 +198,25 @@ export const dashDataEleves = [
  
   {
     icon: <LiaBookSolid />,
-    amount: "300",
+    amount: "4",
     title: "Cours",
     iconColor: "rgb(228, 106, 118)",
     iconBg: "rgb(255, 244, 229)",
   },
-  {
-    icon: <AiOutlineDeliveredProcedure />,
-    amount: "300",
-    title: "livraisons",
-    iconColor: "rgb(0, 194, 146)",
-    iconBg: "rgb(235, 250, 242)",
-  },
+  
   {
     icon: <GiTeacher />,
-    amount: "50",
+    amount: "0",
     title: "Taches",
     iconColor: "#03C9D7",
     iconBg: "#E5FAFB",
+  },
+  {
+    icon: <AiOutlineDeliveredProcedure />,
+    amount: "0",
+    title: "Taches validées",
+    iconColor: "rgb(0, 194, 146)",
+    iconBg: "rgb(235, 250, 242)",
   },
 ];
 export const UserData = [
@@ -396,3 +413,4 @@ export const cardDataDesign = [
   },
 ];
 // MAMA
+

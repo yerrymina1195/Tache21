@@ -9,5 +9,4 @@ const Dashbord = () => {
     </div>
   )
 }
-
 export default Dashbord
