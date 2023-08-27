@@ -24,6 +24,7 @@ import LabelInput from '../parametres/LabelInput';
 import ButtonReutilisable from '../../components/ButtonReutilisable';
 
 
+
 function ProfTable() {
   const [users, setUsers] = useState([]);
   const [searchValue, setSearchValue] = useState("");
@@ -117,7 +118,7 @@ function ProfTable() {
     statut: "",
     domaine: ""
   });
-const [data, setData] = useState({
+  const [data, setData] = useState({
     prenom: "",
     nom: "",
     email: "",
@@ -126,88 +127,88 @@ const [data, setData] = useState({
     address: "",
     statut: "",
     domaine: ""
-})
-console.log(errors);
-const validateEmail = (email) => {
+  })
+  console.log(errors);
+  const validateEmail = (email) => {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
 
-const handelchange = (e) => {
+  const handelchange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
-}
+  }
 
-const onSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     let newErrors = {
-        prenom: "",
-    nom: "",
-    email: "",
-    telephone: "",
-    mdp: "",
-    address: "",
-    statut: "",
-    domaine: ""
-      };
-  
-      if (data.email === '') {
-        newErrors.email = 'Email is required';
-      } else if (!validateEmail(data.email)) {
-        newErrors.email = 'Invalid email format';
-      }
-  
-      if (data.mdp === '') {
-        newErrors.mdp = 'Password is required';
-      
-      }
-  
-      if (data.telephone === '') {
-        newErrors.telephone = 'Téléphone number is required';
-      }
-  
-      if (data.nom === '') {
-        newErrors.nom = 'Nom is required';
-      }
-      if (data.prenom === '') {
-        newErrors.prenom = 'Prénom is required';
-      }
-      if (data.address === '') {
-        newErrors.address = 'Address is required';
-      }
-      if (data.statut === '') {
-        newErrors.statut = 'Statut is required';
-      }
-      if (data.domaine === '') {
-        newErrors.domaine = 'Domaine is required';
-      }
-  
-      setErrors(newErrors);
-   
-  
-    
-     
-   
-}
+      prenom: "",
+      nom: "",
+      email: "",
+      telephone: "",
+      mdp: "",
+      address: "",
+      statut: "",
+      domaine: ""
+    };
+
+    if (data.email === '') {
+      newErrors.email = 'Email is required';
+    } else if (!validateEmail(data.email)) {
+      newErrors.email = 'Invalid email format';
+    }
+
+    if (data.mdp === '') {
+      newErrors.mdp = 'Password is required';
+
+    }
+
+    if (data.telephone === '') {
+      newErrors.telephone = 'Téléphone number is required';
+    }
+
+    if (data.nom === '') {
+      newErrors.nom = 'Nom is required';
+    }
+    if (data.prenom === '') {
+      newErrors.prenom = 'Prénom is required';
+    }
+    if (data.address === '') {
+      newErrors.address = 'Address is required';
+    }
+    if (data.statut === '') {
+      newErrors.statut = 'Statut is required';
+    }
+    if (data.domaine === '') {
+      newErrors.domaine = 'Domaine is required';
+    }
+
+    setErrors(newErrors);
 
 
 
-const [editModalOpen, setEditModalOpen] = useState(false);
-const [selectedEditUserId, setSelectedEditUserId] = useState(null);
 
-// ...
 
-const openEditModal = (id) => {
-  setSelectedEditUserId(id); 
-  setEditModalOpen(true); 
-};
+  }
 
-const closeEditModal = () => {
-  setSelectedEditUserId(null); 
-  setEditModalOpen(false); 
-};
+
+
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [selectedEditUserId, setSelectedEditUserId] = useState(null);
+
+  // ...
+
+  const openEditModal = (id) => {
+    setSelectedEditUserId(id);
+    setEditModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setSelectedEditUserId(null);
+    setEditModalOpen(false);
+  };
 
 
 
@@ -247,13 +248,17 @@ const closeEditModal = () => {
               {visibleData.map((datas, index) => (
                 <tr key={index}>
                   <td>
-                    {<img src={img} className="img" alt="User Avatar" />}
+                    {data.url ? (
+                      <img src={data.url} className="img" alt="User Avatar" />
+                    ) : (
+                      <img src={img} className="img" alt="User Avatar" />
+                    )}
                   </td>
                   <td>{datas.prenom}</td>
                   <td>{datas.nom}</td>
                   <td>{datas.telephone}</td>
                   <td>{datas.email}</td>
-                  
+
                   <td>{datas.domaine}</td>
                   <td>
 
@@ -263,11 +268,11 @@ const closeEditModal = () => {
                           <TbListDetails className="text-white" onClick={() => getUserDetails(datas.id)} data-bs-toggle="modal" data-bs-target="#exampleModal" />
                         </button>
                         <button
-                  className="btn me-3 btn-sm prev"
-                  onClick={() => getUserDetails(datas.id)} data-bs-toggle="modal" data-bs-target="#exampleModale" // Appel de openEditModal avec l'ID de l'utilisateuer
-                >
-                  <BiEditAlt className=" text-white" />
-                </button>
+                          className="btn me-3 btn-sm prev"
+                          onClick={() => getUserDetails(datas.id)} data-bs-toggle="modal" data-bs-target="#exampleModale" // Appel de openEditModal avec l'ID de l'utilisateuer
+                        >
+                          <BiEditAlt className=" text-white" />
+                        </button>
                         <button className="btn  me-3 btn-sm prev">
                           <AiFillDelete className="text-white" onClick={() => handleDelete(datas.id)} />
                         </button>
@@ -282,11 +287,11 @@ const closeEditModal = () => {
         {/* PAGINATION */}
         <div className="mt-3 row">
           <div className="col-md-6"> <nav aria-label="Page navigation">
-          <ul className="pagination">
+            <ul className="pagination">
               <li
                 className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
               >
-                <button type='button'  className="page-link shadow-none text-decoration-none text-black"
+                <button type='button' className="page-link shadow-none text-decoration-none text-black"
                   onClick={() => handlePageChange(currentPage - 1)}>Pre</button>
               </li>
               {Array.from({ length: totalPages }).map((_, index) => (
@@ -295,16 +300,16 @@ const closeEditModal = () => {
                   className={`page-item text-decoration-none ${index + 1 === currentPage ? "active" : ""
                     }`}
                 >
-                  <button type='button'   className="page-link color1 text-decoration-none shadow-none text-black"
+                  <button type='button' className="page-link color1 text-decoration-none shadow-none text-black"
                     onClick={() => handlePageChange(index + 1)}> {index + 1}</button>
-                   
+
                 </li>
               ))}
               <li
                 className={`page-item ${currentPage === totalPages ? "disabled" : ""
                   }`}
               >
-                <button type='button'  className="page-link shadow-none text-decoration-none text-black"
+                <button type='button' className="page-link shadow-none text-decoration-none text-black"
                   onClick={() => handlePageChange(currentPage + 1)}>Suiv</button>
               </li>
             </ul>
@@ -324,11 +329,11 @@ const closeEditModal = () => {
               </button>
               <ul className="dropdown-menu" aria-labelledby="dropdown-rows-per-page">
                 <li>
-                  <button type='button'  className="dropdown-item"
+                  <button type='button' className="dropdown-item"
                     onClick={() => handleRowsPerPageChange(1)}>1</button>
                 </li>
                 <li>
-                  <button type='button'  className="dropdown-item"
+                  <button type='button' className="dropdown-item"
                     onClick={() => handleRowsPerPageChange(5)}>5</button>
                 </li>
                 <li>
@@ -336,7 +341,7 @@ const closeEditModal = () => {
                     onClick={() => handleRowsPerPageChange(10)}>10</button>
                 </li>
                 <li>
-                <button type='button' className="dropdown-item"
+                  <button type='button' className="dropdown-item"
                     onClick={() => handleRowsPerPageChange(15)}>15</button>
                 </li>
               </ul>
@@ -422,9 +427,9 @@ const closeEditModal = () => {
         {/* MODAL modifier */}
         <div class="modal fade" id="exampleModale" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content ">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">les details</h5>
+                <h5 class="modal-title" id="exampleModalLabel">les detailsdd</h5>
               </div>
               <div>
                 <div class="container-xl px-4 mt-4">
