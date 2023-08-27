@@ -6,13 +6,10 @@ import { TbListDetails } from "react-icons/tb";
 import { AiFillDelete } from "react-icons/ai";
 import {
   collection,
-  getDocs,
   deleteDoc,
   doc,
-  query,
-  where,
-  addDoc,
-  updateDoc
+  updateDoc,
+  onSnapshot
 } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
 import { Link, useParams } from 'react-router-dom';
@@ -20,7 +17,6 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { getDoc } from "firebase/firestore";
-import ModifierEleve from "./ModifierEleve";
 import LabelInput from '../parametres/LabelInput';
 import ButtonReutilisable from '../../components/ButtonReutilisable';
 
@@ -43,13 +39,21 @@ function EleveTable() {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    const querySnapshot = await getDocs(collection(db, "users"));
+const fetchData = () => {
+  const unsubscribe = onSnapshot(collection(db, "users"), (querySnapshot) => {
     const data = querySnapshot.docs
       .map((doc) => ({ ...doc.data(), id: doc.id }))
       .filter((user) => user.statut === "eleve");
     setUsers(data);
-  };
+  });
+
+  return unsubscribe; // This function can be used to unsubscribe from the snapshot listener when needed
+};
+
+
+
+
+
 
   const handleDelete = async (id) => {
     await deleteDoc(doc(db, "users", id));
@@ -73,14 +77,33 @@ function EleveTable() {
         console.log("Selected Details is null");
         return;
       }
-
+  
       const userRef = doc(db, "users", selectedDetails.id);
-      await updateDoc(userRef, selectedDetails);
-
+  
+      const unsubscribe = onSnapshot(userRef, (snapshot) => {
+        try {
+          if (snapshot.exists()) {
+            updateDoc(userRef, selectedDetails)
+              .then(() => {
+                console.log("Document updated successfully");
+              })
+              .catch((error) => {
+                console.error("Error updating document:", error);
+              });
+          } else {
+            console.log("Document does not exist");
+          }
+        } catch (err) {
+          console.error("Error:", err);
+        } finally {
+          unsubscribe(); // Stop listening after the update attempt
+        }
+      });
     } catch (err) {
       console.error("Error:", err);
     }
   };
+  
 
   const totalPages = users ? Math.ceil(users.length / rowsPerPage) : 0;
   const startIndex = (currentPage - 1) * rowsPerPage;

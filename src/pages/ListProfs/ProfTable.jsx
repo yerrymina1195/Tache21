@@ -6,50 +6,44 @@ import { TbListDetails } from "react-icons/tb";
 import { AiFillDelete } from "react-icons/ai";
 import {
   collection,
-  getDocs,
   deleteDoc,
   doc,
-  query,
-  where,
-  addDoc,
-  updateDoc
+  updateDoc,
+  onSnapshot
 } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
-import { Link, useParams } from 'react-router-dom';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
-import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { getDoc } from "firebase/firestore";
 import LabelInput from '../parametres/LabelInput';
 import ButtonReutilisable from '../../components/ButtonReutilisable';
 
 
-
-function ProfTable() {
+function EleveTable() {
   const [users, setUsers] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [prenom, setPrenom] = useState("");
-  const [nom, setNom] = useState("");
-  const [telephone, setTelephone] = useState("");
-  const [email, setEmail] = useState("");
-  const [domaine, setDomaine] = useState("");
-  const [address, setAdress] = useState("");
-  const [mdp, setMdp] = useState("");
   const [selectedDetails, setSelectedDetails] = useState(null);
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    const querySnapshot = await getDocs(collection(db, "users"));
-    const data = querySnapshot.docs
-      .map((doc) => ({ ...doc.data(), id: doc.id }))
-      .filter((user) => user.statut === "coach");
-    setUsers(data);
+  const fetchData = () => {
+    const addUsers = onSnapshot(collection(db, "users"), (querySnapshot) => {
+      const data = querySnapshot.docs
+        .map((doc) => ({ ...doc.data(), id: doc.id }))
+        .filter((user) => user.statut === "coach");
+      setUsers(data);
+    });
+
+    return addUsers; 
   };
+
+
+
+
+
 
   const handleDelete = async (id) => {
     await deleteDoc(doc(db, "users", id));
@@ -66,6 +60,39 @@ function ProfTable() {
       console.log("No such document!");
     }
   }
+
+  const handleEdit = async () => {
+    try {
+      if (!selectedDetails) {
+        console.log("Selected Details is null");
+        return;
+      }
+
+      const userRef = doc(db, "users", selectedDetails.id);
+
+      const addUsers = onSnapshot(userRef, (snapshot) => {
+        try {
+          if (snapshot.exists()) {
+            updateDoc(userRef, selectedDetails)
+              .then(() => {
+                console.log("Document updated successfully");
+              })
+              .catch((error) => {
+                console.error("Error updating document:", error);
+              });
+          } else {
+            console.log("Document does not exist");
+          }
+        } catch (err) {
+          console.error("Error:", err);
+        } finally {
+          addUsers();
+        }
+      });
+    } catch (err) {
+      console.error("Error:", err);
+    }
+  };
 
 
   const totalPages = users ? Math.ceil(users.length / rowsPerPage) : 0;
@@ -91,20 +118,7 @@ function ProfTable() {
     setCurrentPage(1);
   };
 
-  const handleEdit = async () => {
-    try {
-      if (!selectedDetails) {
-        console.log("Selected Details is null");
-        return;
-      }
 
-      const userRef = doc(db, "users", selectedDetails.id);
-      await updateDoc(userRef, selectedDetails);
-
-    } catch (err) {
-      console.error("Error:", err);
-    }
-  };
 
 
 
@@ -136,80 +150,6 @@ function ProfTable() {
   };
 
 
-  const handelchange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value })
-  }
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-
-    let newErrors = {
-      prenom: "",
-      nom: "",
-      email: "",
-      telephone: "",
-      mdp: "",
-      address: "",
-      statut: "",
-      domaine: ""
-    };
-
-    if (data.email === '') {
-      newErrors.email = 'Email is required';
-    } else if (!validateEmail(data.email)) {
-      newErrors.email = 'Invalid email format';
-    }
-
-    if (data.mdp === '') {
-      newErrors.mdp = 'Password is required';
-
-    }
-
-    if (data.telephone === '') {
-      newErrors.telephone = 'Téléphone number is required';
-    }
-
-    if (data.nom === '') {
-      newErrors.nom = 'Nom is required';
-    }
-    if (data.prenom === '') {
-      newErrors.prenom = 'Prénom is required';
-    }
-    if (data.address === '') {
-      newErrors.address = 'Address is required';
-    }
-    if (data.statut === '') {
-      newErrors.statut = 'Statut is required';
-    }
-    if (data.domaine === '') {
-      newErrors.domaine = 'Domaine is required';
-    }
-
-    setErrors(newErrors);
-
-
-
-
-
-  }
-
-
-
-  const [editModalOpen, setEditModalOpen] = useState(false);
-  const [selectedEditUserId, setSelectedEditUserId] = useState(null);
-
-  // ...
-
-  const openEditModal = (id) => {
-    setSelectedEditUserId(id);
-    setEditModalOpen(true);
-  };
-
-  const closeEditModal = () => {
-    setSelectedEditUserId(null);
-    setEditModalOpen(false);
-  };
-
 
 
 
@@ -219,7 +159,7 @@ function ProfTable() {
       <div className="container mt-4">
         <div className="row d-flex justify-content-center align-items-center">
           <div className="col-md-6">
-            <h3 className="listProf">LISTE DES ProfS</h3>
+            <h3 className="listEleve">LISTE DES Professeurs</h3>
           </div>
           <div className="col-md-6 text-lg-end text-md-end text-sm-start">
             <input
@@ -248,17 +188,12 @@ function ProfTable() {
               {visibleData.map((datas, index) => (
                 <tr key={index}>
                   <td>
-                    {data.url ? (
-                      <img src={data.url} className="img" alt="User Avatar" />
-                    ) : (
-                      <img src={img} className="img" alt="User Avatar" />
-                    )}
+                    {<img src={img} className="img" alt="User Avatar" />}
                   </td>
                   <td>{datas.prenom}</td>
                   <td>{datas.nom}</td>
                   <td>{datas.telephone}</td>
                   <td>{datas.email}</td>
-
                   <td>{datas.domaine}</td>
                   <td>
 
@@ -269,7 +204,7 @@ function ProfTable() {
                         </button>
                         <button
                           className="btn me-3 btn-sm prev"
-                          onClick={() => getUserDetails(datas.id)} data-bs-toggle="modal" data-bs-target="#exampleModale" // Appel de openEditModal avec l'ID de l'utilisateuer
+                          onClick={() => getUserDetails(datas.id)} data-bs-toggle="modal" data-bs-target="#exampleModale"
                         >
                           <BiEditAlt className=" text-white" />
                         </button>
@@ -297,10 +232,10 @@ function ProfTable() {
               {Array.from({ length: totalPages }).map((_, index) => (
                 <li
                   key={index}
-                  className={`page-item text-decoration-none ${index + 1 === currentPage ? "active" : ""
+                  className={`latyr page-item text-decoration-none ${index + 1 === currentPage ? "active" : ""
                     }`}
                 >
-                  <button type='button' className="page-link color1 text-decoration-none shadow-none text-black"
+                  <button type='button' className="page-link text-decoration-none latyr prev border-none shadow-none text-white"
                     onClick={() => handlePageChange(index + 1)}> {index + 1}</button>
 
                 </li>
@@ -348,10 +283,6 @@ function ProfTable() {
             </div>
           </div>
         </div>
-
-
-
-
         {/* MODAL DETAILS */}
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -396,12 +327,6 @@ function ProfTable() {
                       </span>
                     </p>
                     <hr />
-                    <p className='d-flex'>
-                      <strong>Coach:</strong>
-                      <span className="mx-auto">
-                        {selectedDetails.statut}
-                      </span>
-                    </p>
                     <hr />
                     <p className='d-flex'>
                       <strong>Domaine:</strong>
@@ -415,28 +340,19 @@ function ProfTable() {
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
         {/* MODAL modifier */}
         <div class="modal fade" id="exampleModale" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
-            <div class="modal-content ">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">les detailsdd</h5>
-              </div>
+            <div class="modal-content bg-transparent border-0">
               <div>
                 <div class="container-xl px-4 mt-4">
                   <div class="row">
                     <div class="col-xl-12">
                       <div class="card">
-                        <div class="card-header  dark:bg-secondary-dark-bg text-white dark:text-gray-200">Modifier un Prof</div>
+                        <div class="modal-header card-header text-white">
+                          <h5 class="modal-title" id="exampleModalLabel">Modification des informations</h5>
+                          <button type="button" class="btn-close text-white shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
 
                         <div class="card-body bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
                           <form>
@@ -484,13 +400,17 @@ function ProfTable() {
 
                             <div class="row gx-3 mb-3">
                               <div className="col-md-6">
-                                <LabelInput id="mdp" label="Mot de pass" placeholder="mot de pass" type="password"
-                                  name="mdp"
-                                  onChange={(e) => setSelectedDetails({ ...selectedDetails, mdp: e.target.value })}
-                                  value={selectedDetails?.mdp || ""}
-
-                                />
-                                <p className="text-danger">{errors.mdp}</p>
+                                <label htmlFor="select">Domaine à suivre</label>
+                                <select className="form-select shadow-none" aria-label="Default select example"
+                                  name="domaine"
+                                  onChange={(e) => setSelectedDetails({ ...selectedDetails, domaine: e.target.value })}
+                                  value={selectedDetails?.domaine || ""}
+                                >
+                                  <selected >Choisir un domaine</selected>
+                                  <option value="Programmation">Programmation</option>
+                                  <option value="Design">Design</option>
+                                  <option value="Marketing Digital">Marketing Digital</option>
+                                </select>
                               </div>
                               <div class="col-md-6">
                                 <LabelInput id="inputDomicile" label="Adresse de domicile" placeholder="Colobane Parc Amazout" type="text"
@@ -502,40 +422,10 @@ function ProfTable() {
                                 <p className="text-danger">{errors.address}</p>
                               </div>
                             </div>
-                            {/* <div class="row gx-3 mb-3">
-                                        <div className="col-md-6">
-                                            <label htmlFor="select">Rôle</label>
-                                            <select className="form-select shadow-none" aria-label="Default select example"
-                                                name="statut"
-                                                onChange={handelchange}
-                                                value={statut}
-                                                >
-                                                <option selected >Choisir un rôle</option>
-                                                <option value="Admin">Admin</option>
-                                                <option value="Coach">Coach</option>
-                                                <option value="Elève">Elève</option>
-                                            </select>
-                                            <p className="text-danger">{errors.statut}</p>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <label htmlFor="select">Domaine à suivre</label>
-                                            <select className="form-select shadow-none" aria-label="Default select example"
-                                                name="domaine"
-                                                onChange={handelchange}
-                                                value={domaine}
-                                                >
-                                                <option selected >Choisir un domaine</option>
-                                                <option value="Programmation">Programmation</option>
-                                                <option value="Design">Design</option>
-                                                <option value="Marketing Digital">Marketing Digital</option>
-                                            </select>
-                                            <p className="text-danger">{errors.domaine}</p>
-                                        </div>
+                            <div class="row gx-3 mb-3">
+                             
 
-                                    </div> */}
-                            {/* <div className='text-center'>
-                                        <ButtonReutilisable text='' onClick={onSubmit} />
-                                    </div> */}
+                            </div>
                             <div className='text-center'>
                               <ButtonReutilisable text='Modifier' onClick={handleEdit} />
                             </div>
@@ -550,18 +440,9 @@ function ProfTable() {
           </div>
         </div>
 
-
-
-
-
-
-
-
-
       </div>
     </div>
   );
 }
 
-export default ProfTable;
-
+export default EleveTable;
