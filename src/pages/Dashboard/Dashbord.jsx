@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import './Dashboard.css';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import FormInscrip from './FormInscrip';
 import { GiTeacher } from "react-icons/gi";
@@ -25,6 +26,12 @@ const Dashbord = () => {
   const [nombreCoachs, setNombreCoachs] = useState(0);
   const [numberOfCourses, setNumberOfCourses] = useState(0);
   const [livraison, setLivraison] = useState(0);
+
+  const showToastMessage = () => {
+    toast.success('Success Notification !', {
+        position: toast.POSITION.TOP_RIGHT
+    });
+};
 
   useEffect(() => {
     const db = getFirestore();
@@ -163,6 +170,7 @@ const Dashbord = () => {
       <div className="container p-0 mt-5">
         <FormInscrip />
       </div>
+      
     </div>
      
   );

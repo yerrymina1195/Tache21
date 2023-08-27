@@ -1,25 +1,33 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./Ma.css";
 import InputLabel from "../pageConnexion/InputLabel";
 import MaButton from "../pageConnexion/MaButton";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth,db } from "../../Firebase/Firebase"
+import { auth, db } from "../../Firebase/Firebase"
 import { useStateContext } from "../../contexts/ContextProvider";
 import {
- 
+
   doc,
   getDoc
- 
+
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 
 const Connexion = () => {
-  const {updateUser}=useStateContext()
+
+  // const showToastMessage = () => {
+  //   toast.success('Success Notification!', {
+  //     position: toast.POSITION.TOP_RIGHT,
+  //   });
+  // };
+
+  const { updateUser } = useStateContext()
   //eslint-disable-next-line
   const [error, setError] = useState(false);
   const [email, setEmail] = useState("");
@@ -27,31 +35,36 @@ const Connexion = () => {
 
   const navitage = useNavigate()
 
-  
 
-  const handleLogin = async(e) => {
-   
+
+  const handleLogin = async (e) => {
+
     e.preventDefault();
-   
+
     console.log(email)
 
     try {
-      const res= await signInWithEmailAndPassword(auth, email, password);
-      const userID=  res?.user?.uid
+      const res = await signInWithEmailAndPassword(auth, email, password);
+      const userID = res?.user?.uid
       const userDoc = await getDoc(doc(db, 'users', userID));
       const userData = userDoc.data();
-      alert(`Bienvenue ${userData.prenom}`)
+      toast.success('CONNECTED !', {
+        position: toast.POSITION.TOP_CENTER
+      });
+      // alert(`Bienvenue ${userData.prenom}`)
       updateUser(userData)
       navitage('l/dashboard', { replace: true })
-      
+
       // onSnapshot(doc(db,'users',userID), (doc) => {
       //   const user= doc.data()
-        
+
       // });
-   
+
     } catch (error) {
-      
-      alert(error)
+      toast.error('Error Notification !', {
+        position: toast.POSITION.TOP_CENTER
+      });
+      // alert(error)
     }
   };
 
@@ -98,8 +111,13 @@ const Connexion = () => {
                 <InputLabel label={'Mot de passe'} type={'password'} placeholder={'********'} onChange={(e) => setPassword(e.target.value)} />
               </div>
               <div className="row">
-              <Link >
-                <MaButton type={'submit'} onClick={handleLogin} text={"SE CONNECTER"} />
+                <Link >
+                  <MaButton type={'submit'} onClick={handleLogin} text={"SE CONNECTER"} />
+                  {/* <button onClick={showToastMessage}>Notify</button> */}
+                  <ToastContainer
+                    style={{ zIndex: 1 }}
+                    position={toast.POSITION.TOP_RIGHT}
+                  />
                 </Link>
               </div>
               <div className="row mt-4">
@@ -109,6 +127,7 @@ const Connexion = () => {
                     Mot de passe oublié?
                   </Link>
                 </div>
+
               </div>
             </form>
           </div>
