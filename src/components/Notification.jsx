@@ -4,9 +4,28 @@ import { MdOutlineCancel } from 'react-icons/md';
 import { Button } from '.';
 import { chatData } from '../data/need';
 import { useStateContext } from '../contexts/ContextProvider';
+import {
+  collection,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc
+} from "firebase/firestore";
+import { db } from "../../Firebase/Firebase";
+
+
 
 const Notification = () => {
   const { currentColor } = useStateContext();
+
+ 
+    const Notififier = async () => {
+      const querySnapshot = await getDocs(collection(db, "notifications"));
+      const data = querySnapshot.docs
+        .map((doc) => ({ ...doc.data(), id: doc.id }))
+      setUsers(data);
+    };
+
 
   return (
     <div className=" nav-item absolute right-5 md:right-40 top-16 bg-[#ffff] dark:bg-[#42464D] p-8 rounded-lg w-96">
@@ -30,7 +49,7 @@ const Notification = () => {
         <div className="mt-5">
           <Button color="white" bgColor={currentColor} text="See all notifications" borderRadius="10px" width="full" />
         </div>
-      </div>
+      </div> 
     </div>
   );
 };

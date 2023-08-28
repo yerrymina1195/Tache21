@@ -1,9 +1,115 @@
 import React, { useState, useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import './Eleve.css';
+import img from "../../data/avatar2.jpg";
+import { BiEditAlt } from "react-icons/bi";
+import { TbListDetails } from "react-icons/tb";
+import { AiFillDelete } from "react-icons/ai";
+import {
+  collection,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc
+} from "firebase/firestore";
+import { db } from "../../Firebase/Firebase";
+import 'firebase/compat/firestore';
+import { getDoc } from "firebase/firestore";
+import LabelInput from '../parametres/LabelInput';
+import ButtonReutilisable from '../../components/ButtonReutilisable';
 
 
-const EleveTable = () => {
+function EleveTable() {
+  const [users, setUsers] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [selectedDetails, setSelectedDetails] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const querySnapshot = await getDocs(collection(db, "users"));
+    const data = querySnapshot.docs
+      .map((doc) => ({ ...doc.data(), id: doc.id }))
+      .filter((user) => user.statut === "eleve");
+    setUsers(data);
+  };
+
+  const handleDelete = async (id) => {
+    await deleteDoc(doc(db, "users", id));
+    fetchData();
+    alert("Utilisateur supprimé avec succès !!!");
+  };
+
+  async function getUserDetails(id) {
+    const userRef = doc(db, "users", id);
+    const docSnap = await getDoc(userRef);
+    if (docSnap.exists()) {
+      setSelectedDetails(docSnap.data());
+    } else {
+      console.log("No such document!");
+    }
+  }
+
+  const handleEdit = async () => {
+    try {
+      if (!selectedDetails) {
+        console.log("Selected Details is null");
+        return;
+      }
+
+      const userRef = doc(db, "users", selectedDetails.id);
+      await updateDoc(userRef, selectedDetails);
+
+    } catch (err) {
+      console.error("Error:", err);
+    }
+  };
+
+  const totalPages = users ? Math.ceil(users.length / rowsPerPage) : 0;
+  const startIndex = (currentPage - 1) * rowsPerPage;
+  const filteredData = users.filter(
+    (item) =>
+      item.nom.toLowerCase().includes(searchValue.toLowerCase()) ||
+      item.prenom.toLowerCase().includes(searchValue.toLowerCase())
+  );
+  const visibleData = filteredData.slice(startIndex, startIndex + rowsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleRowsPerPageChange = (value) => {
+    setRowsPerPage(value);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value);
+    setCurrentPage(1);
+  };
+
+  
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div>
       <div className="container mt-4">
