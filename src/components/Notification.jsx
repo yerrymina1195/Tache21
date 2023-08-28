@@ -13,6 +13,7 @@ import {
   addDoc
 } from "firebase/firestore";
 import { db} from "../data/../Firebase/Firebase";
+import { Alert } from 'bootstrap';
 
 
 
@@ -50,22 +51,6 @@ const tableRecup = [];
       
 console.log(tableRecup);
 
-//  const senotifier = async () => {
-//   const fieldName = "idProfesseur";
-//   const fieldValue = "makhan";
-
-//   console.log(`Fetching notifications for ${fieldName} equal to ${fieldValue}`);
-
-//   const querySnapshot = await getDocs(
-//     query(collection(db, "notifications"), where(fieldName, "==", fieldValue))
-//   );
-
-//   const data = querySnapshot.docs
-//     .map((doc) => ({ ...doc.data(), id: doc.id }));
-
-//   console.log(`Filtered notifications for ${fieldName} equal to ${fieldValue}:`, data);
-// }
-
 
 
   const senotifier = async () => {
@@ -82,14 +67,6 @@ console.log(tableRecup);
 
   }
 
-  useEffect(() => {
-    console.log("Valeur de recup mise à jour :", recup);
-
-    // Vous pouvez effectuer d'autres actions en fonction de la valeur de recup ici
-
-  }, [recup]);
-
-
 
 
 
@@ -99,7 +76,18 @@ console.log(tableRecup);
  const ClickNotifier = () => {
   sendNotif();
   senotifier();
+
+  if (recup.length >= 0) {
+    alert("superieure")
+  } else {
+    alert("inferieure")
+  }
 };
+
+
+
+
+
 
   return (
     <div className=" nav-item absolute right-5 md:right-40 top-16 bg-[#ffff] dark:bg-[#42464D] p-8 rounded-lg w-96">
