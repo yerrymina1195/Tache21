@@ -6,26 +6,27 @@ import { chatData } from '../data/need';
 import { useStateContext } from '../contexts/ContextProvider';
 import {
   collection,
-  getDocs,
-  deleteDoc,
-  doc,
-  updateDoc
+  onSnapshot
 } from "firebase/firestore";
-import { db } from "../../Firebase/Firebase";
+import { db } from "../data/../Firebase/Firebase";
+
 
 
 
 const Notification = () => {
   const { currentColor } = useStateContext();
 
- 
-    const Notififier = async () => {
-      const querySnapshot = await getDocs(collection(db, "notifications"));
+
+  const recupNotifif = () => {
+    const notifier = onSnapshot(collection(db, "notifications"), (querySnapshot) => {
       const data = querySnapshot.docs
         .map((doc) => ({ ...doc.data(), id: doc.id }))
-      setUsers(data);
-    };
-
+        .filter((notifications) => notifications.statut === "YJlbWGFsgXerSLyeRCs0zaz1uRC2");
+    });
+  
+    return notifier;
+  };
+  
 
   return (
     <div className=" nav-item absolute right-5 md:right-40 top-16 bg-[#ffff] dark:bg-[#42464D] p-8 rounded-lg w-96">
@@ -34,7 +35,8 @@ const Notification = () => {
           <p className="font-semibold text-lg dark:text-gray-200">Notifications</p>
           <button type="button" className="text-white text-xs rounded p-1 px-2 bg-orange-theme "> 5 New</button>
         </div>
-        <Button icon={<MdOutlineCancel />} color="rgb(153, 171, 180)" bgHoverColor="light-gray" size="2xl" borderRadius="50%" />
+        {/* <Button icon={<MdOutlineCancel />} color="rgb(153, 171, 180)" bgHoverColor="light-gray" size="2xl" borderRadius="50%" /> */}
+        <button onClick={recupNotifif}>cliquer pour voir les notifications</button>
       </div>
       <div className=" ">
         {chatData?.map((item, index) => (
