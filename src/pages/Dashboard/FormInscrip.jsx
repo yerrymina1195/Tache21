@@ -149,18 +149,6 @@ const FormInscrip = () => {
                 console.log(err);
                 alert(err)
             }
-
-
-            // setData({
-            //     prenom: "",
-            //     nom: "",
-            //     email: "",
-            //     telephone: "",
-            //     mdp: "",
-            //     address: "",
-            //     statut: "",
-            //     domaine: "",
-            // })
         }
 
     }

@@ -1,8 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import './Dashboard.css';
-
-
-
 import FormInscrip from './FormInscrip';
 import { GiTeacher } from "react-icons/gi";
 import { PiStudentLight } from "react-icons/pi"
@@ -19,8 +16,6 @@ import {
 } from "firebase/firestore";
 
 const Dashbord = () => {
-
-
   const [nombreUser, setnombreUser] = useState(0);
   const [nombreEleves, setNombreEleves] = useState(0);
   const [nombreCoachs, setNombreCoachs] = useState(0);
@@ -29,7 +24,6 @@ const Dashbord = () => {
 
   useEffect(() => {
     const db = getFirestore();
-
     // Récupérer la référence de la collection "cours"
     const userRef = collection(db, 'users');
     // Récupérer les documents de la collection et compter le nombre
@@ -141,7 +135,7 @@ const Dashbord = () => {
             <p className=" mb-0 ">
               <span className="text-lg font-semibold">{numberOfCourses}</span>
             </p>
-            <p className=" mb-0 text-sm text-gray-400  ">Cours</p>
+            <p className=" mb-0 text-sm text-gray-400">Cours</p>
           </div>
           {/* Carte 5 */}
           <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
@@ -155,17 +149,15 @@ const Dashbord = () => {
             <p className=" mb-0 ">
               <span className="text-lg font-semibold">{livraison}</span>
             </p>
-            <p className=" mb-0 text-sm text-gray-400  ">Livraisons</p>
+            <p className=" mb-0 text-sm text-gray-400">Livraisons</p>
           </div>
         </div>
-
-
       </div>
       <div className="container p-0 mt-5">
         <FormInscrip />
       </div>
     </div>
-     
+
   );
 };
 
