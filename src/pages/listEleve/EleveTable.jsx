@@ -26,40 +26,48 @@ function EleveTable() {
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [prenom, setPrenom] = useState("");
-  const [nom, setNom] = useState("");
-  const [telephone, setTelephone] = useState("");
-  const [email, setEmail] = useState("");
-  const [domaine, setDomaine] = useState("");
-  const [address, setAdress] = useState("");
-  const [mdp, setMdp] = useState("");
   const [selectedDetails, setSelectedDetails] = useState(null);
 
   useEffect(() => {
     fetchData();
   }, []);
 
-const fetchData = () => {
-  const unsubscribe = onSnapshot(collection(db, "users"), (querySnapshot) => {
-    const data = querySnapshot.docs
-      .map((doc) => ({ ...doc.data(), id: doc.id }))
-      .filter((user) => user.statut === "eleve");
-    setUsers(data);
-  });
 
-  return unsubscribe; // This function can be used to unsubscribe from the snapshot listener when needed
+
+
+
+const fetchData = () => {
+  const users = [];
+  
+  // Récupérer les données des utilisateurs avec onSnapshot pour surveiller les changements en temps réel
+  const unsubscribe = onSnapshot(collection(db, "users"), (querySnapshot) => {
+    users.length = 0; // Réinitialiser le tableau d'utilisateurs
+
+    querySnapshot.forEach((doc) => {
+      const userData = doc.data();
+      userData.id = doc.id;
+      users.push(userData);
+    });
+    const archivedUsers = users.filter((eleve) => eleve.archived === true);
+    const activeUsers = users.filter((eleve) => eleve.archived !== true);
+  });
 };
 
 
+const handleArchive = async (id) => {
+  const userRef = doc(db, "users", id);
+
+  // Mettre à jour le champ "archived" du document à true
+  await updateDoc(userRef, {
+    archived: true
+  });
+
+  fetchData();
+  alert("Utilisateur archivé avec succès !!!");
+};
 
 
-
-
-  const handleDelete = async (id) => {
-    await deleteDoc(doc(db, "users", id));
-    fetchData();
-    alert("Utilisateur supprimé avec succès !!!");
-  };
+ 
 
   async function getUserDetails(id) {
     const userRef = doc(db, "users", id);
@@ -295,7 +303,7 @@ const closeEditModal = () => {
                   <BiEditAlt className=" text-white" />
                 </button>
                         <button className="btn  me-3 btn-sm prev">
-                          <AiFillDelete className="text-white" onClick={() => handleDelete(datas.id)} />
+                          <AiFillDelete className="text-white" onClick={() => handleArchive(datas.id)} />
                         </button>
                       </div>
                     </div>
@@ -436,14 +444,6 @@ const closeEditModal = () => {
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
 
         {/* MODAL modifier */}
         <div class="modal fade" id="exampleModale" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

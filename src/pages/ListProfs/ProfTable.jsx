@@ -30,26 +30,35 @@ function EleveTable() {
   }, []);
 
   const fetchData = () => {
-    const addUsers = onSnapshot(collection(db, "users"), (querySnapshot) => {
-      const data = querySnapshot.docs
-        .map((doc) => ({ ...doc.data(), id: doc.id }))
-        .filter((user) => user.statut === "coach");
-      setUsers(data);
+    const users = [];
+    
+    // Récupérer les données des utilisateurs avec onSnapshot pour surveiller les changements en temps réel
+    const unsubscribe = onSnapshot(collection(db, "users"), (querySnapshot) => {
+      users.length = 0; // Réinitialiser le tableau d'utilisateurs
+  
+      querySnapshot.forEach((doc) => {
+        const userData = doc.data();
+        userData.id = doc.id;
+        users.push(userData);
+      });
+      const archivedUsers = users.filter((coach) => coach.archived === true);
+      const activeUsers = users.filter((coach) => coach.archived !== true);
     });
-
-    return addUsers; 
   };
+  
 
-
-
-
-
-
-  const handleDelete = async (id) => {
-    await deleteDoc(doc(db, "users", id));
+  const handleArchive = async (id) => {
+    const userRef = doc(db, "users", id);
+  
+    // Mettre à jour le champ "archived" du document à true
+    await updateDoc(userRef, {
+      archived: true
+    });
+  
     fetchData();
-    alert("Utilisateur supprimé avec succès !!!");
+    alert("Utilisateur archivé avec succès !!!");
   };
+  
 
   async function getUserDetails(id) {
     const userRef = doc(db, "users", id);
@@ -209,7 +218,7 @@ function EleveTable() {
                           <BiEditAlt className=" text-white" />
                         </button>
                         <button className="btn  me-3 btn-sm prev">
-                          <AiFillDelete className="text-white" onClick={() => handleDelete(datas.id)} />
+                          <AiFillDelete className="text-white" onClick={() => handleArchive(datas.id)} />
                         </button>
                       </div>
                     </div>
@@ -399,27 +408,18 @@ function EleveTable() {
                             </div>
 
                             <div class="row gx-3 mb-3">
-                              <div className="col-md-6">
-                                <label htmlFor="select">Domaine à suivre</label>
+                              <div className="col">
+                                <label htmlFor="select" >Domaine à suivre</label>
                                 <select className="form-select shadow-none" aria-label="Default select example"
                                   name="domaine"
                                   onChange={(e) => setSelectedDetails({ ...selectedDetails, domaine: e.target.value })}
                                   value={selectedDetails?.domaine || ""}
                                 >
                                   <selected >Choisir un domaine</selected>
-                                  <option value="Programmation">Programmation</option>
+                                  <option  value="Programmation">Programmation</option>
                                   <option value="Design">Design</option>
                                   <option value="Marketing Digital">Marketing Digital</option>
                                 </select>
-                              </div>
-                              <div class="col-md-6">
-                                <LabelInput id="inputDomicile" label="Adresse de domicile" placeholder="Colobane Parc Amazout" type="text"
-                                  name="address"
-                                  onChange={(e) => setSelectedDetails({ ...selectedDetails, address: e.target.value })}
-                                  value={selectedDetails?.address || ""}
-
-                                />
-                                <p className="text-danger">{errors.address}</p>
                               </div>
                             </div>
                             <div class="row gx-3 mb-3">
