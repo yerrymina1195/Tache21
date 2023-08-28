@@ -93,19 +93,6 @@ function ProfTable() {
     }
   };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <div>
       <div className="container mt-4">
