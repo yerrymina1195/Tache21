@@ -47,7 +47,7 @@ const TesteOne = () => {
         descrip: newDescrip,
         videoUrl: newVideoUrl,
         timeStamp: serverTimestamp(),
-        createBy: user?.id,
+        createBy: user?.prenom,
       });
       setNewTitle("");
       setNewDure("");
