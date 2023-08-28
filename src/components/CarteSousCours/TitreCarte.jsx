@@ -10,7 +10,7 @@ const TitreCarte = (props) => {
         </div>
         <div className="col-md-6 float-end">
           <div data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            <ButtonReutilisable text={"Ajouter un domaine"} />
+            <ButtonReutilisable text={"Ajouter un Cours"} />
           </div>
           {/* button modal */}
           {/* Modal */}
@@ -43,6 +43,7 @@ const TitreCarte = (props) => {
                       class="form-control"
                       id="floatingInput"
                       placeholder="Nom du domaine"
+                      value={props.valueUrl}
                     />
                     <label for="floatingInput">Entrez l'url du cours</label>
                   </div>
@@ -52,6 +53,7 @@ const TitreCarte = (props) => {
                       class="form-control"
                       id="floatingInput"
                       placeholder="Nom du domaine"
+                      value={props.valueTitle}
                     />
                     <label for="floatingInput">Entrez le titre du cours</label>
                   </div>
@@ -62,6 +64,7 @@ const TitreCarte = (props) => {
                       placeholder="Nom du domaine"
                       cols="30"
                       rows="50"
+                      value={props.valueDescrip}
                     ></textarea>
                     <label for="floatingInput">
                       Entrez la description du cours
@@ -69,7 +72,8 @@ const TitreCarte = (props) => {
                   </div>
                 </div>
                 <div className="modal-footer">
-                  <ButtonReutilisable text={"Ajouter"} />
+                  <ButtonReutilisable text={"Ajouter"}
+                  onClick={props.onClick} />
                 </div>
               </div>
             </div>

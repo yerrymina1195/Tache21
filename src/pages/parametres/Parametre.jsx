@@ -13,7 +13,7 @@ import { auth } from "../../Firebase/Firebase";
 import {useStateContext  } from "../../contexts/ContextProvider";
 import { db, storage } from "../../Firebase/Firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { MdDriveFolderUpload } from "react-icons/md";
+import { FcOpenedFolder } from "react-icons/fc";
 
 const Parametre = () => {
   const {user,updateUser} = useStateContext();
@@ -131,14 +131,10 @@ const Parametre = () => {
                         <div className="card bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
                             <div className="card-header mb-3 text-white" onSubmit={uploadFile}>Modifier vos informations personnelles</div>
                             <div className="row gx-3">
-                                <div className="col-md-6 p-4">
-                                    <div className="col-md-6 p-4">
-                                        <div className="small font-italic dark:text-gray-200 mb-4 w-100">
-                                            <p>Choisir une image pas plus de 5 MB sous format JPG / PNG</p>
-                                        </div>
-                                        <div className='d-flex  align-items-center'>
-                                            <label htmlFor="file">
-                                                Image: <MdDriveFolderUpload className="icon" />
+                                <div className="col-md-4 p-4">
+                                        <div className="small font-italic dark:text-gray-200 w-100">
+                                            <label htmlFor="file">Cliquez pour choisir une image:
+                                            <FcOpenedFolder className="icon fs-2" />
                                             </label>
                                             <input
                                                 type="file"
@@ -150,10 +146,10 @@ const Parametre = () => {
                                                 accept="image/*"
                                             />
                                         </div>
-                                    </div>
                                 </div>
-                                <div className="col-md-6 d-flex justify-content-center align-items-center">
-                                    <div className='image  d-flex flex-column justify-content-center align-items-center h-100 rounded-circle'>
+                                <div className="col-md-6"></div>
+                                <div className="col-md-2 ps-3 d-flex justify-content-lg-center align-items-lg-center justify-content-sm-start align-items-sm-start justify-content-md-center align-items-md-center ">
+                                    <div className='image rounded-circle'>
 
                                         <img
                                             src={
@@ -164,7 +160,7 @@ const Parametre = () => {
                                             alt=""
                                             value={url}
                                             className='img-fluid rounded-circle mb-3' />
-                                        {file ? (<ButtonReutilisable text='Save' onClick={uploadFile} />) : ("")}
+                                        {file ? (<ButtonReutilisable text='Valider' onClick={uploadFile} />) : ("")}
 
                                     </div>
                                 </div>
@@ -174,7 +170,7 @@ const Parametre = () => {
                                     <div className="row gx-3 mb-3">
                                         <div className="col-md-6">
                                             <LabelInput id="inputLatestName"
-                                                label="Prenom"
+                                                label="Prénom"
                                                 placeholder="Mama"
                                                 type="text"
                                                 name="prenom"
@@ -212,7 +208,7 @@ const Parametre = () => {
                                         </div>
                                         <div className="col-md-6">
                                             <LabelInput id="inputPhone"
-                                                label="Numero telephone"
+                                                label="Numero téléphone"
                                                 placeholder="77 670 00 66"
                                                 type="tel"
                                                 name="telephone"
@@ -224,7 +220,7 @@ const Parametre = () => {
                                     </div>
 
                                   
-                                    <div className='text-center'>
+                                    <div className='text-center p-4'>
                                         <ButtonReutilisable text='Enregistrer les modifications' onClick={handleSaveProfile} />
                                     </div>
                                 </form>

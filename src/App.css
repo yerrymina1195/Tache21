@@ -5,6 +5,24 @@
 .navbar {
   z-index: 10000;
 }
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.bounce-element {
+  animation: bounce 1s infinite; /* 1s duration, infinite loop */
+}
+.bounce-element:hover{
+  animation: none;
+}
+.bg-quizz{
+  background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+}
 @media  screen and (max-width:800px) {
   .sidebar{
     z-index: 10000000;
@@ -53,5 +71,14 @@ input {
   border: none;
 }
 
-/* boutton quiz */
 
+/* MAMA-MODIFICATION GENERALE */
+/* input:focus, select:focus {
+  border-color: #2b2a2a !important; 
+  color: #6e6d6d !important;
+} */
+input:valid {
+  /* border-color: #2b2a2a !important; 
+  color: #6e6d6d !important; */
+  font-size: 13px !important;
+}
