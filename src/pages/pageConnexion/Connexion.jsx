@@ -1,7 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-
 import "./Ma.css";
 import InputLabel from "../pageConnexion/InputLabel";
 import MaButton from "../pageConnexion/MaButton";

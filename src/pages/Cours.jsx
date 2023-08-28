@@ -82,6 +82,16 @@ const Cours = () => {
       getDomaines();
     });
   }, [domaineCollectionRef]);
+  // const q = query(collection(db, "domains"));
+  // useEffect(() => {
+  //   const recupdomain= onSnapshot(q, (querySnapshot) => {
+  //     const Data = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }))
+  //       setDomains(Data);
+  //   });
+  //   return () => {
+  //    recupdomain();
+  //   };
+  // }, [domaineCollectionRef]);
 
   return (
     <div>
@@ -93,14 +103,14 @@ const Cours = () => {
             </div>
             <div className="col-md-6 col-sm-12 text-center">
               {/* button modal */}
-              {/* 
+              
               <div data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <ButtonReutilisable
                   text={"Ajouter un domaine"}
                   onClick={() => handleClick("ajouState")}
                 />
               </div>
-                 */}
+                
               {/* button modal */}
               {/* Modal */}
               <div
