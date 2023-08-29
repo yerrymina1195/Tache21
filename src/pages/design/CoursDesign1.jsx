@@ -1,12 +1,16 @@
 import React from "react";
-import CarteDesign from '../../components/CarteSousCours/CarteDesign';
-import TitreCarte from "../../components/CarteSousCours/TitreCarte";
+import TesteOne from "../../components/CarteSousCours/TesteOne";
+import Sectionquizz from "../../components/section-quizz/Sectionquizz";
 
 const CoursDesign1 = () => {
   return (
-    <div className="container mt-5 py-5 bg-[#ffff]  dark:bg-secondary-dark-bg   dark:text-gray-200">
-      <TitreCarte titreCours={"FIGMA"} />
-      <CarteDesign />
+    <div className="container mt-5 pt-3 bg-[#ffff] dark:bg-secondary-dark-bg dark:text-gray-200">
+      <div className="row">
+        <div className="col-12">
+          <TesteOne />
+        </div>
+      </div>
+      <Sectionquizz />
     </div>
   );
 };
