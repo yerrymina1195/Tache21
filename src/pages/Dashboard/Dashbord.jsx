@@ -13,7 +13,6 @@ import {
   query,
   where,
   onSnapshot,
-  getFirestore,
   getDocs
 } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
@@ -76,6 +75,7 @@ const Dashbord = () => {
       unsubscribeCoachs();
       unsubscribeEleves();
     };
+     //eslint-disable-next-line
   }, []);
   console.log(nombreUser)
   console.log(nombreCoachs);
