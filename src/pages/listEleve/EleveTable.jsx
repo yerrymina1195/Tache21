@@ -6,10 +6,9 @@ import { TbListDetails } from "react-icons/tb";
 import { AiFillDelete } from "react-icons/ai";
 import {
   collection,
-  getDocs,
-  deleteDoc,
   doc,
-  updateDoc
+  updateDoc,
+  onSnapshot
 } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
 import 'firebase/compat/firestore';
@@ -29,19 +28,42 @@ function EleveTable() {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    const querySnapshot = await getDocs(collection(db, "users"));
-    const data = querySnapshot.docs
-      .map((doc) => ({ ...doc.data(), id: doc.id }))
-      .filter((user) => user.statut === "eleve");
-    setUsers(data);
-  };
 
-  const handleDelete = async (id) => {
-    await deleteDoc(doc(db, "users", id));
-    fetchData();
-    alert("Utilisateur supprimé avec succès !!!");
-  };
+
+
+
+const fetchData = () => {
+  const users = [];
+  
+    onSnapshot(collection(db, "users"), (querySnapshot) => {
+    users.length = 0; 
+
+    querySnapshot.forEach((doc) => {
+      const userData = doc.data();
+      userData.id = doc.id;
+      users.push(userData);
+    });
+   users.filter((eleve) => eleve.archived === true);
+    // const activeUsers = users.filter((eleve) => eleve.archived !== true);
+    const activeUsers = users.filter((eleve) => eleve.statut === "eleve");
+    setUsers(activeUsers)
+  });
+};
+
+
+
+const handleArchive = async (id) => {
+  const userRef = doc(db, "users", id);
+  await updateDoc(userRef, {
+    archived: true
+  });
+
+  fetchData();
+  alert("Utilisateur archivé avec succès !!!");
+};
+
+
+ 
 
   async function getUserDetails(id) {
     const userRef = doc(db, "users", id);
@@ -59,14 +81,33 @@ function EleveTable() {
         console.log("Selected Details is null");
         return;
       }
-
+  
       const userRef = doc(db, "users", selectedDetails.id);
-      await updateDoc(userRef, selectedDetails);
-
+  
+      const addUsers = onSnapshot(userRef, (snapshot) => {
+        try {
+          if (snapshot.exists()) {
+            updateDoc(userRef, selectedDetails)
+              .then(() => {
+                console.log("Document updated successfully");
+              })
+              .catch((error) => {
+                console.error("Error updating document:", error);
+              });
+          } else {
+            console.log("Document does not exist");
+          }
+        } catch (err) {
+          console.error("Error:", err);
+        } finally {
+          addUsers();
+        }
+      });
     } catch (err) {
       console.error("Error:", err);
     }
   };
+  
 
   const totalPages = users ? Math.ceil(users.length / rowsPerPage) : 0;
   const startIndex = (currentPage - 1) * rowsPerPage;
@@ -96,12 +137,6 @@ function EleveTable() {
 
 
  
-
-
-
-
-
-
 
 
 
@@ -167,7 +202,7 @@ function EleveTable() {
                   <BiEditAlt className=" text-white" />
                 </button>
                         <button className="btn  me-3 btn-sm prev">
-                          <AiFillDelete className="text-white" onClick={() => handleDelete(datas.id)} />
+                          <AiFillDelete className="text-white" onClick={() => handleArchive(datas.id)} />
                         </button>
                       </div>
                     </div>
@@ -190,10 +225,10 @@ function EleveTable() {
               {Array.from({ length: totalPages }).map((_, index) => (
                 <li
                   key={index}
-                  className={`page-item text-decoration-none ${index + 1 === currentPage ? "active" : ""
+                  className={`latyr page-item text-decoration-none ${index + 1 === currentPage ? "active" : ""
                     }`}
                 >
-                  <button type='button'   className="page-link color1 text-decoration-none shadow-none text-black"
+                  <button type='button'   className="page-link text-decoration-none latyr prev border-none shadow-none text-white"
                     onClick={() => handlePageChange(index + 1)}> {index + 1}</button>
                    
                 </li>
@@ -309,27 +344,19 @@ function EleveTable() {
           </div>
         </div>
 
-
-
-
-
-
-
-
-
         {/* MODAL modifier */}
-        <div className="modal fade" id="exampleModale" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">les details</h5>
-              </div>
+        <div class="modal fade" id="exampleModale" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content bg-transparent border-0">
               <div>
-                <div className="container-xl px-4 mt-4">
-                  <div className="row">
-                    <div className="col-xl-12">
-                      <div className="card">
-                        <div className="card-header  dark:bg-secondary-dark-bg text-white dark:text-gray-200">Modifier un eleve</div>
+                <div class="container-xl px-4 mt-4">
+                  <div class="row">
+                    <div class="col-xl-12">
+                      <div class="card">
+                      <div class="modal-header card-header text-white">
+                <h5 class="modal-title" id="exampleModalLabel">les details</h5>
+                <button type="button" class="btn-close text-white shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
 
                         <div className="card-body bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
                           <form>

@@ -16,6 +16,7 @@ import {
   getFirestore,
   getDocs
 } from "firebase/firestore";
+import { db } from "../../Firebase/Firebase";
 
 const Dashbord = () => {
 
@@ -25,20 +26,20 @@ const Dashbord = () => {
   const [nombreCoachs, setNombreCoachs] = useState(0);
   const [numberOfCourses, setNumberOfCourses] = useState(0);
   const [livraison, setLivraison] = useState(0);
-
+  const usersCollection = collection(db, 'users');
   useEffect(() => {
-    const db = getFirestore();
+    
 
     // Récupérer la référence de la collection "cours"
-    const userRef = collection(db, 'users');
+    
     // Récupérer les documents de la collection et compter le nombre
-    getDocs(userRef).then(querySnapshot => {
+    getDocs(usersCollection).then(querySnapshot => {
       const count = querySnapshot.size;
       setnombreUser(count);
     });
 
     // Référence à la collection "users"
-    const usersCollection = collection(db, 'users');
+    
     // Filtrer les élèves en fonction du statut "eleve"
     const coachsQuery = query(usersCollection, where('statut', '==', 'coach'));
     const elevesQuery = query(usersCollection, where('statut', '==', 'eleve'));

@@ -25,7 +25,8 @@ const TesteOne = () => {
   const coursCollectionRef = collection(db, "cours");
   const [error, setError] = useState("");
   const [id, setId] = useState("");
-
+  const [newDomaine] = useState("");
+  const [newSousDomaine] = useState("");
   const { isClicked, handleClick, setIsClicked, initialState, user } =
     useStateContext();
 
@@ -47,6 +48,8 @@ const TesteOne = () => {
         descrip: newDescrip,
         videoUrl: newVideoUrl,
         timeStamp: serverTimestamp(),
+        domains: newDomaine,
+        sousDomains: newSousDomaine,
         createBy: user?.prenom,
       });
       setNewTitle("");
@@ -85,6 +88,8 @@ const TesteOne = () => {
         descrip: newDescrip,
         videoUrl: newVideoUrl,
         timeStamp: serverTimestamp(),
+        domains: newDomaine,
+        sousDomains: newSousDomaine,
       });
       setNewTitle("");
       setNewDure("");

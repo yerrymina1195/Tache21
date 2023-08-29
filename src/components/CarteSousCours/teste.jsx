@@ -25,7 +25,7 @@ const Teste = (props) => {
             </a>
           </div>
           <div className="col-6 text-end">
-            <b className="rest">{props.dure} heures</b>
+            <b className="rest">{props.dure}</b>
           </div>
         </div>
 
