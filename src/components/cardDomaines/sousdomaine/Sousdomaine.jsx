@@ -21,11 +21,11 @@ const Sousdomaine = (props) => {
         <div className="pb-3">
           <div className="row btn-domaine">
             <div className="col-4 d-flex align-items-center justify-content-center">
-              <button type="button" class="btn">
-                <Link to={props.links} className="">
+              <Link to={props.links} className="">
+                <button type="button" class="btn">
                   <BsEyeFill />
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
             <div className="col-4 d-flex align-items-center justify-content-center">
               <button type="button" class="btn ">
