@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import '../Dashboard/FormInscrip.css';
 import LabelInput from '../parametres/LabelInput';
 import ButtonReutilisable from '../../components/ButtonReutilisable';
@@ -7,6 +7,11 @@ import {
     doc,
     serverTimestamp,
     setDoc,
+    collection,
+  query,
+  where,
+  onSnapshot,
+   
 } from "firebase/firestore";
 import { auth, db } from "../../Firebase/Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -15,8 +20,24 @@ import { FaEyeSlash } from "react-icons/fa";
 // import { useNavigate } from "react-router-dom";
 
 const FormInscrip = () => {
-    // const navigate = useNavigate()
     const [newPasswordShow, setNewPasswordShow] = useState(false);
+    const [nombreCoachs, setNombreCoachs] = useState([]);
+    const usersCollection = collection(db, 'users');
+    useEffect(() => {
+        const coachsQuery = query(usersCollection, where('statut', '==', 'coach'));
+        
+    
+        const unsubscribeCoachs = onSnapshot(coachsQuery, (snapshot) => {
+          const coachsData = snapshot.docs.map(doc => doc.data());
+          setNombreCoachs(coachsData);
+        });
+        return () => {
+    
+          unsubscribeCoachs();
+        };
+      }, []);
+    // const navigate = useNavigate()
+    console.log(nombreCoachs);
     const [errors, setErrors] = useState({
         prenom: "",
         nom: "",
@@ -36,8 +57,8 @@ const FormInscrip = () => {
         mdp: "",
         address: "",
         statut: "",
-        domaine: "",
-        nbrCoach:""
+        domaine: null,
+        nbrCoach:null
     })
     console.log(errors);
     // Gérer les erreuers 
@@ -98,12 +119,19 @@ const FormInscrip = () => {
         if (data.statut === "admin") {
             setData({...data, domaine:null , nbrCoach:null})
         }
-        if (data.domaine === '') {
+        if (!data.statut === "admin" && data.domaine === null) {
             newErrors.domaine = 'Domaine obligatoire';
         }
-        if (data.nbrCoach === '') {
+        if (data.statut === "eleve" && data.domaine === null && data.domaine=== null ) {
             newErrors.nbrCoach = 'coach obligatoire';
         }
+        if (data.domaine === "") {
+            newErrors.domaine = 'Domaine obligatoire';
+        }
+        if (data.nbrCoach === "") {
+            newErrors.nbrCoach = 'Domaine obligatoire';
+        }
+        
 
         setErrors(newErrors);
 
@@ -164,7 +192,7 @@ const FormInscrip = () => {
         }
 
     }
-    console.log(data);
+   
 
     return (
         <div>
@@ -199,7 +227,7 @@ const FormInscrip = () => {
 
                                     <div className="row gx-3 mb-3">
                                         <div className="col-md-6">
-                                            <LabelInput id="inputEmailAddress" label="Adresse email" placeholder="example@gmail.com" type="email"
+                                            <LabelInput id="inputEmailAddress" label="Adresse email" placeholder="example@gmail.com" 
                                                 name="email"
                                                 onChange={handelchange}
                                                 value={email}
@@ -208,7 +236,7 @@ const FormInscrip = () => {
                                             <p className="text-danger">{errors.email}</p>
                                         </div>
                                         <div className="col-md-6">
-                                            <LabelInput id="inputPhone" label="Numero telephone" placeholder="77 670 00 66" type="tel"
+                                            <LabelInput id="inputPhone" label="Numéro téléphone" placeholder="77 670 00 66" type="tel"
                                                 name="telephone"
                                                 onChange={handelchange}
                                                 value={telephone}
@@ -220,12 +248,12 @@ const FormInscrip = () => {
 
                                     <div className="row gx-3 mb-3">
                                         <div className="col-md-6">
-                                            <LabelInput id="mdp" label="Mot de pass" placeholder="mot de pass" 
+                                            <LabelInput id="mdp" label="Mot de passe" placeholder="********"
                                                 name="mdp"
                                                 onChange={handelchange}
                                                 value={mdp}
                                                 type={newPasswordShow ? "text" : "password"}
-                                                icon={newPasswordShow ? <AiFillEye className="h-6 w-6" onClick={()=> setNewPasswordShow(!newPasswordShow)} />: <FaEyeSlash className="h-6 w-6" onClick={()=> setNewPasswordShow(!newPasswordShow)} />}
+                                                icon={newPasswordShow ? <AiFillEye className=" text-couleur1 h-6 w-6 " onClick={()=> setNewPasswordShow(!newPasswordShow)} />: <FaEyeSlash className="h-6 w-6 text-secondary  text-couleur1" onClick={()=> setNewPasswordShow(!newPasswordShow)} />}
                                             />
                                             <p className="text-danger">{errors.mdp}</p>
                                         </div>
@@ -234,7 +262,6 @@ const FormInscrip = () => {
                                                 name="address"
                                                 onChange={handelchange}
                                                 value={address}
-
                                             />
                                             <p className="text-danger">{errors.address}</p>
                                         </div>
@@ -248,9 +275,9 @@ const FormInscrip = () => {
                                                 value={statut}
                                             >
                                                 <option value="" >Choisir un rôle</option>
-                                                <option value="admin">admin</option>
-                                                <option value="coach">coach</option>
-                                                <option value="eleve">eleve</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="coach">Coach</option>
+                                                <option value="eleve">Eleve</option>
                                             </select>
                                             <p className="text-danger">{errors.statut}</p>
                                         </div>
@@ -269,16 +296,17 @@ const FormInscrip = () => {
                                             <p className="text-danger">{errors.domaine}</p>
                                         </div>)}
                                     { statut ==='eleve' &&  (<div className="col-md-6">
-                                            <label htmlFor="select">assigner coach</label>
+                                            <label htmlFor="select">Assigner coach</label>
                                             <select className="form-select shadow-none" aria-label="Default select example"
-                                                name="nbrCoach"
+                                                name="nbrCoah"
                                                 onChange={handelchange}
                                                 value={nbrCoach}
                                             >
                                                 <option value="" >Choisir un coach</option>
-                                                <option value="Mohamed">Mohamed</option>
-                                                <option value="Mahmoud">Mahmoud</option>
-                                                <option value="Christ">Christ</option>
+                                                {nombreCoachs?.map((element,index)=>(
+                                                    <option key={index} value={element.id}>{`${element.prenom}${element.nom}`}</option>
+                                                    
+                                                ))}
                                             </select>
                                             <p className="text-danger">{errors.nbrCoach}</p>
                                         </div>)}

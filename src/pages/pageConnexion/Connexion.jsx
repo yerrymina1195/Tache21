@@ -64,7 +64,7 @@ const Connexion = () => {
         <div className="card relative bgma">
           <div className="container text-white">
             <div className="bg1 text-center fw-bold rounded-3 pt-5 card-title position-absolute start-50 translate-middle p-4">
-              <h3 className="mb-4">CONNEXON</h3>
+              <h3 className="mb-4">CONNEXION</h3>
               <p>{error}</p>
               {/* <div className="row d-flex justify-evenly">
                 <div className="col-md-6 ">
@@ -99,7 +99,7 @@ const Connexion = () => {
               </div>
               <div className="row">
               <Link >
-                <MaButton type={'submit'} onClick={handleLogin} text={"Se connecter"} />
+                <MaButton type={'submit'} onClick={handleLogin} text={"SE CONNECTER"} />
                 </Link>
               </div>
               <div className="row mt-4">
