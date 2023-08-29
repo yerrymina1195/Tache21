@@ -3,7 +3,7 @@ import ButtonReutilisable from '../../../components/ButtonReutilisable';
 import { collection, getDocs, query, limit } from "firebase/firestore";
 import { db } from "../../../Firebase/Firebase";
 
-export default function Quiz() {
+export default function Quizreact() {
     const [quizList, setQuizList] = useState([]);
     const [userAnswers, setUserAnswers] = useState([]);
     const [score, setScore] = useState(0);
