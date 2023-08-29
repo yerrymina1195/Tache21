@@ -1,6 +1,27 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { jsPDF } from "jspdf";
+
+
+
+
 const CerticationTache = (props) => {
+
+
+    const jspdf  = new jsPDF('p', 'pt', 'letter')
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const val = e.target.txt.value;
+
+        const data = {
+            callback:function(jspdf){
+                jspdf.save('demo.pdf')
+            },
+             margin:[10,10,10,10],
+        }
+        jspdf.html(val,data)
+    }
 
     return (
         <div className='container md:m-10 mt-24 dark:text-gray-400 p-5 md:p-10'>
@@ -72,6 +93,13 @@ const CerticationTache = (props) => {
                             <button type='submit' className="btn-main w-100 p-2 fw-bold ms-2">Voir la certification</button>
                         </div>
                     </form>
+
+                    <div>
+                    <form onSubmit={(e)=>handleSubmit(e)}>
+                                <textarea className='txt' name="txt" />
+                                <button>Generate</button>
+                            </form>
+                    </div>
 
                 </div>
             </div>
