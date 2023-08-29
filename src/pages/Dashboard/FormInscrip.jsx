@@ -35,7 +35,7 @@ const FormInscrip = () => {
     
           unsubscribeCoachs();
         };
-      }, [usersCollection]);
+      }, []);
     // const navigate = useNavigate()
     console.log(nombreCoachs);
     const [errors, setErrors] = useState({
@@ -123,23 +123,30 @@ const FormInscrip = () => {
             newErrors.domaine = 'Domaine obligatoire';
         }
         if (data.statut === "eleve" && data.domaine === null && data.domaine=== null ) {
+           
+            newErrors.domaine = 'domaine obligatoire';
+        }
+
+        if (data.statut === "eleve" && data.nbrCoach === null && data.nbrCoach=== null ) {
+           
             newErrors.nbrCoach = 'coach obligatoire';
         }
         if (data.domaine === "") {
             newErrors.domaine = 'Domaine obligatoire';
         }
         if (data.nbrCoach === "") {
-            newErrors.nbrCoach = 'Domaine obligatoire';
+            newErrors.nbrCoach = 'coach obligatoire';
         }
         
 
         setErrors(newErrors);
-
+        console.log({data});
 
 
         if (Object.values(newErrors).every((error) => error === '')) {
 
             console.log('Form data submitted:', data);
+            console.log({data});
             try {
                 const res = await createUserWithEmailAndPassword(
                     auth,
@@ -298,13 +305,13 @@ const FormInscrip = () => {
                                     { statut ==='eleve' &&  (<div className="col-md-6">
                                             <label htmlFor="select">Assigner coach</label>
                                             <select className="form-select shadow-none" aria-label="Default select example"
-                                                name="nbrCoah"
+                                                name="nbrCoach"
                                                 onChange={handelchange}
                                                 value={nbrCoach}
                                             >
                                                 <option value="" >Choisir un coach</option>
                                                 {nombreCoachs?.map((element,index)=>(
-                                                    <option key={index} value={element.id}>{`${element.prenom}${element.nom}`}</option>
+                                                    <option key={index} value={`${element.id}`}>{`${element.prenom}${element.nom}`}</option>
                                                     
                                                 ))}
                                             </select>
