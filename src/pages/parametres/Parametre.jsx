@@ -3,7 +3,6 @@ import '../parametres/Parametre.css'
 import LabelInput from './LabelInput';
 import ButtonReutilisable from '../../components/ButtonReutilisable';
 import {
-
     doc,
     updateDoc,
     onSnapshot

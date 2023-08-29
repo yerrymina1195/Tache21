@@ -7,7 +7,6 @@ import {
     doc,
     serverTimestamp,
     setDoc,
-   
 } from "firebase/firestore";
 import { auth, db } from "../../Firebase/Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -157,18 +156,6 @@ const FormInscrip = () => {
                 console.log(err);
                 alert(err)
             }
-
-
-            // setData({
-            //     prenom: "",
-            //     nom: "",
-            //     email: "",
-            //     telephone: "",
-            //     mdp: "",
-            //     address: "",
-            //     statut: "",
-            //     domaine: "",
-            // })
         }
 
     }
