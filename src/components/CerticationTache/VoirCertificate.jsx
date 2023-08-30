@@ -37,7 +37,7 @@ function VoirCertificat() {
                        <h1>chute de <span>{name}</span></h1> 
                         <p>terminer avec succès le</p>
                         <h1>bibliothèque de ..........</h1>
-                        <p>Certification de développeur le 30 août 2023</p>
+                        <p>Certification de développeur le 30 août 2ui023</p>
                         <div className="row">
                             <div className="col-4">photo</div>
                             <div className="col-4">Directeur exécutif de la Digisphere</div>
