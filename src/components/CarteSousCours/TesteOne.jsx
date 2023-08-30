@@ -286,6 +286,7 @@ const TesteOne = (props) => {
             {cours.map((cour) => (
               <div className="col-12">
                 <Teste
+                  courseId={cour.id}
                   title={cour.title}
                   dure={cour.dure}
                   descrip={cour.descrip}
@@ -312,3 +313,8 @@ const TesteOne = (props) => {
 };
 
 export default TesteOne;
+
+
+
+
+
