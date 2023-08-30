@@ -9,7 +9,7 @@ function VoirCertificat() {
 
         const options = {
             margin: 10,
-            filename: 'demo.pdf',
+            filename: 'Tache.pdf',
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: { scale: 2 },
             jsPDF: { unit: 'pt', format: 'letter', orientation: 'portrait' }
@@ -21,14 +21,14 @@ function VoirCertificat() {
     };
 
     return (
-        <div>
+        <div className='only:'>
             <div className="">
                 <form onSubmit={(e) => handleSubmit(e)}>
+                <input type="text" className='txt' name="txt" value={name} onChange={(e) => setName(e.target.value)} />
                     <div id="pdf-content">
+                        <h1 className='text-center'>Digisphere <br /> E-learning</h1>
                         <p className='text-center'>ceci certifie que </p>
-                        <p>Chute de <span>{name}</span> a réussi le...</p>
-
-                        <h1 className=''>Chute de <span><input type="text" className='txt' name="txt" value={name} onChange={(e) => setName(e.target.value)} /></span></h1>
+                       <h1>chute de <span>{name}</span></h1> 
                         <p>terminer avec succès le</p>
                         <h1>bibliothèque de ..........</h1>
                         <p>Certification de développeur le 30 août 2023</p>
