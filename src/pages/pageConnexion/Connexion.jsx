@@ -42,11 +42,6 @@ const Connexion = () => {
       alert(`Bienvenue ${userData.prenom}`)
       updateUser(userData)
       navitage('l/dashboard', { replace: true })
-      
-      // onSnapshot(doc(db,'users',userID), (doc) => {
-      //   const user= doc.data()
-        
-      // });
    
     } catch (error) {
       
