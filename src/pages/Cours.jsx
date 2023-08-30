@@ -11,14 +11,23 @@ import {
   query,
   onSnapshot,
   deleteDoc,
+  serverTimestamp,
 } from "firebase/firestore";
 import { useStateContext } from "../contexts/ContextProvider";
 const Cours = () => {
   const [newDomaine, setNewDomaine] = useState("");
+  const [newSousDomaine, setNewSousDomaine] = useState("");
   const [error, setError] = useState("");
   const [id, setId] = useState("");
+  const [newTitle, setNewTitle] = useState("");
+  const [newDescrip, setNewDescrip] = useState("");
+  const [newDure, setNewDure] = useState("");
+  const [newVideoUrl, setNewVideoUrl] = useState("");
   const [domains, setDomains] = useState([]);
   const domaineCollectionRef = collection(db, "domains");
+  const sousDomaineCollectionRef = collection(db, "sousDomains");
+  const coursCollectionRef = collection(db, "cours");
+
   const { isClicked, handleClick, setIsClicked, initialState } =
     useStateContext();
   // function pour que le formulaire n'accepte pas des chiffres
@@ -33,10 +42,56 @@ const Cours = () => {
       return;
     }
     try {
-      addDoc(domaineCollectionRef, { title: newDomaine });
-      setNewDomaine("");
-      setError("");
-      alert("domaine " + newDomaine + " ajouter");
+      const docRef = await addDoc(domaineCollectionRef, {
+        title: newDomaine,
+        timeStamp: serverTimestamp(),
+      });
+
+      await updateDoc(doc(domaineCollectionRef, docRef.id), { id: docRef.id });
+    } catch (error) {
+      console.error("Erreur lors de la creation :", error);
+    }
+  };
+  // function create sous-domaines
+  const createSousDomaines = async () => {
+    if (newSousDomaine === "") {
+      setError("Veuillez vérifier le champs et remplir de bon valeur");
+      return;
+    }
+    try {
+      const docRef = await addDoc(sousDomaineCollectionRef, {
+        title: newSousDomaine,
+        domains: newDomaine,
+        timeStamp: serverTimestamp(),
+      });
+      await updateDoc(doc(sousDomaineCollectionRef, docRef.id), {
+        id: docRef.id,
+      });
+    } catch (error) {
+      console.error("Erreur lors de la creation :", error);
+    }
+  };
+
+  const createCours = async () => {
+    if (
+      newTitle === "" ||
+      newDure === "" ||
+      newDescrip === "" ||
+      newVideoUrl === ""
+    ) {
+      setError("Veuillez vérifier le champs et remplir de bon valeur");
+      return;
+    }
+    try {
+      addDoc(coursCollectionRef, {
+        title: newTitle,
+        dure: newDure,
+        descrip: newDescrip,
+        videoUrl: newVideoUrl,
+        timeStamp: serverTimestamp(),
+        domains: newDomaine,
+        sousDomains: newSousDomaine,
+      });
     } catch (error) {
       console.error("Erreur lors de la creation :", error);
     }
@@ -53,7 +108,10 @@ const Cours = () => {
     }
     try {
       const updateDomain = doc(db, "domains", id);
-      updateDoc(updateDomain, { title: newDomaine });
+      updateDoc(updateDomain, {
+        title: newDomaine,
+        timeStamp: serverTimestamp(),
+      });
       setNewDomaine("");
       setError("");
       alert("domaine " + newDomaine + " mise à jour");
@@ -68,6 +126,22 @@ const Cours = () => {
     alert("domaine supprimer");
   };
 
+  function addAll() {
+    createDomaine();
+    createSousDomaines();
+    createCours();
+    setNewSousDomaine("");
+    setError("");
+    setNewTitle("");
+    setNewDure("");
+    setNewDescrip("");
+    setNewVideoUrl("");
+    setNewDomaine("");
+    alert("domaine " + newDomaine + " ajouter");
+    alert("sous domaine " + newSousDomaine + " ajouter");
+    alert("Cours " + newTitle + " ajouter");
+  }
+
   useEffect(() => {
     const q = query(collection(db, "domains"));
     onSnapshot(q, (querySnapshot) => {
@@ -80,8 +154,8 @@ const Cours = () => {
         setDomains(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       };
       getDomaines();
-    });
-  }, [domaineCollectionRef]);
+    });// eslint-disable-next-line
+  }, []);
 
   return (
     <div>
@@ -93,14 +167,16 @@ const Cours = () => {
             </div>
             <div className="col-md-6 col-sm-12 text-center">
               {/* button modal */}
-              {/* 
-              <div data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <div
+                data-bs-toggle="modal"
+                className="text-center"
+                data-bs-target="#staticBackdrop"
+              >
                 <ButtonReutilisable
                   text={"Ajouter un domaine"}
                   onClick={() => handleClick("ajouState")}
                 />
               </div>
-                 */}
               {/* button modal */}
               {/* Modal */}
               <div
@@ -132,7 +208,7 @@ const Cours = () => {
                           <input
                             type="text"
                             class="form-control"
-                            id=""
+                            id="floatingInput"
                             placeholder="Nom du domaine"
                             value={newDomaine}
                             onChange={handleInputChange}
@@ -148,15 +224,83 @@ const Cours = () => {
                             onChange={(e) => setNewDomaine(e.target.value)}
                           />
                         )}
-                        {/* <label for="floatingInput">Nom du domaine</label> */}
+                        <label for="floatingInput">Nom du domaine</label>
                       </div>
-                      {error && <p style={{ color: "red" }}>{error}</p>}
+
+                      {isClicked.ajouState && (
+                        <div class="form-floating mb-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="floatingInput"
+                            value={newSousDomaine}
+                            onChange={(e) => setNewSousDomaine(e.target.value)}
+                            placeholder="Nom du sous-domaine"
+                          />
+                          <label for="floatingInput">Nom du sous-domaine</label>
+                        </div>
+                      )}
+                      {isClicked.ajouState && (
+                        <div class="form-floating mb-3">
+                          <input
+                            type="url"
+                            class="form-control"
+                            id="floatingInput"
+                            onChange={(e) => setNewVideoUrl(e.target.value)}
+                            placeholder="lien dun cours"
+                          />
+                          <label for="floatingInput">lien du cours</label>
+                          {error && <p style={{ color: "red" }}>{error}</p>}
+                        </div>
+                      )}
+                      {isClicked.ajouState && (
+                        <div class="form-floating mb-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="floatingInput"
+                            placeholder="Titre du cours"
+                            onChange={(e) => setNewTitle(e.target.value)}
+                          />
+                          <label for="floatingInput">Titre du cours</label>
+                        </div>
+                      )}
+                      {isClicked.ajouState && (
+                        <div class="form-floating mb-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="floatingInput"
+                            placeholder="dure du cours"
+                            onChange={(e) => setNewDure(e.target.value)}
+                          />
+                          <label for="floatingInput">dure du cours</label>
+                        </div>
+                      )}
+                      {isClicked.ajouState && (
+                        <div class="form-floating mb-3">
+                          <textarea
+                            name=""
+                            id="floatingInput"
+                            class="form-control"
+                            cols="30"
+                            placeholder="description du cours"
+                            rows="30"
+                            onChange={(e) => setNewDescrip(e.target.value)}
+                          ></textarea>
+                          <label for="floatingInput">
+                            description du cours
+                          </label>
+                        </div>
+                      )}
                     </div>
                     <div className="modal-footer">
                       {isClicked.ajouState && (
                         <ButtonReutilisable
                           text={"Ajouter"}
-                          onClick={createDomaine}
+                          onClick={() => {
+                            addAll();
+                          }}
                           id="ajouter"
                         />
                       )}
