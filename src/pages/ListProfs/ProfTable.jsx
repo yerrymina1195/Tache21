@@ -128,16 +128,6 @@ function EleveTable() {
     setCurrentPage(1);
   };
 
-
-
-
-
-
-
-
-
-
-
   return (
     <div>
       <div className="container mt-4">
