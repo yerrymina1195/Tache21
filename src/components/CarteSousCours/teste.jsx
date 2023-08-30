@@ -23,8 +23,8 @@ const Teste = (props) => {
 
           if (studentDoc.exists()) {
             const data = studentDoc.data();
-            setStarted(data.demarrer || false);
-            setFinished(data.terminer || false);
+            setStarted(data[user.id]?.demarrer || false); 
+            setFinished(data[user.id]?.terminer || false);
           }
         }
       } catch (error) {
@@ -33,7 +33,7 @@ const Teste = (props) => {
     };
 
     fetchCourseStatus();
-  }, [courseId]);
+  }, [courseId, user.id]);
 
   const handleStart = async () => {
     try {
@@ -41,7 +41,7 @@ const Teste = (props) => {
 
       await updateDoc(studentDocRef, {
         [user.id]:{
-          // idcoach: user.coachSelf,
+          idcoach: user.coachSelf,
           demarrer: true,
           finishedtime: serverTimestamp(),
         },
