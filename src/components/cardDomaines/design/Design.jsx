@@ -20,8 +20,7 @@ const Design = (props) => {
   const [error, setError] = useState("");
   const [id, setId] = useState("");
   const { isClicked, handleClick, setIsClicked, initialState } =
-  useStateContext();
-  const [newDomaine] = useState("");
+    useStateContext();
   const [sousDomains, setSousDomaines] = useState([]);
   const sousDomaineCollectionRef = collection(db, "sousDomains");
   // function create sous-domaines
@@ -33,7 +32,7 @@ const Design = (props) => {
     try {
       const docRef = await addDoc(sousDomaineCollectionRef, {
         title: newSousDomaine,
-        domains: newDomaine,
+        domains: props.title,
         timeStamp: serverTimestamp(),
       });
       await updateDoc(doc(sousDomaineCollectionRef, docRef.id), {
@@ -61,7 +60,7 @@ const Design = (props) => {
       const updateSousDomaine = doc(db, "sousDomains", id);
       updateDoc(updateSousDomaine, {
         title: newSousDomaine,
-        domains: newDomaine,
+        domains: props.title,
         timeStamp: serverTimestamp(),
       });
       setNewSousDomaine("");
@@ -93,15 +92,16 @@ const Design = (props) => {
       };
       getSousDomaines();
     });
-  }, [sousDomaineCollectionRef]);
+    // eslint-disable-next-line 
+  }, []);
   return (
     <div>
       <div className="container my-5">
         <div className="row d-flex align-items-center mt-5">
           <div className="col-md-6 col-sm-12">
-            <h1 className="">{props.title}</h1>
+            <h1 className="text-capitalize">{props.title}</h1>
           </div>
-          <div className="col-md-6 col-sm-12 text-center">
+          <div className="col-md-6 col-sm-12 text-lg-end text-md-end text-sm-start">
             {/* button modal */}
 
             <div data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -188,14 +188,14 @@ const Design = (props) => {
         <div className="row row-gap-5">
           {sousDomains?.map((sousdomaine) => (
             <div className="col-lg-4 col-md-6 col-sm-12 b">
-                <Sousdomaine
-                  title={sousdomaine.title}
-                  onClick={() => {
-                    handleClick("modifState");
-                    editSousDomaines(sousdomaine.id, sousdomaine.title);
-                  }}
-                  click={() => deleteSousDomaines(sousdomaine.id)}
-                />
+              <Sousdomaine
+                title={sousdomaine.title}
+                onClick={() => {
+                  handleClick("modifState");
+                  editSousDomaines(sousdomaine.id, sousdomaine.title);
+                }}
+                click={() => deleteSousDomaines(sousdomaine.id)}
+              />
             </div>
           ))}
         </div>

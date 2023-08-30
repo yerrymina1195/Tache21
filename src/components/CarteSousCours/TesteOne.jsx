@@ -25,8 +25,6 @@ const TesteOne = (props) => {
   const coursCollectionRef = collection(db, "cours");
   const [error, setError] = useState("");
   const [id, setId] = useState("");
-  const [newDomaine] = useState("");
-  const [newSousDomaine] = useState("");
   const { isClicked, handleClick, setIsClicked, initialState, user } =
     useStateContext();
 
@@ -48,8 +46,7 @@ const TesteOne = (props) => {
         descrip: newDescrip,
         videoUrl: newVideoUrl,
         timeStamp: serverTimestamp(),
-        domains: newDomaine,
-        sousDomains: newSousDomaine,
+        sousDomains: props.title,
         createBy: user?.prenom,
       });
       setNewTitle("");
@@ -88,8 +85,7 @@ const TesteOne = (props) => {
         descrip: newDescrip,
         videoUrl: newVideoUrl,
         timeStamp: serverTimestamp(),
-        domains: newDomaine,
-        sousDomains: newSousDomaine,
+        sousDomains: props.title,
       });
       setNewTitle("");
       setNewDure("");
@@ -121,7 +117,8 @@ const TesteOne = (props) => {
       };
       getCours();
     });
-  }, [coursCollectionRef]);
+    // eslint-disable-next-line 
+  }, []);
 
   return (
     <div>

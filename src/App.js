@@ -68,7 +68,8 @@ const App = () => {
       };
       getSousDomaines();
     });
-  }, [domaineCollectionRef, sousDomaineCollectionRef]);
+    // eslint-disable-next-line 
+  }, [ ]);
 
   return (
     <BrowserRouter>

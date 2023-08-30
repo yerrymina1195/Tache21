@@ -13,8 +13,8 @@ const Sousdomaine = (props) => {
           className="text-decoration-none text-black"
         >
           <div class="card-body dark:text-gray-200">
-            <h5 class="card-title rest">{props.title}</h5>
-            <p>Veuillez faire le quizz qui se trouve a la fin de ce cours</p>
+            <h5 class="card-title text-capitalize rest">{props.title}</h5>
+            <p>Veuillez faire le quizz qui se trouve à la fin de ce cours</p>
           </div>
         </Link>
         <div className="pb-3">

@@ -35,7 +35,7 @@ const FormInscrip = () => {
     
           unsubscribeCoachs();
         };
-      }, []);
+      }, [usersCollection]);
     // const navigate = useNavigate()
     console.log(nombreCoachs);
     const [errors, setErrors] = useState({

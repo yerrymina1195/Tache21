@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react'
-import './Dashboard.css';
+import React, { useEffect, useState } from "react";
+import "./Dashboard.css";
 
-
-import FormInscrip from './FormInscrip';
+import FormInscrip from "./FormInscrip";
 import { GiTeacher } from "react-icons/gi";
-import { PiStudentLight } from "react-icons/pi"
+import { PiStudentLight } from "react-icons/pi";
 import { BiUser } from "react-icons/bi";
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import { LiaBookSolid } from "react-icons/lia";
@@ -13,78 +12,71 @@ import {
   query,
   where,
   onSnapshot,
-  getFirestore,
-  getDocs
+  getDocs,
 } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
 
 const Dashbord = () => {
-
-
   const [nombreUser, setnombreUser] = useState(0);
   const [nombreEleves, setNombreEleves] = useState(0);
   const [nombreCoachs, setNombreCoachs] = useState(0);
   const [numberOfCourses, setNumberOfCourses] = useState(0);
   const [livraison, setLivraison] = useState(0);
-  const usersCollection = collection(db, 'users');
+  const usersCollection = collection(db, "users");
   useEffect(() => {
-    
-
     // Récupérer la référence de la collection "cours"
-    
+
     // Récupérer les documents de la collection et compter le nombre
-    getDocs(usersCollection).then(querySnapshot => {
+    getDocs(usersCollection).then((querySnapshot) => {
       const count = querySnapshot.size;
       setnombreUser(count);
     });
 
     // Référence à la collection "users"
-    
+
     // Filtrer les élèves en fonction du statut "eleve"
-    const coachsQuery = query(usersCollection, where('statut', '==', 'coach'));
-    const elevesQuery = query(usersCollection, where('statut', '==', 'eleve'));
+    const coachsQuery = query(usersCollection, where("statut", "==", "coach"));
+    const elevesQuery = query(usersCollection, where("statut", "==", "eleve"));
 
     const unsubscribeCoachs = onSnapshot(coachsQuery, (snapshot) => {
-      const coachsData = snapshot.docs.map(doc => doc.data());
+      const coachsData = snapshot.docs.map((doc) => doc.data());
       setNombreCoachs(coachsData.length);
     });
 
     const unsubscribeEleves = onSnapshot(elevesQuery, (snapshot) => {
-      const elevesData = snapshot.docs.map(doc => doc.data());
+      const elevesData = snapshot.docs.map((doc) => doc.data());
       setNombreEleves(elevesData.length);
     });
 
     // Récupérer la référence de la collection "cours"
-    const coursesRef = collection(db, 'cours');
+    const coursesRef = collection(db, "cours");
     // Récupérer les documents de la collection et compter le nombre
-    getDocs(coursesRef).then(querySnapshot => {
+    getDocs(coursesRef).then((querySnapshot) => {
       const count = querySnapshot.size;
       setNumberOfCourses(count);
     });
 
     // Récupérer la référence de la collection "cours"
-    const livraisonRef = collection(db, 'livraisons');
+    const livraisonRef = collection(db, "livraisons");
     // Récupérer les documents de la collection et compter le nombre
-    getDocs(livraisonRef).then(querySnapshot => {
+    getDocs(livraisonRef).then((querySnapshot) => {
       const count = querySnapshot.size;
       setLivraison(count);
     });
 
-
     return () => {
-
       unsubscribeCoachs();
       unsubscribeEleves();
     };
   }, []);
-  console.log(nombreUser)
+  console.log(nombreUser);
   console.log(nombreCoachs);
   console.log(nombreEleves);
   console.log(numberOfCourses);
   console.log(livraison);
 
   return (
-    <div className=' mt-4'>
+    <div className=" mt-4">
       <div className="flex flex-wrap justify-center ">
         <div className="flex m-3 w-full flex-wrap  gap-5 items-center">
           {/* Carte 1 */}
@@ -119,7 +111,10 @@ const Dashbord = () => {
           <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 drop-shadow-[0_15px_15px_grey] dar:drop-shadow-[0_15px_15px_white] flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
             <button
               type="button"
-              style={{ color: "rgb(255, 244, 229)", backgroundColor: "rgb(254, 201, 15)" }}
+              style={{
+                color: "rgb(255, 244, 229)",
+                backgroundColor: "rgb(254, 201, 15)",
+              }}
               className="text-2xl opacity-0.9 rounded-full  p-4 hover:drop-shadow-xl"
             >
               <PiStudentLight />
@@ -133,7 +128,10 @@ const Dashbord = () => {
           <div className="bg-[#ffff] justify-between  items-center flex h-44 dark:text-gray-200 drop-shadow-[0_15px_15px_grey] dar:drop-shadow-[0_15px_15px_white] flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
             <button
               type="button"
-              style={{ color: "rgb(228, 106, 118)", backgroundColor: "rgb(255, 244, 229)" }}
+              style={{
+                color: "rgb(228, 106, 118)",
+                backgroundColor: "rgb(255, 244, 229)",
+              }}
               className="text-2xl opacity-0.9 rounded-full  p-4 hover:drop-shadow-xl"
             >
               <LiaBookSolid />
@@ -147,7 +145,10 @@ const Dashbord = () => {
           <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200  basis-[230px] dark:bg-secondary-dark-bg md:w-56 drop-shadow-[0_15px_15px_grey] dar:drop-shadow-[0_15px_15px_white] p-4 pt-9 rounded-2xl ">
             <button
               type="button"
-              style={{ color: "rgb(0, 194, 146)", backgroundColor: "rgb(235, 250, 242)" }}
+              style={{
+                color: "rgb(0, 194, 146)",
+                backgroundColor: "rgb(235, 250, 242)",
+              }}
               className="text-2xl opacity-0.9 rounded-full  p-4 hover:drop-shadow-xl"
             >
               <AiOutlineDeliveredProcedure />
@@ -158,14 +159,11 @@ const Dashbord = () => {
             <p className=" mb-0 text-sm text-gray-400  ">Livraisons</p>
           </div>
         </div>
-
-
       </div>
       <div className="container p-0 mt-5">
         <FormInscrip />
       </div>
     </div>
-     
   );
 };
 
