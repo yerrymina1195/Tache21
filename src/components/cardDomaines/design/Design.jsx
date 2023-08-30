@@ -9,13 +9,16 @@ import {
   query,
   updateDoc,
   getDocs,
+  where,
   serverTimestamp,
 } from "firebase/firestore";
 import Sousdomaine from "../sousdomaine/Sousdomaine";
 import ButtonReutilisable from "../../ButtonReutilisable";
 import { useStateContext } from "../../../contexts/ContextProvider";
 
+
 const Design = (props) => {
+
   const [newSousDomaine, setNewSousDomaine] = useState("");
   const [error, setError] = useState("");
   const [id, setId] = useState("");
@@ -33,7 +36,7 @@ const Design = (props) => {
     try {
       const docRef = await addDoc(sousDomaineCollectionRef, {
         title: newSousDomaine,
-        domains: newDomaine,
+        domains: props.title,
         timeStamp: serverTimestamp(),
       });
       await updateDoc(doc(sousDomaineCollectionRef, docRef.id), {
@@ -79,27 +82,27 @@ const Design = (props) => {
   };
 
   useEffect(() => {
-    const q = query(collection(db, "sousDomains"));
+    const q = query(sousDomaineCollectionRef,where('domains', '==' , props.title));
     onSnapshot(q, (querySnapshot) => {
       const sousDomains = [];
       querySnapshot.forEach((doc) => {
         sousDomains.push(doc.data().title);
       });
       const getSousDomaines = async () => {
-        const data = await getDocs(sousDomaineCollectionRef);
+        const data = await getDocs(q);
         setSousDomaines(
           data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
         );
       };
       getSousDomaines();
-    });
-  }, [sousDomaineCollectionRef]);
+    });// eslint-disable-next-line
+  }, []);
   return (
     <div>
       <div className="container my-5">
         <div className="row d-flex align-items-center mt-5">
           <div className="col-md-6 col-sm-12">
-            <h1 className="">{props.title}</h1>
+            <h1 className="capitalizer">{props.title}</h1>
           </div>
           <div className="col-md-6 col-sm-12 text-center">
             {/* button modal */}
