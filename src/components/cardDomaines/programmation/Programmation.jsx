@@ -16,13 +16,13 @@ import {
 import { db } from "../../../Firebase/Firebase";
 
 const Programmation = () => {
-
   const [newSousDomaine, setNewSousDomaine] = useState("");
   const [error, setError] = useState("");
   const [sousDomains, setSousDomaines] = useState([]);
   const [id, setId] = useState("");
-  const { isClicked, handleClick, setIsClicked, initialState } = useStateContext();
-
+  const { isClicked, handleClick, setIsClicked, initialState } =
+    useStateContext();
+    const [newDomaine   ] = useState("");
   const sousDomaineCollectionRef = collection(db, "sousDomains");
   // function create sous-domaines
   const createSousDomaines = async () => {
@@ -33,10 +33,11 @@ const Programmation = () => {
     try {
       const docRef = await addDoc(sousDomaineCollectionRef, {
         title: newSousDomaine,
+        domains: newDomaine,
         timeStamp: serverTimestamp(),
       });
       await updateDoc(doc(sousDomaineCollectionRef, docRef.id), {
-        id: docRef.id
+        id: docRef.id,
       });
 
       setNewSousDomaine("");
@@ -58,7 +59,11 @@ const Programmation = () => {
     }
     try {
       const updateSousDomaine = doc(db, "sousDomains", id);
-      updateDoc(updateSousDomaine, { title: newSousDomaine });
+      updateDoc(updateSousDomaine, {
+        title: newSousDomaine,
+        domains: newDomaine,
+        timeStamp: serverTimestamp(),
+      });
       setNewSousDomaine("");
       setError("");
       alert("Sous-domaine " + newSousDomaine + " mis à jour");
@@ -82,7 +87,8 @@ const Programmation = () => {
       });
       const getSousDomaines = async () => {
         const data = await getDocs(sousDomaineCollectionRef);
-        setSousDomaines(data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+        setSousDomaines(
+          data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
         );
       };
       getSousDomaines();

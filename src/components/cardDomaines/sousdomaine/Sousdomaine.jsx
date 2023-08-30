@@ -4,10 +4,14 @@ import { BsArchiveFill, BsPencilSquare, BsEyeFill } from "react-icons/bs";
 import "./Sousdomaine.css";
 
 const Sousdomaine = (props) => {
+
   return (
     <div className="">
       <div class="card card-domaine bg-[#ffff]  dark:bg-main-dark-bg dark:drop-shadow-[0_8px_0px_rgba(255,255,255,0.25)]  text-[#ffff] dark:text-gray-200 border-0">
-        <Link to={props.links} className="text-decoration-none text-black">
+        <Link
+          to={`/l/cours/domains/${props.title}`}
+          className="text-decoration-none text-black"
+        >
           <div class="card-body dark:text-gray-200">
             <h5 class="card-title rest">{props.title}</h5>
             <p>Veuillez faire le quizz qui se trouve a la fin de ce cours</p>
@@ -16,7 +20,10 @@ const Sousdomaine = (props) => {
         <div className="pb-3">
           <div className="row btn-domaine">
             <div className="col-4 d-flex align-items-center justify-content-center">
-              <Link to={`${props.title}`} className="text-decoration-none">
+              <Link
+                to={`/l/cours/domains/${props.title}`}
+                className="text-decoration-none"
+              >
                 <button type="button" className="btn">
                   <BsEyeFill />
                 </button>

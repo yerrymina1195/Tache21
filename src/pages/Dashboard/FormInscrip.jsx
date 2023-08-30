@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import '../Dashboard/FormInscrip.css';
 import LabelInput from '../parametres/LabelInput';
 import ButtonReutilisable from '../../components/ButtonReutilisable';
@@ -7,6 +7,10 @@ import {
     doc,
     serverTimestamp,
     setDoc,
+    collection,
+  query,
+  where,
+  onSnapshot,
    
 } from "firebase/firestore";
 import { auth, db } from "../../Firebase/Firebase";
@@ -16,8 +20,24 @@ import { FaEyeSlash } from "react-icons/fa";
 // import { useNavigate } from "react-router-dom";
 
 const FormInscrip = () => {
-    // const navigate = useNavigate()
     const [newPasswordShow, setNewPasswordShow] = useState(false);
+    const [nombreCoachs, setNombreCoachs] = useState([]);
+    const usersCollection = collection(db, 'users');
+    useEffect(() => {
+        const coachsQuery = query(usersCollection, where('statut', '==', 'coach'));
+        
+    
+        const unsubscribeCoachs = onSnapshot(coachsQuery, (snapshot) => {
+          const coachsData = snapshot.docs.map(doc => doc.data());
+          setNombreCoachs(coachsData);
+        });
+        return () => {
+    
+          unsubscribeCoachs();
+        };
+      }, []);
+    // const navigate = useNavigate()
+    console.log(nombreCoachs);
     const [errors, setErrors] = useState({
         prenom: "",
         nom: "",
@@ -283,9 +303,10 @@ const FormInscrip = () => {
                                                 value={nbrCoach}
                                             >
                                                 <option value="" >Choisir un coach</option>
-                                                <option value="Mohamed">Mohamed</option>
-                                                <option value="Mahmoud">Mahmoud</option>
-                                                <option value="Christ">Christ</option>
+                                                {nombreCoachs?.map((element,index)=>(
+                                                    <option key={index} value={element.id}>{`${element.prenom}${element.nom}`}</option>
+                                                    
+                                                ))}
                                             </select>
                                             <p className="text-danger">{errors.nbrCoach}</p>
                                         </div>)}

@@ -1,27 +1,16 @@
-import React, { useState } from "react";
-import { initialUsers } from './userList';
+import React from "react";
 import ProfTable from "./ProfTable";
 import "./Prof.css"
 import "bootstrap/dist/js/bootstrap.min.js"
 
 const Prof = () => {
-  
-
-  const [users, setUsers] = useState(initialUsers);
-// eslint-disable-next-line
-  const addEleve = (user) => {
-    user.id = users.length + 1;
-    setUsers([...users, user]);
-  };
-
-
   return (
     <div className="  dark:bg-main-dark-bg    dark:text-gray-200 mt-3 eleve">
       <div className="container">
         <div className="flex-row">
          
           <div className="flex-large">
-            <ProfTable users={users} />
+            <ProfTable />
           </div>
         </div>
       </div>

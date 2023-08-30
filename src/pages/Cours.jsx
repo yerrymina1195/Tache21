@@ -61,7 +61,7 @@ const Cours = () => {
     try {
       const docRef = await addDoc(sousDomaineCollectionRef, {
         title: newSousDomaine,
-        domaine: newDomaine,
+        domains: newDomaine,
         timeStamp: serverTimestamp(),
       });
       await updateDoc(doc(sousDomaineCollectionRef, docRef.id), {
@@ -89,8 +89,8 @@ const Cours = () => {
         descrip: newDescrip,
         videoUrl: newVideoUrl,
         timeStamp: serverTimestamp(),
-        domaine: newDomaine,
-        sousDomaine: newSousDomaine,
+        domains: newDomaine,
+        sousDomains: newSousDomaine,
       });
     } catch (error) {
       console.error("Erreur lors de la creation :", error);
@@ -108,7 +108,10 @@ const Cours = () => {
     }
     try {
       const updateDomain = doc(db, "domains", id);
-      updateDoc(updateDomain, { title: newDomaine });
+      updateDoc(updateDomain, {
+        title: newDomaine,
+        timeStamp: serverTimestamp(),
+      });
       setNewDomaine("");
       setError("");
       alert("domaine " + newDomaine + " mise à jour");
