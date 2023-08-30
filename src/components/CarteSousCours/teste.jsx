@@ -91,7 +91,7 @@ const Teste = (props) => {
 
         <p className="card-text">{props.descrip}</p>
         <div className="row btn-domaine">
-          <div className="col-md-6">
+         { !user.statut === "eleve" ? <div className="col-md-6">
             <button
               type="button"
               className="btn"
@@ -104,8 +104,8 @@ const Teste = (props) => {
             <button type="button" className="btn mx-3" onClick={props.click}>
               <BsArchiveFill />
             </button>
-          </div>
-          <div className="col-md-6 text-lg-end text-md-end text-sm-start colonne">
+          </div> :""}
+ { user.statut === "eleve"    ?    <div className="col-md-6 text-lg-end text-md-end text-sm-start colonne">
   {!started && (
     <button type="button" className="btn" onClick={handleStart}>
       DEMARRER
@@ -121,7 +121,7 @@ const Teste = (props) => {
       COURS TERMINÉ
     </button>
   )}
-</div>
+</div>:""}
 
         </div>
       </div>
