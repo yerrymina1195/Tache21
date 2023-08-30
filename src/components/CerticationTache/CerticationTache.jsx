@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { jsPDF } from "jspdf";
+import VoirCertificat from './VoirCertificat';
 
 
 
@@ -8,23 +9,10 @@ import { jsPDF } from "jspdf";
 const CerticationTache = (props) => {
 
 
-    const jspdf  = new jsPDF('p', 'pt', 'letter')
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const val = e.target.txt.value;
-
-        const data = {
-            callback:function(jspdf){
-                jspdf.save('demo.pdf')
-            },
-             margin:[10,10,10,10],
-        }
-        jspdf.html(val,data)
-    }
 
     return (
         <div className='container md:m-10 mt-24 dark:text-gray-400 p-5 md:p-10'>
+            < VoirCertificat />
             <div className="text-center d-flex justify-content-center align-items-center m-3">
                 <h1 className='text-couleur2 text-center fw-bol'>Certification en  {props.domaine}</h1>
             </div>
@@ -90,15 +78,12 @@ const CerticationTache = (props) => {
                         </div>
                         <div className="btn-group mb-3 w-100">
                             <button type='submit' className="main-btn w-100 p-2 fw-bold">Envoyez</button>
-                            <button type='submit' className="btn-main w-100 p-2 fw-bold ms-2">Voir la certification</button>
+                            <button type='button' className="btn-main w-100 p-2 fw-bold ms-2">Voir la certification</button>
                         </div>
                     </form>
 
                     <div>
-                    <form onSubmit={(e)=>handleSubmit(e)}>
-                                <textarea className='txt' name="txt" />
-                                <button>Generate</button>
-                            </form>
+                  
                     </div>
 
                 </div>
