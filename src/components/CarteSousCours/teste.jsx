@@ -106,17 +106,23 @@ const Teste = (props) => {
             </button>
           </div>
           <div className="col-md-6 text-lg-end text-md-end text-sm-start colonne">
-            {!started && (
-              <button type="button" className="btn" onClick={handleStart}>
-                DEMARRER
-              </button>
-            )}
-            {started && !finished && (
-              <button type="button" className="btn" onClick={handleFinish}>
-                TERMINER
-              </button>
-            )}
-          </div>
+  {!started && (
+    <button type="button" className="btn" onClick={handleStart}>
+      DEMARRER
+    </button>
+  )}
+  {started && !finished && (
+    <button type="button" className="btn" onClick={handleFinish}>
+      TERMINER
+    </button>
+  )}
+  {finished && (
+    <button type="button" className="btn btn-disabled" disabled>
+      COURS TERMINÉ
+    </button>
+  )}
+</div>
+
         </div>
       </div>
     </div>
