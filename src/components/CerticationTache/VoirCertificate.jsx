@@ -73,7 +73,7 @@ function VoirCertificat() {
                         </div>
 
 <div className='align-items-center justify-content-center d-flex'>
-                        <button className="main-btn w-25 p-2 fw-bold mt-3 cert text-white ">Envoyer</button></div>
+                        <button className="main-btn w-25 p-2 fw-bold mt-5 cert text-white ">Envoyer</button></div>
                     </div>
 
 

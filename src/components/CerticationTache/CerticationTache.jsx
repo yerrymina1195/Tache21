@@ -1,82 +1,56 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Link } from "react-router-dom";
-import VoirCertificat from "./VoirCertificat";
-    import {
-      collection,
-      serverTimestamp, 
-      addDoc
-    } from "firebase/firestore";
-    import { db} from "../../data/../Firebase/Firebase";
+import {
+    collection,
+    serverTimestamp,
+    addDoc
+} from "firebase/firestore";
+import { db } from "../../data/../Firebase/Firebase";
 import { useStateContext } from '../../contexts/ContextProvider';
-
-
-
-
-
-
-
-
-
-
-
-
 
 const CerticationTache = (props) => {
 
-  
+
     const { user } = useStateContext();
     const [lienSaisi, setLienSaisi] = useState('');
     const [certifie, setCertifie] = useState('');
     const sendcertifie = async () => {
-      try {
-        if (user) {
-          const notificationDocRef = collection(db, "notifications");
-          const data = {
-            certifieiepar: user.id,
-            certifieieA: user.coachSelf,
-            date: serverTimestamp(),
-            vu: false,
-            lien: lienSaisi 
-          };
-          await addDoc(notificationDocRef, data);
-          console.log("Certification ajoutée avec succès !");
+        try {
+            if (user) {
+                const notificationDocRef = collection(db, "notifications");
+                const data = {
+                    certifieiepar: user.id,
+                    certifieieA: user.coachSelf,
+                    date: serverTimestamp(),
+                    vu: false,
+                    lien: lienSaisi
+                };
+                await addDoc(notificationDocRef, data);
+                console.log("Certification ajoutée avec succès !");
+            }
+        } catch (error) {
+            console.error("Erreur lors de l'ajout de la certification :", error);
         }
-      } catch (error) {
-        console.error("Erreur lors de l'ajout de la certification :", error);
-      }
     };
 
 
 
-      const NavButton = () => (
+    const NavButton = () => (
         <button
-          type="button"
-          onClick={sendcertifie} 
-          disabled={certifie}
+            type="button"
+            onClick={sendcertifie}
+            disabled={certifie}
         >
-          {certifie ? (
-            <span className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2" />
-          ) : (
-            ""
-          )}
+            {certifie ? (
+                <span className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2" />
+            ) : (
+                ""
+            )}
         </button>
-      );
-    
-
-
-
-
-
-
-
-
-
-
-
+    );
 
     return (
         <div className='container md:m-10 mt-24 dark:text-gray-400 p-5 md:p-10'>
-            < VoirCertificat />
             <div className="text-center d-flex justify-content-center align-items-center m-3">
                 <h1 className='text-couleur2 text-center fw-bol'>Certification en  {props.domaine}</h1>
             </div>
@@ -135,35 +109,38 @@ const CerticationTache = (props) => {
                     <p className='fs-5'>Une fois que vous avez terminé, soumettez l'URL à votre projet de travail avec tous ses tests réussis.</p>
                 </div>
                 <div className="container  d-flex flex-column justify-content-center align-items-center">
-                <form className='mb-3 w-50'>
-        <div className="form-group mb-3">
-          <label htmlFor="text" className='fs-6 fw-semibold'>Lien vers la solution</label>
-          <input
-            type="url"
-            className='form-control border-secondary'
-            required
-            value={lienSaisi}
-            onChange={(e) => setLienSaisi(e.target.value)} // Met à jour l'état lienSaisi
-          />
-        </div>
-        <div className="btn-group mb-3 w-100">
-          <button
-            type='button'
-            className="main-btn w-100 p-2 fw-bold"
-            onClick={sendcertifie}
-          >
-            Envoyer
-          </button>
-          <button
-            type='button'
-            className="btn-main w-100 p-2 fw-bold ms-2"
-          >
-            Voir la certification
-          </button>
-        </div>
-      </form>
+                    <form className='mb-3 w-50'>
+                        <div className="form-group mb-3">
+                            <label htmlFor="text" className='fs-6 fw-semibold'>Lien vers la solution</label>
+                            <input
+                                type="url"
+                                className='form-control border-secondary'
+                                required
+                                value={lienSaisi}
+                                onChange={(e) => setLienSaisi(e.target.value)} // Met à jour l'état lienSaisi
+                            />
+                        </div>
+                        <div className="btn-group mb-3 w-100">
+                            <button
+                                type='button'
+                                className="main-btn w-100 p-2 fw-bold"
+                                onClick={sendcertifie}
+                            >
+                                Envoyer
+                            </button>
+                            <Link to={`/l/voircertificate`}>
+                            <button
+                                    type='button'
+                                    className="btn-main w-100 p-2 fw-bold ms-2"
+                                >
+                                    Voir la certification
+                                </button>
+                            </Link>
+                             
+                        </div>
+                    </form>
                     <div>
-                  
+
                     </div>
 
                 </div>

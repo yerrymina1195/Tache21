@@ -31,6 +31,7 @@ import  NonAutorise  from "./pages/NonAutorise";
 import  NotFound  from "./pages/NotFound";
 import ResetPassWord from "./pages/pageConnexion/ResetPassWord";
 import Securite from "./pages/parametres/Securite";
+import VoirCertificat from "./components/CerticationTache/VoirCertificate";
 
 const App = () => {
   const{user}=useStateContext()
@@ -74,6 +75,8 @@ const userType = user;
                 <Route path="/l/parametres" element={< Parametre/>} />
                 <Route path="/l/securite" element={< Securite/>} />
                 <Route path="/l/certification" element={(<Certification />)} />
+                <Route path="/l/voircertificate" element={(<VoirCertificat />)} />
+
                 </Route>
                 <Route path="*" element={<NotFound/>} />
               </Routes>
