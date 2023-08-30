@@ -52,7 +52,7 @@ function VoirCertificat() {
         <h4>Mame GADIAGA</h4>
         <p>
           a terminé avec succés
-          <br />
+          <br /> 
           le module programmation le 30 Juillet 2023
         </p>
       </div>
