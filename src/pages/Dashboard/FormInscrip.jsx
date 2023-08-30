@@ -60,7 +60,7 @@ const FormInscrip = () => {
         domaine: null,
         nbrCoach:null
     })
-    console.log(errors);
+    console.log(data);
     // Gérer les erreuers 
     const validateEmail = (email) => {
 
@@ -122,6 +122,13 @@ const FormInscrip = () => {
         if (!data.statut === "admin" && data.domaine === null) {
             newErrors.domaine = 'Domaine obligatoire';
         }
+        if (data.statut === "coach") {
+            setData({...data, nbrCoach:null})
+        }
+        if (data.statut === "coach" && data.domaine === null) {
+            setData({...data, domaine:"" , nbrCoach:null})
+            newErrors.domaine = 'Domaine obligatoire';
+        }
         if (data.statut === "eleve" && data.domaine === null && data.domaine=== null ) {
            
             newErrors.domaine = 'domaine obligatoire';
@@ -161,7 +168,7 @@ const FormInscrip = () => {
                     mdp: data.mdp,
                     address: data.address,
                     statut: data.statut,
-                    domaine: data?.statut ==="admin"? null:data?.statut ==="coach"?null:data.domaine,
+                    domaine: data.domaine,
                     id: res.user.uid,
                     timeStamp: serverTimestamp(),
                     coachSelf:data?.statut ==="admin"? null:data?.statut ==="coach"?null:data.nbrCoach
@@ -177,8 +184,8 @@ const FormInscrip = () => {
                     mdp: "",
                     address: "",
                     statut: "",
-                    domaine: "",
-                    nbrCoach:""
+                    domaine: null,
+                    nbrCoach:null
                 })
             } catch (err) {
                 console.log(err);
