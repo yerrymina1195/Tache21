@@ -18,11 +18,11 @@ import { useStateContext } from "../../../contexts/ContextProvider";
 const Design = (props) => {
   const [newSousDomaine, setNewSousDomaine] = useState("");
   const [error, setError] = useState("");
-  const [sousDomains, setSousDomaines] = useState([]);
   const [id, setId] = useState("");
   const { isClicked, handleClick, setIsClicked, initialState } =
-    useStateContext();
+  useStateContext();
   const [newDomaine] = useState("");
+  const [sousDomains, setSousDomaines] = useState([]);
   const sousDomaineCollectionRef = collection(db, "sousDomains");
   // function create sous-domaines
   const createSousDomaines = async () => {

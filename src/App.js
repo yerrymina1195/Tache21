@@ -10,9 +10,8 @@ import {
   Cours,
   Eleves,
   Design,
-  // Programmation,
-  // Marketing,
 } from "./pages";
+import TesteOne from './components/CarteSousCours/TesteOne'
 import Quiz from "./pages/SousCours/Quiz/Quiz";
 // import RouteCours from "./components/RouteCours/RouteCours";
 import Certification from "./pages/Certification/Certification";
@@ -39,6 +38,8 @@ const App = () => {
   const userType = user;
   const [domains, setDomains] = useState([]);
   const domaineCollectionRef = collection(db, "domains");
+  const [sousDomains, setSousDomaines] = useState([]);
+  const sousDomaineCollectionRef = collection(db, "sousDomains");
 
   useEffect(() => {
     const q = query(collection(db, "domains"));
@@ -53,7 +54,21 @@ const App = () => {
       };
       getDomaines();
     });
-  }, [domaineCollectionRef]);
+    const p = query(collection(db, "sousDomains"));
+    onSnapshot(p, (querySnapshot) => {
+      const sousDomains = [];
+      querySnapshot.forEach((doc) => {
+        sousDomains.push(doc.data().title);
+      });
+      const getSousDomaines = async () => {
+        const data = await getDocs(sousDomaineCollectionRef);
+        setSousDomaines(
+          data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+        );
+      };
+      getSousDomaines();
+    });
+  }, [domaineCollectionRef, sousDomaineCollectionRef]);
 
   return (
     <BrowserRouter>
@@ -97,6 +112,13 @@ const App = () => {
               key={domain.id}
               path={`/l/cours/${domain.title}`}
               element={<Design title={domain.title} />}
+            />
+          ))}
+          {sousDomains.map((sousDomain) => (
+            <Route
+              key={sousDomain.id}
+              path={`/l/cours/domains/${sousDomain.title}`}
+              element={<TesteOne title={sousDomain.title} />}
             />
           ))}
 

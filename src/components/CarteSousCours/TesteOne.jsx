@@ -15,7 +15,7 @@ import {
 } from "firebase/firestore";
 import { useStateContext } from "../../contexts/ContextProvider";
 
-const TesteOne = () => {
+const TesteOne = (props) => {
   // crud
   const [newTitle, setNewTitle] = useState("");
   const [newDescrip, setNewDescrip] = useState("");
@@ -129,7 +129,7 @@ const TesteOne = () => {
         <div className="container ">
           <div className="row d-flex align-items-center mt-5">
             <div className="col-md-6 col-sm-12">
-              <h1 className="capitalize">html & css</h1>
+              <h1 className="capitalize">{props.title}</h1>
             </div>
             <div className="col-md-6 col-sm-12 text-center">
               {/* button modal */}
