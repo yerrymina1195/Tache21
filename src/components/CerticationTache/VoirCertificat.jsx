@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import html2pdf from 'html2pdf.js';
+import './Certification.css';
+import img1 from '../../data/scan.png';
+import img2 from '../../data/sign.png';
+import img3 from '../../data/logo.png';
 
 function VoirCertificat() {
     const [name, setName] = useState('');
@@ -24,7 +28,7 @@ function VoirCertificat() {
         <div>
             <div className="">
                 <form onSubmit={(e) => handleSubmit(e)}>
-                    <div id="pdf-content">
+                    {/* <div id="pdf-content">
                         <p className='text-center'>ceci certifie que </p>
                         <p>Chute de <span>{name}</span> a réussi le...</p>
 
@@ -37,9 +41,46 @@ function VoirCertificat() {
                             <div className="col-4">Directeur exécutif de la Digisphere</div>
                             <div className="col-4">photo</div>
                         </div>
-                    </div>
-                    
-                    <button>Generate</button>
+                        <button>Generate</button>
+                    </div> */}
+                    <div className="container bgCertificate p-4">
+  <div className="bgCertification2">
+    <div className="p-3">
+      <div className="row text-center d-flex justify-content-center align-items-center flex-column">
+        <h1 className="digi p-3 text-white mb-5 titre">
+          DIGISPHERE <br /> <span className="fs-5">E-LEARNING</span>
+        </h1>
+        <p>Ceci certifie que</p>
+        <h4>Mame GADIAGA</h4>
+        <p>
+          a terminé avec succés
+          <br />
+          le module programmation le 30 Juillet 2023
+        </p>
+      </div>
+      <div className="row mt-5 text-center">
+        <div className="col-4 text-center d-flex justify-content-center align-items-center">
+          <img src={img1} alt="scan" className="wscan" />
+        </div>
+        <div className="col-4 psign p-3 text-center d-flex justify-content-center align-items-center flex-column">
+          <h4 className="border-bottom titre">SIGNATURE</h4>
+          <img src={img2} alt="sign" className="sign" />
+        </div>
+        <div className="col-4 text-center d-flex justify-content-center align-items-center">
+          <img src={img3} alt="certif" className="logo" />
+        </div>
+      </div>
+      <div className="row text-center mt-5">
+        <p>
+          Validé par: <br />{" "}
+          <span className="text-couleur1">Jésus Christ Diatta</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
                 </form>
             </div>
         </div>
