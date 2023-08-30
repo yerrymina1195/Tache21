@@ -35,6 +35,7 @@ const FormInscrip = () => {
     
           unsubscribeCoachs();
         };
+        // eslint-disable-next-line 
       }, []);
     // const navigate = useNavigate()
     console.log(nombreCoachs);
