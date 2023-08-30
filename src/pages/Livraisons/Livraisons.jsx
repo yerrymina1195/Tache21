@@ -1,98 +1,107 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import './Livraisons.css';
 import {
   addDoc,
   collection,
-  getDocs,
   query,
   onSnapshot,
   serverTimestamp,
+  where,
+  updateDoc,
+  doc
 } from "firebase/firestore";
-import { db, storage } from "../../Firebase/Firebase";
+import { auth, db, storage } from "../../Firebase/Firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Link } from "react-router-dom";
 import ButtonReutilisable from '../../components/ButtonReutilisable';
 
 const Livraisons = () => {
-  const [cour, setCour] = useState('')
-  const [description, setDescription] = useState('')
-  const [lien, setLien] = useState('')
-  const [tache, setTache] = useState('')
-  const [url, setUrl] = useState('')
-  const [errors, setErrors] = useState({});
+  const [tache, setTache] = useState('');
+  const [cours, setCours] = useState('');
+  const [description, setDescription] = useState('');
+  const [lien, setLien] = useState('');
   const [livraison, setLivraison] = useState([]);
-  const livraionCollectionRef = collection(db, "livraisons");
+  const [selectedTache, setSelectedTache] = useState("");
   const [file, setFile] = useState(null);
+  const [errors, setErrors] = useState({});
+  const currentUser = auth.currentUser;
 
-  console.log(errors);
-  console.log(cour);
-  console.log(description);
-  console.log(lien);
-  console.log(tache);
-  console.log(url)
-
-  const handleChange = (e) => {
-    if (e.target.files[0])
-      setFile(e.target.files[0]);
-  }
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-
-    if (
-      cour === "" ||
-      description === "" ||
-      lien === "" ||
-      tache === ""
-    ) {
-      setErrors("Veuillez vérifier le champs et remplir de bon valeur");
-      return;
+  // Supposez que vous ayez l'ID de la tâche que l'élève a livrée
+  const updateLivraisonStatus = async () => {
+    try {
+      const livraisonRef = doc(db, 'livraisons');
+      await updateDoc(livraisonRef, {
+        livree: true
+      });
+      console.log('Statut de livraison mis à jour avec succès !');
+    } catch (error) {
+      console.error('Erreur lors de la mise à jour du statut de livraison :', error);
     }
+  };
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Valeurs des champs :", cours, description, lien, tache, file);
+
+    // Vérification des champs vides
+    if (!tache || !cours || !description || !lien || !file) {
+      console.log("Veillez remplir le champs.", + errors);
+    }
+
     try {
       const path = `/images/${file.name}`;
       const refs = ref(storage, path);
-      uploadBytes(refs, file).then(() => {
-        getDownloadURL(ref(storage, refs)).then((url) => {
-          console.log(url);
-       
-           addDoc(livraionCollectionRef, {
-            cour,
-            description,
-            lien,
-            Image: url,
-            tache,
-            timeStamp: serverTimestamp(),
-          });
-        })
-      })
-   
-      setCour("")
-      setDescription("")
-      setLien("")
-      setTache("")
-      setFile("")
-      setErrors("");
-      alert("livraison réussie avec succés !!!");
+      // Enregistrez l'image dans Storage
+      await uploadBytes(refs, file);
+      const imageUrl = await getDownloadURL(ref(storage, refs));
+
+      const livraisonData = {
+        id_eleve: currentUser.uid,
+        tache,
+        cours,
+        description,
+        lien,
+        imageUrl, // Utilisez imageUrl pour enregistrer l'URL dans Firestore
+        timeStamp: serverTimestamp(),
+      };
+
+      // Envoyez les données dans Firestore
+      await addDoc(collection(db, 'livraisons'), livraisonData);
+
+      // Mettre à jour le statut de livraison à true pour cette tâche
+      updateLivraisonStatus(); // Assurez-vous d'avoir l'ID de la livraison
+
+
+      setCours('');
+      setDescription('');
+      setLien('');
+      setTache('');
+      setFile(null);
+
+      console.log("Livraison ajoutée avec succès !");
+      alert("Livraison ajoutée avec succès !");
     } catch (error) {
       console.error("Erreur lors de la livraison :", error);
     }
-  }
+  };
 
   useEffect(() => {
+    const livraisonsCollectionRef = collection(db, 'livraisons');
+    const q = query(livraisonsCollectionRef);
 
-    const q = query(collection(db, "livraisons"));
-    onSnapshot(q, (querySnapshot) => {
-      const livraison = [];
-      querySnapshot.forEach((doc) => {
-        livraison.push(doc.data().cour);
-      });
-      const getLivraison = async () => {
-        const data = await getDocs(livraionCollectionRef);
-        setLivraison(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      };
-      getLivraison();
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const livraisonsData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setLivraison(livraisonsData);
     });
+
+    return () => unsubscribe();
   }, []);
+  // Supposez que vous ayez l'ID de la tâche que l'élève a livrée
+
 
   return (
     <div className='bg-[#ffff] dark:bg-secondary-dark-bg text-[#000] dark:text-gray-200 p-5 rounded-3xl'>
@@ -120,8 +129,14 @@ const Livraisons = () => {
                     <div className="modal-body">
                       <form>
                         <div className='form-group mb-2'>
-                          <select class="form-select" aria-label="Default select example" name='tache' value={tache} onChange={(e) => setTache(e.target.value)}>
-                            <option selected>Choisir une tâche</option>
+                          <select
+                            className="form-select"
+                            aria-label="Default select example"
+                            name='tache'
+                            value={selectedTache}
+                            onChange={(e) => setSelectedTache(e.target.value)} // Met à jour selectedTache
+                          >
+                            <option value="">Choisir une tâche</option>
                             <option value="Tâche 1">Tâche 1</option>
                             <option value="Tâche 2">Tâche 2</option>
                             <option value="Tâche 3">Tâche 3</option>
@@ -131,10 +146,10 @@ const Livraisons = () => {
                         <div className='form-group mb-2'>
                           <input type="text"
                             className='form-control'
-                            placeholder='Non du cour'
-                            name="cour"
-                            onChange={(e) => setCour(e.target.value)}
-                            value={cour} />
+                            placeholder='Non du cours'
+                            name="cours"
+                            onChange={(e) => setCours(e.target.value)}
+                            value={cours} />
                         </div>
 
                         <div className='form-group mb-2'>
@@ -158,14 +173,15 @@ const Livraisons = () => {
                         <div className='form-group mb-2'>
                           <input type="file"
                             className='form-control'
-                            multiple onChange={handleChange}
+                            multiple
+                            onChange={(e) => setFile(e.target.files[0])}
                             placeholder="Ajouter Images" />
                         </div>
 
                       </form>
                     </div>
                     <div class="modal-footer text-center d-flex justify-content-center align-items-center">
-                      <ButtonReutilisable text='Envoyer mon travail' onClick={onSubmit}/>
+                      <ButtonReutilisable text='Envoyer mon travail' onClick={handleSubmit} />
                     </div>
                   </div>
                 </div>
@@ -175,24 +191,33 @@ const Livraisons = () => {
 
           <div className='row g-3 my-3'>
             {livraison.map((cour) => (
-              <div className="col-md-4">
+              <div className="col-md-4" key={cour.id}>
                 <div className="card d-flex flex-column p-3">
                   <div className="card-header bg-transparent text-white my-2">
                     <h4>{cour.tache}</h4>
                   </div>
                   <div className="card-title my-2">
-                    <p><span className="fw-bold">Cours</span>: {cour.cour}</p>
+                    <p><span className="fw-bold">Cours</span>: {cour.cours}</p>
                     <p><span className='fw-bold'>Description</span>: {cour.description}</p>
-                    <Link className='fs-6 text-decoration-none text-dark'><span className="fw-bold">Lien</span>: {cour.lien}</Link>
+                    <Link to={cour.lien} target="_blank" className='fs-6 text-decoration-none text-dark'><span className="fw-bold">Lien</span>: {cour.lien}</Link>
                   </div>
                   <div className="card-body">
-                    <img src={cour.Image} alt="img" className='img-fluid mx-auto w-100' />
+                    {/* Vérifier si la tâche est livrée */}
+                    {cour.livree ? (
+                      // Afficher uniquement pour l'élève qui a livré
+                      currentUser.uid === cour.id_eleve && (
+                        <img src={cour.imageUrl} alt="Capture d'écran" className='img-fluid mx-auto w-100 image-cartes' />
+                      )
+                    ) : (
+                      // Afficher pour tous les élèves
+                      <img src={cour.imageUrl} alt="Capture d'écran" className='img-fluid mx-auto w-100 image-cartes' />
+                    )}
                   </div>
                 </div>
               </div>
             ))}
-
           </div>
+
         </div>
       </div>
     </div>

@@ -20,6 +20,8 @@
     background-color: transparent;
 }
 
-.card .card-body .img-fluid{
-    height: 200px;
-}
+.image-cartes {
+    height: 200px; /* Ajustez la hauteur comme vous le souhaitez */
+    object-fit: cover; /* Pour ajuster la manière dont l'image est redimensionnée */
+  }
+  
