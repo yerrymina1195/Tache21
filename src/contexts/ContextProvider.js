@@ -13,6 +13,7 @@ const initialState = {
 export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) || null);
   const [notif, setNotif] = useState([]);
+  const [certifie, setCertifie] = useState([]);
   const [screenSize, setScreenSize] = useState(undefined);
   const [currentColor, setCurrentColor] = useState('#f6b339');
   const [currentMode, setCurrentMode] = useState('Light');
@@ -22,6 +23,12 @@ export const ContextProvider = ({ children }) => {
   const updatenotif = (frfr) => {
    
     setNotif(frfr);
+  
+  }; 
+
+  const updatecertifie = (frfr) => {
+   
+    setCertifie(frfr);
   
   }; 
 
@@ -60,7 +67,7 @@ export const ContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, handleLogout, setThemeSettings,user,updateUser,notif,updatenotif}}>
+    <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, handleLogout, setThemeSettings,user,updateUser,notif,updatenotif,certifie,updatecertifie}}>
       {children}
     </StateContext.Provider>
   );
