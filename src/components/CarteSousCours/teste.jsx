@@ -5,6 +5,7 @@ import { db } from '../../Firebase/Firebase';
 import '../cardDomaines/Domaine.css';
 import { BsArchiveFill, BsPencilSquare } from 'react-icons/bs';
 import ReactPlayer from 'react-player';
+import './Test.css';
 
 const Teste = (props) => {
   const {user} = useStateContext();
@@ -40,6 +41,7 @@ const Teste = (props) => {
 
       await updateDoc(studentDocRef, {
         [user.id]:{
+          // idcoach: user.coachSelf,
           demarrer: true,
           finishedtime: serverTimestamp(),
         },
@@ -57,6 +59,7 @@ const Teste = (props) => {
 
       await updateDoc(studentDocRef, {
         [user.id]:{
+          idcoach: user.coachSelf,
           demarrer: true,
           terminer: true,
           finishedtime: serverTimestamp(),
@@ -102,7 +105,7 @@ const Teste = (props) => {
               <BsArchiveFill />
             </button>
           </div>
-          <div className="col-md-6 text-lg-end text-md-end text-sm-start">
+          <div className="col-md-6 text-lg-end text-md-end text-sm-start colonne">
             {!started && (
               <button type="button" className="btn" onClick={handleStart}>
                 DEMARRER
