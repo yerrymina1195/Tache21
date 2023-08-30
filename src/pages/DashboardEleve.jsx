@@ -1,7 +1,19 @@
 import React from 'react'
-import img from "../data/cap0.png";
-import makhan from "../data/makhan.png";
+// import img from "../data/cap0.png";
+// import makhan from "../data/makhan.png";
+import { useStateContext } from "../contexts/ContextProvider";
+import { auth, db, storage } from "../Firebase/Firebase";
+import {
+  addDoc,
+  collection,
+  query,
+  onSnapshot,
+  serverTimestamp,
+  where,
+} from "firebase/firestore";
 const DashboardEleve = () => {
+  const{user}=useStateContext()
+  
   return (
     <div className="container">
     <div className="row">

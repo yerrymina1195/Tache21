@@ -7,15 +7,15 @@ import {
   onSnapshot,
   serverTimestamp,
   where,
-  updateDoc,
-  doc
 } from "firebase/firestore";
+import { useStateContext } from "../../contexts/ContextProvider";
 import { auth, db, storage } from "../../Firebase/Firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Link } from "react-router-dom";
 import ButtonReutilisable from '../../components/ButtonReutilisable';
 
 const Livraisons = () => {
+  const{user}=useStateContext()
   const [tache, setTache] = useState('');
   const [cours, setCours] = useState('');
   const [description, setDescription] = useState('');
@@ -24,20 +24,6 @@ const Livraisons = () => {
   const [selectedTache, setSelectedTache] = useState("");
   const [file, setFile] = useState(null);
   const [errors, setErrors] = useState({});
-  const currentUser = auth.currentUser;
-
-  // Supposez que vous ayez l'ID de la tâche que l'élève a livrée
-  const updateLivraisonStatus = async () => {
-    try {
-      const livraisonRef = doc(db, 'livraisons');
-      await updateDoc(livraisonRef, {
-        livree: true
-      });
-      console.log('Statut de livraison mis à jour avec succès !');
-    } catch (error) {
-      console.error('Erreur lors de la mise à jour du statut de livraison :', error);
-    }
-  };
 
 
   const handleSubmit = async (e) => {
@@ -57,7 +43,7 @@ const Livraisons = () => {
       const imageUrl = await getDownloadURL(ref(storage, refs));
 
       const livraisonData = {
-        id_eleve: currentUser.uid,
+        id_eleve:user.id,
         tache,
         cours,
         description,
@@ -69,8 +55,7 @@ const Livraisons = () => {
       // Envoyez les données dans Firestore
       await addDoc(collection(db, 'livraisons'), livraisonData);
 
-      // Mettre à jour le statut de livraison à true pour cette tâche
-      updateLivraisonStatus(); // Assurez-vous d'avoir l'ID de la livraison
+    
 
 
       setCours('');
@@ -88,7 +73,7 @@ const Livraisons = () => {
 
   useEffect(() => {
     const livraisonsCollectionRef = collection(db, 'livraisons');
-    const q = query(livraisonsCollectionRef);
+    const q = query(livraisonsCollectionRef,where("id_eleve","==",user.id));
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const livraisonsData = querySnapshot.docs.map((doc) => ({
@@ -133,8 +118,8 @@ const Livraisons = () => {
                             className="form-select"
                             aria-label="Default select example"
                             name='tache'
-                            value={selectedTache}
-                            onChange={(e) => setSelectedTache(e.target.value)} // Met à jour selectedTache
+                            value={tache}
+                            onChange={(e) => setTache(e.target.value)} // Met à jour selectedTache
                           >
                             <option value="">Choisir une tâche</option>
                             <option value="Tâche 1">Tâche 1</option>
@@ -202,16 +187,7 @@ const Livraisons = () => {
                     <Link to={cour.lien} target="_blank" className='fs-6 text-decoration-none text-dark'><span className="fw-bold">Lien</span>: {cour.lien}</Link>
                   </div>
                   <div className="card-body">
-                    {/* Vérifier si la tâche est livrée */}
-                    {cour.livree ? (
-                      // Afficher uniquement pour l'élève qui a livré
-                      currentUser.uid === cour.id_eleve && (
-                        <img src={cour.imageUrl} alt="Capture d'écran" className='img-fluid mx-auto w-100 image-cartes' />
-                      )
-                    ) : (
-                      // Afficher pour tous les élèves
                       <img src={cour.imageUrl} alt="Capture d'écran" className='img-fluid mx-auto w-100 image-cartes' />
-                    )}
                   </div>
                 </div>
               </div>
