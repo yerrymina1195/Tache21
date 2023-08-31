@@ -44,6 +44,7 @@ const Teste = (props) => {
           idcoach: user.coachSelf,
           demarrer: true,
           finishedtime: serverTimestamp(),
+          title:props.title,
         },
       });
 

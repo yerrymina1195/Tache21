@@ -17,6 +17,7 @@ import ButtonReutilisable from '../../components/ButtonReutilisable';
 const Livraisons = () => {
   const{user}=useStateContext()
   const [tache, setTache] = useState('');
+  const [mapCours, setMapCours] = useState('');
   const [cours, setCours] = useState('');
   const [description, setDescription] = useState('');
   const [lien, setLien] = useState('');
@@ -26,8 +27,20 @@ const Livraisons = () => {
   const [file, setFile] = useState(null);
   // eslint-disable-next-line
   const [errors, setErrors] = useState({});
-
-
+  const courscollection = collection(db, 'cours');
+      useEffect(() => {
+        const coachsQuery = query(courscollection,  where(user.id, '!=', null));
+        const unsubscribeCoachs = onSnapshot(coachsQuery, (snapshot) => {
+          const coursData = snapshot.docs.map(doc => doc.data());
+          setMapCours(coursData);
+        });
+        return () => {
+    
+          unsubscribeCoachs();
+        };
+        // eslint-disable-next-line 
+      }, []);
+    console.log((mapCours));
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Valeurs des champs :", cours, description, lien, tache, file);
@@ -85,7 +98,7 @@ const Livraisons = () => {
       setLivraison(livraisonsData);
     });
 
-    return () => unsubscribe();
+    return () =>   unsubscribe();
     // eslint-disable-next-line
   }, []);
   // Supposez que vous ayez l'ID de la tâche que l'élève a livrée
@@ -125,9 +138,11 @@ const Livraisons = () => {
                             onChange={(e) => setTache(e.target.value)} // Met à jour selectedTache
                           >
                             <option value="">Choisir une tâche</option>
-                            <option value="Tâche 1">Tâche 1</option>
-                            <option value="Tâche 2">Tâche 2</option>
-                            <option value="Tâche 3">Tâche 3</option>
+                            {mapCours?.length >0 ?mapCours.map((element,index)=>(
+                                                    <option key={index} value={`${element.id}`}>{`${element.title}`}</option>
+                                                    
+                                                )):""}
+                            
                           </select>
                         </div>
 
@@ -179,7 +194,7 @@ const Livraisons = () => {
 
           <div className='row g-3 my-3'>
             {livraison.map((cour) => (
-              <div className="col-md-4" key={cour.id}>
+              <div className="col-md-6 col-lg-4" key={cour.id}>
                 <div className="card h-100 d-flex flex-column p-3">
                   <div className="card-header bg-transparent text-white my-2">
                     <h4>{cour.tache}</h4>

@@ -26,7 +26,6 @@ const Design = (props) => {
   const [id, setId] = useState("");
   const { isClicked, handleClick, setIsClicked, initialState } =
   useStateContext();
-  const [newDomaine] = useState("");
   const [sousDomains, setSousDomaines] = useState([]);
   const sousDomaineCollectionRef = collection(db, "sousDomains");
   // function create sous-domaines
@@ -50,12 +49,10 @@ const Design = (props) => {
         domains: props.title,
         imageUrl:imageUrl,
         timeStamp: serverTimestamp(),
-
       });
       await updateDoc(doc(sousDomaineCollectionRef, docRef.id), {
         id: docRef.id,
       });
-
       setNewSousDomaine("");
       setError("");
       alert("sous domaine " + newSousDomaine + " ajouter");
@@ -77,7 +74,7 @@ const Design = (props) => {
       const updateSousDomaine = doc(db, "sousDomains", id);
       updateDoc(updateSousDomaine, {
         title: newSousDomaine,
-        domains: newDomaine,
+        domains: props.title,
         timeStamp: serverTimestamp(),
       });
       setNewSousDomaine("");
