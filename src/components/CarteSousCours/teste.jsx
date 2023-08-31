@@ -8,7 +8,7 @@ import ReactPlayer from 'react-player';
 import './Test.css';
 
 const Teste = (props) => {
-  const {user} = useStateContext();
+  const { user } = useStateContext();
   const { courseId } = props;
 
   const [started, setStarted] = useState(false);
@@ -23,7 +23,7 @@ const Teste = (props) => {
 
           if (studentDoc.exists()) {
             const data = studentDoc.data();
-            setStarted(data[user.id]?.demarrer || false); 
+            setStarted(data[user.id]?.demarrer || false);
             setFinished(data[user.id]?.terminer || false);
           }
         }
@@ -40,7 +40,7 @@ const Teste = (props) => {
       const studentDocRef = doc(db, 'cours', courseId);
 
       await updateDoc(studentDocRef, {
-        [user.id]:{
+        [user.id]: {
           idcoach: user.coachSelf,
           demarrer: true,
           finishedtime: serverTimestamp(),
@@ -58,7 +58,7 @@ const Teste = (props) => {
       const studentDocRef = doc(db, 'cours', courseId);
 
       await updateDoc(studentDocRef, {
-        [user.id]:{
+        [user.id]: {
           idcoach: user.coachSelf,
           demarrer: true,
           terminer: true,
@@ -106,22 +106,22 @@ const Teste = (props) => {
             </button>
           </div>
           <div className="col-md-6 text-lg-end text-md-end text-sm-start colonne">
-  {!started && (
-    <button type="button" className="btn" onClick={handleStart}>
-      DEMARRER
-    </button>
-  )}
-  {started && !finished && (
-    <button type="button" className="btn" onClick={handleFinish}>
-      TERMINER
-    </button>
-  )}
-  {finished && (
-    <button type="button" className="btn btn-disabled" disabled>
-      COURS TERMINÉ
-    </button>
-  )}
-</div>
+            {!started && (
+              <button type="button" className="btn" onClick={handleStart}>
+                DEMARRER
+              </button>
+            )}
+            {started && !finished && (
+              <button type="button" className="btn" onClick={handleFinish}>
+                TERMINER
+              </button>
+            )}
+            {finished && (
+              <button type="button" className="btn btn-disabled" disabled>
+                COURS TERMINÉ
+              </button>
+            )}
+          </div>
 
         </div>
       </div>
