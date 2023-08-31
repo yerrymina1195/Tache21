@@ -1,5 +1,5 @@
 export { default as Dashbord } from '../pages/Dashboard/Dashbord';
-export { default as Livraisons } from './Livraisons';
+export { default as Livraisons } from '../pages/Livraisons/Livraisons';
 export { default as Messagerie } from './Messagerie';
 export { default as Cours } from './Cours';
 export { default as Eleves } from './listEleve/Eleves';

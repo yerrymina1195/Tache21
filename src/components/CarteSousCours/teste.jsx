@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { doc, updateDoc, serverTimestamp, getDoc, setDoc } from 'firebase/firestore';
+import { doc, updateDoc, serverTimestamp, getDoc } from 'firebase/firestore';
 import { useStateContext } from '../../contexts/ContextProvider';
 import { db } from '../../Firebase/Firebase';
 import '../cardDomaines/Domaine.css';
@@ -44,6 +44,7 @@ const Teste = (props) => {
           idcoach: user.coachSelf,
           demarrer: true,
           finishedtime: serverTimestamp(),
+          title:props.title,
         },
       });
 
