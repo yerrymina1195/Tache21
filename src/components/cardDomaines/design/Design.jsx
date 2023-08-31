@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../../../Firebase/Firebase";
+import { db, storage } from "../../../Firebase/Firebase";
 import {
   addDoc,
   doc,
@@ -12,13 +12,15 @@ import {
   where,
   serverTimestamp,
 } from "firebase/firestore";
+
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Sousdomaine from "../sousdomaine/Sousdomaine";
 import ButtonReutilisable from "../../ButtonReutilisable";
 import { useStateContext } from "../../../contexts/ContextProvider";
 
 
 const Design = (props) => {
-
+  const [file, setFile] = useState(null);
   const [newSousDomaine, setNewSousDomaine] = useState("");
   const [error, setError] = useState("");
   const [id, setId] = useState("");
@@ -33,11 +35,22 @@ const Design = (props) => {
       setError("Veuillez vérifier le champs et remplir de bon valeur");
       return;
     }
+    if (!file) {
+      alert('fichier vide')
+      return
+    }
     try {
+      const path = `/images/${file.name}`;
+      const refs = ref(storage, path);
+      // Enregistrez l'image dans Storage
+      await uploadBytes(refs, file);
+      const imageUrl = await getDownloadURL(ref(storage, refs));
       const docRef = await addDoc(sousDomaineCollectionRef, {
         title: newSousDomaine,
         domains: props.title,
+        imageUrl:imageUrl,
         timeStamp: serverTimestamp(),
+
       });
       await updateDoc(doc(sousDomaineCollectionRef, docRef.id), {
         id: docRef.id,
@@ -164,7 +177,15 @@ const Design = (props) => {
                       <label htmlFor="floatinglabel">Nom du sous domaine</label>
                     </div>
                     {error && <p style={{ color: "red" }}>{error}</p>}
-                  </div>
+                    {isClicked.ajoutState && ( <div className='form-group mb-2'>
+                          <input type="file"
+                            className='form-control'
+                            multiple
+                            onChange={(e) => setFile(e.target.files[0])}
+                            placeholder="Ajouter Images" />
+                        </div>)}
+                  </div> 
+                 
                   <div className="modal-footer">
                     {isClicked.ajoutState && (
                       <ButtonReutilisable

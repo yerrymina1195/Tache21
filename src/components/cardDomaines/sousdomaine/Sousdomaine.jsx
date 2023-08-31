@@ -22,7 +22,7 @@ const{user}=useStateContext()
         <div className="pb-3">
           <div className="row btn-domaine">
             <div className="col-4 d-flex align-items-center justify-content-center">
-             { !user?.statut === "eleve" &&  <Link
+             { user?.statut === "coach" &&  <Link
                 to={`/l/cours/domains/${props.title}`}
                 className="text-decoration-none"
               >
@@ -32,7 +32,7 @@ const{user}=useStateContext()
               </Link>}
             </div>
             <div className="col-4 d-flex align-items-center justify-content-center">
-           { !user?.statut === "eleve" &&   <button
+           { user?.statut === "coach" &&   <button
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop"
@@ -43,7 +43,7 @@ const{user}=useStateContext()
               </button>}
             </div>
             <div className="col-4 d-flex align-items-center justify-content-center">
-             {!user?.statut === "eleve" &&  <button type="button" onClick={props.click} class="btn">
+             {user?.statut === "coach" &&  <button type="button" onClick={props.click} class="btn">
                 <BsArchiveFill />
               </button>}
             </div>
