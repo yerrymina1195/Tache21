@@ -7,19 +7,10 @@ import {Outlet} from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { Navbar, Sidebar, ThemeSetting } from "../components";
 
-
-
-
-
-
 const Layout= () => {
 
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
-  // const user = {
-  //   status: "admin",
-  //   name: 'makhan'
-  // }
-  // console.log(user);
+  
   useEffect(() => {
     const currentThemeColor = localStorage.getItem("colorMode");
     const currentThemeMode = localStorage.getItem("themeMode");
@@ -71,8 +62,7 @@ const Layout= () => {
             </div>
           </div>
         </div>
-   
-    </div >
+    </div>
   );
 };
 

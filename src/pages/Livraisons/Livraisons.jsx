@@ -55,9 +55,6 @@ const Livraisons = () => {
       // Envoyez les données dans Firestore
       await addDoc(collection(db, 'livraisons'), livraisonData);
 
-    
-
-
       setCours('');
       setDescription('');
       setLien('');
@@ -73,6 +70,7 @@ const Livraisons = () => {
 
   useEffect(() => {
     const livraisonsCollectionRef = collection(db, 'livraisons');
+    // livraison fait par id
     const q = query(livraisonsCollectionRef,where("id_eleve","==",user.id));
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
