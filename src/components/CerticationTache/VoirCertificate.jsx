@@ -32,22 +32,7 @@ function VoirCertificat() {
         <div className='only:'>
             <div className="">
                 <form onSubmit={(e) => handleSubmit(e)}>
-                    {/* <div id="pdf-content">
-                        <p className='text-center'>ceci certifie que </p>
-                       <h1>chute de <span>{name}</span></h1> 
-                        <p>terminer avec succès le</p>
-                        <h1>bibliothèque de ..........</h1>
-                        <p>Certification de développeur le 30 août 2ui023</p>
-                        <div className="row">
-                            <div className="col-4">photo</div>
-                            <div className="col-4">Directeur exécutif de la Digisphere</div>
-                            <div className="col-4">photo</div>
-                        </div>
-                        <button>Generate</button>
-                    </div> */}
-
-
-
+                 
                     <div className="card-header  dark:bg-secondary-dark-bg text-white dark:text-gray-200">Metter vos informations au complet</div>
                     <div class="form-floating mb-3 shadow p-5">
 

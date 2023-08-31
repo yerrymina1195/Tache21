@@ -13,7 +13,6 @@ const CerticationTache = (props) => {
 
     const { user } = useStateContext();
     const [lienSaisi, setLienSaisi] = useState('');
-    const [certifie, setCertifie] = useState('');
     const sendcertifie = async () => {
         try {
             if (user) {
@@ -35,19 +34,6 @@ const CerticationTache = (props) => {
 
 
 
-    const NavButton = () => (
-        <button
-            type="button"
-            onClick={sendcertifie}
-            disabled={certifie}
-        >
-            {certifie ? (
-                <span className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2" />
-            ) : (
-                ""
-            )}
-        </button>
-    );
 
     return (
         <div className='container md:m-10 mt-24 dark:text-gray-400 p-5 md:p-10'>
@@ -128,14 +114,14 @@ const CerticationTache = (props) => {
                             >
                                 Envoyer
                             </button>
-                            <Link to={`/l/voircertificate`}>
+                            {/* <Link to={`/l/voircertificate`}>
                             <button
                                     type='button'
                                     className="btn-main w-100 p-2 fw-bold ms-2"
                                 >
                                     Voir la certification
                                 </button>
-                            </Link>
+                            </Link> */}
                              
                         </div>
                     </form>
