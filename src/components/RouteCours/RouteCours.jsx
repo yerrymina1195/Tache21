@@ -4,8 +4,6 @@ import CoursPro1 from "../../pages/programmation/CoursPro1";
 import CoursPro2 from "../../pages/programmation/CoursPro2";
 import CoursPro3 from "../../pages/programmation/CoursPro3";
 import CoursPro4 from "../../pages/programmation/CoursPro4";
-import CoursPro5 from "../../pages/programmation/CoursPro5";
-import CoursPro6 from "../../pages/programmation/CoursPro6";
 import CoursMarketing1 from "../../pages/marketing/CoursMarketing1";
 import CoursMarketing2 from "../../pages/marketing/CoursMarketing2";
 import CoursDesign1 from "../../pages/design/CoursDesign1";
@@ -21,8 +19,6 @@ const RouteCours = () => {
       <Route path="/nodejs" element={<CoursPro2 />} />
       <Route path="/angular" element={<CoursPro3 />} />
       <Route path="/JavaScript" element={<CoursPro4 />} />
-      <Route path="/reactjs" element={<CoursPro5 />} />
-      <Route path="/python" element={<CoursPro6 />} />
       {/* link marketing */}
       <Route path="/initiation" element={<CoursMarketing1 />} />
       <Route path="/etude de marche" element={<CoursMarketing2 />} />

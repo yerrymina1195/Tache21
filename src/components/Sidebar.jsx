@@ -13,16 +13,17 @@ import {
 import { db} from "../data/../Firebase/Firebase";
 const Sidebar = () => {
   console.log(links);
-  const { currentColor, activeMenu, setActiveMenu, screenSize,user , updatenotif, notif} = useStateContext();
+  const { currentColor, activeMenu, setActiveMenu, screenSize,user , updatenotif} = useStateContext();
 
   useEffect(() => {
     getNotification();
+    // eslint-disable-next-line
   }, []);
   
   const getNotification = () => {
     const refNotif = query(
       collection(db, "notifications"),
-      where("notifieA", "==", user?.coachSelf)
+      where("notifieA", "==", user.id)
     );
     let data = [];
     onSnapshot(refNotif, (item) => {

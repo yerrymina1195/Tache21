@@ -1,15 +1,15 @@
-import React, { useEffect, useState} from 'react'
+import React, { useEffect} from 'react'
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Notification, UserProfil } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
-import {
-  collection,
-  serverTimestamp, 
-  addDoc
-} from "firebase/firestore";
-import { db} from "../data/../Firebase/Firebase";
+// import {
+//   collection,
+//   serverTimestamp, 
+//   addDoc
+// } from "firebase/firestore";
+// import { db} from "../data/../Firebase/Firebase";
 
 
 const Navbar = () => {
@@ -36,25 +36,25 @@ const Navbar = () => {
 
 
 
-  const sendNotif = async () => {
-    try {
-      if (user) {
-        const notificationDocRef = collection(db, "notifications");
-        const data0 = {
-          idcours: "dev",
-          notifiepar: user?.id,
-          notifieA: user?.coachSelf,
-          date: serverTimestamp(),
-          vue: false
-        };
-        await addDoc(notificationDocRef, data0);
-        console.log("Notification ajoutée avec succès !");
-      }
-    } catch (error) {
-      console.error("Erreur lors de l'ajout de la notification :", error);
-    }
+  // const sendNotif = async () => {
+  //   try {
+  //     if (user) {
+  //       const notificationDocRef = collection(db, "notifications");
+  //       const data0 = {
+  //         idcours: "dev",
+  //         notifiepar: user?.id,
+  //         notifieA: user?.coachSelf,
+  //         date: serverTimestamp(),
+  //         vue: false
+  //       };
+  //       await addDoc(notificationDocRef, data0);
+  //       console.log("Notification ajoutée avec succès !");
+  //     }
+  //   } catch (error) {
+  //     console.error("Erreur lors de l'ajout de la notification :", error);
+  //   }
    
-  };
+  // };
 
 // useEffect(() => {
 

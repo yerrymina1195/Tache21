@@ -62,10 +62,10 @@ function VoirCertificat() {
                     </div>
 
 
-                    <div className="container bgCertificate p-4 mt-5" style={{ display: 'none' }}>
+                    <div className="container bgCertificate p-4 mt-5" >
                         <div id="pdf-content" className="bgCertification2" >
                             <div className="p-3">
-                                <div className="row text-center d-flex justify-content-center align-items-center flex-column ">
+                                <div className="row  text-center d-flex justify-content-center align-items-center flex-column ">
                                     <h1 className="digi p-3 text-white mb-5 titre">
                                         DIGISPHERE <br /> <span className="fs-5">E-LEARNING</span>
                                     </h1>

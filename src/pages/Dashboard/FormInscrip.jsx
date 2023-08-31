@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import '../Dashboard/FormInscrip.css';
 import LabelInput from '../parametres/LabelInput';
 import ButtonReutilisable from '../../components/ButtonReutilisable';
@@ -7,6 +7,10 @@ import {
     doc,
     serverTimestamp,
     setDoc,
+    collection,
+  query,
+  where,
+  onSnapshot,
    
 } from "firebase/firestore";
 import { auth, db } from "../../Firebase/Firebase";
@@ -16,8 +20,25 @@ import { FaEyeSlash } from "react-icons/fa";
 // import { useNavigate } from "react-router-dom";
 
 const FormInscrip = () => {
-    // const navigate = useNavigate()
     const [newPasswordShow, setNewPasswordShow] = useState(false);
+    const [nombreCoachs, setNombreCoachs] = useState([]);
+    const usersCollection = collection(db, 'users');
+    useEffect(() => {
+        const coachsQuery = query(usersCollection, where('statut', '==', 'coach'));
+        
+    
+        const unsubscribeCoachs = onSnapshot(coachsQuery, (snapshot) => {
+          const coachsData = snapshot.docs.map(doc => doc.data());
+          setNombreCoachs(coachsData);
+        });
+        return () => {
+    
+          unsubscribeCoachs();
+        };
+        // eslint-disable-next-line 
+      }, []);
+    // const navigate = useNavigate()
+    console.log(nombreCoachs);
     const [errors, setErrors] = useState({
         prenom: "",
         nom: "",
@@ -40,7 +61,7 @@ const FormInscrip = () => {
         domaine: null,
         nbrCoach:null
     })
-    console.log(errors);
+    console.log(data);
     // Gérer les erreuers 
     const validateEmail = (email) => {
 
@@ -102,24 +123,38 @@ const FormInscrip = () => {
         if (!data.statut === "admin" && data.domaine === null) {
             newErrors.domaine = 'Domaine obligatoire';
         }
+        if (data.statut === "coach") {
+            setData({...data, nbrCoach:null})
+        }
+        if (data.statut === "coach" && data.domaine === null) {
+            setData({...data, domaine:"" , nbrCoach:null})
+            newErrors.domaine = 'Domaine obligatoire';
+        }
         if (data.statut === "eleve" && data.domaine === null && data.domaine=== null ) {
+           
+            newErrors.domaine = 'domaine obligatoire';
+        }
+
+        if (data.statut === "eleve" && data.nbrCoach === null && data.nbrCoach=== null ) {
+           
             newErrors.nbrCoach = 'coach obligatoire';
         }
         if (data.domaine === "") {
             newErrors.domaine = 'Domaine obligatoire';
         }
         if (data.nbrCoach === "") {
-            newErrors.nbrCoach = 'Domaine obligatoire';
+            newErrors.nbrCoach = 'coach obligatoire';
         }
         
 
         setErrors(newErrors);
-
+        console.log({data});
 
 
         if (Object.values(newErrors).every((error) => error === '')) {
 
             console.log('Form data submitted:', data);
+            console.log({data});
             try {
                 const res = await createUserWithEmailAndPassword(
                     auth,
@@ -134,7 +169,7 @@ const FormInscrip = () => {
                     mdp: data.mdp,
                     address: data.address,
                     statut: data.statut,
-                    domaine: data?.statut ==="admin"? null:data?.statut ==="coach"?null:data.domaine,
+                    domaine: data.domaine,
                     id: res.user.uid,
                     timeStamp: serverTimestamp(),
                     coachSelf:data?.statut ==="admin"? null:data?.statut ==="coach"?null:data.nbrCoach
@@ -150,25 +185,13 @@ const FormInscrip = () => {
                     mdp: "",
                     address: "",
                     statut: "",
-                    domaine: "",
-                    nbrCoach:""
+                    domaine: null,
+                    nbrCoach:null
                 })
             } catch (err) {
                 console.log(err);
                 alert(err)
             }
-
-
-            // setData({
-            //     prenom: "",
-            //     nom: "",
-            //     email: "",
-            //     telephone: "",
-            //     mdp: "",
-            //     address: "",
-            //     statut: "",
-            //     domaine: "",
-            // })
         }
 
     }
@@ -278,14 +301,15 @@ const FormInscrip = () => {
                                     { statut ==='eleve' &&  (<div className="col-md-6">
                                             <label htmlFor="select">Assigner coach</label>
                                             <select className="form-select shadow-none" aria-label="Default select example"
-                                                name="nbrCoah"
+                                                name="nbrCoach"
                                                 onChange={handelchange}
                                                 value={nbrCoach}
                                             >
                                                 <option value="" >Choisir un coach</option>
-                                                <option value="Mohamed">Mohamed</option>
-                                                <option value="Mahmoud">Mahmoud</option>
-                                                <option value="Christ">Christ</option>
+                                                {nombreCoachs?.map((element,index)=>(
+                                                    <option key={index} value={`${element.id}`}>{`${element.prenom}${element.nom}`}</option>
+                                                    
+                                                ))}
                                             </select>
                                             <p className="text-danger">{errors.nbrCoach}</p>
                                         </div>)}
