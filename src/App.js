@@ -33,6 +33,7 @@ import Securite from "./pages/parametres/Securite";
 import { db } from "./Firebase/Firebase";
 import { collection, getDocs, onSnapshot, query } from "firebase/firestore";
 import VoirCertificat from "./components/CerticationTache/VoirCertificate";
+import GenererCertificat from "./components/CerticationTache/GenererCertificat";
 
 const App = () => {
   const { user } = useStateContext();
@@ -226,6 +227,7 @@ const App = () => {
           <Route path="/l/parametres" element={<Parametre />} />
           <Route path="/l/securite" element={<Securite />} />
           <Route path="/l/certification" element={<Certification />} />
+          <Route path="/l/GenererCertificat" element={<GenererCertificat />} />
         </Route>
         <Route path="/l/voircertificate" element={(<VoirCertificat />)} /> 
         <Route path="*" element={<NotFound />} />

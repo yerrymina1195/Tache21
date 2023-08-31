@@ -31,17 +31,11 @@ const Notification = () => {
     <img className="rounded-full h-10 w-10" src={item.notifieA} alt={item.message} />
     <div>
       <p className="font-semibold dark:text-gray-200">{item.notifiepar}</p>
-
-
       {item.idcours ? (
         <p className="text-gray-500 text-sm dark:text-gray-400">{item.idcours}</p>
       ) : (
         <p className="text-gray-500 text-sm dark:text-gray-400">{item.lien}</p>
       )}
-
-
-
-
     </div>
   </div>
 ))}
