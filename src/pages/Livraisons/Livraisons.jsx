@@ -75,7 +75,7 @@ const Livraisons = () => {
 
   useEffect(() => {
     const livraisonsCollectionRef = collection(db, 'livraisons');
-    const q = query(livraisonsCollectionRef,where("id_eleve","==",user.id));
+    const q = user?.statut === "eleve"?query(livraisonsCollectionRef,where("id_eleve","==",user.id)):query(livraisonsCollectionRef);
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const livraisonsData = querySnapshot.docs.map((doc) => ({
@@ -100,11 +100,11 @@ const Livraisons = () => {
           <div className='fixed top-[180px] z-[3000] right-10'>
             <div className='bouton-modal'>
               {/* <!-- Button trigger modal --> */}
-              <div className="bouton">
+            { user?.statut ==='eleve' && (<div className="bouton">
                 <button type="button" className="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   Envoyer mon travail
                 </button>
-              </div>
+              </div>)}
 
               {/* <!-- Modal --> */}
               <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

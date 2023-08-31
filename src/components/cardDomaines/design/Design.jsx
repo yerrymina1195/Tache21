@@ -193,6 +193,7 @@ const Design = (props) => {
             <div className="col-lg-4 col-md-6 col-sm-12 b">
                 <Sousdomaine
                   title={sousdomaine.title}
+                  imageUrl={sousdomaine.imageUrl}
                   onClick={() => {
                     handleClick("modifState");
                     editSousDomaines(sousdomaine.id, sousdomaine.title);
