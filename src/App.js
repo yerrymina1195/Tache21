@@ -5,12 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useStateContext } from "./contexts/ContextProvider";
 import {
-  Livraisons,
   Messagerie,
   Cours,
   Eleves,
   Design,
 } from "./pages";
+import Livraisons from "./pages/Livraisons/Livraisons";
 import TesteOne from './components/CarteSousCours/TesteOne'
 import Quiz from "./pages/SousCours/Quiz/Quiz";
 // import RouteCours from "./components/RouteCours/RouteCours";

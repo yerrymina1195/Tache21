@@ -13,6 +13,7 @@ const CerticationTache = (props) => {
 
     const { user } = useStateContext();
     const [lienSaisi, setLienSaisi] = useState('');
+    // eslint-disable-next-line
     const [certifie, setCertifie] = useState('');
     const sendcertifie = async () => {
         try {
@@ -35,19 +36,19 @@ const CerticationTache = (props) => {
 
 
 
-    const NavButton = () => (
-        <button
-            type="button"
-            onClick={sendcertifie}
-            disabled={certifie}
-        >
-            {certifie ? (
-                <span className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2" />
-            ) : (
-                ""
-            )}
-        </button>
-    );
+    // const NavButton = () => (
+    //     <button
+    //         type="button"
+    //         onClick={sendcertifie}
+    //         disabled={certifie}
+    //     >
+    //         {certifie ? (
+    //             <span className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2" />
+    //         ) : (
+    //             ""
+    //         )}
+    //     </button>
+    // );
 
     return (
         <div className='container md:m-10 mt-24 dark:text-gray-400 p-5 md:p-10'>

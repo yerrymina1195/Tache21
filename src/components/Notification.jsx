@@ -11,7 +11,7 @@ import { useStateContext } from '../contexts/ContextProvider';
 
 const Notification = () => {
 
-  const { currentColor, notif, certifie, item } = useStateContext();
+  const { currentColor, notif } = useStateContext();
 
 
 
@@ -26,7 +26,7 @@ const Notification = () => {
         <Button icon={<MdOutlineCancel />} color="rgb(153, 171, 180)" bgHoverColor="light-gray" size="2xl" borderRadius="50%" />
       </div>
       <div className="">
-      {notif ?.map((item, index) => (
+      {notif?.map((item, index) => (
   <div key={index} className="flex items-center leading-8 gap-5 border-b-1 border-color ">
     <img className="rounded-full h-10 w-10" src={item.notifieA} alt={item.message} />
     <div>

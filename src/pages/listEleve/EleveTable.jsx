@@ -11,9 +11,6 @@ import {
   onSnapshot
 } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
-import { Link, useParams } from 'react-router-dom';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
-import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { getDoc } from "firebase/firestore";
 import LabelInput from '../parametres/LabelInput';
@@ -137,7 +134,7 @@ const handleArchive = async (id) => {
   
 
 
-
+// eslint-disable-next-line
   const [errors, setErrors] = useState({
     prenom: "",
     nom: "",
@@ -148,85 +145,85 @@ const handleArchive = async (id) => {
     statut: "",
     domaine: ""
   });
-const [data, setData] = useState({
-    prenom: "",
-    nom: "",
-    email: "",
-    telephone: "",
-    mdp: "",
-    address: "",
-    statut: "",
-    domaine: ""
-})
-console.log(errors);
-const validateEmail = (email) => {
+// const [data, setData] = useState({
+//     prenom: "",
+//     nom: "",
+//     email: "",
+//     telephone: "",
+//     mdp: "",
+//     address: "",
+//     statut: "",
+//     domaine: ""
+// })
+// console.log(errors);
+// const validateEmail = (email) => {
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     return emailRegex.test(email);
+//   };
 
 
-const handelchange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value })
-}
+// const handelchange = (e) => {
+//     setData({ ...data, [e.target.name]: e.target.value })
+// }
 
-const onSubmit = async (e) => {
-    e.preventDefault();
+// const onSubmit = async (e) => {
+//     e.preventDefault();
 
-    let newErrors = {
-        prenom: "",
-    nom: "",
-    email: "",
-    telephone: "",
-    mdp: "",
-    address: "",
-    statut: "",
-    domaine: ""
-      };
+//     let newErrors = {
+//         prenom: "",
+//     nom: "",
+//     email: "",
+//     telephone: "",
+//     mdp: "",
+//     address: "",
+//     statut: "",
+//     domaine: ""
+//       };
   
-      if (data.email === '') {
-        newErrors.email = 'Email is required';
-      } else if (!validateEmail(data.email)) {
-        newErrors.email = 'Invalid email format';
-      }
+//       if (data.email === '') {
+//         newErrors.email = 'Email is required';
+//       } else if (!validateEmail(data.email)) {
+//         newErrors.email = 'Invalid email format';
+//       }
   
-      if (data.mdp === '') {
-        newErrors.mdp = 'Password is required';
+//       if (data.mdp === '') {
+//         newErrors.mdp = 'Password is required';
       
-      }
+//       }
   
-      if (data.telephone === '') {
-        newErrors.telephone = 'Téléphone number is required';
-      }
+//       if (data.telephone === '') {
+//         newErrors.telephone = 'Téléphone number is required';
+//       }
   
-      if (data.nom === '') {
-        newErrors.nom = 'Nom is required';
-      }
-      if (data.prenom === '') {
-        newErrors.prenom = 'Prénom is required';
-      }
-      if (data.address === '') {
-        newErrors.address = 'Address is required';
-      }
-      if (data.statut === '') {
-        newErrors.statut = 'Statut is required';
-      }
-      if (data.domaine === '') {
-        newErrors.domaine = 'Domaine is required';
-      }
+//       if (data.nom === '') {
+//         newErrors.nom = 'Nom is required';
+//       }
+//       if (data.prenom === '') {
+//         newErrors.prenom = 'Prénom is required';
+//       }
+//       if (data.address === '') {
+//         newErrors.address = 'Address is required';
+//       }
+//       if (data.statut === '') {
+//         newErrors.statut = 'Statut is required';
+//       }
+//       if (data.domaine === '') {
+//         newErrors.domaine = 'Domaine is required';
+//       }
   
-      setErrors(newErrors);
+//       setErrors(newErrors);
    
   
     
      
    
-}
+// }
 
 
 
-const [editModalOpen, setEditModalOpen] = useState(false);
-const [selectedEditUserId, setSelectedEditUserId] = useState(null);
+// const [editModalOpen, setEditModalOpen] = useState(false);
+// const [selectedEditUserId, setSelectedEditUserId] = useState(null);
 
 
 
@@ -378,7 +375,7 @@ const [selectedEditUserId, setSelectedEditUserId] = useState(null);
                   <div>
                     <p className='d-flex'>
                       <strong>Photo:</strong>
-                      <img src={img} alt="User Photo" className="img mx-auto" />
+                      <img src={img} alt="UserPhoto" className="img mx-auto" />
                     </p>
                     <hr />
                     <p className='d-flex'>
