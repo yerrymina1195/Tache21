@@ -32,6 +32,7 @@ import ResetPassWord from "./pages/pageConnexion/ResetPassWord";
 import Securite from "./pages/parametres/Securite";
 import { db } from "./Firebase/Firebase";
 import { collection, getDocs, onSnapshot, query } from "firebase/firestore";
+import VoirCertificat from "./components/CerticationTache/VoirCertificate";
 
 const App = () => {
   const { user } = useStateContext();
@@ -226,6 +227,7 @@ const App = () => {
           <Route path="/l/securite" element={<Securite />} />
           <Route path="/l/certification" element={<Certification />} />
         </Route>
+        <Route path="/l/voircertificate" element={(<VoirCertificat />)} /> 
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
