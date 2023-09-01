@@ -294,7 +294,7 @@ const FormInscrip = () => {
                                                 <option value="" >Choisir un domaine</option>
                                                 <option value="Programmation">Programmation</option>
                                                 <option value="Design">Design</option>
-                                                <option value="Marketing Digital">Marketing Digital</option>
+                                                <option value="Marketing Digital">Marketing</option>
                                             </select>
                                             <p className="text-danger">{errors.domaine}</p>
                                         </div>)}

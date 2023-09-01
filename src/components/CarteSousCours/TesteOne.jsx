@@ -136,10 +136,10 @@ const TesteOne = (props) => {
                 className="text-center"
                 data-bs-target="#staticBackdrop"
               >
-                <ButtonReutilisable
+              { user?.statut === "coach" && <ButtonReutilisable
                   text={"Ajouter un cours"}
                   onClick={() => handleClick("ajouState")}
-                />
+                />}
               </div>
               {/* button modal */}
               {/* Modal */}

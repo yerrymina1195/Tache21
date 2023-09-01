@@ -58,19 +58,19 @@ function GenererCertificat() {
 
     return (
         <div className='only:'>
-            <div className="">
+            <div className="container p-5">
                 <form >
-                    <div className="card-header  dark:bg-secondary-dark-bg text-white dark:text-gray-200">Metter vos informations au complet</div>
-                    <div class="form-floating mb-3 shadow p-5">
-                        <div className="row mb-3">
+                    <div className="card-header  dark:bg-secondary-dark-bg text-white dark:text-gray-200">Remplir les informations au complet</div>
+                    <div class="form-floating mb-3 bg-white p-5">
+                        <div className="row mb-3 mt-5 ">
                             <div className="col-md-6">
-                                <label htmlFor="select">Assigner Eleve</label>
-                                <select className="form-select shadow-none" aria-label="Default select example"
+                                <label htmlFor="select" className='mb-2'>Eléve certifié:</label>
+                                <select className="form-select shadow-none hIn" aria-label="Default select example"
                                     name="eleve"
                                     onChange={(e) => setEleve(e.target.value)}
                                     value={eleve}
                                 >
-                                    <option value="" >Choisir un Eleve</option>
+                                    <option value="" >Choisir l'éléve</option>
                                     {nombreEleve?.length > 0 ? nombreEleve?.map((element, index) => (
                                         <option key={index} value={`${element.id}`}>{`${element.prenom}${element.nom}`}</option>
 
@@ -78,14 +78,14 @@ function GenererCertificat() {
                                 </select>
                             </div>
                             <div className="col-md-6">
-                                <label for="floatingInput">la date:</label>
-                                <input className="form-control date" id="floatingInput" type="date" name="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+                                <label for="floatingInput" className='mb-2'>Date de certification:</label>
+                                <input className="form-control date hIn" id="floatingInput" type="date" name="date" value={date} onChange={(e) => setDate(e.target.value)} required />
                             </div>
                         </div>
 
 
-                        <div className='align-items-center justify-content-center d-flex'>
-                            <button className="main-btn w-25 p-2 fw-bold mt-5 cert text-white " onClick={SendCertificationEleve}>Envoyer</button></div>
+                        <div className='mt-5 align-items-center justify-content-center d-flex'>
+                            <button className="main-btn w-25 p-2 fw-bold mt-5 cert text-white rounded-3" onClick={SendCertificationEleve}>Envoyer</button></div>
                     </div>
 
 

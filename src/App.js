@@ -5,12 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useStateContext } from "./contexts/ContextProvider";
 import {
+  Livraisons,
   Messagerie,
   Cours,
   Eleves,
   Design,
 } from "./pages";
-import Livraisons from "./pages/Livraisons/Livraisons";
 import TesteOne from './components/CarteSousCours/TesteOne'
 import Quiz from "./pages/SousCours/Quiz/Quiz";
 // import RouteCours from "./components/RouteCours/RouteCours";
@@ -32,8 +32,6 @@ import ResetPassWord from "./pages/pageConnexion/ResetPassWord";
 import Securite from "./pages/parametres/Securite";
 import { db } from "./Firebase/Firebase";
 import { collection, getDocs, onSnapshot, query } from "firebase/firestore";
-import VoirCertificat from "./components/CerticationTache/VoirCertificate";
-import GenererCertificat from "./components/CerticationTache/GenererCertificat";
 
 const App = () => {
   const { user } = useStateContext();
@@ -227,9 +225,7 @@ const App = () => {
           <Route path="/l/parametres" element={<Parametre />} />
           <Route path="/l/securite" element={<Securite />} />
           <Route path="/l/certification" element={<Certification />} />
-          <Route path="/l/GenererCertificat" element={<GenererCertificat />} />
         </Route>
-        <Route path="/l/voircertificate" element={(<VoirCertificat />)} /> 
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

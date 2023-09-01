@@ -6,7 +6,9 @@ import {
     addDoc,
     where,
     onSnapshot,
-    query
+    query,
+    updateDoc,
+    doc
 } from "firebase/firestore";
 import html2pdf from 'html2pdf.js';
 import './Certification.css';
@@ -68,14 +70,22 @@ const CerticationTache = (props) => {
             if (user) {
                 const notificationDocRef = collection(db, "notifications");
                 const data = {
-                    certifieiepar: user.id,
-                    certifieieA: user.coachSelf,
-                    date: serverTimestamp(),
-                    vu: false,
-                    lien: lienSaisi
+                  notifiepar: user.id,
+                  notifieA: user.coachSelf,
+                  prenom:user?.prenom,
+                  nom:user?.nom,
+                  message:`certification`,
+                  date: serverTimestamp(),
+                  imageUrl:user.url,
+                  vu: false,
+                  lien: lienSaisi
                 };
-                await addDoc(notificationDocRef, data);
-                console.log("Certification ajoutée avec succès !");
+                const docRef=  await addDoc(notificationDocRef, data);
+                console.log("notification demarré avec succès !");
+                await updateDoc(doc(notificationDocRef, docRef.id), {
+                      id: docRef.id,
+                    })
+                    console.log("id avec succès !");
             }
         } catch (error) {
             console.error("Erreur lors de l'ajout de la certification :", error);

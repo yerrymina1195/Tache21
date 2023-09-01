@@ -20,7 +20,9 @@ width: 30%;
 .sign{
 width: 30%;
 }
-
+.hIn{
+    height: 50px !important;
+}
 @media (max-width: 768px) {
     .titre{
         font-size: 10px !important;

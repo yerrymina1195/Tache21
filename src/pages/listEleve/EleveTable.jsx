@@ -229,10 +229,10 @@ const handleArchive = async (id) => {
 
   return (
     <div>
-      <div className="container mt-4">
+      <div className="container p-5">
         <div className="row d-flex justify-content-center align-items-center">
           <div className="col-md-6">
-            <h3 className="listEleve">LISTE DES ELEVES</h3>
+            <h2 className="listEleve">Liste éléves</h2>
           </div>
           <div className="col-md-6 text-lg-end text-md-end text-sm-start">
             <input
@@ -244,7 +244,7 @@ const handleArchive = async (id) => {
             />
           </div>
         </div>
-        <div className="table-responsive overflow-hidden rounded-3 mt-5">
+        <div className="table-responsive overflow-hidden rounded-2 mt-5">
           <table class="table table-light table-hover">
             <thead>
               <tr className="mb-3">

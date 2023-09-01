@@ -23,7 +23,8 @@ const Sidebar = () => {
   const getNotification = () => {
     const refNotif = query(
       collection(db, "notifications"),
-      where("notifieA", "==", user.id)
+      where("notifieA", "==", user.id),
+      where("vu", "==", false) 
     );
     let data = [];
     onSnapshot(refNotif, (item) => {
@@ -34,6 +35,7 @@ const Sidebar = () => {
           
           updatenotif(data)
         });
+        console.log(data);
       });
     
   };
