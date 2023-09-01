@@ -62,7 +62,7 @@ const DashbordEleve = () => {
         <h1 className='text-center'>Livraisons</h1>
           <div className='row g-5 my-3'>
             {livraison.map((cour) => (
-              <div className="col-md-4" key={cour.id}>
+              <div className="col-md-6" key={cour.id}>
                 <div className="card shadow h-100 d-flex flex-column p-3">
                   <div className="card-header bg-transparent text-white my-2">
                     <h4>{cour.tache}</h4>
@@ -70,7 +70,7 @@ const DashbordEleve = () => {
                   <div className="card-body">
                     <p className="fw-bold">{cour.cours}</p>
                     <p>{cour.description}</p> <hr />
-                    <img src={cour.imageUrl} alt="Capture d'écran" className='img-fluid mx-auto w-100 image-cartes' />    <hr /> 
+                    <img src={cour.imageUrl} alt="Capture d'écran" className='img-fluid  w-100 image-cartes' />    <hr /> 
                     <Link to={cour.lien} target="_blank" className='fs-6 text-decoration-none text-dark'> {cour.lien}</Link>
                   </div>
                 </div>
