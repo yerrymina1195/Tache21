@@ -244,7 +244,7 @@ const handleArchive = async (id) => {
             />
           </div>
         </div>
-        <div className="table-responsive overflow-hidden rounded-2 mt-5">
+        <div className="table-responsive overflow-scroll rounded-2 mt-5">
           <table class="table table-light table-hover">
             <thead>
               <tr className="mb-3">
@@ -253,7 +253,6 @@ const handleArchive = async (id) => {
                 <th scope="col">Nom</th>
                 <th scope="col">Telephone</th>
                 <th scope="col">Email</th>
-                <th scope="col">Coach</th>
                 <th scope="col">Domaine</th>
                 <th scope="col">Actions</th>
               </tr>
@@ -262,13 +261,13 @@ const handleArchive = async (id) => {
               {visibleData.map((datas, index) => (
                 <tr key={index}>
                   <td>
-                    {<img src={img} className="img" alt="User Avatar" />}
+                    {<img src={datas?.url ? datas.url
+            : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"} className="img" alt="User Avatar" />}
                   </td>
                   <td>{datas.prenom}</td>
                   <td>{datas.nom}</td>
                   <td>{datas.telephone}</td>
                   <td>{datas.email}</td>
-                  <td>{datas.coachSelf}</td>
                   <td>{datas.domaine}</td>
                   <td>
 
