@@ -162,7 +162,8 @@ function EleveTable() {
               {visibleData.map((datas, index) => (
                 <tr key={index}>
                   <td>
-                    {<img src={img} className="img" alt="User Avatar" />}
+                    {<img src={datas?.url ? datas.url
+            : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"} className="img" alt="User Avatar" />}
                   </td>
                   <td>{datas.prenom}</td>
                   <td>{datas.nom}</td>
