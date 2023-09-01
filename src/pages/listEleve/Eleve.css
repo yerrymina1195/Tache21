@@ -1,0 +1,33 @@
+/* partie eleve */
+tr {
+  vertical-align: middle;
+}
+
+.img{
+    width: 55px;
+    border-radius: 50%;
+    color: rgba(244, 0, 0, 0.613);
+  }
+
+
+/* MAMA */
+
+ .pagination .active{
+  background-color: #D7572B !important;
+  border-color: #D7572B !important;
+  color: white !important;
+}
+.pagination .prev ,
+.pagination .next {
+  background-color: transparent ;
+  border-color: #D7572B ;
+}
+.dropdown-toggle{
+  border-color: #D7572B !important;
+}
+.dropdown-toggle:hover{
+  background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+  color: white !important;
+}
+
+/* MAMA */

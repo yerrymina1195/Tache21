@@ -1,11 +1,342 @@
-import React from 'react'
-
+import React, { useEffect, useState } from "react";
+import Domaine from "../components/cardDomaines/Domaine";
+import ButtonReutilisable from "../components/ButtonReutilisable";
+import { db } from "../Firebase/Firebase";
+import {
+  addDoc,
+  collection,
+  updateDoc,
+  doc,
+  getDocs,
+  query,
+  onSnapshot,
+  deleteDoc,
+  serverTimestamp,
+} from "firebase/firestore";
+import { useStateContext } from "../contexts/ContextProvider";
 const Cours = () => {
-  return (
-    <div className='text-red-600  bg-white m-2 md:m-10 mt-24 p-2 md:p-10 rounded-3xl'  >
-      <h1 className='text-red-600 p-11 bg-slate-600'>Cours</h1>
-    </div>
-  )
-}
+  const [newDomaine, setNewDomaine] = useState("");
+  const [newSousDomaine, setNewSousDomaine] = useState("");
+  const [error, setError] = useState("");
+  const [id, setId] = useState("");
+  const [newTitle, setNewTitle] = useState("");
+  const [newDescrip, setNewDescrip] = useState("");
+  const [newDure, setNewDure] = useState("");
+  const [newVideoUrl, setNewVideoUrl] = useState("");
+  const [domains, setDomains] = useState([]);
+  const domaineCollectionRef = collection(db, "domains");
+  const sousDomaineCollectionRef = collection(db, "sousDomains");
+  const coursCollectionRef = collection(db, "cours");
 
-export default Cours
+  const { isClicked, handleClick, setIsClicked, initialState,user } =
+    useStateContext();
+  // function pour que le formulaire n'accepte pas des chiffres
+  const handleInputChange = (event) => {
+    const newValue = event.target.value.replace(/[0-9]/g, ""); // Filtrer les chiffres
+    setNewDomaine(newValue);
+  };
+  //function create domaine
+  const createDomaine = async () => {
+    if (newDomaine === "") {
+      setError("Veuillez vérifier le champs et remplir de bon valeur");
+      return;
+    }
+    try {
+      const docRef = await addDoc(domaineCollectionRef, {
+        title: newDomaine,
+        timeStamp: serverTimestamp(),
+      });
+
+      await updateDoc(doc(domaineCollectionRef, docRef.id), { id: docRef.id });
+    } catch (error) {
+      console.error("Erreur lors de la creation :", error);
+    }
+  };
+  // function create sous-domaines
+  const createSousDomaines = async () => {
+    if (newSousDomaine === "") {
+      setError("Veuillez vérifier le champs et remplir de bon valeur");
+      return;
+    }
+    try {
+      const docRef = await addDoc(sousDomaineCollectionRef, {
+        title: newSousDomaine,
+        domains: newDomaine,
+        timeStamp: serverTimestamp(),
+      });
+      await updateDoc(doc(sousDomaineCollectionRef, docRef.id), {
+        id: docRef.id,
+      });
+    } catch (error) {
+      console.error("Erreur lors de la creation :", error);
+    }
+  };
+
+  const createCours = async () => {
+    if (
+      newTitle === "" ||
+      newDure === "" ||
+      newDescrip === "" ||
+      newVideoUrl === ""
+    ) {
+      setError("Veuillez vérifier le champs et remplir de bon valeur");
+      return;
+    }
+    try {
+      addDoc(coursCollectionRef, {
+        title: newTitle,
+        dure: newDure,
+        descrip: newDescrip,
+        videoUrl: newVideoUrl,
+        timeStamp: serverTimestamp(),
+        domains: newDomaine,
+        sousDomains: newSousDomaine,
+      });
+    } catch (error) {
+      console.error("Erreur lors de la creation :", error);
+    }
+  };
+  // Modifier domaine
+  const editDomaine = async (id, title) => {
+    setNewDomaine(title);
+    setId(id);
+  };
+  const updateDomaine = async () => {
+    if (newDomaine === "") {
+      setError("Veuillez vérifier le champs et remplir de bon valeur");
+      return;
+    }
+    try {
+      const updateDomain = doc(db, "domains", id);
+      updateDoc(updateDomain, {
+        title: newDomaine,
+        timeStamp: serverTimestamp(),
+      });
+      setNewDomaine("");
+      setError("");
+      alert("domaine " + newDomaine + " mise à jour");
+    } catch (error) {
+      console.error("Erreur lors de la creation :", error);
+    }
+  };
+  // delete doc
+  const deleteDomaine = async (id) => {
+    const deleteDomain = doc(db, "domains", id);
+    await deleteDoc(deleteDomain);
+    alert("domaine supprimer");
+  };
+
+  function addAll() {
+    createDomaine();
+    createSousDomaines();
+    createCours();
+    setNewSousDomaine("");
+    setError("");
+    setNewTitle("");
+    setNewDure("");
+    setNewDescrip("");
+    setNewVideoUrl("");
+    setNewDomaine("");
+    alert("domaine " + newDomaine + " ajouter");
+    alert("sous domaine " + newSousDomaine + " ajouter");
+    alert("Cours " + newTitle + " ajouter");
+  }
+
+  useEffect(() => {
+    const q = query(collection(db, "domains"));
+    onSnapshot(q, (querySnapshot) => {
+      const domains = [];
+      querySnapshot.forEach((doc) => {
+        domains.push(doc.data().title);
+      });
+      const getDomaines = async () => {
+        const data = await getDocs(domaineCollectionRef);
+        setDomains(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      };
+      getDomaines();
+    });// eslint-disable-next-line
+  }, []);
+
+  return (
+    <div>
+      <div className="container dark:bg-secondary-dark-bg text-[#000] dark:text-gray-200 p-5 domaine">
+        <div className="container p-5 pb-0">
+          <div className="row mt-5 d-flex justify-content-center align-items-center">
+            <div className="col-md-6 col-sm-12">
+              <h1 className="">Domaines</h1>
+            </div>
+            <div className="col-md-6 col-sm-12">
+              {/* button modal */}
+              <div
+                data-bs-toggle="modal"
+                className="text-lg-end text-sm-start text-md-end"
+                data-bs-target="#staticBackdrop"
+              >
+               {user?.statut === "coach" && <ButtonReutilisable
+                  text={"Ajouter un domaine"}
+                  onClick={() => handleClick("ajouState")}
+                />}
+              </div>
+              {/* button modal */}
+              {/* Modal */}
+              <div
+                className="modal fade"
+                id="staticBackdrop"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabIndex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div className="modal-dialog modal-dialog-centered">
+                  <div className="modal-content">
+                    <div className="modal-header card-header text-white">
+                      <h1 className="modal-title  fs-5" id="staticBackdropLabel">
+                        Ajout de domaine
+                      </h1>
+                      <button
+                        type="button"
+                        className="btn-close shadow-none"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                        onClick={() => setIsClicked(initialState)}
+                      ></button>
+                    </div>
+                    <div className="modal-body">
+                      <div class="form-floating mb-3">
+                        {isClicked.ajouState && (
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="floatingInput"
+                            placeholder="Nom du domaine"
+                            value={newDomaine}
+                            onChange={handleInputChange}
+                          />
+                        )}
+                        {isClicked.modifState && (
+                          <input
+                            type="text"
+                            class="form-control"
+                            id=""
+                            placeholder="Modifier le domaine"
+                            value={newDomaine}
+                            onChange={(e) => setNewDomaine(e.target.value)}
+                          />
+                        )}
+                        <label for="floatingInput">Nom du domaine</label>
+                      </div>
+
+                      {isClicked.ajouState && (
+                        <div class="form-floating mb-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="floatingInput"
+                            value={newSousDomaine}
+                            onChange={(e) => setNewSousDomaine(e.target.value)}
+                            placeholder="Nom du sous-domaine"
+                          />
+                          <label for="floatingInput">Nom du sous-domaine</label>
+                        </div>
+                      )}
+                      {isClicked.ajouState && (
+                        <div class="form-floating mb-3">
+                          <input
+                            type="url"
+                            class="form-control"
+                            id="floatingInput"
+                            onChange={(e) => setNewVideoUrl(e.target.value)}
+                            placeholder="lien dun cours"
+                          />
+                          <label for="floatingInput">lien du cours</label>
+                          {error && <p style={{ color: "red" }}>{error}</p>}
+                        </div>
+                      )}
+                      {isClicked.ajouState && (
+                        <div class="form-floating mb-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="floatingInput"
+                            placeholder="Titre du cours"
+                            onChange={(e) => setNewTitle(e.target.value)}
+                          />
+                          <label for="floatingInput">Titre du cours</label>
+                        </div>
+                      )}
+                      {isClicked.ajouState && (
+                        <div class="form-floating mb-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="floatingInput"
+                            placeholder="dure du cours"
+                            onChange={(e) => setNewDure(e.target.value)}
+                          />
+                          <label for="floatingInput">dure du cours</label>
+                        </div>
+                      )}
+                      {isClicked.ajouState && (
+                        <div class="form-floating mb-3">
+                          <textarea
+                            name=""
+                            id="floatingInput"
+                            class="form-control"
+                            cols="30"
+                            placeholder="description du cours"
+                            rows="30"
+                            onChange={(e) => setNewDescrip(e.target.value)}
+                          ></textarea>
+                          <label for="floatingInput">
+                            description du cours
+                          </label>
+                        </div>
+                      )}
+                    </div>
+                    <div className="modal-footer">
+                      {isClicked.ajouState && (
+                        <ButtonReutilisable
+                          text={"Ajouter"}
+                          onClick={() => {
+                            addAll();
+                          }}
+                          id="ajouter"
+                        />
+                      )}
+                      {isClicked.modifState && (
+                        <ButtonReutilisable
+                          text={"Modifier"}
+                          onClick={updateDomaine}
+                          id="modifier"
+                        />
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container p-5  dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
+          <div className="row row-gap-5">
+            {domains.map((domain) => (
+              <div className="col-lg-4 col-md-6 col-sm-12 ">
+                <Domaine
+                  title={domain.title}
+                  onClick={() => {
+                    handleClick("modifState");
+                    editDomaine(domain.id, domain.title);
+                  }}
+                  click={() => deleteDomaine(domain.id)}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Cours;
