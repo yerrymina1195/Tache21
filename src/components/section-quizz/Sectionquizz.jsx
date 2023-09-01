@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ModalQuiz from "../../pages/ListProfs/modaQuiz/ModalQuiz";
-
-const Sectionquizz = () => {
+import { useStateContext } from "../../contexts/ContextProvider";
+const Sectionquizz = (props) => {
+  const{updatesdonneSous}=useStateContext()
+  const alertons =()=>{
+    updatesdonneSous(props.title)
+  }
   return (
     <div>
       <hr />
@@ -22,7 +26,7 @@ const Sectionquizz = () => {
               <Link to={`/l/quiz`}>
                 <button
                   type="button"
-                  class="btn btn-outline-light mx-2 text-uppercase fw-bold btn-lg"
+                  class="btn btn-outline-light mx-2 text-uppercase fw-bold btn-lg " onClick={alertons}
                 >
                   faire un quizz
                 </button>

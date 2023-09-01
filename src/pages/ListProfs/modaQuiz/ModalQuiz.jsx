@@ -6,19 +6,42 @@ import {
     collection,
     addDoc,
     serverTimestamp,
+    query,
+    where,
+    onSnapshot
 } from "firebase/firestore";
-import { auth, db } from "../../../Firebase/Firebase"; // Assurez-vous d'importer votre instance de Firestore correctement
+import { useStateContext } from "../../../contexts/ContextProvider";
+import { db } from "../../../Firebase/Firebase"; // Assurez-vous d'importer votre instance de Firestore correctement
+
 
 const ModalQuiz = (props) => {
+    const {user}=useStateContext()
     const [question, setQuestion] = useState('');
     const [reponses, setReponses] = useState(['', '', '', '']);
     const [reponseCorrecteIndex, setReponseCorrecteIndex] = useState(null);
     const [domaine, setDomaine] = useState(''); // Champ de sélection du domaine
     const [sousDomaine, setSousDomaine] = useState(''); // Champ de sélection du sous-domaine
+    const [sousDomainesss,  setSousDomainesss] = useState(''); // Champ de sélection du sous-domaine
     const [quizzes, setQuizzes] = useState(() => {
         const storedQuizzes = JSON.parse(localStorage.getItem('QUIZZ')) || [];
         return storedQuizzes.length > 0 ? storedQuizzes : [];
     });
+    useEffect(() => {
+        const sousCollectionRef = collection(db, 'sousDomains');
+        const search= user?.domaine?.toLowerCase()
+        const q =  query(sousCollectionRef, where("domains", "==", search)) ;
+    
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+          const  sousData = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data()
+          }));
+          setSousDomainesss(sousData);
+        });
+    
+        return () => unsubscribe();
+        // eslint-disable-next-line
+      }, []);
 
     const MAX_QUIZZES = 10;
     const ERROR_MESSAGES = {
@@ -109,9 +132,8 @@ const ModalQuiz = (props) => {
                                             onChange={(e) => setDomaine(e.target.value)}
                                         >
                                             <option value="">Sélectionnez un domaine</option>
-                                            <option value="programmation">Programmation</option>
-                                            <option value="design">Design</option>
-                                            <option value="marketing">Marketing</option>
+                                            <option value={user?.domaine}>{user?.domaine}</option>
+                                            
                                         </select>
                                     </div>
                                     <div className="col-md-6">
@@ -123,32 +145,10 @@ const ModalQuiz = (props) => {
                                             onChange={(e) => setSousDomaine(e.target.value)}
                                         >
                                             <option value="">Sélectionnez un sous-domaine</option>
-                                            {domaine === "programmation" && (
-                                                <>
-                                                    <option value="HTMLCSS">HTML/CSS</option>
-                                                    <option value="javascript">JavaScript</option>
-                                                    <option value="react">React</option>
-                                                    <option value="angular">Angular</option>
-                                                    <option value="INITIATION">initiation</option>
-                                                    <option value="ETUDE DE MARCHE">Etude de marché</option>
-                                                    <option value="CANVA">Canva</option>
-                                                    <option value="FIGMA">figma</option>
-                                                    <option value="PYTHON">python</option>
-                                                    <option value="NODEJS">nodejs</option>
-                                                </>
-                                            )}
-                                            {domaine === "design" && (
-                                                <>
-                                                    <option value="design1">Design 1</option>
-                                                    <option value="design2">Design 2</option>
-                                                </>
-                                            )}
-                                            {domaine === "marketing" && (
-                                                <>
-                                                    <option value="marketing1">Marketing 1</option>
-                                                    <option value="marketing2">Marketing 2</option>
-                                                </>
-                                            )}
+                                            {sousDomainesss?.length > 0 ? sousDomainesss.map((element, index) => (
+                                <option key={index} value={`${element.title}`}>{`${element.title}`}</option>
+
+                              )) : ""}
                                         </select>
                                     </div>
                                 </div>

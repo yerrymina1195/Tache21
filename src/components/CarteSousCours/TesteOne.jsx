@@ -307,7 +307,7 @@ const TesteOne = (props) => {
             ))}
           </div>
         </div>
-        <Sectionquizz />
+        <Sectionquizz title={props.title} />
       </div>
     </div>
   );

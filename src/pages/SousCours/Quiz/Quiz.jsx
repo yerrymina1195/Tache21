@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import ButtonReutilisable from '../../../components/ButtonReutilisable';
 import { collection, getDocs, query, limit } from "firebase/firestore";
 import { db } from "../../../Firebase/Firebase";
+import { useStateContext } from "../../../contexts/ContextProvider";
 
 export default function Quiz() {
+  const{donneSous}=useStateContext()
     const [quizList, setQuizList] = useState([]);
     const [userAnswers, setUserAnswers] = useState([]);
     const [score, setScore] = useState(0);
     const [quizCompleted, setQuizCompleted] = useState(false);
     const [timeLeft, setTimeLeft] = useState(300); // Durée par défaut en secondes
     const [quizStarted, setQuizStarted] = useState(false);
-
+console.log(donneSous);
     useEffect(() => {
         const fetchQuizzes = async () => {
             const quizCollection = collection(db, "quizzes");
@@ -19,7 +21,7 @@ export default function Quiz() {
             const quizzesData = [];
             quizSnapshot.forEach((doc) => {
                 const quizData = doc.data();
-                if (quizData.sousDomaine === "HTMLCSS") {
+                if (quizData.sousDomaine === donneSous) {
                     quizzesData.push(quizData);
                 }
             });
@@ -27,6 +29,7 @@ export default function Quiz() {
         };
 
         fetchQuizzes();
+          // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
@@ -66,7 +69,8 @@ export default function Quiz() {
         return () => {
             clearInterval(timer);
         };
-    }, [quizStarted, quizCompleted]);
+          // eslint-disable-next-line
+    }, []);
 
     const handleAnswer = (questionIndex, answerIndex) => {
         if (!quizStarted || quizCompleted) {
