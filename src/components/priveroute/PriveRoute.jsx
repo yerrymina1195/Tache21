@@ -11,11 +11,11 @@ const PriveRoute = ({children, authorizedRoles = [], requiredDomain}) => {
       return <>{children}</>
     }
     
-      if (authorizedRoles.length > 0 && !authorizedRoles.includes(user.statut)) {
+      if (authorizedRoles.length > 0 && !authorizedRoles.includes(user.statut.toLowerCase())) {
         return <Navigate to="/unauthorized" />;
       }
     
-      if (requiredDomain && requiredDomain !== user.domaine) {
+      if (requiredDomain && requiredDomain !== user.domaine.toLowerCase()) {
         return <Navigate to="/unauthorized" />;
       }
     

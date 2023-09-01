@@ -10,6 +10,7 @@ import {
   query,
   onSnapshot,
   deleteDoc,
+  where,
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
@@ -105,14 +106,14 @@ const TesteOne = (props) => {
   };
 
   useEffect(() => {
-    const q = query(collection(db, "cours"));
+    const q = query(coursCollectionRef,where('sousDomains', '==' , props.title));
     onSnapshot(q, (querySnapshot) => {
       const cours = [];
       querySnapshot.forEach((doc) => {
         cours.push(doc.data().title);
       });
       const getCours = async () => {
-        const data = await getDocs(coursCollectionRef);
+        const data = await getDocs(q);
         setCours(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       };
       getCours();
@@ -154,7 +155,7 @@ const TesteOne = (props) => {
                 <div className="modal-dialog modal-dialog-centered">
                   <div className="modal-content">
                     <div className="modal-header">
-                      <h1 className="modal-title fs-5" id="staticBackdropLabel">
+                      <h1 className="modal-title text-capitalize fs-5" id="staticBackdropLabel">
                         Ajout de cours
                       </h1>
                       <button
@@ -285,6 +286,7 @@ const TesteOne = (props) => {
             {cours.map((cour) => (
               <div className="col-12">
                 <Teste
+                  courseId={cour.id}
                   title={cour.title}
                   dure={cour.dure}
                   descrip={cour.descrip}
@@ -311,3 +313,8 @@ const TesteOne = (props) => {
 };
 
 export default TesteOne;
+
+
+
+
+

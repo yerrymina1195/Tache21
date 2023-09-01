@@ -154,8 +154,8 @@ const Cours = () => {
         setDomains(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       };
       getDomaines();
-    });
-  }, [domaineCollectionRef]);
+    });// eslint-disable-next-line
+  }, []);
 
   return (
     <div>

@@ -112,7 +112,16 @@ const App = () => {
             <Route
               key={domain.id}
               path={`/l/cours/${domain.title}`}
-              element={<Design title={domain.title} />}
+              // element={<Design title={domain.title} />}
+              element={
+                <PriveRoute
+                  authorizedRoles={["admin", "coach", "eleve"]}
+                  requiredDomain={domain.title.toLowerCase()}
+                >
+                  {" "}
+                  <Design title={domain.title} />{" "}
+                </PriveRoute>
+              }
             />
           ))}
           {sousDomains.map((sousDomain) => (
@@ -213,7 +222,6 @@ const App = () => {
               </PriveRoute>
             }
           />
-          {/* <Route path="/l/professeurs" element={< Prof/>} /> */}
           <Route path="/l/parametres" element={<Parametre />} />
           <Route path="/l/securite" element={<Securite />} />
           <Route path="/l/certification" element={<Certification />} />

@@ -9,13 +9,16 @@ import {
   query,
   updateDoc,
   getDocs,
+  where,
   serverTimestamp,
 } from "firebase/firestore";
 import Sousdomaine from "../sousdomaine/Sousdomaine";
 import ButtonReutilisable from "../../ButtonReutilisable";
 import { useStateContext } from "../../../contexts/ContextProvider";
 
+
 const Design = (props) => {
+
   const [newSousDomaine, setNewSousDomaine] = useState("");
   const [error, setError] = useState("");
   const [id, setId] = useState("");
@@ -78,14 +81,14 @@ const Design = (props) => {
   };
 
   useEffect(() => {
-    const q = query(collection(db, "sousDomains"));
+    const q = query(sousDomaineCollectionRef,where('domains', '==' , props.title));
     onSnapshot(q, (querySnapshot) => {
       const sousDomains = [];
       querySnapshot.forEach((doc) => {
         sousDomains.push(doc.data().title);
       });
       const getSousDomaines = async () => {
-        const data = await getDocs(sousDomaineCollectionRef);
+        const data = await getDocs(q);
         setSousDomaines(
           data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
         );
