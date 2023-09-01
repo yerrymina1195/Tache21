@@ -5,7 +5,7 @@ import "bootstrap/dist/js/bootstrap.min.js"
 
 const Prof = () => {
   return (
-    <div className="  dark:bg-main-dark-bg    dark:text-gray-200 mt-3 eleve">
+    <div className=" container p-5 dark:bg-main-dark-bg    dark:text-gray-200  eleve">
       <div className="container">
         <div className="flex-row">
          

@@ -1,12 +1,44 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link, NavLink } from "react-router-dom";
 import { MdOutlineCancel } from 'react-icons/md';
 import { links } from "../data/need";
 import logo from "../data/logo.png";
 import { useStateContext } from '../contexts/ContextProvider';
+import {
+  collection,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
+import { db} from "../data/../Firebase/Firebase";
 const Sidebar = () => {
   console.log(links);
-  const { currentColor, activeMenu, setActiveMenu, screenSize,user } = useStateContext();
+  const { currentColor, activeMenu, setActiveMenu, screenSize,user , updatenotif} = useStateContext();
+
+  useEffect(() => {
+    getNotification();
+    // eslint-disable-next-line
+  }, []);
+  
+  const getNotification = () => {
+    const refNotif = query(
+      collection(db, "notifications"),
+      where("notifieA", "==", user.id),
+      where("vu", "==", false) 
+    );
+    let data = [];
+    onSnapshot(refNotif, (item) => {
+      item.forEach((i) => {
+       
+       
+          data.push(i.data());
+          
+          updatenotif(data)
+        });
+        console.log(data);
+      });
+    
+  };
   const handleCloseSideBar = () => {
     if (activeMenu !== undefined && screenSize <= 900) {
       setActiveMenu(false);

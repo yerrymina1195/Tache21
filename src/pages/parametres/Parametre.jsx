@@ -28,7 +28,7 @@ const Parametre = () => {
   }, []);
 
   const [file, setFile] = useState("");
-  // console.log(typeof (file));
+ 
   //eslint-disable-next-line
   const [per, setPerc] = useState(null);
 
@@ -111,7 +111,7 @@ const Parametre = () => {
 
   return (
     <div>
-      <div className="container-xl px-4 mt-4 ">
+      <div className="container p-5 ">
         <div className="row">
           <div className="col-xl-12 ">
             <div className="card bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">

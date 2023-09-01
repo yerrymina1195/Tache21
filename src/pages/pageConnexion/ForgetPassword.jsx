@@ -15,14 +15,10 @@ const ForgetPassword = () => {
     e.preventDefault();
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        // Succès : l'e-mail de réinitialisation du mot de passe a été envoyé
         alert("l'e-mail de réinitialisation du mot de passe a été envoyé");
         navigate("/")
       })
       .catch((error) => {
-        // const errorCode = error.code;
-        // const errorMessage = error.message;
-        // Erreur : échec de l'envoi de l'e-mail de réinitialisation du mot de passe
         console.error("Erreur lors de l'envoi de l'e-mail de réinitialisation du mot de passe", error);
         if (error.code ==="auth/missing-email") {
           alert('il faut saisir un email valide')
@@ -32,8 +28,6 @@ const ForgetPassword = () => {
         }
         
       });
-      // alert("l'e-mail de réinitialisation du mot de passe a été envoyé");
-      // Réinitialisez les champs du formulaire
       setEmail("")
   };
 

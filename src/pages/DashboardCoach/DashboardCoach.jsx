@@ -2,17 +2,15 @@ import React, { useState, useEffect } from 'react'
 import './DashboardCoach.css';
 import { UserData } from '../../data/need';
 import { BarChart } from "../../components";
-import img from "../../data/Capture0.png";
-import makhan from "../../data/makhan.png";
 import { PiStudentLight } from "react-icons/pi"
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import { LiaBookSolid } from "react-icons/lia";
+import { db } from "../../Firebase/Firebase";
 import {
   collection,
   query,
   where,
   onSnapshot,
-  getFirestore,
   getDocs
 } from "firebase/firestore";
 
@@ -43,13 +41,14 @@ const DashbordCoach = () => {
   const [numberOfCourses, setNumberOfCourses] = useState(0);
   const [livraison, setLivraison] = useState(0);
 
+  const usersCollection = collection(db, 'users');
   useEffect(() => {
-    const db = getFirestore();
+    
 
     // Référence à la collection "users"
-    const usersCollection = collection(db, 'users');
     // Filtrer les élèves en fonction du statut "eleve"
     const elevesQuery = query(usersCollection, where('statut', '==', 'eleve'));
+    const livraisonRef = collection(db, 'livraisons');
 
     const unsubscribeEleves = onSnapshot(elevesQuery, (snapshot) => {
       const elevesData = snapshot.docs.map(doc => doc.data());
@@ -65,7 +64,6 @@ const DashbordCoach = () => {
     });
 
     // Récupérer la référence de la collection "cours"
-    const livraisonRef = collection(db, 'livraisons');
     // Récupérer les documents de la collection et compter le nombre
     getDocs(livraisonRef).then(querySnapshot => {
       const count = querySnapshot.size;
@@ -76,6 +74,7 @@ const DashbordCoach = () => {
     return () => {
       unsubscribeEleves();
     };
+     //eslint-disable-next-line
   }, []);
   console.log(nombreEleves);
   console.log(numberOfCourses);
@@ -83,11 +82,11 @@ const DashbordCoach = () => {
 
 
   return (
-    <div className=' mt-4 ' >
+    <div className=' container p-5 ' >
       <div className="flex flex-wrap justify-center ">
         <div className="flex m-3 w-full flex-wrap justify-center gap-5 items-center">
           {/* CARTE 3 */}
-          <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+          <div className="bg-[#ffff] shadow justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
             <button
               type="button"
               style={{ color: "rgb(255, 244, 229)", backgroundColor: "rgb(254, 201, 15)" }}
@@ -101,7 +100,7 @@ const DashbordCoach = () => {
             <p className=" mb-0 text-sm text-gray-400">Elèves</p>
           </div>
           {/* Carte 4 */}
-          <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+          <div className="bg-[#ffff] shadow justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
             <button
               type="button"
               style={{ color: "rgb(228, 106, 118)", backgroundColor: "rgb(255, 244, 229)" }}
@@ -115,7 +114,7 @@ const DashbordCoach = () => {
             <p className=" mb-0 text-sm text-gray-400  ">Cours</p>
           </div>
           {/* Carte 5 */}
-          <div className="bg-[#ffff] justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+          <div className="bg-[#ffff] shadow justify-between items-center flex h-44 dark:text-gray-200 flex-1 basis-[100px] dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
             <button
               type="button"
               style={{ color: "rgb(0, 194, 146)", backgroundColor: "rgb(235, 250, 242)" }}
@@ -129,28 +128,10 @@ const DashbordCoach = () => {
             <p className=" mb-0 text-sm text-gray-400  ">Livraisons</p>
           </div>
         </div>
-        <div className='py-20 flex justify-center w-full flex-1 basis-[100px]'>
-          <BarChart chartData={userData} />
-        </div>
-        {/* Livraison des eleves */}
-        <div className="col-12">
-          <div className='d-flex flex-row align-items-center'>
-            <div className='image'>
-              <img src={makhan} alt="makhan" className='img-fluid rounded-circle w-25 h-25' />
-            </div>
-            <div className='mt-3 ms-3'>
-              <h4 className='fs-5'>Makhan Diakho</h4>
-            </div>
-            <div className='mt-4 ms-5'>
-              <p className='text-secondary fs-6 mt-1'>12 août 2023, 12h30</p>
-            </div>
-          </div>
-
-          <div className='mt-3 ms-3'>
-            <h4 className='text-couleur2'>Tâche n° 1</h4>
-          </div>
-          <div className='mt-3 ms-3 img'>
-            <img src={img} alt="img" className='img-fluid mx-auto' />
+        <div className=' container mt-5 w-full flex-1 basis-[100px]'>
+          <h1 className='mt-5 text-center'>TITRE</h1>
+          <div className="row">
+          <BarChart chartData={userData} className='w-100' />
           </div>
         </div>
       </div>
