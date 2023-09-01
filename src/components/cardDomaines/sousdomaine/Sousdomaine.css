@@ -1,0 +1,15 @@
+.card{
+    box-shadow: 5px 3px 15px rgba(128, 128, 128, 0.267);
+}
+.btn-domaine button {
+    /* background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%); */
+    color: #D7572B;
+    font-size: 20px;
+    border: 2px solid #C23028;
+}
+
+.btn-domaine button:hover {
+    background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+    border: none;
+    color: white;
+}

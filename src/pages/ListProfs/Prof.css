@@ -1,0 +1,51 @@
+/* partie Prof */
+.img{
+    width: 55px;
+    border-radius: 50%;
+  }
+  .prev{
+    background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+  text-align: middle !important;
+  }/* partie Prof */
+.img{
+  width: 55px;
+  border-radius: 50%;
+}
+.preve{
+  background-color: transparent !important;
+  color: black;
+  border: 1px solid #C23028;
+  font-size: 33px;
+}
+.preve:hover{
+  background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+  color: white;
+}
+
+.input{
+  width: 30% !important;
+}
+@media screen and (max-width: 576px) {
+.ajoutProf{
+  justify-content: right;
+  display: flex;
+}
+.input{
+  margin-top: 15px;
+}
+}
+
+
+  .input{
+    width: 30%;
+  }
+ @media screen and (max-width: 576px) {
+  .ajoutProf{
+    justify-content: right;
+    display: flex;
+  }
+  .input{
+    margin-top: 15px;
+  }
+ }
+  
