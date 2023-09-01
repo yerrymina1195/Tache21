@@ -82,3 +82,8 @@ input:valid {
   color: #6e6d6d !important; */
   font-size: 13px !important;
 }
+@media  screen and (max-width:380px) {
+  .LOGIQ{
+    width: 310px !important;
+  }
+}
