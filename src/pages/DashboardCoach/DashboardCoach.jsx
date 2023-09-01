@@ -5,12 +5,12 @@ import { BarChart } from "../../components";
 import { PiStudentLight } from "react-icons/pi"
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import { LiaBookSolid } from "react-icons/lia";
+import { db } from "../../Firebase/Firebase";
 import {
   collection,
   query,
   where,
   onSnapshot,
-  getFirestore,
   getDocs
 } from "firebase/firestore";
 
@@ -41,13 +41,14 @@ const DashbordCoach = () => {
   const [numberOfCourses, setNumberOfCourses] = useState(0);
   const [livraison, setLivraison] = useState(0);
 
+  const usersCollection = collection(db, 'users');
   useEffect(() => {
-    const db = getFirestore();
+    
 
     // Référence à la collection "users"
-    const usersCollection = collection(db, 'users');
     // Filtrer les élèves en fonction du statut "eleve"
     const elevesQuery = query(usersCollection, where('statut', '==', 'eleve'));
+    const livraisonRef = collection(db, 'livraisons');
 
     const unsubscribeEleves = onSnapshot(elevesQuery, (snapshot) => {
       const elevesData = snapshot.docs.map(doc => doc.data());
@@ -63,7 +64,6 @@ const DashbordCoach = () => {
     });
 
     // Récupérer la référence de la collection "cours"
-    const livraisonRef = collection(db, 'livraisons');
     // Récupérer les documents de la collection et compter le nombre
     getDocs(livraisonRef).then(querySnapshot => {
       const count = querySnapshot.size;
@@ -74,6 +74,7 @@ const DashbordCoach = () => {
     return () => {
       unsubscribeEleves();
     };
+     //eslint-disable-next-line
   }, []);
   console.log(nombreEleves);
   console.log(numberOfCourses);

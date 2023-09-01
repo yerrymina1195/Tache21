@@ -30,6 +30,8 @@ import NonAutorise from "./pages/NonAutorise";
 import NotFound from "./pages/NotFound";
 import ResetPassWord from "./pages/pageConnexion/ResetPassWord";
 import Securite from "./pages/parametres/Securite";
+import VoirCertificat from "./components/CerticationTache/VoirCertificate";
+import GenererCertificat from "./components/CerticationTache/GenererCertificat";
 import { db } from "./Firebase/Firebase";
 import { collection, getDocs, onSnapshot, query } from "firebase/firestore";
 
@@ -225,7 +227,9 @@ const App = () => {
           <Route path="/l/parametres" element={<Parametre />} />
           <Route path="/l/securite" element={<Securite />} />
           <Route path="/l/certification" element={<Certification />} />
+          <Route path="/l/GenererCertificat" element={<GenererCertificat />} />
         </Route>
+        <Route path="/l/voircertificate" element={(<VoirCertificat />)} /> 
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

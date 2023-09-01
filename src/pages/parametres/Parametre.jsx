@@ -28,7 +28,7 @@ const Parametre = () => {
   }, []);
 
   const [file, setFile] = useState("");
-  // console.log(typeof (file));
+ 
   //eslint-disable-next-line
   const [per, setPerc] = useState(null);
 

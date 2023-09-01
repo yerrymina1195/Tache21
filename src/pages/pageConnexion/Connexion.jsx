@@ -1,7 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-
 import "./Ma.css";
 import InputLabel from "../pageConnexion/InputLabel";
 import MaButton from "../pageConnexion/MaButton";
@@ -43,11 +42,6 @@ const Connexion = () => {
       alert(`Bienvenue ${userData.prenom}`)
       updateUser(userData)
       navitage('l/dashboard', { replace: true })
-      
-      // onSnapshot(doc(db,'users',userID), (doc) => {
-      //   const user= doc.data()
-        
-      // });
    
     } catch (error) {
       
