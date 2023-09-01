@@ -123,13 +123,13 @@ const TesteOne = (props) => {
 
   return (
     <div>
-      <div className="bg-[#ffff] dark:bg-secondary-dark-bg text-[#000] dark:text-gray-200 p-5 rounded-3xl domaine">
+      <div className="dark:bg-secondary-dark-bg text-[#000] dark:text-gray-200 p-5 container domaine">
         <div className="container ">
-          <div className="row d-flex align-items-center mt-5">
-            <div className="col-md-6 col-sm-12">
+          <div className="row d-flex align-items-center justify-content-center ">
+            <div className="col-md-6">
               <h1 className="capitalize">{props.title}</h1>
             </div>
-            <div className="col-md-6 col-sm-12 text-center">
+            <div className="col-md-6 text-lg-end text-sm-start text-md-end">
               {/* button modal */}
               <div
                 data-bs-toggle="modal"
@@ -154,13 +154,13 @@ const TesteOne = (props) => {
               >
                 <div className="modal-dialog modal-dialog-centered">
                   <div className="modal-content">
-                    <div className="modal-header">
+                    <div className="modal-header card-header text-white">
                       <h1 className="modal-title fs-5" id="staticBackdropLabel">
                         Ajout de cours
                       </h1>
                       <button
                         type="button"
-                        className="btn-close"
+                        className="btn-close shadow-none"
                         data-bs-dismiss="modal"
                         aria-label="Close"
                         onClick={() => setIsClicked(initialState)}
@@ -281,8 +281,8 @@ const TesteOne = (props) => {
             </div>
           </div>
         </div>
-        <div className="container my-5 bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
-          <div className="row row-gap-3">
+        <div className="container p-5 dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
+          <div className="row row-gap-5">
             {cours.map((cour) => (
               <div className="col-12">
                 <Teste

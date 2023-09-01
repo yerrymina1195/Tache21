@@ -318,7 +318,7 @@ const Cours = () => {
             </div>
           </div>
         </div>
-        <div className="container p-5 pt-0 my-5 bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
+        <div className="container p-5 pt-0 my-5  dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
           <div className="row row-gap-5">
             {domains.map((domain) => (
               <div className="col-lg-4 col-md-6 col-sm-12 ">

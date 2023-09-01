@@ -58,8 +58,8 @@ function GenererCertificat() {
 
     return (
         <div className='only:'>
-            <div className="container p-5">
-                <form >
+            <div className="container p-5 ">
+                <form className='shadow'>
                     <div className="card-header  dark:bg-secondary-dark-bg text-white dark:text-gray-200">Remplir les informations au complet</div>
                     <div class="form-floating mb-3 bg-white p-5">
                         <div className="row mb-3 mt-5 ">

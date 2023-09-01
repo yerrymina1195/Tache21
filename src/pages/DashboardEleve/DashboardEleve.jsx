@@ -62,7 +62,7 @@ const DashbordEleve = () => {
         <h1 className='text-center'>Livraisons</h1>
           <div className='row g-5 my-3'>
             {livraison.map((cour) => (
-              <div className="col-md-4" key={cour.id}>
+              <div className="col-md-6" key={cour.id}>
                 <div className="card shadow h-100 d-flex flex-column p-3">
                   <div className="card-header bg-transparent text-white my-2">
                     <h4>{cour.tache}</h4>

@@ -96,7 +96,7 @@ const Programmation = () => {
   }, [sousDomaineCollectionRef]);
 
   return (
-    <div className="bg-[#ffff]  dark:bg-secondary-dark-bg   dark:text-[#ffff] dark:text-gray-200 m-5 p-5 rounded-3xl domaine">
+    <div className=" dark:bg-secondary-dark-bg   dark:text-[#ffff] dark:text-gray-200 m-5 p-5 container domaine">
       <div className="container my-5">
         <div className="row d-flex align-items-center mt-5">
           <div className="col-md-6 col-sm-12">

@@ -109,12 +109,12 @@ const Design = (props) => {
   }, []);
   return (
     <div>
-      <div className="container my-5">
-        <div className="row d-flex align-items-center mt-5">
-          <div className="col-md-6 col-sm-12">
+      <div className="container p-5">
+        <div className="row d-flex align-items-center justify-content-center mt-5">
+          <div className="col-md-6 ">
             <h1 className="capitalizer">{props.title}</h1>
           </div>
-          <div className="col-md-6 col-sm-12 text-center">
+          <div className="col-md-6  text-lg-end text-sm-start text-md-end">
             {/* button modal */}
 
             <div data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -205,7 +205,7 @@ const Design = (props) => {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="container p-5 pt-0">
         <div className="row row-gap-5">
           {sousDomains?.map((sousdomaine) => (
             <div className="col-lg-4 col-md-6 col-sm-12 b">

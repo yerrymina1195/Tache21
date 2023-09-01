@@ -232,7 +232,7 @@ const handleArchive = async (id) => {
       <div className="container p-5">
         <div className="row d-flex justify-content-center align-items-center">
           <div className="col-md-6">
-            <h2 className="listEleve">Liste éléves</h2>
+            <h3 className="listEleve">Liste des éléves</h3>
           </div>
           <div className="col-md-6 text-lg-end text-md-end text-sm-start">
             <input

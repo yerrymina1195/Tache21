@@ -44,7 +44,7 @@ const Teste = (props) => {
           idcoach: user.coachSelf,
           demarrer: true,
           finishedtime: serverTimestamp(),
-          title:props.title,
+          title: props.title,
         },
       });
 
@@ -74,7 +74,7 @@ const Teste = (props) => {
   };
 
   return (
-    <div className="card mx-md-5 border-0 drop-shadow-lg dark:bg-main-dark-bg dark:text-gray-200 dark:drop-shadow-[0_8px_0px_rgba(255,255,255,0.25)]">
+    <div className="container p-5 card mx-md-5 border-0 drop-shadow-lg dark:bg-main-dark-bg dark:text-gray-200 dark:drop-shadow-[0_8px_0px_rgba(255,255,255,0.25)]">
       <a href={props.videoUrl} target="_blank" rel="noopener noreferrer">
         <ReactPlayer url={props.videoUrl} controls width="100%" height="400px" />
       </a>
@@ -92,7 +92,7 @@ const Teste = (props) => {
 
         <p className="card-text">{props.descrip}</p>
         <div className="row btn-domaine">
-         { !user.statut === "eleve" ? <div className="col-md-6">
+          {!user.statut === "eleve" ? <div className="col-md-6">
             <button
               type="button"
               className="btn"
@@ -105,24 +105,24 @@ const Teste = (props) => {
             <button type="button" className="btn mx-3" onClick={props.click}>
               <BsArchiveFill />
             </button>
-          </div> :""}
- { user.statut === "eleve"    ?    <div className="col-md-6 text-lg-end text-md-end text-sm-start colonne">
-  {!started && (
-    <button type="button" className="btn" onClick={handleStart}>
-      DEMARRER
-    </button>
-  )}
-  {started && !finished && (
-    <button type="button" className="btn" onClick={handleFinish}>
-      TERMINER
-    </button>
-  )}
-  {finished && (
-    <button type="button" className="btn btn-disabled" disabled>
-      COURS TERMINÉ
-    </button>
-  )}
-</div>:""}
+          </div> : ""}
+          {user.statut === "eleve" ? <div className="col-md-6 text-lg-end text-md-end text-sm-start colonne">
+            {!started && (
+              <button type="button" className="btn" onClick={handleStart}>
+                DEMARRER
+              </button>
+            )}
+            {started && !finished && (
+              <button type="button" className="btn" onClick={handleFinish}>
+                TERMINER
+              </button>
+            )}
+            {finished && (
+              <button type="button" className="btn btn-disabled" disabled>
+                COURS TERMINÉ
+              </button>
+            )}
+          </div> : ""}
 
         </div>
       </div>
