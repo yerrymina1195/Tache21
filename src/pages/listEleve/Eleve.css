@@ -8,50 +8,19 @@ tr {
     border-radius: 50%;
     color: rgba(244, 0, 0, 0.613);
   }
- 
-
-
-
-
-@media screen and (max-width: 576px) {
-  .ajoutEleve {
-    justify-content: right;
-    display: flex;
-  }
-
-  .input {
-    margin-top: 15px;
-  }
-}
 
 
 /* MAMA */
-/* .prev1 {
-  border: 1px solid #C23028;
-}
-.prev1:hover {
-  border: 1px solid #C23028;
-}
-.prev {
-  background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
-  color: white;
-} */
-/* .prev:hover {
-  border: 1px solid #C23028;
-  background-color: transparent !important;
-  transform: scale(0.9);
-} */
 
-
-.pagination .active a {
+ .pagination .active{
   background-color: #D7572B !important;
   border-color: #D7572B !important;
   color: white !important;
 }
-.pagination .prev a,
-.pagination .next a {
-  background-color: transparent !important;
-  border-color: #D7572B !important;
+.pagination .prev ,
+.pagination .next {
+  background-color: transparent ;
+  border-color: #D7572B ;
 }
 .dropdown-toggle{
   border-color: #D7572B !important;

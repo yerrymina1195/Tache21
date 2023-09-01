@@ -9,7 +9,7 @@ import {
   where,
 } from "firebase/firestore";
 import { useStateContext } from "../../contexts/ContextProvider";
-import { auth, db, storage } from "../../Firebase/Firebase";
+import { db, storage } from "../../Firebase/Firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Link } from "react-router-dom";
 import ButtonReutilisable from '../../components/ButtonReutilisable';
@@ -21,8 +21,10 @@ const Livraisons = () => {
   const [description, setDescription] = useState('');
   const [lien, setLien] = useState('');
   const [livraison, setLivraison] = useState([]);
+  // eslint-disable-next-line
   const [selectedTache, setSelectedTache] = useState("");
   const [file, setFile] = useState(null);
+  // eslint-disable-next-line
   const [errors, setErrors] = useState({});
 
 
@@ -70,8 +72,7 @@ const Livraisons = () => {
 
   useEffect(() => {
     const livraisonsCollectionRef = collection(db, 'livraisons');
-    // livraison fait par id
-    const q = query(livraisonsCollectionRef,where("id_eleve","==",user.id));
+    const q = user?.statut === "eleve"?query(livraisonsCollectionRef,where("id_eleve","==",user.id)):query(livraisonsCollectionRef);
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const livraisonsData = querySnapshot.docs.map((doc) => ({
@@ -82,6 +83,7 @@ const Livraisons = () => {
     });
 
     return () => unsubscribe();
+    // eslint-disable-next-line
   }, []);
   // Supposez que vous ayez l'ID de la tâche que l'élève a livrée
 
@@ -95,11 +97,11 @@ const Livraisons = () => {
           <div className='fixed top-[180px] z-[3000] right-10'>
             <div className='bouton-modal'>
               {/* <!-- Button trigger modal --> */}
-              <div className="bouton">
+            { user?.statut ==='eleve' && (<div className="bouton">
                 <button type="button" className="btn text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   Envoyer mon travail
                 </button>
-              </div>
+              </div>)}
 
               {/* <!-- Modal --> */}
               <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

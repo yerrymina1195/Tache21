@@ -10,9 +10,13 @@ import {
   query,
   onSnapshot,
   deleteDoc,
+  where,
+  serverTimestamp,
+  updateDoc,
 } from "firebase/firestore";
+import { useStateContext } from "../../contexts/ContextProvider";
 
-const TesteOne = () => {
+const TesteOne = (props) => {
   // crud
   const [newTitle, setNewTitle] = useState("");
   const [newDescrip, setNewDescrip] = useState("");
@@ -21,7 +25,11 @@ const TesteOne = () => {
   const [cours, setCours] = useState([]);
   const coursCollectionRef = collection(db, "cours");
   const [error, setError] = useState("");
+  const [id, setId] = useState("");
+  const { isClicked, handleClick, setIsClicked, initialState, user } =
+    useStateContext();
 
+  // create cours
   const createCours = async () => {
     if (
       newTitle === "" ||
@@ -35,9 +43,12 @@ const TesteOne = () => {
     try {
       addDoc(coursCollectionRef, {
         title: newTitle,
-        dure: Number(newDure),
+        dure: newDure,
         descrip: newDescrip,
         videoUrl: newVideoUrl,
+        timeStamp: serverTimestamp(),
+        sousDomains: props.title,
+        createBy: user?.prenom,
       });
       setNewTitle("");
       setNewDure("");
@@ -48,9 +59,46 @@ const TesteOne = () => {
     } catch (error) {
       console.error("Erreur lors de la creation :", error);
     }
-
   };
-
+  // modifier cours
+  const editCours = async (id, title, videoUrl, dure, descrip) => {
+    setNewVideoUrl(videoUrl);
+    setNewDure(dure);
+    setNewTitle(title);
+    setNewDescrip(descrip);
+    setId(id);
+  };
+  const updateCours = async () => {
+    if (
+      newTitle === "" ||
+      newDure === "" ||
+      newDescrip === "" ||
+      newVideoUrl === ""
+    ) {
+      setError("Veuillez vérifier le champs et remplir de bon valeur");
+      return;
+    }
+    try {
+      const updateCour = doc(db, "cours", id);
+      updateDoc(updateCour, {
+        title: newTitle,
+        dure: newDure,
+        descrip: newDescrip,
+        videoUrl: newVideoUrl,
+        timeStamp: serverTimestamp(),
+        sousDomains: props.title,
+      });
+      setNewTitle("");
+      setNewDure("");
+      setNewDescrip("");
+      setNewVideoUrl("");
+      setError("");
+      alert("domaine " + newTitle + " mise à jour");
+    } catch (error) {
+      console.error("Erreur lors de la creation :", error);
+    }
+  };
+  // delete cours
   const deleteCours = async (id) => {
     const deleteCours = doc(db, "cours", id);
     await deleteDoc(deleteCours);
@@ -58,19 +106,20 @@ const TesteOne = () => {
   };
 
   useEffect(() => {
-    const q = query(collection(db, "cours"));
+    const q = query(coursCollectionRef,where('sousDomains', '==' , props.title));
     onSnapshot(q, (querySnapshot) => {
       const cours = [];
       querySnapshot.forEach((doc) => {
         cours.push(doc.data().title);
       });
       const getCours = async () => {
-        const data = await getDocs(coursCollectionRef);
+        const data = await getDocs(q);
         setCours(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       };
       getCours();
     });
-  }, [coursCollectionRef]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>
@@ -78,7 +127,7 @@ const TesteOne = () => {
         <div className="container ">
           <div className="row d-flex align-items-center mt-5">
             <div className="col-md-6 col-sm-12">
-              <h1 className="capitalize">html & css</h1>
+              <h1 className="capitalize">{props.title}</h1>
             </div>
             <div className="col-md-6 col-sm-12 text-center">
               {/* button modal */}
@@ -87,7 +136,10 @@ const TesteOne = () => {
                 className="text-center"
                 data-bs-target="#staticBackdrop"
               >
-                <ButtonReutilisable text={"Ajouter un cours"} />
+                <ButtonReutilisable
+                  text={"Ajouter un cours"}
+                  onClick={() => handleClick("ajouState")}
+                />
               </div>
               {/* button modal */}
               {/* Modal */}
@@ -111,61 +163,117 @@ const TesteOne = () => {
                         className="btn-close"
                         data-bs-dismiss="modal"
                         aria-label="Close"
+                        onClick={() => setIsClicked(initialState)}
                       ></button>
                     </div>
                     <div className="modal-body">
                       <div class="form-floating mb-3">
-                        <input
-                          type="url"
-                          placeholder="Url de la video"
-                          class="form-control"
-                          id="floatingInput"
-                          onChange={(e) => setNewVideoUrl(e.target.value)}
-                        />
+                        {isClicked.ajouState && (
+                          <input
+                            type="url"
+                            placeholder="Url de la video"
+                            class="form-control"
+                            id="floatingInput"
+                            onChange={(e) => setNewVideoUrl(e.target.value)}
+                          />
+                        )}
+                        {isClicked.modifState && (
+                          <input
+                            type="url"
+                            placeholder="Url de la video"
+                            class="form-control"
+                            id="floatingInput"
+                            onChange={(e) => setNewVideoUrl(e.target.value)}
+                          />
+                        )}
                         <label for="floatingInput">Url de la video</label>
                       </div>
                       {error && <p style={{ color: "red" }}>{error}</p>}
                       <div class="form-floating mb-3">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="floatingInput"
-                          placeholder="Titre du cours"
-                          onChange={(e) => setNewTitle(e.target.value)}
-                        />
+                        {isClicked.ajouState && (
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="floatingInput"
+                            placeholder="Titre du cours"
+                            onChange={(e) => setNewTitle(e.target.value)}
+                          />
+                        )}
+                        {isClicked.modifState && (
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="floatingInput"
+                            placeholder="Titre du cours"
+                            onChange={(e) => setNewTitle(e.target.value)}
+                          />
+                        )}
                         <label for="floatingInput">Titre du cours</label>
                       </div>
                       {error && <p style={{ color: "red" }}>{error}</p>}
                       <div class="form-floating mb-3">
-                        <input
-                          type="number"
-                          class="form-control"
-                          id="floatingInput"
-                          placeholder="Durée du cours"
-                          onChange={(e) => setNewDure(e.target.value)}
-                        />
+                        {isClicked.ajouState && (
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="floatingInput"
+                            placeholder="Durée du cours"
+                            onChange={(e) => setNewDure(e.target.value)}
+                          />
+                        )}
+                        {isClicked.modifState && (
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="floatingInput"
+                            placeholder="Durée du cours"
+                            onChange={(e) => setNewDure(e.target.value)}
+                          />
+                        )}
                         <label for="floatingInput">Durée du cours</label>
                       </div>
                       {error && <p style={{ color: "red" }}>{error}</p>}
                       <div class="form-floating mb-3">
-                        <textarea
-                          class="form-control"
-                          id="floatingInput"
-                          placeholder="description du cours"
-                          cols="30"
-                          rows="100"
-                          onChange={(e) => setNewDescrip(e.target.value)}
-                        ></textarea>
+                        {isClicked.ajouState && (
+                          <textarea
+                            class="form-control"
+                            id="floatingInput"
+                            placeholder="description du cours"
+                            cols="30"
+                            rows="100"
+                            onChange={(e) => setNewDescrip(e.target.value)}
+                          ></textarea>
+                        )}
+                        {isClicked.modifState && (
+                          <textarea
+                            class="form-control"
+                            id="floatingInput"
+                            placeholder="description du cours"
+                            cols="30"
+                            rows="100"
+                            onChange={(e) => setNewDescrip(e.target.value)}
+                          ></textarea>
+                        )}
+
                         <label for="floatingInput">description du cours</label>
                       </div>
                       {error && <p style={{ color: "red" }}>{error}</p>}
                     </div>
                     <div className="modal-footer">
-                      <ButtonReutilisable
-                        text={"Ajouter"}
-                        onClick={createCours}
-                        id="ajouter"
-                      />
+                      {isClicked.ajouState && (
+                        <ButtonReutilisable
+                          text={"Ajouter"}
+                          onClick={createCours}
+                          id="ajouter"
+                        />
+                      )}
+                      {isClicked.modifState && (
+                        <ButtonReutilisable
+                          text={"Modifier"}
+                          onClick={updateCours}
+                          id="modifier"
+                        />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -178,10 +286,21 @@ const TesteOne = () => {
             {cours.map((cour) => (
               <div className="col-12">
                 <Teste
+                  courseId={cour.id}
                   title={cour.title}
                   dure={cour.dure}
                   descrip={cour.descrip}
                   videoUrl={cour.videoUrl}
+                  onClick={() => {
+                    handleClick("modifState");
+                    editCours(
+                      cour.id,
+                      cour.title,
+                      cour.dure,
+                      cour.descrip,
+                      cour.videoUrl
+                    );
+                  }}
                   click={() => deleteCours(cour.id)}
                 />
               </div>
@@ -194,3 +313,8 @@ const TesteOne = () => {
 };
 
 export default TesteOne;
+
+
+
+
+
