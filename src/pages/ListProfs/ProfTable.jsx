@@ -145,7 +145,7 @@ function EleveTable() {
             />
           </div>
         </div>
-        <div className="table-responsive overflow-hidden rounded-3 mt-5">
+        <div className="table-responsive overflow-scroll rounded-3 mt-5">
           <table className="table table-light table-hover">
             <thead>
               <tr className="mb-3">
