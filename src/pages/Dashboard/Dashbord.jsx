@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import './Dashboard.css';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import FormInscrip from './FormInscrip';
 import { GiTeacher } from "react-icons/gi";
@@ -163,6 +164,7 @@ const Dashbord = () => {
       <div className="container p-0 mt-5">
         <FormInscrip />
       </div>
+      
     </div>
      
   );

@@ -124,8 +124,8 @@ const TesteOne = (props) => {
   return (
     <div>
       <div className="dark:bg-secondary-dark-bg text-[#000] dark:text-gray-200 p-5 container domaine">
-        <div className="container ">
-          <div className="row d-flex align-items-center justify-content-center ">
+        <div className="container">
+          <div className="row p-5 d-flex align-items-center justify-content-center ">
             <div className="col-md-6">
               <h1 className="capitalize">{props.title}</h1>
             </div>
@@ -281,7 +281,7 @@ const TesteOne = (props) => {
             </div>
           </div>
         </div>
-        <div className="container p-5 dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
+        <div className="container dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
           <div className="row row-gap-5">
             {cours.map((cour) => (
               <div className="col-12">
