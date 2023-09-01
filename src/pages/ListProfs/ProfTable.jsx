@@ -133,7 +133,7 @@ function EleveTable() {
       <div className="container mt-4">
         <div className="row d-flex justify-content-center align-items-center">
           <div className="col-md-6">
-            <h3 className="listEleve">LISTE DES Professeurs</h3>
+            <h3 className="listEleve">Liste des Professeurs</h3>
           </div>
           <div className="col-md-6 text-lg-end text-md-end text-sm-start">
             <input

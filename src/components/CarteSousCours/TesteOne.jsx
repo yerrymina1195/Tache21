@@ -10,12 +10,13 @@ import {
   query,
   onSnapshot,
   deleteDoc,
+  where,
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
 import { useStateContext } from "../../contexts/ContextProvider";
-
-const TesteOne = () => {
+import Sectionquizz from "../section-quizz/Sectionquizz";
+const TesteOne = (props) => {
   // crud
   const [newTitle, setNewTitle] = useState("");
   const [newDescrip, setNewDescrip] = useState("");
@@ -25,8 +26,6 @@ const TesteOne = () => {
   const coursCollectionRef = collection(db, "cours");
   const [error, setError] = useState("");
   const [id, setId] = useState("");
-  const [newDomaine] = useState("");
-  const [newSousDomaine] = useState("");
   const { isClicked, handleClick, setIsClicked, initialState, user } =
     useStateContext();
 
@@ -48,8 +47,7 @@ const TesteOne = () => {
         descrip: newDescrip,
         videoUrl: newVideoUrl,
         timeStamp: serverTimestamp(),
-        domains: newDomaine,
-        sousDomains: newSousDomaine,
+        sousDomains: props.title,
         createBy: user?.prenom,
       });
       setNewTitle("");
@@ -88,8 +86,7 @@ const TesteOne = () => {
         descrip: newDescrip,
         videoUrl: newVideoUrl,
         timeStamp: serverTimestamp(),
-        domains: newDomaine,
-        sousDomains: newSousDomaine,
+        sousDomains: props.title,
       });
       setNewTitle("");
       setNewDure("");
@@ -109,19 +106,20 @@ const TesteOne = () => {
   };
 
   useEffect(() => {
-    const q = query(collection(db, "cours"));
+    const q = query(coursCollectionRef,where('sousDomains', '==' , props.title));
     onSnapshot(q, (querySnapshot) => {
       const cours = [];
       querySnapshot.forEach((doc) => {
         cours.push(doc.data().title);
       });
       const getCours = async () => {
-        const data = await getDocs(coursCollectionRef);
+        const data = await getDocs(q);
         setCours(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       };
       getCours();
     });
-  }, [coursCollectionRef]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>
@@ -129,7 +127,7 @@ const TesteOne = () => {
         <div className="container ">
           <div className="row d-flex align-items-center mt-5">
             <div className="col-md-6 col-sm-12">
-              <h1 className="capitalize">html & css</h1>
+              <h1 className="capitalize">{props.title}</h1>
             </div>
             <div className="col-md-6 col-sm-12 text-center">
               {/* button modal */}
@@ -138,10 +136,10 @@ const TesteOne = () => {
                 className="text-center"
                 data-bs-target="#staticBackdrop"
               >
-                <ButtonReutilisable
+              { user?.statut === "coach" && <ButtonReutilisable
                   text={"Ajouter un cours"}
                   onClick={() => handleClick("ajouState")}
-                />
+                />}
               </div>
               {/* button modal */}
               {/* Modal */}
@@ -309,6 +307,7 @@ const TesteOne = () => {
             ))}
           </div>
         </div>
+        <Sectionquizz />
       </div>
     </div>
   );

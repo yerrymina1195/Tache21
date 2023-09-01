@@ -10,9 +10,8 @@ import {
   Cours,
   Eleves,
   Design,
-  // Programmation,
-  // Marketing,
 } from "./pages";
+import TesteOne from './components/CarteSousCours/TesteOne'
 import Quiz from "./pages/SousCours/Quiz/Quiz";
 // import RouteCours from "./components/RouteCours/RouteCours";
 import Certification from "./pages/Certification/Certification";
@@ -39,6 +38,8 @@ const App = () => {
   const userType = user;
   const [domains, setDomains] = useState([]);
   const domaineCollectionRef = collection(db, "domains");
+  const [sousDomains, setSousDomaines] = useState([]);
+  const sousDomaineCollectionRef = collection(db, "sousDomains");
 
   useEffect(() => {
     const q = query(collection(db, "domains"));
@@ -53,7 +54,22 @@ const App = () => {
       };
       getDomaines();
     });
-  }, [domaineCollectionRef]);
+    const p = query(collection(db, "sousDomains"));
+    onSnapshot(p, (querySnapshot) => {
+      const sousDomains = [];
+      querySnapshot.forEach((doc) => {
+        sousDomains.push(doc.data().title);
+      });
+      const getSousDomaines = async () => {
+        const data = await getDocs(sousDomaineCollectionRef);
+        setSousDomaines(
+          data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+        );
+      };
+      getSousDomaines();
+    });
+    // eslint-disable-next-line
+  }, [ ]);
 
   return (
     <BrowserRouter>
@@ -96,7 +112,23 @@ const App = () => {
             <Route
               key={domain.id}
               path={`/l/cours/${domain.title}`}
-              element={<Design title={domain.title} />}
+              // element={<Design title={domain.title} />}
+              element={
+                <PriveRoute
+                  authorizedRoles={["admin", "coach", "eleve"]}
+                  requiredDomain={domain.title.toLowerCase()}
+                >
+                  {" "}
+                  <Design title={domain.title} />{" "}
+                </PriveRoute>
+              }
+            />
+          ))}
+          {sousDomains.map((sousDomain) => (
+            <Route
+              key={sousDomain.id}
+              path={`/l/cours/domains/${sousDomain.title}`}
+              element={<TesteOne title={sousDomain.title} />}
             />
           ))}
 
@@ -190,7 +222,6 @@ const App = () => {
               </PriveRoute>
             }
           />
-          {/* <Route path="/l/professeurs" element={< Prof/>} /> */}
           <Route path="/l/parametres" element={<Parametre />} />
           <Route path="/l/securite" element={<Securite />} />
           <Route path="/l/certification" element={<Certification />} />

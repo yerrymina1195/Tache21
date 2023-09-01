@@ -1,0 +1,33 @@
+.bouton-modal .bouton .btn{
+    background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+    border: none;
+}
+
+.form-div .main-btn {
+    background-color: #F6B339;
+    border-radius: 10px;
+}
+
+.form-group .form-select,
+.form-group .form-control {
+    border: 1px solid #F6B339;
+    border-radius: 5px;
+}
+.card{
+    border: none;
+}
+.card .card-header{
+    background-color: transparent;
+}
+
+.image-cartes {
+    height: 200px; /* Ajustez la hauteur comme vous le souhaitez */
+    object-fit: contain; /* Pour ajuster la manière dont l'image est redimensionnée */
+  }
+  
+
+  @media (max-witdh:768px) {
+    .colonne{
+        margin-top: 10px;
+    }
+  }

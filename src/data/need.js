@@ -78,13 +78,25 @@ export const links = [
   
   {
     title: "Certification",
-    statut: ["coach","eleve"],
+    statut: ["eleve"],
     links: [
       {
         name: "Certification",
         icon: <TbCertificate />,
-        statut: ["coach","eleve"],
+        statut: ["eleve"],
         link:"l/certification"
+      },
+    ],
+  },
+  {
+    title: "Certification",
+    statut: ["coach"],
+    links: [
+      {
+        name: "Certification",
+        icon: <TbCertificate />,
+        statut: ["coach"],
+        link:"l/GenererCertificat"
       },
     ],
   },

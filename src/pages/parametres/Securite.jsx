@@ -39,16 +39,16 @@ const Securite = () => {
   };
   return (
     <div>
-      <div className="container-fluid bg-white">
+      <div className="container p-5">
         <div className="row">
-          <div className="col-md-12 mx-auto"><div className="card bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
+          <div className="col-md-12 mx-auto"><div className="card shadow bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
             <div className="card-header mb-3 text-white" >
               <p>
                 Modifier votre mot de passe
               </p></div>
 
             {/*  */}
-            <div className="card-body">
+            <div className="card-body ">
               <form className="mb-5" onSubmit={onSubmit}>
                 <div className="container">
                   <div className="row">
@@ -80,22 +80,23 @@ const Securite = () => {
               </form>
             </div>
           </div>
-          </div>
-        </div>
-
+          {/* <hr className="mt-5"/> */}
         <div className="mt-5 container">
-          <div className="row d-flex justify-content-center align-items-center">
+          <div className="row mt-5 d-flex justify-content-center align-items-center">
             <h4>Désactiver</h4>
             <div className="col-md-6">
               <p>
                 Êtes-vous sûr de vouloir désactiver votre compte ?
               </p>
             </div>
-            <div className="col-md-6 text-end">
+            <div className="col-md-6 text-lg-end text-md-end text-sm-start">
               <ButtonReutilisable type={""} text={"Désactiver"} />
             </div>
           </div>
         </div>
+          </div>
+        </div>
+       
       </div>
     </div>
   );

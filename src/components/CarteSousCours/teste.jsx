@@ -1,18 +1,101 @@
 import React, { useEffect, useState } from 'react';
-import { doc, updateDoc, serverTimestamp, getDoc, setDoc } from 'firebase/firestore';
+import { doc, updateDoc, serverTimestamp, getDoc, collection,addDoc } from 'firebase/firestore';
 import { useStateContext } from '../../contexts/ContextProvider';
 import { db } from '../../Firebase/Firebase';
 import '../cardDomaines/Domaine.css';
 import { BsArchiveFill, BsPencilSquare } from 'react-icons/bs';
 import ReactPlayer from 'react-player';
+import './Test.css';
 
 const Teste = (props) => {
-  const {user} = useStateContext();
+  const { user } = useStateContext();
   const { courseId } = props;
 
   const [started, setStarted] = useState(false);
   const [finished, setFinished] = useState(false);
-
+  // const notification = ( message , notificationA ) =>{
+  //   const currentUserId = sessionStorage.getItem('user_id')
+  //   addDoc(collection(db, "notification"), {
+  //    message : message,
+  //    notificationBy : currentUserId,
+  //    notificationFOr : notificationFOr ,
+  //    createdOn : Timestamp.fromDate(new Date()),
+  //    isShow : false,
+  //   })
+  // }
+  // try {
+  //   const path = `/images/${file.name}`;
+  //   const refs = ref(storage, path);
+  //   // Enregistrez l'image dans Storage
+  //   await uploadBytes(refs, file);
+  //   const imageUrl = await getDownloadURL(ref(storage, refs));
+  //   const docRef = await addDoc(sousDomaineCollectionRef, {
+  //     title: newSousDomaine,
+  //     domains: props.title,
+  //     imageUrl:imageUrl,
+  //     timeStamp: serverTimestamp(),
+  //   });
+  //   await updateDoc(doc(sousDomaineCollectionRef, docRef.id), {
+  //     id: docRef.id,
+  //   });
+  //   setNewSousDomaine("");
+  //   setError("");
+  //   alert("sous domaine " + newSousDomaine + " ajouter");
+  // } catch (error) {
+  //   console.error("Erreur lors de la creation :", error);
+  // }
+  const sendNotifDemarrage = async () => {
+    try {
+        if (user) {
+            const notificationDocRef = collection(db, "notifications");
+            const data = {
+              notifiepar: user.id,
+              notifieA: user.coachSelf,
+              prenom:user?.prenom,
+              nom:user?.nom,
+              message:`j'ai demarré ${props.title}`,
+              date: serverTimestamp(),
+              imageUrl:user.url,
+              vu: false,
+              title: props.title
+            };
+            const docRef=  await addDoc(notificationDocRef, data);
+            console.log("notification demarré avec succès !");
+            await updateDoc(doc(notificationDocRef, docRef.id), {
+                  id: docRef.id,
+                })
+                console.log("id avec succès !");
+        }
+    } catch (error) {
+        console.error("Erreur lors du demarrage :", error);
+    }
+};
+  const sendNotifFinish = async () => {
+    try {
+        if (user) {
+            const notificationDocRef = collection(db, "notifications");
+            const data = {
+                notifiepar: user.id,
+                notifieA: user.coachSelf,
+                prenom:user?.prenom,
+                nom:user?.nom,
+                message:`j'ai fini ${props.title}`,
+                date: serverTimestamp(),
+                imageUrl:user.url,
+                vu: false,
+                title: props.title
+            };
+            const docRef=  await addDoc(notificationDocRef, data);
+            console.log("notification demarré avec succès !");
+            await updateDoc(doc(notificationDocRef, docRef.id), {
+                  id: docRef.id,
+                })
+                console.log("id avec succès !");
+        }
+    } catch (error) {
+        console.error("Erreur lors du demarrage :", error);
+    }
+};
   useEffect(() => {
     const fetchCourseStatus = async () => {
       try {
@@ -22,8 +105,8 @@ const Teste = (props) => {
 
           if (studentDoc.exists()) {
             const data = studentDoc.data();
-            setStarted(data.demarrer || false);
-            setFinished(data.terminer || false);
+            setStarted(data[user.id]?.demarrer || false);
+            setFinished(data[user.id]?.terminer || false);
           }
         }
       } catch (error) {
@@ -32,20 +115,24 @@ const Teste = (props) => {
     };
 
     fetchCourseStatus();
-  }, [courseId]);
+  }, [courseId, user.id]);
 
   const handleStart = async () => {
     try {
       const studentDocRef = doc(db, 'cours', courseId);
 
       await updateDoc(studentDocRef, {
-        [user.id]:{
+        [user.id]: {
+          idcoach: user.coachSelf,
           demarrer: true,
-          finishedtime: serverTimestamp(),
+          startTime: serverTimestamp(),
+          finishedtime:null,
+          title:props.title,
         },
       });
 
       setStarted(true);
+    await  sendNotifDemarrage()
     } catch (error) {
       console.error('Erreur lors du démarrage:', error);
     }
@@ -56,14 +143,18 @@ const Teste = (props) => {
       const studentDocRef = doc(db, 'cours', courseId);
 
       await updateDoc(studentDocRef, {
-        [user.id]:{
-          demarrer: true,
-          terminer: true,
-          finishedtime: serverTimestamp(),
-        }
+        // [user.id]: {
+          
+          
+        //   terminer: true,
+        //   finishedtime: serverTimestamp(),
+        // }
+        [`${user.id}.terminer`]: true,
+      [`${user.id}.finishedtime`]: serverTimestamp(),
       });
 
       setFinished(true);
+    await sendNotifFinish()
     } catch (error) {
       console.error('Erreur lors de la fin:', error);
     }
@@ -88,7 +179,7 @@ const Teste = (props) => {
 
         <p className="card-text">{props.descrip}</p>
         <div className="row btn-domaine">
-          <div className="col-md-6">
+         { !user.statut === "eleve" ? <div className="col-md-6">
             <button
               type="button"
               className="btn"
@@ -101,19 +192,25 @@ const Teste = (props) => {
             <button type="button" className="btn mx-3" onClick={props.click}>
               <BsArchiveFill />
             </button>
-          </div>
-          <div className="col-md-6 text-lg-end text-md-end text-sm-start">
-            {!started && (
-              <button type="button" className="btn" onClick={handleStart}>
-                DEMARRER
-              </button>
-            )}
-            {started && !finished && (
-              <button type="button" className="btn" onClick={handleFinish}>
-                TERMINER
-              </button>
-            )}
-          </div>
+          </div> :""}
+ { user.statut === "eleve"    ?    <div className="col-md-6 text-lg-end text-md-end text-sm-start colonne">
+  {!started && (
+    <button type="button" className="btn" onClick={handleStart}>
+      DEMARRER
+    </button>
+  )}
+  {started && !finished && (
+    <button type="button" className="btn" onClick={handleFinish}>
+      TERMINER
+    </button>
+  )}
+  {finished && (
+    <button type="button" className="btn btn-disabled" disabled>
+      COURS TERMINÉ
+    </button>
+  )}
+</div>:""}
+
         </div>
       </div>
     </div>

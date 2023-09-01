@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../../../Firebase/Firebase";
+import { db, storage } from "../../../Firebase/Firebase";
 import {
   addDoc,
   doc,
@@ -9,20 +9,24 @@ import {
   query,
   updateDoc,
   getDocs,
+  where,
   serverTimestamp,
 } from "firebase/firestore";
+
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Sousdomaine from "../sousdomaine/Sousdomaine";
 import ButtonReutilisable from "../../ButtonReutilisable";
 import { useStateContext } from "../../../contexts/ContextProvider";
 
+
 const Design = (props) => {
+  const [file, setFile] = useState(null);
   const [newSousDomaine, setNewSousDomaine] = useState("");
   const [error, setError] = useState("");
-  const [sousDomains, setSousDomaines] = useState([]);
   const [id, setId] = useState("");
-  const { isClicked, handleClick, setIsClicked, initialState } =
-    useStateContext();
-  const [newDomaine] = useState("");
+  const { isClicked, handleClick, setIsClicked, initialState,user } =
+  useStateContext();
+  const [sousDomains, setSousDomaines] = useState([]);
   const sousDomaineCollectionRef = collection(db, "sousDomains");
   // function create sous-domaines
   const createSousDomaines = async () => {
@@ -30,16 +34,25 @@ const Design = (props) => {
       setError("Veuillez vérifier le champs et remplir de bon valeur");
       return;
     }
+    if (!file) {
+      alert('fichier vide')
+      return
+    }
     try {
+      const path = `/images/${file.name}`;
+      const refs = ref(storage, path);
+      // Enregistrez l'image dans Storage
+      await uploadBytes(refs, file);
+      const imageUrl = await getDownloadURL(ref(storage, refs));
       const docRef = await addDoc(sousDomaineCollectionRef, {
         title: newSousDomaine,
-        domains: newDomaine,
+        domains: props.title,
+        imageUrl:imageUrl,
         timeStamp: serverTimestamp(),
       });
       await updateDoc(doc(sousDomaineCollectionRef, docRef.id), {
         id: docRef.id,
       });
-
       setNewSousDomaine("");
       setError("");
       alert("sous domaine " + newSousDomaine + " ajouter");
@@ -61,7 +74,7 @@ const Design = (props) => {
       const updateSousDomaine = doc(db, "sousDomains", id);
       updateDoc(updateSousDomaine, {
         title: newSousDomaine,
-        domains: newDomaine,
+        domains: props.title,
         timeStamp: serverTimestamp(),
       });
       setNewSousDomaine("");
@@ -79,36 +92,36 @@ const Design = (props) => {
   };
 
   useEffect(() => {
-    const q = query(collection(db, "sousDomains"));
+    const q = query(sousDomaineCollectionRef,where('domains', '==' , props.title));
     onSnapshot(q, (querySnapshot) => {
       const sousDomains = [];
       querySnapshot.forEach((doc) => {
         sousDomains.push(doc.data().title);
       });
       const getSousDomaines = async () => {
-        const data = await getDocs(sousDomaineCollectionRef);
+        const data = await getDocs(q);
         setSousDomaines(
           data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
         );
       };
       getSousDomaines();
-    });
-  }, [sousDomaineCollectionRef]);
+    });// eslint-disable-next-line
+  }, []);
   return (
     <div>
       <div className="container my-5">
         <div className="row d-flex align-items-center mt-5">
           <div className="col-md-6 col-sm-12">
-            <h1 className="">{props.title}</h1>
+            <h1 className="capitalizer">{props.title}</h1>
           </div>
           <div className="col-md-6 col-sm-12 text-center">
             {/* button modal */}
 
             <div data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-              <ButtonReutilisable
+            { user?.statut === "coach" && <ButtonReutilisable
                 text={"Ajouter un sous domaine"}
                 onClick={() => handleClick("ajoutState")}
-              />
+              />}
             </div>
 
             {/* button modal */}
@@ -161,7 +174,15 @@ const Design = (props) => {
                       <label htmlFor="floatinglabel">Nom du sous domaine</label>
                     </div>
                     {error && <p style={{ color: "red" }}>{error}</p>}
-                  </div>
+                    {isClicked.ajoutState && ( <div className='form-group mb-2'>
+                          <input type="file"
+                            className='form-control'
+                            multiple
+                            onChange={(e) => setFile(e.target.files[0])}
+                            placeholder="Ajouter Images" />
+                        </div>)}
+                  </div> 
+                 
                   <div className="modal-footer">
                     {isClicked.ajoutState && (
                       <ButtonReutilisable
@@ -190,6 +211,7 @@ const Design = (props) => {
             <div className="col-lg-4 col-md-6 col-sm-12 b">
                 <Sousdomaine
                   title={sousdomaine.title}
+                  imageUrl={sousdomaine.imageUrl}
                   onClick={() => {
                     handleClick("modifState");
                     editSousDomaines(sousdomaine.id, sousdomaine.title);
