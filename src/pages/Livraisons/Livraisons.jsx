@@ -33,6 +33,7 @@ const Livraisons = () => {
   const [errors, setErrors] = useState({});
   const courscollection = collection(db, 'cours');
   console.log(tache)
+  console.log(livraison);
   useEffect(() => {
     const coachsQuery = query(courscollection, where(user.id, '!=', null));
     const unsubscribeCoachs = onSnapshot(coachsQuery, (snapshot) => {
@@ -311,12 +312,12 @@ const Livraisons = () => {
                       </div>
                     </div>}
                   </div>
-                  <div className="card-footer colonne text-lg-end text-md-end text-sm-start bg-white border-0">
-                    <ButtonReutilisable text={<RxCross2 className='fs-5' />} />
-                  </div>
-                  {/* <div className="card-footer colonne text-lg-end text-md-end text-sm-start bg-white border-0">
-                    <ButtonReutilisable text={<AiOutlineCheck className='fs-5' />} />
-                  </div> */}
+                 {cour?.rejected && <div className="card-footer colonne text-lg-end text-md-end text-sm-start bg-white border-0">
+                    <RxCross2 className='fs-2 text-red-600' /><span>Rejeter</span>
+                  </div>}
+                 {cour?.validated && <div className="card-footer colonne text-lg-end text-md-end text-sm-start bg-white border-0">
+                   <AiOutlineCheck className='fs-2 text-green-700' /> <span>Valider</span>
+                  </div>}
                 </div>
               </div>
             ))}

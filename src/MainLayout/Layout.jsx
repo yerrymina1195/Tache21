@@ -38,7 +38,7 @@ navigate(-1)
     <div className={currentMode === 'Dark' ? 'dark' : ''} >
      
         <div className='flex relative dark:bg-main-dark-bg'>
-          <div className="fixed rigth-4 top-[90px]" style={{ zIndex: '100000' }}>
+          <div className="fixed rigth-4 top-[90px] d-lg-none " style={{ zIndex: '100000' }}>
 
             <button
               type="button"
