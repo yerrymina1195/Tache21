@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ModalQuiz from "../../pages/ListProfs/modaQuiz/ModalQuiz";
 import { useStateContext } from "../../contexts/ContextProvider";
 const Sectionquizz = (props) => {
-  const{updatesdonneSous}=useStateContext()
+  const{updatesdonneSous,user}=useStateContext()
   const alertons =()=>{
     updatesdonneSous(props.title)
   }
@@ -32,7 +32,7 @@ const Sectionquizz = (props) => {
                 </button>
               </Link>
             </div>
-            <ModalQuiz />
+           { user?.statut ==="coach" && <ModalQuiz />}
           </div>
         </div>
       </div>
