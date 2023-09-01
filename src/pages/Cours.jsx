@@ -28,7 +28,7 @@ const Cours = () => {
   const sousDomaineCollectionRef = collection(db, "sousDomains");
   const coursCollectionRef = collection(db, "cours");
 
-  const { isClicked, handleClick, setIsClicked, initialState } =
+  const { isClicked, handleClick, setIsClicked, initialState,user } =
     useStateContext();
   // function pour que le formulaire n'accepte pas des chiffres
   const handleInputChange = (event) => {
@@ -172,10 +172,10 @@ const Cours = () => {
                 className="text-lg-end text-sm-start text-md-end"
                 data-bs-target="#staticBackdrop"
               >
-                <ButtonReutilisable
+               {user?.statut === "coach" && <ButtonReutilisable
                   text={"Ajouter un domaine"}
                   onClick={() => handleClick("ajouState")}
-                />
+                />}
               </div>
               {/* button modal */}
               {/* Modal */}

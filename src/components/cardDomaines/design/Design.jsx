@@ -24,7 +24,7 @@ const Design = (props) => {
   const [newSousDomaine, setNewSousDomaine] = useState("");
   const [error, setError] = useState("");
   const [id, setId] = useState("");
-  const { isClicked, handleClick, setIsClicked, initialState } =
+  const { isClicked, handleClick, setIsClicked, initialState,user } =
   useStateContext();
   const [sousDomains, setSousDomaines] = useState([]);
   const sousDomaineCollectionRef = collection(db, "sousDomains");
@@ -118,10 +118,10 @@ const Design = (props) => {
             {/* button modal */}
 
             <div data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-              <ButtonReutilisable
+            { user?.statut === "coach" && <ButtonReutilisable
                 text={"Ajouter un sous domaine"}
                 onClick={() => handleClick("ajoutState")}
-              />
+              />}
             </div>
 
             {/* button modal */}

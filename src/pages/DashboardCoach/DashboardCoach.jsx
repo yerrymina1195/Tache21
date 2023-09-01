@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import './DashboardCoach.css';
 import { UserData } from '../../data/need';
 import { BarChart } from "../../components";
-import img from "../../data/Capture0.png";
-import makhan from "../../data/makhan.png";
 import { PiStudentLight } from "react-icons/pi"
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import { LiaBookSolid } from "react-icons/lia";

@@ -7,6 +7,8 @@ import {
   onSnapshot,
   serverTimestamp,
   where,
+  updateDoc,
+  doc
 } from "firebase/firestore";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { db, storage } from "../../Firebase/Firebase";
@@ -28,6 +30,7 @@ const Livraisons = () => {
   // eslint-disable-next-line
   const [errors, setErrors] = useState({});
   const courscollection = collection(db, 'cours');
+ console.log(tache)
   useEffect(() => {
     const coachsQuery = query(courscollection, where(user.id, '!=', null));
     const unsubscribeCoachs = onSnapshot(coachsQuery, (snapshot) => {
@@ -41,6 +44,81 @@ const Livraisons = () => {
     // eslint-disable-next-line 
   }, []);
   console.log((mapCours));
+  const valider= async (id, eleveid)=>{
+    updateDoc(doc(livraisonDocRef, id), {
+      validated:true,
+      rejected:false,
+    })
+    const notificationDocRef = collection(db, "notifications");
+    const data = {
+      notifiepar: user.id,
+      notifieA: eleveid,
+      prenom:user?.prenom,
+      nom:user?.nom,
+      message:`votre livraison est accepté`,
+      date: serverTimestamp(),
+      imageUrl:user.url,
+      vu: false,
+      
+    };
+    const docRef=  await addDoc(notificationDocRef, data);
+    console.log("notification demarré avec succès !");
+    await updateDoc(doc(notificationDocRef, docRef.id), {
+          id: docRef.id,
+        })
+  }
+  const rejeter = async (id,eleveid)=>{
+    updateDoc(doc(livraisonDocRef, id), {
+      rejected:true,
+      validated:false
+    })
+    const notificationDocRef = collection(db, "notifications");
+    const data = {
+      notifiepar: user.id,
+      notifieA: eleveid,
+      prenom:user?.prenom,
+      nom:user?.nom,
+      message:`rejet de votre livraison`,
+      date: serverTimestamp(),
+      imageUrl:user.url,
+      vu: false,
+      
+    };
+    const docRef=  await addDoc(notificationDocRef, data);
+    console.log("notification demarré avec succès !");
+    await updateDoc(doc(notificationDocRef, docRef.id), {
+          id: docRef.id,
+        })
+  }
+  
+
+  const sendNotifDemarrage = async () => {
+    try {
+        if (user) {
+            const notificationDocRef = collection(db, "notifications");
+            const data = {
+              notifiepar: user.id,
+              notifieA: user.coachSelf,
+              prenom:user?.prenom,
+              nom:user?.nom,
+              message:`j'ai livré ${tache}`,
+              date: serverTimestamp(),
+              imageUrl:user.url,
+              vu: false,
+              title: tache
+            };
+            const docRef=  await addDoc(notificationDocRef, data);
+            console.log("notification demarré avec succès !");
+            await updateDoc(doc(notificationDocRef, docRef.id), {
+                  id: docRef.id,
+                })
+                console.log("id avec succès !");
+        }
+    } catch (error) {
+        console.error("Erreur lors du demarrage :", error);
+    }
+};
+  const livraisonDocRef = collection(db, "livraisons");
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Valeurs des champs :", cours, description, lien, tache, file);
@@ -63,16 +141,20 @@ const Livraisons = () => {
         cours,
         description,
         lien,
-        imageUrl, // Utilisez imageUrl pour enregistrer l'URL dans Firestore
+        imageUrl,
+        photo:user.url, // Utilisez imageUrl pour enregistrer l'URL dans Firestore
         timeStamp: serverTimestamp(),
       };
 
       // Envoyez les données dans Firestore
-      await addDoc(collection(db, 'livraisons'), livraisonData);
+     const docRef= await addDoc(livraisonDocRef, livraisonData);
 
+   
+     await updateDoc(doc(livraisonDocRef, docRef.id), {
+           id: docRef.id,
+         })
 
-
-
+       await sendNotifDemarrage()
       setCours('');
       setDescription('');
       setLien('');
@@ -105,7 +187,7 @@ const Livraisons = () => {
 
 
   return (
-    <div className='container dark:bg-secondary-dark-bg text-[#000] dark:text-gray-200 p-5 '>
+    <div className='container dark:bg-secondary-dark-bg text-[#000] dark:text-gray-200 p-md-3 p-lg-5 '>
       <div className="container">
         <div className='m-2 md:m-10 mt-24 p-2 md:p-10'>
           <div className="row d-flex justify-content-center align-items-center">
@@ -141,7 +223,7 @@ const Livraisons = () => {
                             >
                               <option value="">Choisir une tâche</option>
                               {mapCours?.length > 0 ? mapCours.map((element, index) => (
-                                <option key={index} value={`${element.id}`}>{`${element.title}`}</option>
+                                <option key={index} value={`${element.title}`}>{`${element.title}`}</option>
 
                               )) : ""}
 
@@ -201,24 +283,25 @@ const Livraisons = () => {
             {livraison.map((cour) => (
               <div className="col-md-6" key={cour.id}>
                 <div className="card h-100 d-flex flex-column p-2">
-                  <div className="card-header bg-transparent text-white my-2">
-                    <h4>{cour.tache}</h4>
+                  <div className="card-header bg-transparent text-white  my-2">
+                    <h4>{cour.cours}</h4>
+                    <img className="rounded-full h-10 w-10" src={cour.photo} alt={cour.title} />
                   </div>
                   <div className="card-body">
                     <h5 className="fw-bold">{cour.cours}</h5>
                     <p> {cour.description}</p>
                     <hr />
-                    <img src={cour.imageUrl} alt="Capture d'écran" className='img-fluid mx-auto w-100 image-cartes' />
+                    <img src={cour.imageUrl} alt="Capture d'écran" className='img-fluid mx-auto w-100 image-cartes ' />
                     <hr />
                     <Link to={cour.lien} target="_blank" className='fs-6 text-decoration-none text-dark'>{cour.lien}</Link>
-                    <div className="row mt-3">
+                    {user?.statut === "coach" && <div className="row mt-3">
                       <div className="col-md-6">
-                        <ButtonReutilisable text='Valider' />
+                        <ButtonReutilisable text='Valider' onClick={()=>valider(cour.id, cour.id_eleve)} />
                       </div>
-                      <div className="col-md-6 colonne text-lg-end text-md-end text-sm=start">
-                        <ButtonReutilisable text='Rejetter' />
+                 <div className="col-md-6 colonne text-lg-end text-md-end text-sm=start">
+                        <ButtonReutilisable text='Rejetter'onClick={()=>rejeter(cour.id, cour.id_eleve)} />
                       </div>
-                    </div>
+                    </div>}
                   </div>
                 </div>
               </div>

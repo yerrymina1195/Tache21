@@ -110,7 +110,7 @@ const App = () => {
           <Route path="/l/livraisons" element={<Livraisons />} />
           <Route path="/l/messagerie" element={<Messagerie />} />
           <Route path="/l/cours" element={<Cours />} />
-          {domains.map((domain) => (
+          {/* {domains.map((domain) => (
             <Route
               key={domain.id}
               path={`/l/cours/${domain.title}`}
@@ -124,6 +124,14 @@ const App = () => {
                   <Design title={domain.title} />{" "}
                 </PriveRoute>
               }
+            />
+          ))} */}
+           {domains.map((domain) => (
+            <Route
+              key={domain.id}
+              path={`/l/cours/${domain.title}`}
+              // element={<Design title={domain.title} />}
+              element={<Design title={domain.title} />}
             />
           ))}
           {sousDomains.map((sousDomain) => (
