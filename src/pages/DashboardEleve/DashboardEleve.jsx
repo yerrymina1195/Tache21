@@ -32,7 +32,7 @@ const DashbordEleve = () => {
   }, []);
 
   return (
-    <div className=' container p-5' >
+    <div className=' container p-md-5' >
       <div className="flex  flex-wrap justify-center ">
         <div className="flex m-3 w-full flex-wrap justify-center gap-5 items-center">
           {dashDataEleves.map((item) => (
