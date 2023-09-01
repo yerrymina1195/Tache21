@@ -179,7 +179,7 @@ const Teste = (props) => {
 
         <p className="card-text">{props.descrip}</p>
         <div className="row btn-domaine">
-         { !user.statut === "eleve" ? <div className="col-md-6">
+         { user.statut === "coach" && <div className="col-md-6">
             <button
               type="button"
               className="btn"
@@ -192,7 +192,7 @@ const Teste = (props) => {
             <button type="button" className="btn mx-3" onClick={props.click}>
               <BsArchiveFill />
             </button>
-          </div> :""}
+          </div> }
  { user.statut === "eleve"    ?    <div className="col-md-6 text-lg-end text-md-end text-sm-start colonne">
   {!started && (
     <button type="button" className="btn" onClick={handleStart}>

@@ -21,7 +21,7 @@ const DashbordCoach = () => {
     labels: UserData.map((data) => data.year),
     datasets: [
       {
-        label: "Users Gained",
+        label: "Users Men",
         data: UserData.map((data) => data.userBoy),
         backgroundColor: [
           "rgba(75,192,192,1)",
@@ -30,7 +30,7 @@ const DashbordCoach = () => {
         ],
       },
       {
-        label: "Users lost",
+        label: "Users Girl",
         data: UserData.map((data) => data.userGirl),
         backgroundColor: ["red"],
       },
@@ -129,7 +129,7 @@ const DashbordCoach = () => {
           </div>
         </div>
         <div className=' container mt-5 w-full flex-1 basis-[100px]'>
-          <h1 className='mt-5 text-center'>TITRE</h1>
+          <h1 className='mt-5 text-center'>CHART</h1>
           <div className="row">
           <BarChart chartData={userData} className='w-100' />
           </div>
