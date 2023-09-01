@@ -1,0 +1,30 @@
+.bgCertificate{
+    /* background-image: url('../../data/logo.png') !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    border: 10px solid #D7572B;
+}
+.bgCertification2{
+    border: 5px solid #D7572B;
+}
+.digi{
+    background: linear-gradient(to right, #D7572B 0%, #F6B339 50%,  #D7572B 100%);
+}
+.wscan{
+width: 30%;
+}
+.logo{
+width: 30%;
+}
+.sign{
+width: 30%;
+}
+.hIn{
+    height: 50px !important;
+}
+@media (max-width: 768px) {
+    .titre{
+        font-size: 10px !important;
+    }
+}

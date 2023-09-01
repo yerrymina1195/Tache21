@@ -154,22 +154,22 @@ const Cours = () => {
         setDomains(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       };
       getDomaines();
-    });
-  }, [domaineCollectionRef]);
+    });// eslint-disable-next-line
+  }, []);
 
   return (
     <div>
-      <div className="bg-[#ffff] dark:bg-secondary-dark-bg text-[#000] dark:text-gray-200 p-5 rounded-3xl domaine">
-        <div className="container ">
-          <div className="row d-flex align-items-center mt-5">
+      <div className="container dark:bg-secondary-dark-bg text-[#000] dark:text-gray-200 p-5 domaine">
+        <div className="container p-5 pb-0">
+          <div className="row mt-5 d-flex justify-content-center align-items-center">
             <div className="col-md-6 col-sm-12">
-              <h1 className="">Les Domaines</h1>
+              <h1 className="">Domaines</h1>
             </div>
-            <div className="col-md-6 col-sm-12 text-center">
+            <div className="col-md-6 col-sm-12">
               {/* button modal */}
               <div
                 data-bs-toggle="modal"
-                className="text-center"
+                className="text-lg-end text-sm-start text-md-end"
                 data-bs-target="#staticBackdrop"
               >
                 <ButtonReutilisable
@@ -190,13 +190,13 @@ const Cours = () => {
               >
                 <div className="modal-dialog modal-dialog-centered">
                   <div className="modal-content">
-                    <div className="modal-header">
-                      <h1 className="modal-title fs-5" id="staticBackdropLabel">
+                    <div className="modal-header card-header text-white">
+                      <h1 className="modal-title  fs-5" id="staticBackdropLabel">
                         Ajout de domaine
                       </h1>
                       <button
                         type="button"
-                        className="btn-close"
+                        className="btn-close shadow-none"
                         data-bs-dismiss="modal"
                         aria-label="Close"
                         onClick={() => setIsClicked(initialState)}
@@ -318,8 +318,8 @@ const Cours = () => {
             </div>
           </div>
         </div>
-        <div className="container my-5 bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
-          <div className="row row-gap-3">
+        <div className="container p-5 pt-0 my-5 bg-[#ffff] dark:bg-secondary-dark-bg text-[#ffff] dark:text-gray-200">
+          <div className="row row-gap-5">
             {domains.map((domain) => (
               <div className="col-lg-4 col-md-6 col-sm-12 ">
                 <Domaine

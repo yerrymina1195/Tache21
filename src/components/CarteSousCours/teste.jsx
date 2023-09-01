@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { doc, updateDoc, serverTimestamp, getDoc, setDoc } from 'firebase/firestore';
+import { doc, updateDoc, serverTimestamp, getDoc } from 'firebase/firestore';
 import { useStateContext } from '../../contexts/ContextProvider';
 import { db } from '../../Firebase/Firebase';
 import '../cardDomaines/Domaine.css';
@@ -44,6 +44,7 @@ const Teste = (props) => {
           idcoach: user.coachSelf,
           demarrer: true,
           finishedtime: serverTimestamp(),
+          title:props.title,
         },
       });
 
@@ -91,7 +92,7 @@ const Teste = (props) => {
 
         <p className="card-text">{props.descrip}</p>
         <div className="row btn-domaine">
-          <div className="col-md-6">
+         { !user.statut === "eleve" ? <div className="col-md-6">
             <button
               type="button"
               className="btn"
@@ -104,24 +105,24 @@ const Teste = (props) => {
             <button type="button" className="btn mx-3" onClick={props.click}>
               <BsArchiveFill />
             </button>
-          </div>
-          <div className="col-md-6 text-lg-end text-md-end text-sm-start colonne">
-            {!started && (
-              <button type="button" className="btn" onClick={handleStart}>
-                DEMARRER
-              </button>
-            )}
-            {started && !finished && (
-              <button type="button" className="btn" onClick={handleFinish}>
-                TERMINER
-              </button>
-            )}
-            {finished && (
-              <button type="button" className="btn btn-disabled" disabled>
-                COURS TERMINÉ
-              </button>
-            )}
-          </div>
+          </div> :""}
+ { user.statut === "eleve"    ?    <div className="col-md-6 text-lg-end text-md-end text-sm-start colonne">
+  {!started && (
+    <button type="button" className="btn" onClick={handleStart}>
+      DEMARRER
+    </button>
+  )}
+  {started && !finished && (
+    <button type="button" className="btn" onClick={handleFinish}>
+      TERMINER
+    </button>
+  )}
+  {finished && (
+    <button type="button" className="btn btn-disabled" disabled>
+      COURS TERMINÉ
+    </button>
+  )}
+</div>:""}
 
         </div>
       </div>

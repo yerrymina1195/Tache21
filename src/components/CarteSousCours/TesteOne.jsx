@@ -10,6 +10,7 @@ import {
   query,
   onSnapshot,
   deleteDoc,
+  where,
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
@@ -25,8 +26,6 @@ const TesteOne = (props) => {
   const coursCollectionRef = collection(db, "cours");
   const [error, setError] = useState("");
   const [id, setId] = useState("");
-  const [newDomaine] = useState("");
-  const [newSousDomaine] = useState("");
   const { isClicked, handleClick, setIsClicked, initialState, user } =
     useStateContext();
 
@@ -48,8 +47,7 @@ const TesteOne = (props) => {
         descrip: newDescrip,
         videoUrl: newVideoUrl,
         timeStamp: serverTimestamp(),
-        domains: newDomaine,
-        sousDomains: newSousDomaine,
+        sousDomains: props.title,
         createBy: user?.prenom,
       });
       setNewTitle("");
@@ -88,8 +86,7 @@ const TesteOne = (props) => {
         descrip: newDescrip,
         videoUrl: newVideoUrl,
         timeStamp: serverTimestamp(),
-        domains: newDomaine,
-        sousDomains: newSousDomaine,
+        sousDomains: props.title,
       });
       setNewTitle("");
       setNewDure("");
@@ -109,19 +106,20 @@ const TesteOne = (props) => {
   };
 
   useEffect(() => {
-    const q = query(collection(db, "cours"));
+    const q = query(coursCollectionRef,where('sousDomains', '==' , props.title));
     onSnapshot(q, (querySnapshot) => {
       const cours = [];
       querySnapshot.forEach((doc) => {
         cours.push(doc.data().title);
       });
       const getCours = async () => {
-        const data = await getDocs(coursCollectionRef);
+        const data = await getDocs(q);
         setCours(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       };
       getCours();
     });
-  }, [coursCollectionRef]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>
