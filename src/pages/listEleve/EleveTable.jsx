@@ -244,7 +244,7 @@ const handleArchive = async (id) => {
             />
           </div>
         </div>
-        <div className="table-responsive overflow-hidden rounded-2 mt-5">
+        <div className="table-responsive overflow-scroll rounded-2 mt-5">
           <table class="table table-light table-hover">
             <thead>
               <tr className="mb-3">
