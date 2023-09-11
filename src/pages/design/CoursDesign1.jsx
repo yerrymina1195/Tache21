@@ -1,6 +1,8 @@
 import React from "react";
 import TesteOne from "../../components/CarteSousCours/TesteOne";
 import Sectionquizz from "../../components/section-quizz/Sectionquizz";
+import { Link } from "react-router-dom";
+import ButtonReutilisable from "../../components/ButtonReutilisable";
 
 const CoursDesign1 = () => {
   return (

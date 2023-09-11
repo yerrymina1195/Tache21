@@ -73,7 +73,7 @@ console.log(notif);
 
 
   return (
-    <div className=" nav-item absolute right-5 md:right-40 top-16 bg-[#ffff] dark:bg-[#42464D] p-8 rounded-lg w-96">
+    <div className=" nav-item absolute right-3 md:right-40 top-16 bg-[#ffff] dark:bg-[#42464D] p-8 rounded-lg w-96 LOGIQ">
       <div className="flex justify-between items-center">
         <div className="flex gap-3">
           <button type="button" className="text-white text-xs rounded p-1 px-2 bg-orange-theme "> 5 New</button>

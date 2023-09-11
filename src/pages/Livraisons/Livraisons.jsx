@@ -15,6 +15,8 @@ import { db, storage } from "../../Firebase/Firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Link } from "react-router-dom";
 import ButtonReutilisable from '../../components/ButtonReutilisable';
+import { AiOutlineCheck } from 'react-icons/ai';
+import { RxCross2 } from 'react-icons/rx';
 
 const Livraisons = () => {
   const { user } = useStateContext()
@@ -30,7 +32,8 @@ const Livraisons = () => {
   // eslint-disable-next-line
   const [errors, setErrors] = useState({});
   const courscollection = collection(db, 'cours');
- console.log(tache)
+  console.log(tache)
+  console.log(livraison);
   useEffect(() => {
     const coachsQuery = query(courscollection, where(user.id, '!=', null));
     const unsubscribeCoachs = onSnapshot(coachsQuery, (snapshot) => {
@@ -44,80 +47,80 @@ const Livraisons = () => {
     // eslint-disable-next-line 
   }, []);
   console.log((mapCours));
-  const valider= async (id, eleveid)=>{
+  const valider = async (id, eleveid) => {
     updateDoc(doc(livraisonDocRef, id), {
-      validated:true,
-      rejected:false,
+      validated: true,
+      rejected: false,
     })
     const notificationDocRef = collection(db, "notifications");
     const data = {
       notifiepar: user.id,
       notifieA: eleveid,
-      prenom:user?.prenom,
-      nom:user?.nom,
-      message:`votre livraison est accepté`,
+      prenom: user?.prenom,
+      nom: user?.nom,
+      message: `votre livraison est accepté`,
       date: serverTimestamp(),
-      imageUrl:user.url,
+      imageUrl: user.url,
       vu: false,
-      
+
     };
-    const docRef=  await addDoc(notificationDocRef, data);
+    const docRef = await addDoc(notificationDocRef, data);
     console.log("notification demarré avec succès !");
     await updateDoc(doc(notificationDocRef, docRef.id), {
-          id: docRef.id,
-        })
+      id: docRef.id,
+    })
   }
-  const rejeter = async (id,eleveid)=>{
+  const rejeter = async (id, eleveid) => {
     updateDoc(doc(livraisonDocRef, id), {
-      rejected:true,
-      validated:false
+      rejected: true,
+      validated: false
     })
     const notificationDocRef = collection(db, "notifications");
     const data = {
       notifiepar: user.id,
       notifieA: eleveid,
-      prenom:user?.prenom,
-      nom:user?.nom,
-      message:`rejet de votre livraison`,
+      prenom: user?.prenom,
+      nom: user?.nom,
+      message: `rejet de votre livraison`,
       date: serverTimestamp(),
-      imageUrl:user.url,
+      imageUrl: user.url,
       vu: false,
-      
+
     };
-    const docRef=  await addDoc(notificationDocRef, data);
+    const docRef = await addDoc(notificationDocRef, data);
     console.log("notification demarré avec succès !");
     await updateDoc(doc(notificationDocRef, docRef.id), {
-          id: docRef.id,
-        })
+      id: docRef.id,
+    })
   }
-  
+
 
   const sendNotifDemarrage = async () => {
     try {
-        if (user) {
-            const notificationDocRef = collection(db, "notifications");
-            const data = {
-              notifiepar: user.id,
-              notifieA: user.coachSelf,
-              prenom:user?.prenom,
-              nom:user?.nom,
-              message:`j'ai livré ${tache}`,
-              date: serverTimestamp(),
-              imageUrl:user.url,
-              vu: false,
-              title: tache
-            };
-            const docRef=  await addDoc(notificationDocRef, data);
-            console.log("notification demarré avec succès !");
-            await updateDoc(doc(notificationDocRef, docRef.id), {
-                  id: docRef.id,
-                })
-                console.log("id avec succès !");
-        }
+      if (user) {
+        const notificationDocRef = collection(db, "notifications");
+        const data = {
+          notifiepar: user.id,
+          notifieA: user.coachSelf,
+          prenom: user?.prenom,
+          nom: user?.nom,
+          message: `j'ai livré ${tache}`,
+          date: serverTimestamp(),
+          imageUrl: user.url,
+          vu: false,
+          title: tache
+        };
+        const docRef = await addDoc(notificationDocRef, data);
+        console.log("notification demarré avec succès !");
+        await updateDoc(doc(notificationDocRef, docRef.id), {
+          id: docRef.id,
+        })
+        console.log("id avec succès !");
+      }
     } catch (error) {
-        console.error("Erreur lors du demarrage :", error);
+      console.error("Erreur lors du demarrage :", error);
     }
-};
+  };
   const livraisonDocRef = collection(db, "livraisons");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -142,19 +145,19 @@ const Livraisons = () => {
         description,
         lien,
         imageUrl,
-        photo:user.url, // Utilisez imageUrl pour enregistrer l'URL dans Firestore
+        photo: user.url, // Utilisez imageUrl pour enregistrer l'URL dans Firestore
         timeStamp: serverTimestamp(),
       };
 
       // Envoyez les données dans Firestore
-     const docRef= await addDoc(livraisonDocRef, livraisonData);
+      const docRef = await addDoc(livraisonDocRef, livraisonData);
 
-   
-     await updateDoc(doc(livraisonDocRef, docRef.id), {
-           id: docRef.id,
-         })
 
-       await sendNotifDemarrage()
+      await updateDoc(doc(livraisonDocRef, docRef.id), {
+        id: docRef.id,
+      })
+
+      await sendNotifDemarrage()
       setCours('');
       setDescription('');
       setLien('');
@@ -282,27 +285,39 @@ const Livraisons = () => {
           <div className='row g-5 my-3'>
             {livraison.map((cour) => (
               <div className="col-md-6" key={cour.id}>
-                <div className="card h-100 d-flex flex-column p-2">
-                  <div className="card-header bg-transparent text-white  my-2">
-                    <h4>{cour.cours}</h4>
-                    <img className="rounded-full h-10 w-10" src={cour.photo} alt={cour.title} />
+                <div className="card d-flex flex-column p-2">
+                  <div className="card-header text-white">
+                    <div className="row d-flex justify-content-center align-items-center">
+
+                      <div className="col-md-6">
+                        <img className="rounded-full h-10 w-10" src={cour.photo} alt={cour.title} />
+                      </div>
+                      <div className="col-md-6  text-lg-end text-sm-start text-md-end">
+                        <h4>{cour.cours}</h4>
+                      </div>
+                    </div>
                   </div>
                   <div className="card-body">
-                    <h5 className="fw-bold">{cour.cours}</h5>
                     <p> {cour.description}</p>
                     <hr />
-                    <img src={cour.imageUrl} alt="Capture d'écran" className='img-fluid mx-auto w-100 image-cartes ' />
+                    <img src={cour.imageUrl} alt="Capture d'écran" className='img-fluid w-100 image-cartes ' />
                     <hr />
                     <Link to={cour.lien} target="_blank" className='fs-6 text-decoration-none text-dark'>{cour.lien}</Link>
                     {user?.statut === "coach" && <div className="row mt-3">
                       <div className="col-md-6">
-                        <ButtonReutilisable text='Valider' onClick={()=>valider(cour.id, cour.id_eleve)} />
+                        <ButtonReutilisable text='Valider' onClick={() => valider(cour.id, cour.id_eleve)} />
                       </div>
-                 <div className="col-md-6 colonne text-lg-end text-md-end text-sm=start">
-                        <ButtonReutilisable text='Rejetter'onClick={()=>rejeter(cour.id, cour.id_eleve)} />
+                      <div className="col-md-6 colonne text-lg-end text-md-end text-sm=start">
+                        <ButtonReutilisable text='Rejetter' onClick={() => rejeter(cour.id, cour.id_eleve)} />
                       </div>
                     </div>}
                   </div>
+                 {cour?.rejected && <div className="card-footer colonne text-lg-end text-md-end text-sm-start bg-white border-0">
+                    <RxCross2 className='fs-2 text-red-600' /><span>Rejeter</span>
+                  </div>}
+                 {cour?.validated && <div className="card-footer colonne text-lg-end text-md-end text-sm-start bg-white border-0">
+                   <AiOutlineCheck className='fs-2 text-green-700' /> <span>Valider</span>
+                  </div>}
                 </div>
               </div>
             ))}

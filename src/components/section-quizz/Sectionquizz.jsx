@@ -1,13 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-const Sectionquizz = () => {
+import ModalQuiz from "../../pages/ListProfs/modaQuiz/ModalQuiz";
+import { useStateContext } from "../../contexts/ContextProvider";
+const Sectionquizz = (props) => {
+  const{updatesdonneSous,user}=useStateContext()
+  const alertons =()=>{
+    updatesdonneSous(props.title)
+  }
   return (
     <div>
       <hr />
       <div className="container">
-        <div className="row bg-quizz rounded-md text-white p-5">
-          <div className="col-md-6 ">
+        <div className="row bg-quizz rounded-md p-5">
+          <div className="col-md-6 text-white">
             <h2 className="fw-bold">Lorem ipsum dolor sit amet.</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
@@ -17,13 +22,17 @@ const Sectionquizz = () => {
             </p>
           </div>
           <div className="col-md-6  d-flex justify-content-center align-items-center">
-            <Link to={`/l/quiz`}>
-              <div className="bounce-element">
-                <button type="button" class="btn btn-outline-light text-uppercase fw-bold btn-lg">
-                    faire un quizz
+            <div className="bounce-element">
+              <Link to={`/l/quiz`}>
+                <button
+                  type="button"
+                  class="btn btn-outline-light mx-2 text-uppercase fw-bold btn-lg " onClick={alertons}
+                >
+                  faire un quizz
                 </button>
-              </div>
-            </Link>
+              </Link>
+            </div>
+           { user?.statut ==="coach" && <ModalQuiz />}
           </div>
         </div>
       </div>

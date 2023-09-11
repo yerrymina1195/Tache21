@@ -145,7 +145,7 @@ function EleveTable() {
             />
           </div>
         </div>
-        <div className="table-responsive overflow-hidden rounded-3 mt-5">
+        <div className="table-responsive overflow-scroll rounded-3 mt-5">
           <table className="table table-light table-hover">
             <thead>
               <tr className="mb-3">
@@ -162,7 +162,8 @@ function EleveTable() {
               {visibleData.map((datas, index) => (
                 <tr key={index}>
                   <td>
-                    {<img src={img} className="img" alt="User Avatar" />}
+                    {<img src={datas?.url ? datas.url
+            : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"} className="img" alt="User Avatar" />}
                   </td>
                   <td>{datas.prenom}</td>
                   <td>{datas.nom}</td>

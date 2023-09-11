@@ -190,45 +190,38 @@ const Teste = (props) => {
 
         <p className="card-text">{props.descrip}</p>
         <div className="row btn-domaine">
-          {!user.statut === "eleve" ? (
-            <div className="col-md-6">
-              <button
-                type="button"
-                className="btn"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-                onClick={props.onClick}
-              >
-                <BsPencilSquare />
-              </button>
-              <button type="button" className="btn mx-3" onClick={props.click}>
-                <BsArchiveFill />
-              </button>
-            </div>
-          ) : (
-            ""
-          )}
-          {user.statut === "eleve" ? (
-            <div className="col-md-6 text-lg-end text-md-end text-sm-start colonne">
-              {!started && (
-                <button type="button" className="btn" onClick={handleStart}>
-                  DEMARRER
-                </button>
-              )}
-              {started && !finished && (
-                <button type="button" className="btn" onClick={handleFinish}>
-                  TERMINER
-                </button>
-              )}
-              {finished && (
-                <button type="button" className="btn btn-disabled" disabled>
-                  COURS TERMINÉ
-                </button>
-              )}
-            </div>
-          ) : (
-            ""
-          )}
+         { user.statut === "coach" && <div className="col-md-6">
+            <button
+              type="button"
+              className="btn"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              onClick={props.onClick}
+            >
+              <BsPencilSquare />
+            </button>
+            <button type="button" className="btn mx-3" onClick={props.click}>
+              <BsArchiveFill />
+            </button>
+          </div> }
+ { user.statut === "eleve"    ?    <div className="col-md-6 text-lg-end text-md-end text-sm-start colonne">
+  {!started && (
+    <button type="button" className="btn" onClick={handleStart}>
+      DEMARRER
+    </button>
+  )}
+  {started && !finished && (
+    <button type="button" className="btn" onClick={handleFinish}>
+      TERMINER
+    </button>
+  )}
+  {finished && (
+    <button type="button" className="btn btn-disabled" disabled>
+      COURS TERMINÉ
+    </button>
+  )}
+</div>:""}
+
         </div>
       </div>
     </div>

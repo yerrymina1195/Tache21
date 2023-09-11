@@ -27,4 +27,7 @@ width: 30%;
     .titre{
         font-size: 10px !important;
     }
+    .colonne{
+        padding-top: 10px;
+    }
 }

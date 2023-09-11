@@ -20,11 +20,15 @@ export const ContextProvider = ({ children }) => {
   const [themeSettings, setThemeSettings] = useState(false);
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
+  const [donneSous, setDonneSous]= useState("")
   const updatenotif = (frfr) => {
    
     setNotif(frfr);
   
   }; 
+  const updatesdonneSous=(d)=>{
+    setDonneSous(d)
+  }
 
   const updatecertifie = (frfr) => {
    
@@ -67,7 +71,7 @@ export const ContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, handleLogout, setThemeSettings,user,updateUser,notif,updatenotif,certifie,updatecertifie}}>
+    <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, handleLogout, setThemeSettings,user,updateUser,notif,updatenotif,certifie,updatecertifie,donneSous, updatesdonneSous}}>
       {children}
     </StateContext.Provider>
   );

@@ -1,44 +1,16 @@
 import React, { useState, useEffect } from "react";
 import ButtonReutilisable from '../../../components/ButtonReutilisable';
-import { collection, getDocs, query, limit,addDoc,updateDoc ,doc,serverTimestamp} from "firebase/firestore";
+import { collection, getDocs, query, limit } from "firebase/firestore";
 import { db } from "../../../Firebase/Firebase";
-import { useStateContext } from "../../../contexts/ContextProvider";
 
-export default function Quiz() {
-  const{donneSous,user}=useStateContext()
+export default function Quizreact() {
     const [quizList, setQuizList] = useState([]);
     const [userAnswers, setUserAnswers] = useState([]);
     const [score, setScore] = useState(0);
     const [quizCompleted, setQuizCompleted] = useState(false);
     const [timeLeft, setTimeLeft] = useState(300); // Durée par défaut en secondes
     const [quizStarted, setQuizStarted] = useState(false);
-console.log(donneSous);
-const sendNotifDemarrage = async () => {
-  try {
-      if (user) {
-          const notificationDocRef = collection(db, "notifications");
-          const data = {
-            notifiepar: user.id,
-            notifieA: user.coachSelf,
-            prenom:user?.prenom,
-            nom:user?.nom,
-            message:`quizz fait  ${score}/${quizList.length}`,
-            date: serverTimestamp(),
-            imageUrl:user.url,
-            vu: false,
-            title: `Quiz ${donneSous}`
-          };
-          const docRef=  await addDoc(notificationDocRef, data);
-          console.log("notification demarré avec succès !");
-          await updateDoc(doc(notificationDocRef, docRef.id), {
-                id: docRef.id,
-              })
-              console.log("id avec succès !");
-      }
-  } catch (error) {
-      console.error("Erreur lors du demarrage :", error);
-  }
-};
+
     useEffect(() => {
         const fetchQuizzes = async () => {
             const quizCollection = collection(db, "quizzes");
@@ -47,7 +19,7 @@ const sendNotifDemarrage = async () => {
             const quizzesData = [];
             quizSnapshot.forEach((doc) => {
                 const quizData = doc.data();
-                if (quizData.sousDomaine === donneSous) {
+                if (quizData.sousDomaine === "HTMLCSS") {
                     quizzesData.push(quizData);
                 }
             });
@@ -55,7 +27,6 @@ const sendNotifDemarrage = async () => {
         };
 
         fetchQuizzes();
-          // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
@@ -95,8 +66,7 @@ const sendNotifDemarrage = async () => {
         return () => {
             clearInterval(timer);
         };
-          // eslint-disable-next-line
-    }, []);
+    }, [quizStarted, quizCompleted]);
 
     const handleAnswer = (questionIndex, answerIndex) => {
         if (!quizStarted || quizCompleted) {
@@ -116,7 +86,7 @@ const sendNotifDemarrage = async () => {
         }
     };
 
-    const calculateScore = async () => {
+    const calculateScore = () => {
         if (quizCompleted) {
             return;
         }
@@ -133,7 +103,6 @@ const sendNotifDemarrage = async () => {
         // Stocker l'état du quiz dans le stockage local
         localStorage.setItem('QUIZ_COMPLETED', JSON.stringify(true));
         localStorage.setItem('QUIZ_SCORE', JSON.stringify(newScore));
-       await sendNotifDemarrage()
     };
 
     const formatTime = (seconds) => {

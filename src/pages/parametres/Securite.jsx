@@ -82,7 +82,7 @@ const Securite = () => {
           </div>
           {/* <hr className="mt-5"/> */}
         <div className="mt-5 container">
-          <div className="row mt-5 d-flex justify-content-center align-items-center">
+          {/* <div className="row mt-5 d-flex justify-content-center align-items-center">
             <h4>Désactiver</h4>
             <div className="col-md-6">
               <p>
@@ -92,7 +92,7 @@ const Securite = () => {
             <div className="col-md-6 text-lg-end text-md-end text-sm-start">
               <ButtonReutilisable type={""} text={"Désactiver"} />
             </div>
-          </div>
+          </div> */}
         </div>
           </div>
         </div>

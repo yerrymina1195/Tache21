@@ -15,7 +15,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { useStateContext } from "../../contexts/ContextProvider";
-
+import Sectionquizz from "../section-quizz/Sectionquizz";
 const TesteOne = (props) => {
   // crud
   const [newTitle, setNewTitle] = useState("");
@@ -307,6 +307,7 @@ const TesteOne = (props) => {
             ))}
           </div>
         </div>
+        <Sectionquizz title={props.title} />
       </div>
     </div>
   );
