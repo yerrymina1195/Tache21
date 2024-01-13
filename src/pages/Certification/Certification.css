@@ -1,0 +1,21 @@
+.btn-group .main-btn,
+.btn-group .btn-main:hover {
+    background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+.btn-group .main-btn:hover,
+.btn-group .btn-main {
+    color: #D7572B;
+    background: transparent;
+    border: 1px solid #D7572B;
+    border-radius: 10px;
+}
+
+
+.cert{
+    background: linear-gradient(to right, #C23028 0%, #D7572B 50%, #F6B339 100%);
+    width: 50px;
+}
