@@ -20,6 +20,7 @@ import { RxCross2 } from 'react-icons/rx';
 
 const Livraisons = () => {
   const { user } = useStateContext()
+  console.log(user);
   const [tache, setTache] = useState('');
   const [mapCours, setMapCours] = useState('');
   const [cours, setCours] = useState('');
@@ -54,7 +55,7 @@ const Livraisons = () => {
     })
     const notificationDocRef = collection(db, "notifications");
     const data = {
-      notifiepar: user.id,
+      notifiepar: user?.id,
       notifieA: eleveid,
       prenom: user?.prenom,
       nom: user?.nom,
@@ -148,7 +149,7 @@ const Livraisons = () => {
         photo: user.url, // Utilisez imageUrl pour enregistrer l'URL dans Firestore
         timeStamp: serverTimestamp(),
       };
-
+console.log(livraisonData)
       // Envoyez les données dans Firestore
       const docRef = await addDoc(livraisonDocRef, livraisonData);
 
